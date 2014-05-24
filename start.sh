@@ -2,6 +2,8 @@
 
 # Put any tasks you would like to have carried
 # out when the container is first created here
+cp -r /tmp/django_project /home/web/
+chown -R www-data.www.data /home/web/django_project
 
 # Set the root passwd - grep docker logs for it
 ROOT_PASSWORD=`pwgen -c -n -1 12`

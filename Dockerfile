@@ -32,7 +32,10 @@ RUN chmod o-rwx /root/.ssh
 RUN apt-get -y install nginx uwsgi uwsgi-plugin-python git python-virtualenv vim
 RUN mkdir /home/web
 ADD server-conf /home/web/server-conf
-ADD django_project /home/web/django_project
+# Note that ww-data does not have permissions
+# for the django project dir - so we will copy it over and then set the 
+# permissions in teh start script
+ADD django_project /tmp/django_project
 ADD REQUIREMENTS.txt /home/web/REQUIREMENTS.txt
 # Run any additional tasks here that are too tedious to put in
 # this dockerfile directly.
