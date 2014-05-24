@@ -1,1 +1,1 @@
-docker.io build -t kartoza/django .
+docker.io build -t kartoza/mezzanine .
