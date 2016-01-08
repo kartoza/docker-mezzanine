@@ -12,10 +12,9 @@ RUN  dpkg-divert --local --rename --add /sbin/initctl
 # Or comment this line out if you do not with to use caching
 ADD 71-apt-cacher-ng /etc/apt/apt.conf.d/71-apt-cacher-ng
 
-#RUN apt-get -y update
 RUN echo "deb http://archive.ubuntu.com/ubuntu trusty main universe" > /etc/apt/sources.list
-# socat can be used to proxy an external port and make it look like it is local
-RUN apt-get -y install ca-certificates socat openssh-server supervisor rpl pwgen
+RUN apt-get -y update
+RUN apt-get -y install ca-certificates openssh-server supervisor rpl pwgen
 RUN mkdir /var/run/sshd
 ADD sshd.conf /etc/supervisor/conf.d/sshd.conf
 
