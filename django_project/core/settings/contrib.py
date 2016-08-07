@@ -98,10 +98,9 @@ SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 # List of processors used by RequestContext to populate the context.
 # Each one should be a callable that takes the request object as its
 # only parameter and returns a dictionary to add to the context.
-TEMPLATE_CONTEXT_PROCESSORS = (
-    "mezzanine.conf.context_processors.settings",
-    "mezzanine.pages.context_processors.page",
-)
+# Implemented in base.py as a dirty hack for now
+#TEMPLATE_CONTEXT_PROCESSORS = (
+#)
 
 # The following settings are already defined with default values in
 # the ``defaults.py`` module within each of Mezzanine's apps, but are
