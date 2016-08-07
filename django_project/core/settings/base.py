@@ -93,9 +93,7 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             # project level templates
-            absolute_path('core', 'base_templates'),
-            absolute_path('vota', 'templates'),
-            absolute_path('changes', 'templates'),
+            absolute_path('core', 'templates'),
         ],
         'APP_DIRS': False,
         'OPTIONS': {

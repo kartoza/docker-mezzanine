@@ -70,6 +70,7 @@ GRAPPELLI_INSTALLED = True
 
 INSTALLED_APPS += (
     "mezzanine",
+    "django_comments",
     #"compressor",
     PACKAGE_NAME_FILEBROWSER,
     PACKAGE_NAME_GRAPPELLI,
@@ -90,6 +91,9 @@ ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ######################
 # MEZZANINE SETTINGS #
 ######################
+
+# Whether a user's session cookie expires when the Web browser is closed.
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
 # List of processors used by RequestContext to populate the context.
 # Each one should be a callable that takes the request object as its

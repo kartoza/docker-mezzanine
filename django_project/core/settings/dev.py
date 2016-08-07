@@ -2,6 +2,7 @@ from .project import *  # noqa
 
 # Set debug to True for development
 DEBUG = True
+TESTING = DEBUG
 TEMPLATE_DEBUG = DEBUG
 LOGGING_OUTPUT_ENABLED = DEBUG
 LOGGING_LOG_SQL = DEBUG

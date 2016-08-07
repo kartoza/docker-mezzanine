@@ -21,6 +21,7 @@ USE_X_FORWARDED_HOST = True
 
 # Set debug to false for production
 DEBUG = TEMPLATE_DEBUG = False
+TESTING = DEBUG
 
 SERVER_EMAIL = 'tim@kartoza.com'
 EMAIL_HOST = 'kartoza.com'
