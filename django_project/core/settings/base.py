@@ -94,6 +94,7 @@ TEMPLATES = [
         'DIRS': [
             # project level templates
             absolute_path('core', 'templates'),
+            absolute_path('moderna_theme', 'templates'),
         ],
         'APP_DIRS': False,
         'OPTIONS': {

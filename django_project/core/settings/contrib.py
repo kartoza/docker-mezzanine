@@ -3,9 +3,25 @@
 core.settings.contrib
 """
 from .base import *  # noqa
+from .secret import (
+    COMMENTS_DISQUS_API_PUBLIC_KEY,
+    COMMENTS_DISQUS_API_SECRET_KEY,
+    COMMENTS_DISQUS_SHORTNAME)
+
+# Store these package names here as they may change in the future since
+# at the moment we are using custom forks of them.
+PACKAGE_NAME_FILEBROWSER = "filebrowser_safe"
+PACKAGE_NAME_GRAPPELLI = "grappelli_safe"
+GRAPPELLI_INSTALLED = True
 
 # Extra installed apps - grapelli needs to be added before others
-INSTALLED_APPS = (
+INSTALLED_APPS += (
+     PACKAGE_NAME_GRAPPELLI,
+     "moderna_theme",
+     "mezzanine",
+     "django_comments",
+     "compressor",
+     PACKAGE_NAME_FILEBROWSER,
      "mezzanine.boot",
      "mezzanine.conf",
      "mezzanine.core",
@@ -17,14 +33,11 @@ INSTALLED_APPS = (
      "mezzanine.twitter",
      #"mezzanine.accounts",
      #"mezzanine.mobile",
-) + INSTALLED_APPS
+     # Extra apps picked out by Tim
+     "mezzanine_references",
 
-INSTALLED_APPS += (
 )
 
-# Set disqus and shortname
-# noinspection PyUnresolvedReferences
-from .secret import DISQUS_WEBSITE_SHORTNAME  # noqa
 
 MIGRATION_MODULES = {'accounts': 'core.migration'}
 
@@ -49,38 +62,7 @@ MIDDLEWARE_CLASSES += (
     "mezzanine.core.middleware.FetchFromCacheMiddleware",
 )
 
-DEFAULT_FILE_STORAGE = (
-    'django_hashedfilenamestorage.storage.HashedFilenameFileSystemStorage')
-
-
-# These get enabled in prod.py
-PIPELINE_ENABLED = False
-PIPELINE_CSS_COMPRESSOR = None
-PIPELINE_JS_COMPRESSOR = None
-
-# Django-allauth related settings
-
 AUTHENTICATION_BACKENDS = ("mezzanine.core.auth_backends.MezzanineBackend",)
-
-# Store these package names here as they may change in the future since
-# at the moment we are using custom forks of them.
-PACKAGE_NAME_FILEBROWSER = "filebrowser_safe"
-PACKAGE_NAME_GRAPPELLI = "grappelli_safe"
-GRAPPELLI_INSTALLED = True
-
-INSTALLED_APPS += (
-    "mezzanine",
-    "django_comments",
-    #"compressor",
-    PACKAGE_NAME_FILEBROWSER,
-    PACKAGE_NAME_GRAPPELLI,
-)
-
-SOCIALACCOUNT_PROVIDERS = {
-    'github': {
-        'SCOPE': ['user:email', 'public_repo', 'read:org']
-    }
-}
 
 ACCOUNT_UNIQUE_EMAIL = True
 ACCOUNT_USERNAME_REQUIRED = True
@@ -91,6 +73,8 @@ ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ######################
 # MEZZANINE SETTINGS #
 ######################
+
+COMMENT_FORM_CLASS = 'mezzanine.generic.forms.ThreadedCommentForm'
 
 # Whether a user's session cookie expires when the Web browser is closed.
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
@@ -111,21 +95,21 @@ SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
 # Controls the ordering and grouping of the admin menu.
 #
-# ADMIN_MENU_ORDER = (
-#     ("Content", ("pages.Page", "blog.BlogPost",
-#        "generic.ThreadedComment", ("Media Library", "fb_browse"),)),
-#     ("Site", ("sites.Site", "redirects.Redirect", "conf.Setting")),
-#     ("Users", ("auth.User", "auth.Group",)),
-# )
+ADMIN_MENU_ORDER = (
+    ("Content", ("pages.Page", "blog.BlogPost",
+       "generic.ThreadedComment", ("Media Library", "fb_browse"),)),
+    ("Site", ("sites.Site", "redirects.Redirect", "conf.Setting")),
+    ("Users", ("auth.User", "auth.Group",)),
+)
 
 # A three item sequence, each containing a sequence of template tags
 # used to render the admin dashboard.
 #
-# DASHBOARD_TAGS = (
-#     ("blog_tags.quick_blog", "mezzanine_tags.app_list"),
-#     ("comment_tags.recent_comments",),
-#     ("mezzanine_tags.recent_actions",),
-# )
+DASHBOARD_TAGS = (
+    ("blog_tags.quick_blog", "mezzanine_tags.app_list"),
+    ("comment_tags.recent_comments",),
+    ("mezzanine_tags.recent_actions",),
+)
 
 # A sequence of templates used by the ``page_menu`` template tag. Each
 # item in the sequence is a three item sequence, containing a unique ID
@@ -134,11 +118,11 @@ SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 # menus a page should appear in. Note that if a menu template is used
 # that doesn't appear in this setting, all pages will appear in it.
 
-# PAGE_MENU_TEMPLATES = (
-#     (1, "Top navigation bar", "pages/menus/dropdown.html"),
-#     (2, "Left-hand tree", "pages/menus/tree.html"),
-#     (3, "Footer", "pages/menus/footer.html"),
-# )
+PAGE_MENU_TEMPLATES = (
+    (1, "Top navigation bar", "pages/menus/dropdown.html"),
+    (2, "Left-hand tree", "pages/menus/tree.html"),
+    (3, "Footer", "pages/menus/footer.html"),
+)
 
 # A sequence of fields that will be injected into Mezzanine's (or any
 # library's) models. Each item in the sequence is a four item sequence.

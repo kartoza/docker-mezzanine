@@ -1,2 +1,5 @@
-mezzanine
 psycopg2
+mezzanine
+mezzanine-references
+django-compressor
+
