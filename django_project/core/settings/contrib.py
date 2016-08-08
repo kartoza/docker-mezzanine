@@ -17,7 +17,7 @@ GRAPPELLI_INSTALLED = True
 # Extra installed apps - grapelli needs to be added before others
 INSTALLED_APPS += (
      PACKAGE_NAME_GRAPPELLI,
-     "moderna_theme",
+     "solid_theme",
      "mezzanine",
      "django_comments",
      "compressor",
@@ -35,9 +35,12 @@ INSTALLED_APPS += (
      #"mezzanine.mobile",
      # Extra apps picked out by Tim
      "mezzanine_references",
-
+     "mdown"  # markdown support in admin
 )
 
+# mezzanine-mdown options
+RICHTEXT_WIDGET_CLASS = "mdown.forms.WmdWidget"
+RICHTEXT_FILTER = "mdown.filters.codehilite"
 
 MIGRATION_MODULES = {'accounts': 'core.migration'}
 
