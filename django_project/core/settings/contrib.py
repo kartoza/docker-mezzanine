@@ -35,7 +35,8 @@ INSTALLED_APPS += (
      #"mezzanine.mobile",
      # Extra apps picked out by Tim
      "mezzanine_references",
-     "mdown"  # markdown support in admin
+     "mdown",  # markdown support in admin
+     "mezzanine_agenda"  # we use a local copy as pip misses migrations
 )
 
 # mezzanine-mdown options
@@ -47,7 +48,7 @@ MIGRATION_MODULES = {'accounts': 'core.migration'}
 GRAPPELLI_ADMIN_TITLE = 'Site administration panel'
 
 
-# This one must occur django provided middleware
+# This one must occur before django provided middleware
 MIDDLEWARE_CLASSES = (
     "mezzanine.core.middleware.UpdateCacheMiddleware",
 ) + MIDDLEWARE_CLASSES
@@ -72,6 +73,13 @@ ACCOUNT_USERNAME_REQUIRED = True
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_SIGNUP_FORM_CLASS = 'base.forms.SignupForm'
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
+
+######################
+# Mezzanine agenda settings : https://github.com/jpells/mezzanine-agenda
+######################
+
+EVENT_SLUG = u"events"
+
 
 ######################
 # MEZZANINE SETTINGS #
