@@ -3,4 +3,5 @@ mezzanine
 mezzanine-references
 mezzanine-mdown
 django-compressor
+geopy
 
