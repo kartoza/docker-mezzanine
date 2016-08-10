@@ -3,5 +3,6 @@ mezzanine
 mezzanine-references
 mezzanine-mdown
 django-compressor
-geopy
+icalendar==3.0.1b2
+geopy==0.95.1
 
