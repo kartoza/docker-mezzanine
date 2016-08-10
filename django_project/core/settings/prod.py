@@ -27,6 +27,11 @@ SERVER_EMAIL = 'tim@kartoza.com'
 EMAIL_HOST = 'kartoza.com'
 DEFAULT_FROM_EMAIL = 'tim@kartoza.com'
 
+
+STATICFILES_FINDERS += (
+    'compressor.finders.CompressorFinder'
+)
+
 # Logging
 if 'raven.contrib.django.raven_compat' in INSTALLED_APPS:
     # noinspection PyUnresolvedReferences
