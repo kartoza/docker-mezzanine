@@ -15,13 +15,15 @@
 <link rel="alternate" type="application/atom+xml" title="Atom" href="{% url "blog_post_feed" "atom" %}">
 {% endifinstalled %}
 
+<link rel="stylesheet" href="{% static "css/fonts.css" %}">
 {% compress css %}
 <link rel="stylesheet" href="{% static "css/bootstrap.css" %}">
 <link rel="stylesheet" href="{% static "css/mezzanine.css" %}">
 
 
- <link href="{% static "css/font-awesome.min.css" %}" rel="stylesheet" type="text/css" />
+<link href="{% static "css/font-awesome.min.css" %}" rel="stylesheet" type="text/css" />
 	
+<link href="{% static "css/style.css" %}" rel="stylesheet">
 
 
 
@@ -37,8 +39,6 @@
 {% endifinstalled %}
 {% block extra_css %}{% endblock %}
 {% endcompress %}
-{# Don't compress this as it trips up compressing google fonts #}
-<link href="{% static "css/style.css" %}" rel="stylesheet">
 
 {% compress js %}
 <script src="{% static "mezzanine/js/"|add:settings.JQUERY_FILENAME %}"></script>
