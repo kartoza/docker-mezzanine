@@ -29,7 +29,7 @@ DEFAULT_FROM_EMAIL = 'tim@kartoza.com'
 
 
 STATICFILES_FINDERS += (
-    'compressor.finders.CompressorFinder'
+    'compressor.finders.CompressorFinder',
 )
 
 # Logging
