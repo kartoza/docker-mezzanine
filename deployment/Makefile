@@ -1,4 +1,5 @@
 PROJECT_ID := mezzanine
+PRODUCTION_HOST := mountain
 
 SHELL := /bin/bash
 
@@ -241,16 +242,16 @@ mediasync:
 	@echo "------------------------------------------------------------------"
 	@echo "Syncing media files and secret.py from live server"
 	@echo "------------------------------------------------------------------"
-	@rsync -av --progress inasafe-docker:/home/data/changelog.inasafe.org/deployment/media/ media
-	@rsync -av --progress inasafe-docker:/home/data/changelog.inasafe.org/django_project/core/settings/secret.py ../django_project/core/settings/
+	@rsync -av --progress $(PRODUCTION_HOST):/home/timlinux/mezzanine.kartoza.com/deployment/media/ media
+	@rsync -av --progress $(PRODUCTION_HOST):/home/timlinux/mezzanine.kartoza.com/django_project/core/settings/secret.py ../django_project/core/settings/
 
 dbsync:
 	@echo
 	@echo "------------------------------------------------------------------"
 	@echo "Syncing database files from live server"
 	@echo "------------------------------------------------------------------"
-	-@ssh inasafe-docker "cd /home/data/changelog.inasafe.org/deployment; make dbbackup"
-	@rsync -av --progress inasafe-docker:/home/data/changelog.inasafe.org/deployment/backups/ backups
+	-@ssh $(PRODUCTION_HOST) "cd /home/timlinux/mezzanine.kartoza.com/deployment; make dbbackup"
+	@rsync -av --progress $(PRODUCTION_HOST):/home/timlinux/mezzanine.kartoza.com/deployment/backups/ backups
 
 create-machine:
 	@echo
