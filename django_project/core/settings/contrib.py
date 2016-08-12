@@ -40,8 +40,8 @@ INSTALLED_APPS += (
 )
 
 # mezzanine-mdown options
-RICHTEXT_WIDGET_CLASS = "mdown.forms.WmdWidget"
-RICHTEXT_FILTER = "mdown.filters.codehilite"
+# RICHTEXT_WIDGET_CLASS = "mdown.forms.WmdWidget"
+# RICHTEXT_FILTER = "mdown.filters.codehilite"
 
 MIGRATION_MODULES = {'accounts': 'core.migration'}
 
