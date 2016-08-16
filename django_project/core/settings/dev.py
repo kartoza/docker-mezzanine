@@ -73,7 +73,7 @@ try:
         # uncomment if you want to show every SQL executed
         # 'devserver.modules.sql.SQLRealTimeModule',
         # show sql query summary
-        'devserver.modules.sql.SQLSummaryModule',
+        # 'devserver.modules.sql.SQLSummaryModule',
         # Total time to render a request
         'devserver.modules.profile.ProfileSummaryModule',
 

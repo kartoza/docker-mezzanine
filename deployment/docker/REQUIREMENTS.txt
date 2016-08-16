@@ -1,8 +1,8 @@
 psycopg2
 mezzanine
+mezzanine_people
 mezzanine-references
 mezzanine-mdown
 django-compressor
 icalendar==3.0.1b2
 geopy==0.95.1
-
