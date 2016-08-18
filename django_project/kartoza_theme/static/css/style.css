@@ -401,7 +401,6 @@ a:focus {
     background-repeat:no-repeat;
     background-size:cover;
     margin-top: 50px;
-    margin-bottom: 30px;
     padding-top: 25px;
     padding-bottom: 25px;
 }
@@ -412,7 +411,7 @@ a:focus {
 }
 
 .ctitle {
-    color: #00b3fe;
+    color: #f4b340;
     font-weight: 700;
     margin-bottom: 15px;
 }
