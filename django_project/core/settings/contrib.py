@@ -34,6 +34,7 @@ INSTALLED_APPS += (
      #"mezzanine.accounts",
      #"mezzanine.mobile",
      # Extra apps picked out by Tim
+     "mezzanine_people",
      "mezzanine_references",
      "mdown",  # markdown support in admin
      "mezzanine_agenda"  # we use a local copy as pip misses migrations
@@ -47,7 +48,9 @@ MIGRATION_MODULES = {'accounts': 'core.migration'}
 
 GRAPPELLI_ADMIN_TITLE = 'Site administration panel'
 
+PEOPLE_PER_PAGE = 20
 
+EVENT_USE_FEATURED_IMAGE = True
 # This one must occur before django provided middleware
 MIDDLEWARE_CLASSES = (
     "mezzanine.core.middleware.UpdateCacheMiddleware",
