@@ -17,7 +17,7 @@ GRAPPELLI_INSTALLED = True
 # Extra installed apps - grapelli needs to be added before others
 INSTALLED_APPS += (
      PACKAGE_NAME_GRAPPELLI,
-     "solid_theme",
+     "kartoza_theme",
      "mezzanine",
      "django_comments",
      "compressor",
