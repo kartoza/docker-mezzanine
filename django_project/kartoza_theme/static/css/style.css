@@ -86,18 +86,30 @@ a:focus {
 	BOOTSTRAP MODIFICATIONS & TWEAKS
 ################################################################# */
 .navbar {
-    min-height: 70px;
-    padding-top: 10px;
-    margin-bottom: 0px;
+    min-height: 50px;
+    padding-top: 0;
+    margin-bottom: 0;
 }
 
-.navbar-brand {
-    font-family: 'Raleway', sans-serif;
+.navbar-brand, .navbar-title {
+    font-family: 'Leto', sans-serif;
     font-weight: 900;
 }
 
-.navbar-header .navbar-brand {
+.navbar-brand img {
+    margin-top: -5px;
+    height: 30px;
+}
+
+.navbar-header .navbar-brand, .navbar-title {
     color: white;
+}
+
+.navbar-title {
+    font-style: normal;
+    color: white !important;
+    font-size: 10pt;
+    text-transform: uppercase;
 }
 
 .navbar-default .navbar-nav > li > a {
@@ -107,11 +119,11 @@ a:focus {
 }
 
 .navbar-default .navbar-nav > li > a:hover {
-    color: #00b3fe;
+    color: #f4b340;
 }
 
 .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
-    color: #00b3fe;
+    color: #f4b340;
     background-color: transparent;
 }
 
@@ -208,11 +220,18 @@ a:focus {
 ################################################################# */
 
 #headerwrap {
-    background-color: #00b3fe;
-    min-height: 550px;
+    background-image: url(../img/map-header-2.png);
+    background-repeat:no-repeat;
+    background-size:cover;
+    min-height: 500px;
     padding-top: 100px;
     padding-bottom: 0px;
     text-align: center;
+}
+
+#headerwrap .title {
+    font-size: 60pt;
+    margin-top: 70px;
 }
 
 #headerwrap h3, h5 {
@@ -231,14 +250,19 @@ a:focus {
 
 /* Services Wrap */
 #service {
-    margin-top: 100px;
-    margin-bottom: 80px;
+    margin-top: 60px;
+    margin-bottom: 60px;
+    text-align: center;
 }
 
 #service i {
-    color: #00b3fe;
+    color: #f4b340;
     font-size: 60px;
     padding: 15px;
+}
+
+#service h3 {
+    margin-bottom: 25px;
 }
 
 /* Portfolio Wrap */
@@ -373,9 +397,11 @@ a:focus {
 /* General Tweaks */
 
 #blue {
-    background: #00b3fe;
-    margin-top: 60px;
-    margin-bottom: 60px;
+    background-image: url(../img/map-header-2.png);
+    background-repeat:no-repeat;
+    background-size:cover;
+    margin-top: 50px;
+    margin-bottom: 30px;
     padding-top: 25px;
     padding-bottom: 25px;
 }
@@ -489,6 +515,12 @@ csmall2 {
     background: #f7f7f7;
 }
 
+.team h3 {
+    margin-bottom: 25px;
+    font-size: 24px;
+    text-transform: uppercase;
+}
+
 .block {
     padding: 54px 0;
 }
@@ -511,13 +543,6 @@ csmall2 {
 
 .block h3 {
     text-align: center;
-    color: #808080;
-    font-weight: normal;
-    font-size: 16px;
-    margin-top: 0;
-    margin-bottom: 0;
-    line-height: 26px;
-    font-weight: 300;
 }
 
 .block .project h4 a, .block .blog-post h4 a, .block .member h4 a {

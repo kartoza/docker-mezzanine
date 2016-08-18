@@ -63,8 +63,10 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
     </button>
-    {% if settings.SITE_TITLE %}<a class="navbar-brand" href="/">{{ settings.SITE_TITLE }}</a>{% endif %}
-    {% if settings.SITE_TAGLINE %}<p class="navbar-text visible-lg">{{ settings.SITE_TAGLINE }}</p>{% endif %}
+    {% if settings.SITE_TITLE %}<a class="navbar-brand" href="/">
+        <img src="{% static "img/kartoza-logo-only.png" %}">
+    </a>{% endif %}
+    {% if settings.SITE_TAGLINE %}<p class="navbar-text navbar-title">{{ settings.SITE_TITLE }}</p>{% endif %}
 </div>
 <div class="navbar-collapse collapse navbar-right">
 
