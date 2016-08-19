@@ -45,7 +45,6 @@ permissions:
 	@if [ -d "logs" ]; then sudo chmod -R a+rwx logs; fi
 	@if [ -d "media" ]; then sudo chmod -R a+rwx media; fi
 	@if [ -d "static" ]; then sudo chmod -R a+rwx static; fi
-	@if [ -d "pg" ]; then sudo chmod -R a+rwx pg; fi
 	@if [ -d "backups" ]; then sudo chmod -R a+rwx backups; fi
 
 db:
