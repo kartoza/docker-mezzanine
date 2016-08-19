@@ -112,6 +112,13 @@ kill:
 	@echo "------------------------------------------------------------------"
 	@docker-compose -p $(PROJECT_ID) kill
 
+kill-uwsgi:
+	@echo
+	@echo "------------------------------------------------------------------"
+	@echo "Killing in uwsgi production mode"
+	@echo "------------------------------------------------------------------"
+	@docker-compose -p $(PROJECT_ID) kill uwsgi
+
 rm: dbbackup rm-only
 
 
