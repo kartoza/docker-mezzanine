@@ -32,6 +32,7 @@ urlpatterns = i18n_patterns("",
     ("^admin/", include(admin.site.urls)),
     # For mezzanine-people
     ("^people/", include('mezzanine_people.urls')),
+    ("^api/people/", "core.views.get_all_people"),
 )
 
 urlpatterns += patterns('',
