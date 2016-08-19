@@ -4,6 +4,7 @@
 {% block meta_title %}{% trans "Home" %}{% endblock %}
 {% block title_wrapper %}
 {% endblock %}
+
 {% block all_content %}
     {% block left_wrapper %}
     {% endblock %}
@@ -38,7 +39,8 @@
                 <div class="col-md-4">
                     <i class="fa fa-graduation-cap"></i>
                     <h4>Training and Education</h4>
-                    <p>We provide corporate training in the use of FOSSGIS such as QGIS, PostgreSQL/PostGIS, Geoserver etc.
+                    <p>We provide corporate training in the use of FOSSGIS such as QGIS, PostgreSQL/PostGIS, Geoserver
+                        etc.
                         We also develop curriculum materials and provide teacher training in order to foster the study
                         of GIS and geospatial technology at schools and universities.</p>
                     {# <p><br/><a href="#" class="btn btn-theme">More Info</a></p>#}
@@ -55,7 +57,8 @@
                     <h4>Software Development</h4>
                     <p>We provide bespoke services for the development of custom solutions to meet your business needs.
                         These include desktop application development and web development using FOSSGIS.
-                        We also provide web application development services (focussing on applications that have a GeoSpatial component)
+                        We also provide web application development services (focussing on applications that have a
+                        GeoSpatial component)
                         using technologies such as GeoDjango, OpenLayers, PostGIS and many other components.</p>
                 </div>
             </div>
@@ -218,227 +221,11 @@
     <!-- *****************************************************************************************************************
      MEET THE TEAM
      ***************************************************************************************************************** -->
-    <div class="team block">
+    <div class="team block" id="team-block" style="display: none">
         <div class="container">
             <h3>Meet the team</h3>
-            <div class="row">
-                <div class="member span3">
-                    <div class="avatar">
-                        <div class="real"><img width="280" height="280"
-                                               src="http://kartoza.co.za/wp-content/uploads/2016/02/Selection_006-280x280.png"
-                                               class="attachment-thumbnail size-thumbnail" alt="Selection_006"></div>
-                        <div class="digit"><a href="http://kartoza.co.za/team/tim-sutton/"><img width="280" height="280"
-                                                                                                src="http://kartoza.co.za/wp-content/uploads/2016/02/Tim-1-280x280.png"
-                                                                                                class="attachment-thumbnail size-thumbnail wp-post-image"
-                                                                                                alt="Tim"
-                                                                                                srcset="http://kartoza.co.za/wp-content/uploads/2016/02/Tim-1-280x280.png 280w, http://kartoza.co.za/wp-content/uploads/2016/02/Tim-1-300x300.png 300w, http://kartoza.co.za/wp-content/uploads/2016/02/Tim-1.png 451w"
-                                                                                                sizes="(max-width: 280px) 100vw, 280px"></a>
-                        </div>
-                    </div>
-                    <h4><a href="http://kartoza.co.za/team/tim-sutton/">Tim Sutton</a></h4>
-                    <a href="http://kartoza.co.za/team/tim-sutton/" class="position">founder</a>
-                </div>
-                <div class="member span3">
-                    <div class="avatar">
-                        <div class="real"><img width="280" height="280"
-                                               src="http://kartoza.co.za/wp-content/uploads/2016/02/Gavin_mugshot-280x280.jpg"
-                                               class="attachment-thumbnail size-thumbnail" alt="Gavin_mugshot"></div>
-                        <div class="digit"><a href="http://kartoza.co.za/team/gavin-fleming/"><img width="280"
-                                                                                                   height="280"
-                                                                                                   src="http://kartoza.co.za/wp-content/uploads/2016/02/Gavin-2-280x280.png"
-                                                                                                   class="attachment-thumbnail size-thumbnail wp-post-image"
-                                                                                                   alt="Gavin"
-                                                                                                   srcset="http://kartoza.co.za/wp-content/uploads/2016/02/Gavin-2-280x280.png 280w, http://kartoza.co.za/wp-content/uploads/2016/02/Gavin-2-300x300.png 300w, http://kartoza.co.za/wp-content/uploads/2016/02/Gavin-2.png 451w"
-                                                                                                   sizes="(max-width: 280px) 100vw, 280px"></a>
-                        </div>
-                    </div>
-                    <h4><a href="http://kartoza.co.za/team/gavin-fleming/">Gavin Fleming</a></h4>
-                    <a href="http://kartoza.co.za/team/gavin-fleming/" class="position">founder</a>
-                </div>
-                <div class="member span3">
-                    <div class="avatar">
-                        <div class="real"><img width="280" height="280"
-                                               src="http://kartoza.co.za/wp-content/uploads/2016/02/Christian-280x280.jpg"
-                                               class="attachment-thumbnail size-thumbnail" alt="Christian"></div>
-                        <div class="digit"><a href="http://kartoza.co.za/team/christian-christelis/"><img width="280"
-                                                                                                          height="280"
-                                                                                                          src="http://kartoza.co.za/wp-content/uploads/2016/02/Christian-2-280x280.png"
-                                                                                                          class="attachment-thumbnail size-thumbnail wp-post-image"
-                                                                                                          alt="Christian"
-                                                                                                          srcset="http://kartoza.co.za/wp-content/uploads/2016/02/Christian-2-280x280.png 280w, http://kartoza.co.za/wp-content/uploads/2016/02/Christian-2-300x300.png 300w, http://kartoza.co.za/wp-content/uploads/2016/02/Christian-2.png 451w"
-                                                                                                          sizes="(max-width: 280px) 100vw, 280px"></a>
-                        </div>
-                    </div>
-                    <h4><a href="http://kartoza.co.za/team/christian-christelis/">Christian Christelis</a></h4>
-                    <a href="http://kartoza.co.za/team/christian-christelis/" class="position">director</a>
-                </div>
-                <div class="member span3">
-                    <div class="avatar">
-                        <div class="real"><img width="280" height="280"
-                                               src="http://kartoza.co.za/wp-content/uploads/2016/02/Sunni-1-280x280.png"
-                                               class="attachment-thumbnail size-thumbnail wp-post-image" alt="Sunni"
-                                               srcset="http://kartoza.co.za/wp-content/uploads/2016/02/Sunni-1-280x280.png 280w, http://kartoza.co.za/wp-content/uploads/2016/02/Sunni-1-300x300.png 300w, http://kartoza.co.za/wp-content/uploads/2016/02/Sunni-1.png 451w"
-                                               sizes="(max-width: 280px) 100vw, 280px"></div>
-                        <div class="digit"><a href="http://kartoza.co.za/team/ismail-sunni/"><img width="280"
-                                                                                                  height="280"
-                                                                                                  src="http://kartoza.co.za/wp-content/uploads/2016/02/Sunni-1-280x280.png"
-                                                                                                  class="attachment-thumbnail size-thumbnail wp-post-image"
-                                                                                                  alt="Sunni"
-                                                                                                  srcset="http://kartoza.co.za/wp-content/uploads/2016/02/Sunni-1-280x280.png 280w, http://kartoza.co.za/wp-content/uploads/2016/02/Sunni-1-300x300.png 300w, http://kartoza.co.za/wp-content/uploads/2016/02/Sunni-1.png 451w"
-                                                                                                  sizes="(max-width: 280px) 100vw, 280px"></a>
-                        </div>
-                    </div>
-                    <h4><a href="http://kartoza.co.za/team/ismail-sunni/">Ismail Sunni</a></h4>
-                    <a href="http://kartoza.co.za/team/ismail-sunni/" class="position">developer</a>
-                </div>
-                <div class="member span3">
-                    <div class="avatar">
-                        <div class="real"><img width="280" height="280"
-                                               src="http://kartoza.co.za/wp-content/uploads/2016/02/Maul-1-280x280.png"
-                                               class="attachment-thumbnail size-thumbnail wp-post-image" alt="Maul"
-                                               srcset="http://kartoza.co.za/wp-content/uploads/2016/02/Maul-1-280x280.png 280w, http://kartoza.co.za/wp-content/uploads/2016/02/Maul-1-300x300.png 300w, http://kartoza.co.za/wp-content/uploads/2016/02/Maul-1.png 451w"
-                                               sizes="(max-width: 280px) 100vw, 280px"></div>
-                        <div class="digit"><a href="http://kartoza.co.za/team/rizky-maulana-2/"><img width="280"
-                                                                                                     height="280"
-                                                                                                     src="http://kartoza.co.za/wp-content/uploads/2016/02/Maul-1-280x280.png"
-                                                                                                     class="attachment-thumbnail size-thumbnail wp-post-image"
-                                                                                                     alt="Maul"
-                                                                                                     srcset="http://kartoza.co.za/wp-content/uploads/2016/02/Maul-1-280x280.png 280w, http://kartoza.co.za/wp-content/uploads/2016/02/Maul-1-300x300.png 300w, http://kartoza.co.za/wp-content/uploads/2016/02/Maul-1.png 451w"
-                                                                                                     sizes="(max-width: 280px) 100vw, 280px"></a>
-                        </div>
-                    </div>
-                    <h4><a href="http://kartoza.co.za/team/rizky-maulana-2/">Rizky Maulana</a></h4>
-                    <a href="http://kartoza.co.za/team/rizky-maulana-2/" class="position">Developer</a>
-                </div>
-                <div class="member span3">
-                    <div class="avatar">
-                        <div class="real"><img width="280" height="280"
-                                               src="http://kartoza.co.za/wp-content/uploads/2016/02/pp-280x280.jpg"
-                                               class="attachment-thumbnail size-thumbnail" alt="pp"
-                                               srcset="http://kartoza.co.za/wp-content/uploads/2016/02/pp-280x280.jpg 280w, http://kartoza.co.za/wp-content/uploads/2016/02/pp-300x300.jpg 300w, http://kartoza.co.za/wp-content/uploads/2016/02/pp.jpg 640w"
-                                               sizes="(max-width: 280px) 100vw, 280px"></div>
-                        <div class="digit"><a href="http://kartoza.co.za/team/dimas-tri-ciputra/"><img width="280"
-                                                                                                       height="280"
-                                                                                                       src="http://kartoza.co.za/wp-content/uploads/2016/02/Dimas-280x280.png"
-                                                                                                       class="attachment-thumbnail size-thumbnail wp-post-image"
-                                                                                                       alt="Dimas"
-                                                                                                       srcset="http://kartoza.co.za/wp-content/uploads/2016/02/Dimas-280x280.png 280w, http://kartoza.co.za/wp-content/uploads/2016/02/Dimas-300x300.png 300w, http://kartoza.co.za/wp-content/uploads/2016/02/Dimas.png 451w"
-                                                                                                       sizes="(max-width: 280px) 100vw, 280px"></a>
-                        </div>
-                    </div>
-                    <h4><a href="http://kartoza.co.za/team/dimas-tri-ciputra/">Dimas Tri Ciputra</a></h4>
-                    <a href="http://kartoza.co.za/team/dimas-tri-ciputra/" class="position">Developer</a>
-                </div>
-                <div class="member span3">
-                    <div class="avatar">
-                        <div class="real"><img width="280" height="280"
-                                               src="http://kartoza.co.za/wp-content/uploads/2016/02/snowboard2-280x280.jpg"
-                                               class="attachment-thumbnail size-thumbnail" alt="snowboard2"></div>
-                        <div class="digit"><a href="http://kartoza.co.za/team/rischan-mafrur/"><img width="280"
-                                                                                                    height="280"
-                                                                                                    src="http://kartoza.co.za/wp-content/uploads/2016/02/Rischan-1-280x280.png"
-                                                                                                    class="attachment-thumbnail size-thumbnail wp-post-image"
-                                                                                                    alt="Rischan"
-                                                                                                    srcset="http://kartoza.co.za/wp-content/uploads/2016/02/Rischan-1-280x280.png 280w, http://kartoza.co.za/wp-content/uploads/2016/02/Rischan-1-300x300.png 300w, http://kartoza.co.za/wp-content/uploads/2016/02/Rischan-1.png 451w"
-                                                                                                    sizes="(max-width: 280px) 100vw, 280px"></a>
-                        </div>
-                    </div>
-                    <h4><a href="http://kartoza.co.za/team/rischan-mafrur/">Rischan Mafrur</a></h4>
-                    <a href="http://kartoza.co.za/team/rischan-mafrur/" class="position">Developer</a>
-                </div>
-                <div class="member span3">
-                    <div class="avatar">
-                        <div class="real"><img width="280" height="280"
-                                               src="http://kartoza.co.za/wp-content/uploads/2016/02/Irwan-1-280x280.png"
-                                               class="attachment-thumbnail size-thumbnail wp-post-image" alt="Irwan"
-                                               srcset="http://kartoza.co.za/wp-content/uploads/2016/02/Irwan-1-280x280.png 280w, http://kartoza.co.za/wp-content/uploads/2016/02/Irwan-1-300x300.png 300w, http://kartoza.co.za/wp-content/uploads/2016/02/Irwan-1.png 451w"
-                                               sizes="(max-width: 280px) 100vw, 280px"></div>
-                        <div class="digit"><a href="http://kartoza.co.za/team/irwan-fathurrahman/"><img width="280"
-                                                                                                        height="280"
-                                                                                                        src="http://kartoza.co.za/wp-content/uploads/2016/02/Irwan-1-280x280.png"
-                                                                                                        class="attachment-thumbnail size-thumbnail wp-post-image"
-                                                                                                        alt="Irwan"
-                                                                                                        srcset="http://kartoza.co.za/wp-content/uploads/2016/02/Irwan-1-280x280.png 280w, http://kartoza.co.za/wp-content/uploads/2016/02/Irwan-1-300x300.png 300w, http://kartoza.co.za/wp-content/uploads/2016/02/Irwan-1.png 451w"
-                                                                                                        sizes="(max-width: 280px) 100vw, 280px"></a>
-                        </div>
-                    </div>
-                    <h4><a href="http://kartoza.co.za/team/irwan-fathurrahman/">Irwan Fathurrahman</a></h4>
-                    <a href="http://kartoza.co.za/team/irwan-fathurrahman/" class="position">Developer</a>
-                </div>
-                <div class="member span3">
-                    <div class="avatar">
-                        <div class="real"><img width="280" height="280"
-                                               src="http://kartoza.co.za/wp-content/uploads/2016/02/Etienne-1-280x280.png"
-                                               class="attachment-thumbnail size-thumbnail wp-post-image" alt="Etienne"
-                                               srcset="http://kartoza.co.za/wp-content/uploads/2016/02/Etienne-1-280x280.png 280w, http://kartoza.co.za/wp-content/uploads/2016/02/Etienne-1-300x300.png 300w, http://kartoza.co.za/wp-content/uploads/2016/02/Etienne-1.png 451w"
-                                               sizes="(max-width: 280px) 100vw, 280px"></div>
-                        <div class="digit"><a href="http://kartoza.co.za/team/etienne-trimaille/"><img width="280"
-                                                                                                       height="280"
-                                                                                                       src="http://kartoza.co.za/wp-content/uploads/2016/02/Etienne-1-280x280.png"
-                                                                                                       class="attachment-thumbnail size-thumbnail wp-post-image"
-                                                                                                       alt="Etienne"
-                                                                                                       srcset="http://kartoza.co.za/wp-content/uploads/2016/02/Etienne-1-280x280.png 280w, http://kartoza.co.za/wp-content/uploads/2016/02/Etienne-1-300x300.png 300w, http://kartoza.co.za/wp-content/uploads/2016/02/Etienne-1.png 451w"
-                                                                                                       sizes="(max-width: 280px) 100vw, 280px"></a>
-                        </div>
-                    </div>
-                    <h4><a href="http://kartoza.co.za/team/etienne-trimaille/">Etienne Trimaille</a></h4>
-                    <a href="http://kartoza.co.za/team/etienne-trimaille/" class="position">Developer</a>
-                </div>
-                <div class="member span3">
-                    <div class="avatar">
-                        <div class="real"><img width="280" height="280"
-                                               src="http://kartoza.co.za/wp-content/uploads/2016/02/Maria-1-280x280.png"
-                                               class="attachment-thumbnail size-thumbnail wp-post-image" alt="Maria"
-                                               srcset="http://kartoza.co.za/wp-content/uploads/2016/02/Maria-1-280x280.png 280w, http://kartoza.co.za/wp-content/uploads/2016/02/Maria-1-300x300.png 300w, http://kartoza.co.za/wp-content/uploads/2016/02/Maria-1.png 451w"
-                                               sizes="(max-width: 280px) 100vw, 280px"></div>
-                        <div class="digit"><a href="http://kartoza.co.za/team/maria-solovyeva/"><img width="280"
-                                                                                                     height="280"
-                                                                                                     src="http://kartoza.co.za/wp-content/uploads/2016/02/Maria-1-280x280.png"
-                                                                                                     class="attachment-thumbnail size-thumbnail wp-post-image"
-                                                                                                     alt="Maria"
-                                                                                                     srcset="http://kartoza.co.za/wp-content/uploads/2016/02/Maria-1-280x280.png 280w, http://kartoza.co.za/wp-content/uploads/2016/02/Maria-1-300x300.png 300w, http://kartoza.co.za/wp-content/uploads/2016/02/Maria-1.png 451w"
-                                                                                                     sizes="(max-width: 280px) 100vw, 280px"></a>
-                        </div>
-                    </div>
-                    <h4><a href="http://kartoza.co.za/team/maria-solovyeva/">Maria Solovyeva</a></h4>
-                    <a href="http://kartoza.co.za/team/maria-solovyeva/" class="position">Designer</a>
-                </div>
-                <div class="member span3">
-                    <div class="avatar">
-                        <div class="real"><img width="280" height="280"
-                                               src="http://kartoza.co.za/wp-content/uploads/2016/02/Perra-1-280x280.png"
-                                               class="attachment-thumbnail size-thumbnail wp-post-image" alt="Perra"
-                                               srcset="http://kartoza.co.za/wp-content/uploads/2016/02/Perra-1-280x280.png 280w, http://kartoza.co.za/wp-content/uploads/2016/02/Perra-1-300x300.png 300w, http://kartoza.co.za/wp-content/uploads/2016/02/Perra-1.png 451w"
-                                               sizes="(max-width: 280px) 100vw, 280px"></div>
-                        <div class="digit"><a href="http://kartoza.co.za/team/petra-paton/"><img width="280"
-                                                                                                 height="280"
-                                                                                                 src="http://kartoza.co.za/wp-content/uploads/2016/02/Perra-1-280x280.png"
-                                                                                                 class="attachment-thumbnail size-thumbnail wp-post-image"
-                                                                                                 alt="Perra"
-                                                                                                 srcset="http://kartoza.co.za/wp-content/uploads/2016/02/Perra-1-280x280.png 280w, http://kartoza.co.za/wp-content/uploads/2016/02/Perra-1-300x300.png 300w, http://kartoza.co.za/wp-content/uploads/2016/02/Perra-1.png 451w"
-                                                                                                 sizes="(max-width: 280px) 100vw, 280px"></a>
-                        </div>
-                    </div>
-                    <h4><a href="http://kartoza.co.za/team/petra-paton/">Petra Paton</a></h4>
-                    <a href="http://kartoza.co.za/team/petra-paton/" class="position">Administrator</a>
-                </div>
-                <div class="member span3">
-                    <div class="avatar">
-                        <div class="real"><img width="280" height="280"
-                                               src="http://kartoza.co.za/wp-content/uploads/2016/02/Selection_003-280x280.png"
-                                               class="attachment-thumbnail size-thumbnail" alt="Selection_003"></div>
-                        <div class="digit"><a href="http://kartoza.co.za/team/admire-nyakudya/"><img width="280"
-                                                                                                     height="280"
-                                                                                                     src="http://kartoza.co.za/wp-content/uploads/2016/02/Admire-1-280x280.png"
-                                                                                                     class="attachment-thumbnail size-thumbnail wp-post-image"
-                                                                                                     alt="Admire"
-                                                                                                     srcset="http://kartoza.co.za/wp-content/uploads/2016/02/Admire-1-280x280.png 280w, http://kartoza.co.za/wp-content/uploads/2016/02/Admire-1-300x300.png 300w, http://kartoza.co.za/wp-content/uploads/2016/02/Admire-1.png 451w"
-                                                                                                     sizes="(max-width: 280px) 100vw, 280px"></a>
-                        </div>
-                    </div>
-                    <h4><a href="http://kartoza.co.za/team/admire-nyakudya/">Admire Nyakudya</a></h4>
-                    <a href="http://kartoza.co.za/team/admire-nyakudya/" class="position">GIS Professional</a>
-                </div>
+            <div class="row" id="team-block-row">
+
             </div>
         </div>
     </div>
@@ -454,7 +241,7 @@
                 <p> We are Free and Open Source GIS (FOSSGIS)
                     Service providers providing a global service to individuals,
                     companies and governments around the world who are looking to leverage the power of the
-                    Free Software movement to solve geospatial problems.  </p>
+                    Free Software movement to solve geospatial problems. </p>
                 <p><br/><a href="about" class="btn btn-theme">More Info</a></p>
             </div>
 
@@ -504,4 +291,44 @@
         </div>
         <! --/container -->
     </div><! --/cwrap -->
+{% endblock %}
+
+{% block extra_js %}
+    <script>
+        $(function () {
+            $.ajax({
+                url: "/api/people/",
+                method: 'GET',
+                success: function (data) {
+                    data = JSON.parse(data);
+                    if (data.length > 0) {
+                        $("#team-block").show();
+                        for (var i = 0; i < data.length; i++) {
+                            var person = data[i]['fields'];
+                            var slug = person['slug'];
+                            var image_src = person['mugshot'];
+                            var name = person['first_name'] + ' ' + person['last_name'];
+                            if (name == " ") {
+                                name = slug;
+                            }
+                            var job_title = person['job_title'];
+                            {# render it #}
+                            var html = '<div class="member span3">' +
+                                    '<div class="avatar">' +
+                                    '<div class="real"><a href="/people/person/' + slug + '"><img width="280" height="280" src="{{ MEDIA_URL }}' + image_src + '" class="attachment-thumbnail size-thumbnail" alt="Selection_006"></a>' +
+                                    '</div>' +
+                                    '</div>' +
+                                    '<h4><a href="/people/person/' + slug + '">' + name + '</a></h4>' +
+                                    '<a href="/people/person/' + slug + '">' + job_title + '</a>' +
+                                    '</div>';
+                            $("#team-block-row").append(html);
+                        }
+                    }
+                },
+                error: function (request, error) {
+
+                }
+            })
+        });
+    </script>
 {% endblock %}
