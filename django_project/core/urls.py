@@ -33,6 +33,7 @@ urlpatterns = i18n_patterns("",
     # For mezzanine-people
     ("^people/", include('mezzanine_people.urls')),
     ("^api/people/", "core.views.get_all_people"),
+    ("^careers/", include("careers.urls")),
 )
 
 urlpatterns += patterns('',

@@ -37,7 +37,8 @@ INSTALLED_APPS += (
      "mezzanine_people",
      "mezzanine_references",
      "mdown",  # markdown support in admin
-     "mezzanine_agenda"  # we use a local copy as pip misses migrations
+     "mezzanine_agenda",  # we use a local copy as pip misses migrations
+     "careers",
 )
 
 # mezzanine-mdown options
