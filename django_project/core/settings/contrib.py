@@ -189,3 +189,9 @@ PAGE_MENU_TEMPLATES = (
 #    pass
 #else:
 #    set_dynamic_settings(globals())
+
+####################
+# MEZZANINE CAREERS SETTINGS #
+####################
+
+CAREERS_PER_PAGE = 5
