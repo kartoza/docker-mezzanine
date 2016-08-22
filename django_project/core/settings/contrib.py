@@ -195,3 +195,14 @@ PAGE_MENU_TEMPLATES = (
 ####################
 
 CAREERS_PER_PAGE = 5
+
+####################
+# SEARCH BOX SETTINGS #
+####################
+
+SEARCH_MODEL_CHOICES = (
+    'pages.Page',
+    'blog.BlogPost',
+    'mezzanine_people.Person',
+    'careers.JobPost',
+)
