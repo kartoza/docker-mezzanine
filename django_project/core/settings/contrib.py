@@ -37,7 +37,8 @@ INSTALLED_APPS += (
      "mezzanine_people",
      "mezzanine_references",
      "mdown",  # markdown support in admin
-     "mezzanine_agenda"  # we use a local copy as pip misses migrations
+     "mezzanine_agenda",  # we use a local copy as pip misses migrations
+     "careers",
 )
 
 # mezzanine-mdown options
@@ -188,3 +189,9 @@ PAGE_MENU_TEMPLATES = (
 #    pass
 #else:
 #    set_dynamic_settings(globals())
+
+####################
+# MEZZANINE CAREERS SETTINGS #
+####################
+
+CAREERS_PER_PAGE = 5
