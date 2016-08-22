@@ -247,7 +247,7 @@
 
             <div class="col-lg-3">
             </div>
-            {% blog_recent_posts 5 as recent_posts %}
+            {% blog_recent_posts settings.FRONT_PAGE_RECENT_POST as recent_posts %}
             {% if recent_posts %}
                 <div class="col-lg-3">
                     <h4>{% trans "Recent Posts" %}</h4>
