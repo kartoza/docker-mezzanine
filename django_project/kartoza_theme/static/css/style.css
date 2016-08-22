@@ -610,3 +610,17 @@ csmall2 {
     color: #35a8df;
     margin-right: 5px;
 }
+
+.navbar-default .navbar-nav > li > i {
+    color: white;
+    font-weight: 700;
+    font-size: 12px;
+    display: block;
+    line-height: 20px;
+    padding: 15px;
+}
+
+.navbar-default .navbar-nav > li > i:hover {
+    color: #f4b340;
+    cursor: pointer;
+}
