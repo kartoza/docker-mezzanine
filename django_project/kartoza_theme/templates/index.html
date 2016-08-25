@@ -249,7 +249,7 @@
             </div>
             {% blog_recent_posts settings.FRONT_PAGE_RECENT_POST as recent_posts %}
             {% if recent_posts %}
-                <div class="col-lg-3">
+                <div class="col-lg-3" id="recent-post-section">
                     <h4>{% trans "Recent Posts" %}</h4>
                     <div class="hline"></div>
                     {% for recent_post in recent_posts %}
