@@ -1,0 +1,50 @@
+.clear {
+    clear: both;
+}
+
+textarea {
+    height: 300px;
+}
+
+label {
+    font-weight: 500 !important;
+}
+
+input, textarea {
+    background-color: #eaeaea;
+    border-color: #cccccc;
+    border-style: solid;
+    padding: 11px;
+    font-size: 17px;
+    border-width: 1px;
+    border-radius: 3px;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+}
+
+input, textarea {
+    width: 100%;
+}
+
+input[type="submit"] {
+    font-weight: bold;
+    background-color: white;
+    padding: 20px !important;
+    margin-top: 15px;
+    margin-bottom: 15px;
+
+    -webkit-transition: background-color 500ms ease-out;
+    -moz-transition: background-color 500ms ease-out;
+    -o-transition: background-color 500ms ease-out;
+    transition: background-color 500ms ease-out;
+}
+
+input[type="submit"]:hover {
+    background-color: #eaeaea;
+}
+
+.input-section {
+    padding: 15px;
+}
