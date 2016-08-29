@@ -7,6 +7,7 @@ mezzanine-mdown
 django-compressor
 icalendar==3.0.1b2
 geopy==0.95.1
-filebrowser-safe==0.4.3
+filebrowser-safe==0.4.5
 # mezzanine-careers
 git+https://github.com/dimasciput/mezzanine-careers.git@develop
+mezzanine-slides
