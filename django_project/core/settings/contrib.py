@@ -22,6 +22,7 @@ INSTALLED_APPS += (
      "mezzanine",
      "django_comments",
      "compressor",
+     "mezzanine_slides",
      PACKAGE_NAME_FILEBROWSER,
      "mezzanine.boot",
      "mezzanine.conf",
