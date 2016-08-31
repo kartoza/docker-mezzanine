@@ -38,6 +38,7 @@ INSTALLED_APPS += (
      # Extra apps picked out by Tim
      "mezzanine_people",
      "mezzanine_references",
+     "modal_announcements",
      "mdown",  # markdown support in admin
      "mezzanine_agenda",  # we use a local copy as pip misses migrations
      "careers",
