@@ -99,7 +99,10 @@
 {% endblock %}
 <div class="container">
 
+{% block slides %}
     {% include "includes/standard_slides.html" %}
+{% endblock %}
+
     {% nevercache %}
         {% if messages %}
             <div class="messages">

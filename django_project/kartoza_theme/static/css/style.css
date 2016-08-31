@@ -220,11 +220,11 @@ a:focus {
 ################################################################# */
 
 #headerwrap {
-    background-image: url(../img/map-header-2.png);
+    /*background-image: url(../img/map-header-2.png);*/
     background-repeat:no-repeat;
     background-size:cover;
     min-height: 500px;
-    padding-top: 100px;
+    padding-top: 50px;
     padding-bottom: 0px;
     text-align: center;
 }
@@ -235,13 +235,23 @@ a:focus {
 }
 
 #headerwrap h3, h5 {
-    color: white;
+    color: black;
     font-weight: 400;
 }
 
-#headerwrap h1 {
+#headerwrap-text {
+    z-index: 999;
+    height: 500px;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    margin-top: 50px;
+    padding-top: 60px;
+}
+
+#headerwrap-text h1 {
     color: white;
-    margin-bottom: 25px;
+    text-shadow: 1px 1px #f4b340;
 }
 
 #headerwrap .img-responsive {
