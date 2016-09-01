@@ -2,6 +2,7 @@ Django>=1.8,<1.9
 psycopg2
 mezzanine
 mezzanine_people
+mezzanine-file-collections
 mezzanine-references
 mezzanine-mdown
 django-compressor
