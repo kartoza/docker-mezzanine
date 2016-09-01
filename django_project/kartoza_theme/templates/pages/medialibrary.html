@@ -1,0 +1,52 @@
+{% extends "pages/page.html" %}
+
+{% load mezzanine_tags staticfiles %}
+
+{% block main %}
+    {{ block.super }}
+
+    {% editable page.medialibrary.content %}
+        {{ page.medialibrary.content|richtext_filter|safe }}
+    {% endeditable %}
+
+    {% block medialibrary %}
+        <div class="media-section">
+            {% with page.medialibrary.files.all as files %}
+                {% for file in files|dictsort:"file.filename" %}
+                    {% if file.file.filetype == 'Image' %}
+                        <div class="media-block">
+                            <a class="pull-left" href="{{ MEDIA_URL }}{{ file.file }}">
+                                <img class="media-object"
+                                     src="{{ MEDIA_URL }}{% thumbnail file.file 256 256 %}" width="153"
+                                     height="153"/>
+                            </a>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            {% endwith %}
+            <div style="clear: both"></div>
+        </div>
+
+        <div class="media-section">
+            {% with page.medialibrary.files.all as files %}
+                {% for file in files|dictsort:"file.filename" %}
+                    {% if not file.file.filetype == 'Image' %}
+                        <div class="file-block">
+                            <a class="pull-left" href="{{ MEDIA_URL }}{{ file.file }}">
+                                <img class="media-object" src="{{ STATIC_URL }}img/file_icon.svg" width="70"
+                                     height="70"/>
+                            </a>
+                            <span class="media-block-description">
+                                <a href="{{ MEDIA_URL }}{{ file.file }}">
+                                    {{ file.title|default:file.file.filename }}
+                                </a>
+                                <i>{{ file.description }}</i>
+                            </span>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            {% endwith %}
+            <div style="clear: both"></div>
+        </div>
+    {% endblock %}
+{% endblock %}
