@@ -23,6 +23,7 @@ build:
 	@echo "------------------------------------------------------------------"
 	@docker-compose -p $(PROJECT_ID) build uwsgi
 
+
 web:
 	@echo
 	@echo "------------------------------------------------------------------"
@@ -77,6 +78,8 @@ migrate:
 	@# but we want to continue anyway.
 	@#We need to migrate accounts first as it has a reference to user model
 	-@docker-compose -p $(PROJECT_ID) run uwsgi python manage.py migrate auth
+	@docker-compose -p $(PROJECT_ID) run uwsgi python manage.py migrate sites
+	@docker-compose -p $(PROJECT_ID) run uwsgi python manage.py migrate pages
 	@docker-compose -p $(PROJECT_ID) run uwsgi python manage.py migrate
 
 update-migrations:
