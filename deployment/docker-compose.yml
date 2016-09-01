@@ -17,7 +17,7 @@ nginx:
     - ./nginx-conf:/etc/nginx/conf.d
   ports:
     - "0.0.0.0:80:80"
-  restart: always
+  restart: on-failure:5
 
 smtp:
   # Note you cannot scale if you use conteiner_name
@@ -28,7 +28,7 @@ smtp:
     # You could change this to something more suitable
     - maildomain=kartoza.com
     - smtp_user=noreply:docker
-  restart: always
+  restart: on-failure:5
 
 db:
   # Note you cannot scale if you use conteiner_name
@@ -40,7 +40,7 @@ db:
   environment:
     - USERNAME=docker
     - PASS=docker
-  restart: always
+  restart: on-failure:5
 
 uwsgi:
   # Note you cannot scale if you use conteiner_name
@@ -64,8 +64,8 @@ uwsgi:
   links:
     - smtp:smtp
     - db:db
-  restart: always
   user: root
+  restart: on-failure:5
 
 dbbackups:
   # Note you cannot scale if you use conteiner_name
@@ -87,7 +87,7 @@ dbbackups:
     - PGPORT=5432
     - PGHOST=db
     - PGDATABASE=gis
-  restart: always
+  restart: on-failure:5
 
 # This is normally the main entry point for a production server
 web:
@@ -105,7 +105,7 @@ web:
     - uwsgi:uwsgi
   ports:
     - "64200:8080"
-  restart: always
+  restart: on-failure:5
 
 # This is the entry point for a development server.
 # Run with --no-deps to run attached to the services
