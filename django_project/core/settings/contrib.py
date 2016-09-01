@@ -41,6 +41,7 @@ INSTALLED_APPS += (
      "mezzanine_people",
      "mezzanine_references",
      "mezzanine_slides",
+     "mezzanine_file_collections",
      "modal_announcements",
      "mdown",  # markdown support in admin
      "mezzanine_agenda",  # we use a local copy as pip misses migrations
@@ -287,3 +288,15 @@ SEARCH_MODEL_CHOICES = (
     'mezzanine_people.Person',
     'careers.JobPost',
 )
+
+####################
+# FILEBROWSER ALLOWED EXTENSIONS #
+####################
+FILEBROWSER_EXTENSIONS = {
+    'Folder': [''],
+    'Image': ['.jpg', '.jpeg', '.gif', '.png', '.tif', '.tiff'],
+    'Video': ['.mov', '.wmv', '.mpeg', '.mpg', '.avi', '.rm'],
+    'Document': ['.pdf', '.doc', '.rtf', '.txt', '.xls', '.csv', 'zip', 'tar.gz', 'rar'],
+    'Audio': ['.mp3', '.mp4', '.wav', '.aiff', '.midi', '.m4p', '.ogg'],
+    'Code': ['.html', '.py', '.js', '.css']
+}

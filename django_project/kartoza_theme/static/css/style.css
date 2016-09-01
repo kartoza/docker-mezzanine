@@ -194,7 +194,7 @@ a:focus {
 }
 
 .mtb {
-    margin-top: 80px;
+    margin-top: 50px;
     margin-bottom: 80px;
 }
 
@@ -408,8 +408,8 @@ a:focus {
 
 #blue {
     background-image: url(../img/map-header-2.png);
-    background-repeat:no-repeat;
-    background-size:cover;
+    background-repeat: no-repeat;
+    background-size: cover;
     margin-top: 50px;
     padding-top: 25px;
     padding-bottom: 25px;
@@ -633,4 +633,64 @@ csmall2 {
 .navbar-default .navbar-nav > li > i:hover {
     color: #f4b340;
     cursor: pointer;
+}
+
+/*	################################################################
+	MEDIA BLOCK
+################################################################# */
+
+.media-section {
+    margin-top: 50px;
+}
+
+.media-block {
+    position: relative;
+    width: 153px;
+    height: 153px;
+    overflow: hidden;
+    float: left;
+    margin: 7px;
+    border: solid 1px #c4c4c4;
+}
+
+.media-block a {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.media-block img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.media-block .media-block-description {
+    padding: 5px;
+    font-size: 14px;
+    text-align: center;
+    width: 100%;
+    position: absolute;
+    bottom: 0px;
+    border-top: solid 1px #c4c4c4;
+    background: white;
+    word-break: break-all;
+    max-height: 50%;
+    overflow: hidden;
+}
+
+.file-block {
+    width: 100%;
+    border: solid 1px #c4c4c4;
+    min-height: 100px;
+    padding: 10px;
+}
+
+.file-block a {
+    margin-right: 10px;
+    font-size: 20px;
+    font-weight: 500;
+    display: block;
+    margin-bottom: 5px;
 }

@@ -11,6 +11,7 @@ filebrowser-safe==0.4.5
 # mezzanine-careers
 git+https://github.com/dimasciput/mezzanine-careers.git@develop
 git+https://github.com/meomancer/mezzanine-modal-announcements.git@develop
+git+https://github.com/meomancer/mezzanine-file-collections.git@master
 mezzanine-slides
 cartridge
 # Raven pinned to 3.3.7 - see
