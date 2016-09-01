@@ -1,10 +1,205 @@
-{% extends "pages/richtextpage.html" %}
+{% extends "pages/page.html" %}
+{% load i18n staticfiles mezzanine_tags blog_tags %}
+
+{% block title_wrapper %}
+{% endblock %}
+
+{% block slides %}
+{% endblock %}
+
+{% block all_content %}
+
+    {% block left_wrapper %}
+    {% endblock %}
+
+    {% block main_wrapper %}
+
+    {% endblock %}
+
+    {% block right_wrapper %}
+    {% endblock %}
+    <!-- *****************************************************************************************************************
+         HEADERWRAP
+         ***************************************************************************************************************** -->
+    <div id="headerwrap">
+        {% include "includes/home_slides.html" %}
+        <div id="headerwrap-text">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <h1 class="title">KARTOZA</h1>
+                        <h1 class="sub">OPEN SOURCE GEOSPATIAL SOLUTIONS</h1>
+                    </div>
+                </div><!-- /row -->
+            </div> <!-- /container -->
+        </div>
+    </div><!-- /headerwrap -->
+
+
+    <!-- *****************************************************************************************************************
+     SERVICE LOGOS
+     ***************************************************************************************************************** -->
+    <div id="service">
+        <h3>KEY BUSINESS AREAS</h3>
+        <div class="container">
+            <div class="row centered">
+                <div class="col-md-4">
+                    <i class="fa fa-graduation-cap"></i>
+                    <h4>Training and Education</h4>
+                    <p>We provide corporate training in the use of FOSSGIS such as QGIS, PostgreSQL/PostGIS, Geoserver
+                        etc.
+                        We also develop curriculum materials and provide teacher training in order to foster the study
+                        of GIS and geospatial technology at schools and universities.</p>
+                    {# <p><br/><a href="#" class="btn btn-theme">More Info</a></p>#}
+                </div>
+                <div class="col-md-4">
+                    <i class="fa fa-support"></i>
+                    <h4>Deployment and Support</h4>
+                    <p>We provide services to help you deploy and maintain FOSSGIS deployments within your organisation.
+                        This includes PostgreSQL/PostGIS, Linux based server deployments, QGIS, UMN Mapserver,
+                        GeoServer and many others.</p>
+                </div>
+                <div class="col-md-4">
+                    <i class="fa fa-wrench"></i>
+                    <h4>Software Development</h4>
+                    <p>We provide bespoke services for the development of custom solutions to meet your business needs.
+                        These include desktop application development and web development using FOSSGIS.
+                        We also provide web application development services (focussing on applications that have a
+                        GeoSpatial component)
+                        using technologies such as GeoDjango, OpenLayers, PostGIS and many other components.</p>
+                </div>
+            </div>
+        </div>
+        <! --/container -->
+    </div><! --/service -->
+
+    <!-- *****************************************************************************************************************
+     PORTFOLIO SECTION
+     ***************************************************************************************************************** -->
+    <div id="portfoliowrap">
+        <h3>LATEST WORKS</h3>
+    </div><!--/Portfoliowrap -->
+
+    <!-- *****************************************************************************************************************
+     MEET THE TEAM
+     ***************************************************************************************************************** -->
+    <div class="team block" id="team-block" style="display: none">
+        <div class="container">
+            <h3>Meet the team</h3>
+            <div class="row" id="team-block-row">
+
+            </div>
+        </div>
+    </div>
+
+    <!-- *****************************************************************************************************************
+     MIDDLE CONTENT
+     ***************************************************************************************************************** -->
+
+    <div class="container mtb">
+        <div class="row">
+            <div class="col-lg-4 col-lg-offset-1">
+                <h4>More About Kartoza.</h4>
+                <p>
+                    We are Free and Open Source GIS (FOSSGIS)
+                    Service providers providing a global service to individuals,
+                    companies and governments around the world who are looking to leverage the power of the
+                    Free Software movement to solve geospatial problems.
+                </p>
+                <p><br/><a href="about" class="btn btn-theme">More Info</a></p>
+            </div>
+
+            <div class="col-lg-3">
+            </div>
+            {% blog_recent_posts settings.FRONT_PAGE_RECENT_POST as recent_posts %}
+            {% if recent_posts %}
+                <div class="col-lg-3" id="recent-post-section">
+                    <h4>{% trans "Recent Posts" %}</h4>
+                    <div class="hline"></div>
+                    {% for recent_post in recent_posts %}
+                        <p><a href="{{ recent_post.get_absolute_url }}">{{ recent_post.title }}</a></p>
+                    {% endfor %}
+
+                </div>
+            {% endif %}
+
+        </div>
+        <! --/row -->
+    </div><! --/container -->
+
+    <!-- *****************************************************************************************************************
+     TESTIMONIALS
+     ***************************************************************************************************************** -->
+
+    <!-- *****************************************************************************************************************
+     OUR CLIENTS
+     ***************************************************************************************************************** -->
+    <div id="cwrap">
+        <div class="container">
+            <div class="row centered">
+                <h3>OUR CLIENTS</h3>
+                <div class="col-lg-3 col-md-3 col-sm-3">
+                    <img src="{% static "img/clients/client01.png" %}" class="img-responsive">
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3">
+                    <img src="{% static "img/clients/client02.png" %}" class="img-responsive">
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3">
+                    <img src="{% static "img/clients/client03.png" %}" class="img-responsive">
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3">
+                    <img src="{% static "img/clients/client04.png" %}" class="img-responsive">
+                </div>
+            </div>
+            <! --/row -->
+        </div>
+        <! --/container -->
+    </div><! --/cwrap -->
+{% endblock %}
+
 
 {% block main %}
-<!--
-This template is provided as a custom template for the homepage, for
-when it is configured as an editable page in the navigation tree. Feel
-free to modify it.
--->
+
 {{ block.super }}
+
+{% endblock %}
+
+{% block extra_js %}
+    <script>
+        $(function () {
+            $.ajax({
+                url: "/api/people/",
+                method: 'GET',
+                success: function (data) {
+                    data = JSON.parse(data);
+                    if (data.length > 0) {
+                        $("#team-block").show();
+                        for (var i = 0; i < data.length; i++) {
+                            var person = data[i]['fields'];
+                            var slug = person['slug'];
+                            var image_src = person['mugshot'];
+                            var name = person['first_name'] + ' ' + person['last_name'];
+                            if (name == " ") {
+                                name = slug;
+                            }
+                            var job_title = person['job_title'];
+                            {# render it #}
+                            var html = '<div class="member span3">' +
+                                    '<div class="avatar">' +
+                                    '<div class="real"><a href="/people/person/' + slug + '"><img width="280" height="280" src="{{ MEDIA_URL }}' + image_src + '" class="attachment-thumbnail size-thumbnail" alt="Selection_006"></a>' +
+                                    '</div>' +
+                                    '</div>' +
+                                    '<h4><a href="/people/person/' + slug + '">' + name + '</a></h4>' +
+                                    '<a href="/people/person/' + slug + '">' + job_title + '</a>' +
+                                    '</div>';
+                            $("#team-block-row").append(html);
+                        }
+                    }
+                },
+                error: function (request, error) {
+
+                }
+            })
+        });
+    </script>
 {% endblock %}

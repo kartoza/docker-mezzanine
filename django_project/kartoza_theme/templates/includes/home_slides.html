@@ -1,0 +1,17 @@
+{% load mezzanine_tags %}
+
+{% if page.slide_set.all %}
+    <ul class="rslides">
+      {% for image in page.slide_set.all %}
+        <li>
+          <img src="{{ MEDIA_URL }}{% thumbnail image.file 1700 415 %}" alt="{{ image.description }}"/>
+        </li>
+      {% endfor %}
+    </ul>
+
+  <script>
+    $(function() {
+      $('.rslides').responsiveSlides();
+    });
+  </script>
+{% endif %}
