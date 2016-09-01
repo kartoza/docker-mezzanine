@@ -55,6 +55,8 @@ uwsgi:
     - DJANGO_SETTINGS_MODULE=core.settings.prod_docker
     - VIRTUAL_HOST=mezzanine.kartoza.com
     - VIRTUAL_PORT=8080
+    # Set your locale - you need to ensure this is created in Dockerfile too...
+    - LC_ALL=en_ZA.UTF-8
   volumes:
     - ../django_project:/home/web/django_project
     - ./static:/home/web/static:rw

@@ -12,6 +12,7 @@ filebrowser-safe==0.4.5
 git+https://github.com/dimasciput/mezzanine-careers.git@develop
 git+https://github.com/meomancer/mezzanine-modal-announcements.git@develop
 mezzanine-slides
+cartridge
 # Raven pinned to 3.3.7 - see
 # https://github.com/getsentry/raven-python/issues/337
 raven==5.8.1
