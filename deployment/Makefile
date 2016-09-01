@@ -274,7 +274,7 @@ enable-machine:
 	@echo "------------------------------------------------------------------"
 	@echo "Enabling docker machine."
 	@echo "------------------------------------------------------------------"
-	@echo "eval \"$(docker-machine env projecta)\""
+	@echo "eval \"$(docker-machine env mezzanine)\""
 
 # ----------------------------------------------------------------------------
 #    DEVELOPMENT C O M M A N D S

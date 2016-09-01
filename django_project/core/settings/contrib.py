@@ -16,6 +16,7 @@ GRAPPELLI_INSTALLED = True
 
 # Extra installed apps - grapelli needs to be added before others
 INSTALLED_APPS += (
+    'raven.contrib.django.raven_compat',  # enable Raven plugin
      PACKAGE_NAME_GRAPPELLI,
      "config",
      "kartoza_theme",

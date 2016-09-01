@@ -2,14 +2,14 @@
 """
 core.settings.base
 """
-# Django settings for projecta project.
+# Django settings for mezzanine project.
 
 from __future__ import absolute_import, unicode_literals
 from .utils import absolute_path
 
 ADMINS = (
     ('Tim Sutton', 'tim@kartoza.com'),
-    ('Rischan Mafrur', 'rischan@kartoza.com')
+    ('Christian Christelis', 'christian@kartoza.com')
 )
 
 MANAGERS = ADMINS
