@@ -41,7 +41,7 @@ INSTALLED_APPS += (
      "mezzanine_people",
      "mezzanine_references",
      "mezzanine_slides",
-     "mezzanine_file_collections",
+     #"mezzanine_file_collections",  # disabled for now as it is using south
      "modal_announcements",
      "mdown",  # markdown support in admin
      "mezzanine_agenda",  # we use a local copy as pip misses migrations
