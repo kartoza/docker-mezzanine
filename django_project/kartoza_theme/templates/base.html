@@ -99,9 +99,9 @@
 {% endblock %}
 <div class="container">
 
-{% block slides %}
-    {% include "includes/standard_slides.html" %}
-{% endblock %}
+    {% block slides %}
+        {% include "includes/standard_slides.html" %}
+    {% endblock %}
 
     {% nevercache %}
         {% if messages %}
@@ -122,35 +122,11 @@
 </div>
 {% block all_content %}
     <div class="container mtb">
-        <div class="row">
-            {% block left_wrapper %}
-                <div class="col-md-{% block left_width %}2{% endblock %} left">
-                    {% block left_panel %}
-                        {#    <div class="panel panel-default tree">{% page_menu "pages/menus/tree.html" %}</div>#}
-                    {% endblock %}
-                </div>
-            {% endblock %}
-            {% block main_wrapper %}
-                <div class="col-md-{% block main_width %} 7 {% endblock %}middle">
-                    {% block main %}{% endblock %}
-                </div>
-            {% endblock %}
-            {% block right_wrapper %}
-                <div class="col-md-{% block right_width %}3{% endblock %} right">
-                    {% nevercache %}
-                        {% include "includes/user_panel.html" %}
-                    {% endnevercache %}
-
-                    {% block right_panel %}
-                        {% ifinstalled mezzanine.twitter %}
-                            {% include "twitter/tweets.html" %}
-                        {% endifinstalled %}
-                    {% endblock %}
-
-                </div>
-            {% endblock %}
-
-        </div>
+        {% block main_wrapper %}
+            <div>
+                {% block main %}{% endblock %}
+            </div>
+        {% endblock %}
     </div>
 {% endblock %}
 {% include "includes/announcements.html" %}
