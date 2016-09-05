@@ -338,3 +338,17 @@ help:
 	@echo "* **superuser** - create a django superuser account."
 	@echo "* **update-migrations** - freshen all migration definitions to match the current code base."
 	@echo "* **web** - same as **run** - runs the production site."
+
+worker:
+	@echo
+	@echo "------------------------------------------------------------------"
+	@echo "Running worker production mode"
+	@echo "------------------------------------------------------------------"
+	@docker-compose -p $(PROJECT_ID) up -d worker
+
+workerlogs:
+	@echo
+	@echo "------------------------------------------------------------------"
+	@echo "Showing celery worker logs in production mode"
+	@echo "------------------------------------------------------------------"
+	@docker-compose -p $(PROJECT_ID) logs worker

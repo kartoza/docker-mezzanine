@@ -4,6 +4,7 @@ core.settings.contrib
 """
 # needed so cartridge gets correct currency
 import locale
+import os
 from .base import *  # noqa
 from .secret import (
     COMMENTS_DISQUS_API_PUBLIC_KEY,
@@ -18,8 +19,9 @@ GRAPPELLI_INSTALLED = True
 
 # Extra installed apps - grapelli needs to be added before others
 INSTALLED_APPS += (
-    'raven.contrib.django.raven_compat',  # enable Raven plugin
+     'raven.contrib.django.raven_compat',  # enable Raven plugin
      PACKAGE_NAME_GRAPPELLI,
+     "celery",
      "config",
      "kartoza_theme",
      "mezzanine",
@@ -300,3 +302,12 @@ FILEBROWSER_EXTENSIONS = {
     'Audio': ['.mp3', '.mp4', '.wav', '.aiff', '.midi', '.m4p', '.ogg'],
     'Code': ['.html', '.py', '.js', '.css']
 }
+# We don't want to have dead connections stored on rabbitmq
+# BROKER_HEARTBEAT = '?heartbeat=30'
+# BROKER_URL += BROKER_HEARTBEAT
+
+BROKER_URL = 'amqp://guest:guest@%s:5672//' % os.environ['RABBITMQ_HOST']
+
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
