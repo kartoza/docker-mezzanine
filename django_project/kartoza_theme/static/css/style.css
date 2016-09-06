@@ -221,8 +221,8 @@ a:focus {
 
 #headerwrap {
     /*background-image: url(../img/map-header-2.png);*/
-    background-repeat:no-repeat;
-    background-size:cover;
+    background-repeat: no-repeat;
+    background-size: cover;
     min-height: 500px;
     padding-top: 50px;
     padding-bottom: 0px;
@@ -693,4 +693,20 @@ csmall2 {
     font-weight: 500;
     display: block;
     margin-bottom: 5px;
+}
+
+/*	################################################################
+	RIGHT SIDE
+################################################################# */
+.right-info {
+    border: solid 1px rgba(0, 0, 0, 0.3);
+    padding: 15px;
+}
+
+.right-info h2 {
+    font-size: 14px !important;
+}
+
+.right-info p {
+    font-size: 12px !important;
 }
