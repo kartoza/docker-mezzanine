@@ -159,7 +159,8 @@ SHOP_ORDER_STATUS_CHOICES = (
 # eg Size, Colour. NOTE: Increasing the number of these will
 # require database migrations!
 SHOP_OPTION_TYPE_CHOICES = (
- (1, "Organisation"),
+ (1, "Course date"),
+ (2, "Course venue"),
 )
 
 # Sequence of indexes from the SHOP_OPTION_TYPE_CHOICES setting that
