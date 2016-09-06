@@ -22,6 +22,7 @@ build:
 	@echo "Building in production mode"
 	@echo "------------------------------------------------------------------"
 	@docker-compose -p $(PROJECT_ID) build uwsgi
+	@docker-compose -p $(PROJECT_ID) build uwsgi-ephemeral
 
 
 web:
@@ -30,6 +31,7 @@ web:
 	@echo "Running in production mode"
 	@echo "------------------------------------------------------------------"
 	@docker-compose -p $(PROJECT_ID) up -d web
+	@docker-compose -p $(PROJECT_ID) up -d uwsgi-ephemeral
 	@# Dont confuse this with the dbbackup make command below
 	@# This one runs the postgis-backup cron container
 	@# We add --no-recreate so that it does not destroy & recreate the db container
@@ -77,28 +79,27 @@ migrate:
 	@# We add the '-' prefix to the next line as the migration may fail
 	@# but we want to continue anyway.
 	@#We need to migrate accounts first as it has a reference to user model
-	-@docker-compose -p $(PROJECT_ID) run uwsgi python manage.py migrate auth
-	@docker-compose -p $(PROJECT_ID) run uwsgi python manage.py migrate sites
-	@docker-compose -p $(PROJECT_ID) run uwsgi python manage.py migrate pages
-	@docker-compose -p $(PROJECT_ID) run uwsgi python manage.py migrate
+	-@docker-compose -p $(PROJECT_ID) run uwsgi-ephemeral python manage.py migrate auth
+	@docker-compose -p $(PROJECT_ID) run uwsgi-ephemeral python manage.py migrate sites
+	@docker-compose -p $(PROJECT_ID) run uwsgi-ephemeral python manage.py migrate pages
+	@docker-compose -p $(PROJECT_ID) run uwsgi-ephemeral python manage.py migrate
 
 update-migrations:
 	@echo
 	@echo "------------------------------------------------------------------"
 	@echo "Running update migrations in production mode"
 	@echo "------------------------------------------------------------------"
-	@docker-compose -p $(PROJECT_ID) run uwsgi python manage.py makemigrations
+	@docker-compose -p $(PROJECT_ID) run uwsgi-ephemeral python manage.py makemigrations
 
 collectstatic:
 	@echo
 	@echo "------------------------------------------------------------------"
 	@echo "Collecting static in production mode"
 	@echo "------------------------------------------------------------------"
-	#@docker-compose -p $(PROJECT_ID) run uwsgi python manage.py collectstatic --noinput
 	#We need to run collect static in the same context as the running
-	# uwsgi container it seems so I use docker exec here
+	# uwsgi-ephemeral container it seems so I use docker exec here
 	# no -it flag so we can run over remote shell
-	@docker exec $(PROJECT_ID)-uwsgi python manage.py collectstatic --noinput
+	@docker-compose -p $(PROJECT_ID) run uwsgi-ephemeral python manage.py collectstatic --noinput
 
 reload:
 	@echo
@@ -121,6 +122,13 @@ kill-uwsgi:
 	@echo "Killing in uwsgi production mode"
 	@echo "------------------------------------------------------------------"
 	@docker-compose -p $(PROJECT_ID) kill uwsgi
+
+kill-uwsgi-ephemeral:
+	@echo
+	@echo "------------------------------------------------------------------"
+	@echo "Killing in uwsgi production mode"
+	@echo "------------------------------------------------------------------"
+	@docker-compose -p $(PROJECT_ID) kill uwsgi-ephemeral
 
 rm: dbbackup rm-only
 
@@ -158,14 +166,14 @@ shell:
 	@echo "------------------------------------------------------------------"
 	@echo "Shelling in in production mode"
 	@echo "------------------------------------------------------------------"
-	@docker-compose -p $(PROJECT_ID) run uwsgi /bin/bash
+	@docker-compose -p $(PROJECT_ID) run uwsgi-ephemeral /bin/bash
 
 superuser:
 	@echo
 	@echo "------------------------------------------------------------------"
 	@echo "Creating a superuser in production mode"
 	@echo "------------------------------------------------------------------"
-	@docker-compose -p $(PROJECT_ID) run uwsgi python manage.py createsuperuser
+	@docker-compose -p $(PROJECT_ID) run uwsgi-ephemeral python manage.py createsuperuser
 
 dbbash:
 	@echo
