@@ -82,17 +82,17 @@
 {% editable event.location %}
 <div class="panel panel-default">
     <div class="panel-body">
+    {% if settings.EVENT_GOOGLE_MAPS_API_KEY %}
+        {% google_interactive_map event '100%' 350 16 %}
+    {% else %}
+        {% google_static_map event '100%' 350 16 %}
+    {% endif %}
     <p>
-	{{ event.location.address|linebreaksbr }}<br />
+	{{ event.location.address|linebreaksbr }}
 	<a href="{{ event|google_nav_url }}" target="_blank" class="btn btn-default">
 	    Get Directions
 	</a>
     </p>
-    {% if settings.EVENT_GOOGLE_MAPS_API_KEY %}
-        {% google_interactive_map event 621 250 10 %}
-    {% else %}
-        {% google_static_map event 621 250 10 %}
-    {% endif %}
     </div>
 </div>
 {% endeditable %}
