@@ -699,3 +699,18 @@ csmall2 {
     float: none;
     margin-left: 0px;
 }
+/*	################################################################
+	RIGHT SIDE
+################################################################# */
+.right-info {
+    border: solid 1px rgba(0, 0, 0, 0.3);
+    padding: 15px;
+}
+
+.right-info h2 {
+    font-size: 14px !important;
+}
+
+.right-info p {
+    font-size: 12px !important;
+}

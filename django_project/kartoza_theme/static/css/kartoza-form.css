@@ -48,3 +48,9 @@ input[type="submit"]:hover {
 .input-section {
     padding: 15px;
 }
+
+.title {
+    font-size: 20px;
+    text-align: center;
+    margin: 50px
+}
