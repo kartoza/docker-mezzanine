@@ -255,6 +255,9 @@ PAGE_MENU_TEMPLATES = (
 #
 # BLOG_USE_FEATURED_IMAGE = True
 
+# Front-end inline editing
+# Set false for now, because this causing layout error
+INLINE_EDITING_ENABLED = False
 
 ####################
 # MEZZANINE DYNAMIC SETTINGS #
