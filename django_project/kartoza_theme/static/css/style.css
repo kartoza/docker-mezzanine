@@ -405,9 +405,19 @@ a:focus {
 ################################################################# */
 /* General Tweaks */
 
-.rslides img {
+.rslides {
+    margin-top: 10px !important;
+    margin-left: -10px !important;
+}
+
+.rslides-custom img {
     min-height: 415px !important;
     min-width: 1700px !important;
+}
+
+.rslides-custom {
+    margin-top: 0 !important;
+    margin-left: 0 !important;
 }
 
 #blue {
@@ -713,4 +723,28 @@ csmall2 {
 
 .right-info p {
     font-size: 12px !important;
+}
+
+/*	################################################################
+	CARTRIDGE
+################################################################# */
+
+.caption {
+    background: rgba(0,0,0, .6) !important;
+}
+
+.caption h6 {
+    color: white !important;
+}
+
+.coming-soon {
+    color: #fcefa1;
+}
+
+.price-info {
+    color: #b2dba1;
+}
+
+.product-thumb {
+    padding-top: 5px;
 }
