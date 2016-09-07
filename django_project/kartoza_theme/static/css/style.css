@@ -418,6 +418,7 @@ a:focus {
 #blue h3 {
     color: white;
     margin-left: 15px;
+    text-shadow: 1px 1px #f4b340;
 }
 
 .ctitle {
@@ -710,3 +711,71 @@ csmall2 {
 .right-info p {
     font-size: 12px !important;
 }
+
+/*	################################################################
+	PEOPLE LIST PAGE
+################################################################# */
+
+.list-person {
+    margin: auto;
+}
+
+.person-name {
+    padding-top: 10px;
+}
+
+.person-role {
+    font-size: 0.9em;
+}
+
+.team-member-info {
+    padding: 2em;
+}
+
+.person-avatar img {
+}
+
+.person-avatar {
+    position: relative;
+    overflow: hidden;
+}
+
+.text-wrapper {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 300px;
+    height: 0;
+    background: rgba(0, 0, 0, 0.5);
+    transition: height 0.3s ease-out;
+    color: white;
+}
+
+
+.person-bio p {
+    padding: 5px 20px 0 20px;
+
+    color: #E9E9E9;
+    font-size: 10pt;
+    line-height: 150%;
+    font-weight: 100;
+}
+
+.person-avatar:hover > .text-wrapper {
+    height: 200px;
+}
+
+.person-link {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.person-link i{
+    font-size: 11pt;
+    padding-left: 5px;
+}
+
+.person-link i .text {
+    font-family: 'Lato', sans-serif;
+}
+
