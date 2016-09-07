@@ -53,7 +53,7 @@
                 <div class="person-avatar">
                     <a href="/people/person/{{ person.slug }}"><img width="300" height="300" src="{{ MEDIA_URL }}{% thumbnail person.mugshot 300 0 %}" class="attachment-thumbnail size-thumbnail" alt="Selection_006">
                     </a>
-                    <div class="text-wrapper">
+                    <div class="text-wrapper" onclick="location.href='/people/person/{{ person.slug }}'">
                         {% if person.bio %}
                         <div class="person-bio">
                             {{ person.bio|richtext_filter|safe|truncatechars:250 }}
@@ -70,8 +70,6 @@
                                 <li><a href="{{ link.url }}">{{ link.name }}</a></li>
                             {% endfor %}
                             </ul>
-{#                            <a href="#"><i class="fa fa-twitter"> asdad</i></a>#}
-{#                            <a href="#"><i class="fa fa-github"> asdadad</i></a>#}
                         </div>
                     </div>
                 </div>
@@ -113,21 +111,5 @@
 
         });
     </script>
-
-{#    {% for person in people %}#}
-{#        {% editable person.first_name person.last_name person.job_title person.bio %}#}
-{#            <div>#}
-{#                <img src="{{ MEDIA_URL }}{% thumbnail person.mugshot 100 0 %}" />#}
-{#                <h3><a href="{{ person.get_absolute_url }}">{{ person.full_name }}</a></h3>#}
-{#                <h4>{{ person.job_title }}</h4>#}
-{#                <ul>#}
-{#                    {% for link in person.personlink_set.all %}#}
-{#                        <li><a href="{{ link.url }}">{{ link.name }}</a></li>#}
-{#                    {% endfor %}#}
-{#                </ul>#}
-{#                <p>{{ person.bio|richtext_filter|safe|truncatechars:500 }}</p>#}
-{#            </div>#}
-{#        {% endeditable %}#}
-{#    {% endfor %}#}
 
 {% endblock %}
