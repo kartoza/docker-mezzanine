@@ -223,15 +223,14 @@ a:focus {
     /*background-image: url(../img/map-header-2.png);*/
     background-repeat: no-repeat;
     background-size: cover;
-    min-height: 500px;
     padding-top: 50px;
     padding-bottom: 0px;
     text-align: center;
+    overflow: hidden;
 }
 
 #headerwrap .title {
     font-size: 60pt;
-    margin-top: 70px;
 }
 
 #headerwrap h3, h5 {
@@ -405,6 +404,11 @@ a:focus {
 	PAGE CONFIGURATIONS
 ################################################################# */
 /* General Tweaks */
+
+.rslides img {
+    min-height: 415px !important;
+    min-width: 1700px !important;
+}
 
 #blue {
     background-image: url(../img/map-header-2.png);
