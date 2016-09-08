@@ -19,36 +19,37 @@ GRAPPELLI_INSTALLED = True
 
 # Extra installed apps - grapelli needs to be added before others
 INSTALLED_APPS += (
-     'raven.contrib.django.raven_compat',  # enable Raven plugin
-     PACKAGE_NAME_GRAPPELLI,
-     "celery",
-     "config",
-     "kartoza_theme",
-     "mezzanine",
-     "django_comments",
-     "compressor",
-     PACKAGE_NAME_FILEBROWSER,
-     "mezzanine.boot",
-     "mezzanine.conf",
-     "mezzanine.core",
-     "mezzanine.generic",
-     "mezzanine.blog",
-     "mezzanine.forms",
-     "mezzanine.pages",
-     "mezzanine.galleries",
-     "mezzanine.twitter",
-     #"mezzanine.accounts",
-     #"mezzanine.mobile",
-     # Extra apps picked out by Tim
-     "mezzanine_people",
-     "mezzanine_references",
-     "mezzanine_slides",
-     #"mezzanine_file_collections",  # disabled for now as it is using south
-     "modal_announcements",
-     "mdown",  # markdown support in admin
-     "mezzanine_agenda",  # we use a local copy as pip misses migrations
-     "careers",
-     "cartridge.shop",  # mezzanine store
+    'raven.contrib.django.raven_compat',  # enable Raven plugin
+    PACKAGE_NAME_GRAPPELLI,
+    "celery",
+    "config",
+    "kartoza_theme",
+    "mezzanine",
+    "django_comments",
+    "compressor",
+    PACKAGE_NAME_FILEBROWSER,
+    "mezzanine.boot",
+    "mezzanine.conf",
+    "mezzanine.core",
+    "mezzanine.generic",
+    "mezzanine.blog",
+    "mezzanine.forms",
+    "mezzanine.pages",
+    "mezzanine.galleries",
+    "mezzanine.twitter",
+    # "mezzanine.accounts",
+    # "mezzanine.mobile",
+    # Extra apps picked out by Tim
+    "mezzanine_people",
+    "mezzanine_references",
+    "mezzanine_slides",
+    # "mezzanine_file_collections",  # disabled for now as it is using south
+    "modal_announcements",
+    "mdown",  # markdown support in admin
+    "mezzanine_agenda",  # we use a local copy as pip misses migrations
+    "careers",
+    "cartridge.shop",  # mezzanine store
+    'payment'
 )
 
 # mezzanine-mdown options
@@ -64,8 +65,8 @@ PEOPLE_PER_PAGE = 20
 EVENT_USE_FEATURED_IMAGE = True
 # This one must occur before django provided middleware
 MIDDLEWARE_CLASSES = (
-    "mezzanine.core.middleware.UpdateCacheMiddleware",
-) + MIDDLEWARE_CLASSES
+                         "mezzanine.core.middleware.UpdateCacheMiddleware",
+                     ) + MIDDLEWARE_CLASSES
 # And these after django provided middleware
 MIDDLEWARE_CLASSES += (
     "mezzanine.core.request.CurrentRequestMiddleware",
@@ -138,7 +139,7 @@ SHOP_CURRENCY_LOCALE = "en_ZA.UTF-8"
 # is where shipping calculation can be performed and set using the
 # function ``cartridge.shop.utils.set_shipping``.
 SHOP_HANDLER_BILLING_SHIPPING = \
-  "cartridge.shop.checkout.default_billship_handler"
+    "cartridge.shop.checkout.default_billship_handler"
 
 # Dotted package path and name of the function that
 # is called once an order is successful and all of the order
@@ -153,16 +154,24 @@ SHOP_HANDLER_PAYMENT = "cartridge.shop.checkout.default_payment_handler"
 
 # Sequence of value/name pairs for order statuses.
 SHOP_ORDER_STATUS_CHOICES = (
- (1, "Unprocessed"),
- (2, "Processed"),
+    (1, "Unprocessed"),
+    (2, "Processed"),
 )
+
+SHOP_PAYMENT_STEP_ENABLED = False
 
 # Sequence of value/name pairs for types of product options,
 # eg Size, Colour. NOTE: Increasing the number of these will
 # require database migrations!
 SHOP_OPTION_TYPE_CHOICES = (
- (1, "Course date"),
- (2, "Course venue"),
+    (1, "Course date"),
+    (2, "Course venue"),
+)
+# Sequence of value/name pairs for payment statuses.
+SHOP_PAYMENT_STATUS_CHOICES = (
+    (1, "Unchecked"),
+    (2, "Checked"),
+    (3, "Rejected"),
 )
 
 # Sequence of indexes from the SHOP_OPTION_TYPE_CHOICES setting that
@@ -183,8 +192,8 @@ SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 # Each one should be a callable that takes the request object as its
 # only parameter and returns a dictionary to add to the context.
 # Implemented in base.py as a dirty hack for now
-#TEMPLATE_CONTEXT_PROCESSORS = (
-#)
+# TEMPLATE_CONTEXT_PROCESSORS = (
+# )
 
 # The following settings are already defined with default values in
 # the ``defaults.py`` module within each of Mezzanine's apps, but are
@@ -197,7 +206,7 @@ SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 #
 ADMIN_MENU_ORDER = (
     ("Content", ("pages.Page", "blog.BlogPost",
-       "generic.ThreadedComment", ("Media Library", "fb_browse"),)),
+                 "generic.ThreadedComment", ("Media Library", "fb_browse"),)),
     ("Site", ("sites.Site", "redirects.Redirect", "conf.Setting")),
     ("Users", ("auth.User", "auth.Group",)),
 )
@@ -268,11 +277,11 @@ PAGE_MENU_TEMPLATES = (
 # without Mezzanine installed, as the case may be when using the
 # fabfile, where setting the dynamic settings below isn't strictly
 # required.
-#try:
+# try:
 ##    from mezzanine.utils.conf import set_dynamic_settings
-#except ImportError:
+# except ImportError:
 #    pass
-#else:
+# else:
 #    set_dynamic_settings(globals())
 
 ####################
