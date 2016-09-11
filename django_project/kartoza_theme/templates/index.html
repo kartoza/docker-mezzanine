@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load i18n staticfiles mezzanine_tags blog_tags %}
+{% load i18n staticfiles mezzanine_tags twitter_tags blog_tags %}
 
 {% block meta_title %}{% trans "Home" %}{% endblock %}
 {% block title_wrapper %}
@@ -111,6 +111,8 @@
                         <p><a href="{{ recent_post.get_absolute_url }}">{{ recent_post.title }}</a></p>
                     {% endfor %}
 
+                    {# twitter #}
+                    {% include "twitter/tweets.html" %}
                 </div>
             {% endif %}
 

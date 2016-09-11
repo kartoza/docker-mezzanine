@@ -8,6 +8,15 @@
 
 # Our main nginx service - this is for testing only - normally
 # You would use a standalone nginx instance running on the host!
+rabbitmq:
+   image: library/rabbitmq
+   hostname: rabbitmq
+   environment:
+      - RABBIT_PASSWORD=rabbit_test_password
+      - USER=rabbit_user
+      - RABBITMQ_NODENAME=rabbit
+
+
 nginx:
   # Note you cannot scale if you use conteiner_name
   container_name: mezzanine-nginx
@@ -17,7 +26,7 @@ nginx:
     - ./nginx-conf:/etc/nginx/conf.d
   ports:
     - "0.0.0.0:80:80"
-  restart: on-failure:5
+  restart: always
 
 smtp:
   # Note you cannot scale if you use conteiner_name
@@ -28,7 +37,7 @@ smtp:
     # You could change this to something more suitable
     - maildomain=kartoza.com
     - smtp_user=noreply:docker
-  restart: on-failure:5
+  restart: always
 
 db:
   # Note you cannot scale if you use conteiner_name
@@ -40,11 +49,10 @@ db:
   environment:
     - USERNAME=docker
     - PASS=docker
-  restart: on-failure:5
+  restart: always
 
-uwsgi:
+uwsgi-base:
   # Note you cannot scale if you use conteiner_name
-  container_name: mezzanine-uwsgi
   build: docker
   hostname: uwsgi
   environment:
@@ -52,6 +60,7 @@ uwsgi:
     - DATABASE_USERNAME=docker
     - DATABASE_PASSWORD=docker
     - DATABASE_HOST=db
+    - RABBITMQ_HOST=rabbitmq
     - DJANGO_SETTINGS_MODULE=core.settings.prod_docker
     - VIRTUAL_HOST=mezzanine.kartoza.com
     - VIRTUAL_PORT=8080
@@ -63,11 +72,28 @@ uwsgi:
     - ./media:/home/web/media:rw
     - ./reports:/home/web/reports
     - ./logs:/var/log/
+  user: root
+
+uwsgi-ephemeral:
+  extends: uwsgi-base
   links:
     - smtp:smtp
     - db:db
+    - rabbitmq:rabbitmq
+    - worker:worker
   user: root
   restart: on-failure:5
+
+uwsgi:
+  # Note you cannot scale if you use conteiner_name
+  extends: uwsgi-base
+  container_name: mezzanine-uwsgi
+  links:
+    - smtp:smtp
+    - db:db
+    - rabbitmq:rabbitmq
+    - worker:worker
+  restart: always
 
 dbbackups:
   # Note you cannot scale if you use conteiner_name
@@ -89,7 +115,7 @@ dbbackups:
     - PGPORT=5432
     - PGHOST=db
     - PGDATABASE=gis
-  restart: on-failure:5
+  restart: always
 
 # This is normally the main entry point for a production server
 web:
@@ -107,7 +133,7 @@ web:
     - uwsgi:uwsgi
   ports:
     - "64200:8080"
-  restart: on-failure:5
+  restart: always
 
 # This is the entry point for a development server.
 # Run with --no-deps to run attached to the services
@@ -123,6 +149,7 @@ devweb:
     - DATABASE_USERNAME=docker
     - DATABASE_PASSWORD=docker
     - DATABASE_HOST=db
+    - RABBITMQ_HOST=rabbitmq
     - DJANGO_SETTINGS_MODULE=core.settings.prod_docker
     - PYTHONPATH=/home/web/django_project
     - VIRTUAL_HOST=mezzanine.kartoza.com
@@ -136,8 +163,36 @@ devweb:
   links:
     - smtp:smtp
     - db:db
+    - rabbitmq:rabbitmq
   ports:
     # for django test server
     - "64202:8080"
     # for ssh
     - "64203:22"
+
+worker:
+   build: docker
+   hostname: worker
+   command: celery worker -A config.celery -l info  --beat
+   environment:
+     - DATABASE_NAME=gis
+     - DATABASE_USERNAME=docker
+     - DATABASE_PASSWORD=docker
+     - DATABASE_HOST=db
+     - DATABASE_QGIS_HOST=db_gis
+     - RABBITMQ_HOST=rabbitmq
+     - DJANGO_SETTINGS_MODULE=core.settings.prod_docker
+     - VIRTUAL_HOST=mezzanine.kartoza.com
+     - VIRTUAL_PORT=8080
+     - C_FORCE_ROOT=true
+   volumes:
+     - ../django_project:/home/web/django_project
+     - ./static:/home/web/static
+     - ./media:/home/web/media
+     - ./reports:/home/web/reports
+     - ./logs:/var/log/
+   links:
+     - smtp:smtp
+     - db:db
+     - rabbitmq:rabbitmq
+   restart: on-failure:5

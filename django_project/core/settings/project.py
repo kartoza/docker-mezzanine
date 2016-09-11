@@ -64,3 +64,4 @@ except ImportError:
 else:
     set_dynamic_settings(globals())
 
+from .celery_setting import *  # noqa
