@@ -791,3 +791,29 @@ csmall2 {
     font-family: 'Lato', sans-serif;
 }
 
+/*	################################################################
+	CLIENT LIST PAGE
+################################################################# */
+
+
+.clients-wrapper {
+    text-align: center;
+}
+
+.client {
+    width: 300px;
+    vertical-align: middle;
+    height: 120px;
+    padding-top: 20px;
+    text-align: center; margin: 1em 0;
+}
+
+.client img {
+    margin: auto;
+    max-height: 100px;
+    vertical-align: middle;
+}
+
+.justify-center {
+  justify-content: center;
+}
