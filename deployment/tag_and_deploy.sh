@@ -10,4 +10,4 @@ make dbbackup
 make mediasync
 git tag $VERSION
 git push --tags upstream 
-ssh mezzanine "cd /home/timlinux/mezzanine.kartoza.com/deployment && git fetch --tags && git checkout $VERSION && make build && make kill && make web && make migrate && make collectstatic && make reload"
+ssh mezzanine "cd /home/web/mezzanine.kartoza.com/deployment && git fetch --tags && git checkout $VERSION && make build && make kill && make web && make migrate && make collectstatic && make reload"
