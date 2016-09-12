@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+{% load mezzanine_tags keyword_tags i18n %}
+
+{% block meta_title %}{% if page %}{{ page.richtextpage.meta_title }}{% else %}{% trans "People" %}{% endif %}{% endblock %}
+
+{% block meta_keywords %}{% metablock %}
+    {% keywords_for page as keywords %}
+    {% for keyword in keywords %}{% if not forloop.first %}, {% endif %}{{ keyword }}{% endfor %}
+{% endmetablock %}{% endblock %}
+
+{% block meta_description %}{% metablock %}
+    {{ page.description }}
+{% endmetablock %}{% endblock %}
+
+{% block title %}
+    {% if page %}
+        {% editable page.title %}{{ page.title }}{% endeditable %}
+    {% else %}
+        {% trans "Our team" %}
+    {% endif %}
+{% endblock %}
+
+{% block breadcrumb_menu %}
+    {{ block.super }}
+    {% if category %}
+        <li>{% trans "Category:" %} {{ category }}<li>
+    {% endif %}
+{% endblock %}
+
+{% block main %}
+
+    {% if category %}
+        <p>
+            {% if category %}
+                {{ category }}
+            {% else %}
+                {% trans "People" %}
+            {% endif %}
+        </p>
+    {% else %}
+        {% if page %}
+            {% editable page.richtextpage.content %}
+                {{ page.richtextpage.content|safe }}
+            {% endeditable %}
+        {% endif %}
+    {% endif %}
+
+    <div class="pure-g list-person">
+
+    {% for person in people %}
+
+            <div class="pure-u-1 pure-u-md-1-3 team-member-info">
+                <div class="person-avatar">
+                    <a href="/people/person/{{ person.slug }}"><img width="300" height="300" src="{{ MEDIA_URL }}{% thumbnail person.mugshot 300 0 %}" class="attachment-thumbnail size-thumbnail" alt="Selection_006">
+                    </a>
+                    <div class="text-wrapper" onclick="location.href='/people/person/{{ person.slug }}'">
+                        {% if person.bio %}
+                        <div class="person-bio">
+                            {{ person.bio|richtext_filter|safe|truncatechars:250 }}
+                            {% if person.bio|length > 180 %}
+                                <a href="/people/person/{{ person.slug }}">[see more]</a>
+                            {% endif %}
+                        </div>
+                        {% else %}
+                            <div style="padding-top: 20px"></div>
+                        {% endif %}
+                        <div class="person-link">
+                            <ul class="list-person-link" style="display: none">
+                            {% for link in person.personlink_set.all %}
+                                <li><a href="{{ link.url }}">{{ link.name }}</a></li>
+                            {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="person-name">
+                    <h4><a href="/people/person/{{ person.slug }}">{{ person.full_name }}</a></h4>
+                </div>
+                <div class="person-role">
+                    {{ person.job_title }}
+                </div>
+            </div>
+
+    {% endfor %}
+
+    </div>
+
+    <script>
+        $(document).ready(function(){
+            var personLinkList = $('.list-person-link');
+
+            for(var i=0; i < personLinkList.length; i++) {
+                var $parent = $(personLinkList[i]).parent();
+
+                $(personLinkList[i]).find('li').each(function(){
+                    var current = $(this);
+                    var href = $(current[0].outerHTML).find('a')[0].href;
+                    // $parent.append(href);
+                    // if twitter
+                    if(href.indexOf('twitter')>0) {
+                        // get username
+
+                        $parent.append('<a href="'+href+'" target="_blank"><i class="fa fa-twitter">' +
+                                '<span class="text"> '+href.split('/').pop()+'</span></i></a>');
+                    } else if(href.indexOf('github')>0) {
+                        $parent.append('<a href="'+href+'" target="_blank"><i class="fa fa-github"> ' +
+                                '<span class="text">'+href.split('/').pop()+'</span></i></a>');
+                    }
+                });
+            }
+
+        });
+    </script>
+
+{% endblock %}
