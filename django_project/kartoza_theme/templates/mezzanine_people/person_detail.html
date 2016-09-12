@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% load mezzanine_tags keyword_tags i18n %}
+
+{% block meta_title %}{% if person %}{{ person.full_name }}{% else %}{% trans "Person" %}{% endif %}{% endblock %}
+
+{% block meta_keywords %}{% metablock %}
+    {% keywords_for person as keywords %}
+    {% for keyword in keywords %}{% if not forloop.first %}, {% endif %}{{ keyword }}{% endfor %}
+{% endmetablock %}{% endblock %}
+
+{% block meta_description %}{% metablock %}
+    {{ person.description }}
+{% endmetablock %}{% endblock %}
+
+{% block title %}
+    {% if page %}
+        {% editable page.title %}{{ page.title }}{% endeditable %}
+    {% else %}
+        {% editable person.title %}{{ person.title }}{% endeditable %}
+    {% endif %}
+{% endblock %}
+
+{% block breadcrumb_menu %}
+    {{ block.super }}
+    <li class="active">{{ person.title }}</li>
+{% endblock %}
+
+{% block main %}
+
+    <div class="pure-g">
+        <div class="pure-u-1-5">
+
+            {% editable person.first_name person.last_name person.job_title person.bio %}
+                <div>
+                    <!-- image -->
+                    <img src="{{ MEDIA_URL }}{% thumbnail person.mugshot 300 0 %}" style="padding-top: 20px;"/>
+                </div>
+            {% endeditable %}
+            <h1>{{ person.full_name }}</h1>
+            <h4 style="margin-top: -10px;font-weight: lighter">{{ person.job_title }}</h4>
+            <div style="padding-top: 0px;">
+                <div class="person-link detail-person-link">
+                    <ul class="list-person-link" style="display: none">
+                    {% for link in person.personlink_set.all %}
+                        <li><a href="{{ link.url }}">{{ link.name }}</a></li>
+                    {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="pure-u-4-5" style="padding-left: 40px;">
+            <p>{{ person.bio|richtext_filters|safe }}</p>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function(){
+            var personLinkList = $('.list-person-link');
+            for(var i=0; i < personLinkList.length; i++) {
+                var $parent = $(personLinkList[i]).parent();
+                $(personLinkList[i]).find('li').each(function(){
+                    var current = $(this);
+                    var href = $(current[0].outerHTML).find('a')[0].href;
+                    // $parent.append(href);
+                    // if twitter
+                    if(href.indexOf('twitter')>0) {
+                        // get username
+                        $parent.append('<a href="'+href+'" target="_blank"><i class="fa fa-twitter">' +
+                                '<span class="text"> '+href.split('/').pop()+'</span></i></a><br/>');
+                    } else if(href.indexOf('github')>0) {
+                        $parent.append('<a href="'+href+'" target="_blank"><i class="fa fa-github"> ' +
+                                '<span class="text">'+href.split('/').pop()+'</span></i></a><br/>');
+                    }
+                });
+            }
+
+        });
+    </script>
+
+{% endblock %}
