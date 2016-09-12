@@ -75,10 +75,6 @@
 {% endif %}
 
 {% for blog_post in blog_posts.object_list %}
-{% if blog_post.status == 2 %}
-
-
-
 
 {% if settings.BLOG_USE_FEATURED_IMAGE and blog_post.featured_image %}
 {% block blog_post_list_post_featured_image %}
@@ -169,7 +165,6 @@
 </div>
 {% endblock %}
 
-{% endif %}
 {% endfor %}
 
 {% pagination_for blog_posts %}

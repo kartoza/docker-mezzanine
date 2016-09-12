@@ -223,15 +223,14 @@ a:focus {
     /*background-image: url(../img/map-header-2.png);*/
     background-repeat: no-repeat;
     background-size: cover;
-    min-height: 500px;
     padding-top: 50px;
     padding-bottom: 0px;
     text-align: center;
+    overflow: hidden;
 }
 
 #headerwrap .title {
     font-size: 60pt;
-    margin-top: 70px;
 }
 
 #headerwrap h3, h5 {
@@ -406,6 +405,21 @@ a:focus {
 ################################################################# */
 /* General Tweaks */
 
+.rslides {
+    margin-top: 10px !important;
+    margin-left: -10px !important;
+}
+
+.rslides-custom img {
+    min-height: 415px !important;
+    min-width: 1700px !important;
+}
+
+.rslides-custom {
+    margin-top: 0 !important;
+    margin-left: 0 !important;
+}
+
 #blue {
     background-image: url(../img/map-header-2.png);
     background-repeat: no-repeat;
@@ -418,7 +432,6 @@ a:focus {
 #blue h3 {
     color: white;
     margin-left: 15px;
-    text-shadow: 1px 1px #f4b340;
 }
 
 .ctitle {
@@ -816,4 +829,28 @@ csmall2 {
 
 .justify-center {
   justify-content: center;
+}
+
+/*	################################################################
+	CARTRIDGE
+################################################################# */
+
+.caption {
+    background: rgba(0,0,0, .6) !important;
+}
+
+.caption h6 {
+    color: white !important;
+}
+
+.coming-soon {
+    color: #fcefa1;
+}
+
+.price-info {
+    color: #b2dba1;
+}
+
+.product-thumb {
+    padding-top: 5px;
 }
