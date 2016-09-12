@@ -48,6 +48,7 @@ INSTALLED_APPS += (
      "mdown",  # markdown support in admin
      "mezzanine_agenda",  # we use a local copy as pip misses migrations
      "careers",
+     "wms_client",
      "cartridge.shop",  # mezzanine store
 )
 
