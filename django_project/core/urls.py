@@ -38,11 +38,14 @@ urlpatterns = i18n_patterns(
 
     # Mezzanine Careers
     ("^careers/", include("careers.urls")),
+    ("^map/", include("wms_client.urls")),
     # For cartridge, the mezzanine ecommerce platform.
     ("^shop/", include("cartridge.shop.urls")),
     ("^payment/", include("payment.urls")),
     url("^account/orders/$", "cartridge.shop.views.order_history",
         name="shop_order_history"),
+
+    ("^clients/", include('clients.urls')),
 
     # For mezzanine-agenda
     ("^%s/" % settings.EVENT_SLUG, include("mezzanine_agenda.urls")),

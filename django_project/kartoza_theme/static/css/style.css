@@ -223,15 +223,14 @@ a:focus {
     /*background-image: url(../img/map-header-2.png);*/
     background-repeat: no-repeat;
     background-size: cover;
-    min-height: 500px;
     padding-top: 50px;
     padding-bottom: 0px;
     text-align: center;
+    overflow: hidden;
 }
 
 #headerwrap .title {
     font-size: 60pt;
-    margin-top: 70px;
 }
 
 #headerwrap h3, h5 {
@@ -405,6 +404,21 @@ a:focus {
 	PAGE CONFIGURATIONS
 ################################################################# */
 /* General Tweaks */
+
+.rslides {
+    margin-top: 10px !important;
+    margin-left: -10px !important;
+}
+
+.rslides-custom img {
+    min-height: 415px !important;
+    min-width: 1700px !important;
+}
+
+.rslides-custom {
+    margin-top: 0 !important;
+    margin-left: 0 !important;
+}
 
 #blue {
     background-image: url(../img/map-header-2.png);
@@ -713,4 +727,130 @@ csmall2 {
 
 .right-info p {
     font-size: 12px !important;
+}
+
+/*	################################################################
+	PEOPLE LIST PAGE
+################################################################# */
+
+.list-person {
+    margin: auto;
+}
+
+.person-name {
+    padding-top: 10px;
+}
+
+.person-role {
+    font-size: 0.9em;
+}
+
+.team-member-info {
+    padding: 2em;
+}
+
+.person-avatar img {
+}
+
+.person-avatar {
+    position: relative;
+    overflow: hidden;
+}
+
+.text-wrapper {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 300px;
+    height: 0;
+    background: rgba(0, 0, 0, 0.5);
+    transition: height 0.3s ease-out;
+    color: white;
+    cursor: pointer;
+}
+
+.person-bio p {
+    padding: 5px 20px 0 20px;
+
+    color: #E9E9E9;
+    font-size: 10pt;
+    line-height: 150%;
+    font-weight: 100;
+}
+
+.person-avatar:hover > .text-wrapper {
+    height: 200px;
+}
+
+.person-link {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.detail-person-link {
+    padding-left: 0 !important;
+}
+
+.detail-person-link i {
+    padding-top: 10px !important;
+}
+
+.person-link i{
+    font-size: 11pt;
+    padding-left: 5px;
+}
+
+.person-link i .text {
+    font-family: 'Lato', sans-serif;
+}
+
+/*	################################################################
+	CLIENT LIST PAGE
+################################################################# */
+
+
+.clients-wrapper {
+    text-align: center;
+}
+
+.client {
+    width: 300px;
+    vertical-align: middle;
+    height: 120px;
+    padding-top: 20px;
+    text-align: center; margin: 1em 0;
+}
+
+.client img {
+    margin: auto;
+    max-height: 100px;
+    vertical-align: middle;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+/*	################################################################
+	CARTRIDGE
+################################################################# */
+
+.caption {
+    background: rgba(0,0,0, .6) !important;
+}
+
+.caption h6 {
+    color: white !important;
+}
+
+.coming-soon {
+    color: #fcefa1;
+}
+
+.price-info {
+    color: #b2dba1;
+}
+
+.product-thumb {
+    padding-top: 5px;
 }

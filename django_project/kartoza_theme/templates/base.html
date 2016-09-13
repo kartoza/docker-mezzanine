@@ -20,6 +20,13 @@
     {% endifinstalled %}
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,600,800'
           rel='stylesheet' type='text/css'>
+    <!--[if lte IE 8]>
+        <link rel="stylesheet" href="http://yui.yahooapis.com/combo?pure/0.6.0/base-min.css&pure/0.6.0/grids-min.css&pure/0.6.0/grids-responsive-old-ie-min.css">
+        <![endif]-->
+    <!--[if gt IE 8]><!-->
+    <link rel="stylesheet" href="http://yui.yahooapis.com/combo?pure/0.6.0/base-min.css&pure/0.6.0/grids-min.css&pure/0.6.0/grids-responsive-min.css">
+    <!--<![endif]-->
+    {% block extra_css %}{% endblock %}
     {% compress css %}
         <link rel="stylesheet" href="{% static "css/hoverex-all.css" %}">
         <link rel="stylesheet" href="{% static "css/fonts.css" %}">
@@ -41,7 +48,6 @@
                       href="{% static "css/cartridge.rtl.css" %}">
             {% endif %}
         {% endifinstalled %}
-        {% block extra_css %}{% endblock %}
     {% endcompress %}
 
     {% compress js %}

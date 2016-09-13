@@ -135,21 +135,9 @@
      OUR CLIENTS
      ***************************************************************************************************************** -->
     <div id="cwrap">
-        <div class="container">
-            <div class="row centered">
-                <h3>OUR CLIENTS</h3>
-                <div class="col-lg-3 col-md-3 col-sm-3">
-                    <img src="{% static "img/clients/client01.png" %}" class="img-responsive">
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-3">
-                    <img src="{% static "img/clients/client02.png" %}" class="img-responsive">
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-3">
-                    <img src="{% static "img/clients/client03.png" %}" class="img-responsive">
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-3">
-                    <img src="{% static "img/clients/client04.png" %}" class="img-responsive">
-                </div>
+        <div class="container centered">
+            <h3 style="margin-bottom: 15px;">OUR CLIENTS</h3>
+            <div class="pure-g clients-wrapper justify-center">
             </div>
             <! --/row -->
         </div>
@@ -167,6 +155,26 @@
 {% block extra_js %}
     <script>
         $(function () {
+
+            // Get client list
+            $.ajax({
+                url:"/clients/all/",
+                method: "GET",
+                success: function(data) {
+                    var clients = JSON.parse(data);
+                    $(clients).each(function (index, client) {
+                        $('.clients-wrapper').append(
+                            '<div class="pure-u-1-5 client">'+
+                                '<a href="'+ client.fields.link +'" target=_onblank>'+
+                                '<img src="{{ MEDIA_URL }}'+ client.fields.logo + '" class="img-responsive">'+
+                                '</a>'+
+                            '</div>'
+                        );
+                        console.log(client.fields.link);
+                    });
+                }
+            });
+
             $.ajax({
                 url: "/api/people/",
                 method: 'GET',

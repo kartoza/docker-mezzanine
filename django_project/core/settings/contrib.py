@@ -19,36 +19,37 @@ GRAPPELLI_INSTALLED = True
 
 # Extra installed apps - grapelli needs to be added before others
 INSTALLED_APPS += (
-    'raven.contrib.django.raven_compat',  # enable Raven plugin
-    PACKAGE_NAME_GRAPPELLI,
-    "celery",
-    "config",
-    "kartoza_theme",
-    "mezzanine",
-    "django_comments",
-    "compressor",
-    PACKAGE_NAME_FILEBROWSER,
-    "mezzanine.boot",
-    "mezzanine.conf",
-    "mezzanine.core",
-    "mezzanine.generic",
-    "mezzanine.blog",
-    "mezzanine.forms",
-    "mezzanine.pages",
-    "mezzanine.galleries",
-    "mezzanine.twitter",
-    # "mezzanine.accounts",
-    # "mezzanine.mobile",
-    # Extra apps picked out by Tim
-    "mezzanine_people",
-    "mezzanine_references",
-    "mezzanine_slides",
-    # "mezzanine_file_collections",  # disabled for now as it is using south
-    "modal_announcements",
-    "mdown",  # markdown support in admin
-    "mezzanine_agenda",  # we use a local copy as pip misses migrations
-    "careers",
-    "cartridge.shop",  # mezzanine store
+     'raven.contrib.django.raven_compat',  # enable Raven plugin
+     PACKAGE_NAME_GRAPPELLI,
+     "celery",
+     "config",
+     "kartoza_theme",
+     "mezzanine",
+     "django_comments",
+     "compressor",
+     PACKAGE_NAME_FILEBROWSER,
+     "mezzanine.boot",
+     "mezzanine.conf",
+     "mezzanine.core",
+     "mezzanine.generic",
+     "mezzanine.blog",
+     "mezzanine.forms",
+     "mezzanine.pages",
+     "mezzanine.galleries",
+     "mezzanine.twitter",
+     #"mezzanine.accounts",
+     #"mezzanine.mobile",
+     # Extra apps picked out by Tim
+     "mezzanine_people",
+     "mezzanine_references",
+     "mezzanine_slides",
+     #"mezzanine_file_collections",  # disabled for now as it is using south
+     "modal_announcements",
+     "mdown",  # markdown support in admin
+     "mezzanine_agenda",  # we use a local copy as pip misses migrations
+     "careers",
+     "wms_client",
+     "cartridge.shop",  # mezzanine store
     'payment'
 )
 
@@ -266,6 +267,9 @@ PAGE_MENU_TEMPLATES = (
 #
 # BLOG_USE_FEATURED_IMAGE = True
 
+# Front-end inline editing
+# Set false for now, because this causing layout error
+INLINE_EDITING_ENABLED = False
 
 ####################
 # MEZZANINE DYNAMIC SETTINGS #
