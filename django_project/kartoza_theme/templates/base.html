@@ -84,9 +84,7 @@
             </button>
             {% if settings.SITE_TITLE %}<a class="navbar-brand" href="/">
                 <img src="{% static "img/kartoza-logo-only.png" %}">
-            </a>{% endif %}
-            {% if settings.SITE_TAGLINE %}
-                <a href="/"><span class="navbar-text navbar-title" >{{ settings.SITE_TITLE }}</span></a>{% endif %}
+                {{ settings.SITE_TITLE }}</a>{% endif %}
         </div>
         <div class="navbar-collapse collapse navbar-right">
 
