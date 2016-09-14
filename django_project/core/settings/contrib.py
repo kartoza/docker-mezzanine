@@ -320,7 +320,7 @@ FILEBROWSER_EXTENSIONS = {
 # BROKER_HEARTBEAT = '?heartbeat=30'
 # BROKER_URL += BROKER_HEARTBEAT
 
-BROKER_URL = 'amqp://guest:guest@%s:5672//' % os.environ['RABBITMQ_HOST']
+BROKER_URL = 'amqp://guest:guest@%s:5672//' % 'rabbitmq'
 
 CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'

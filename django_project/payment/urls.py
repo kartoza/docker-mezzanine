@@ -1,7 +1,6 @@
 from __future__ import unicode_literals
 
 from django.conf.urls import url
-from mezzanine.conf import settings
 
 from payment.views import PaymentCreate, PaymentSuccess
 

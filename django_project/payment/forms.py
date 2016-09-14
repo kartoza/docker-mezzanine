@@ -10,4 +10,4 @@ from .models import Payment
 class PaymentForm(ModelForm):
     class Meta:
         model = Payment
-        fields = ['order_id', 'bank_name', 'bank_account', 'first_name', 'last_name', 'additional_info']
+        fields = ['order_id', 'first_name', 'last_name', 'additional_info', 'additional_document']

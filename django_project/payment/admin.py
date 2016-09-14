@@ -9,7 +9,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from payment.models import Payment
 
-payment_list_display = ("order_id", "first_name", "bank_name", "bank_account", "status",)
+payment_list_display = ("order_id", "first_name", "status",)
 
 
 class PaymentAdmin(admin.ModelAdmin):
@@ -20,12 +20,12 @@ class PaymentAdmin(admin.ModelAdmin):
     list_display = payment_list_display
     list_editable = ("status",)
     list_filter = ("status",)
-    search_fields = (["order_id", "first_name", "bank_name"])
+    search_fields = (["order_id", "first_name"])
     radio_fields = {"status": admin.HORIZONTAL}
     fieldsets = (
         (None, {"fields": ("order_id",)}),
-        (_("Payment Account"), {"fields": ("bank_name", "bank_account")}),
-        (_("Payment Information"), {"fields": ("first_name", "last_name", "status", "additional_info")}),
+        (_("Payment Information"),
+         {"fields": ("first_name", "last_name", "status", "additional_info", "additional_document")}),
     )
 
 

@@ -44,6 +44,7 @@ input[type="submit"] {
 
 input[type="submit"]:hover {
     background-color: #eaeaea;
+    color: #2B2E31;
 }
 
 .input-section {

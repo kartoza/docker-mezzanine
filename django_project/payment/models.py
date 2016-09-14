@@ -4,10 +4,11 @@ __license__ = "GPL"
 __copyright__ = 'kartoza.com'
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
-from django.db.models import CharField, TextField
+from django.db.models import CharField, TextField, FileField
 from django.utils.translation import ugettext_lazy as _
 
 from mezzanine.conf import settings
+from mezzanine.utils.models import upload_to
 
 
 @python_2_unicode_compatible
@@ -19,12 +20,12 @@ class Payment(models.Model):
     applicable for.
     """
     order_id = models.IntegerField(_("Order Id"))
-
-    bank_name = CharField(_("Bank Name"), max_length=100)
-    bank_account = models.CharField(_("Bank Account"), max_length=100)
     first_name = CharField(_("First name"), max_length=100)
     last_name = CharField(_("Last name"), max_length=100)
     additional_info = TextField(_("Additional Info"), default="", null=True, blank=True)
+    additional_document = FileField(verbose_name=_("Additional Document"),
+        upload_to=upload_to("payment.file", "document"),
+        max_length=255, null=True, blank=True)
 
     status = models.IntegerField(
         _("Status"),

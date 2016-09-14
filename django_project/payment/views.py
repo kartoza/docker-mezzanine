@@ -3,7 +3,6 @@ __date__ = '08/09/16'
 __license__ = "GPL"
 __copyright__ = 'kartoza.com'
 
-from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.views.generic.edit import CreateView
 from .forms import PaymentForm
