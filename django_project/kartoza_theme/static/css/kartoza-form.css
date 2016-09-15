@@ -34,6 +34,7 @@ input[type="submit"] {
     padding: 20px !important;
     margin-top: 15px;
     margin-bottom: 15px;
+    color: #2B2E31;
 
     -webkit-transition: background-color 500ms ease-out;
     -moz-transition: background-color 500ms ease-out;
@@ -42,6 +43,7 @@ input[type="submit"] {
 }
 
 input[type="submit"]:hover {
+    color: #2B2E31;
     background-color: #eaeaea;
 }
 
