@@ -1,15 +1,15 @@
-#from django.conf.urls import patterns, include, url
+# from django.conf.urls import patterns, include, url
 #
-#from django.contrib import admin
-#admin.autodiscover()
+# from django.contrib import admin
+# admin.autodiscover()
 #
-#urlpatterns = patterns('',
+# urlpatterns = patterns('',
 #    # Examples:
 #    # url(r'^$', 'django_project.views.home', name='home'),
 #    # url(r'^blog/', include('blog.urls')),
 #
 #    url(r'^admin/', include(admin.site.urls)),
-#)
+# )
 from __future__ import unicode_literals
 
 from django.conf.urls import patterns, include, url
@@ -18,7 +18,6 @@ from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
 from mezzanine.core.views import direct_to_template
-
 
 admin.autodiscover()
 
@@ -36,12 +35,12 @@ urlpatterns = i18n_patterns(
     # For mezzanine-people
     ("^people/", include('mezzanine_people.urls')),
     ("^api/people/", "core.views.get_all_people"),
-
     # Mezzanine Careers
     ("^careers/", include("careers.urls")),
     ("^map/", include("wms_client.urls")),
     # For cartridge, the mezzanine ecommerce platform.
     ("^shop/", include("cartridge.shop.urls")),
+    ("^payment/", include("payment.urls")),
     url("^account/orders/$", "cartridge.shop.views.order_history",
         name="shop_order_history"),
 
