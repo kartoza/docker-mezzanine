@@ -43,14 +43,14 @@ INSTALLED_APPS += (
      "mezzanine_people",
      "mezzanine_references",
      "mezzanine_slides",
-     #"mezzanine_file_collections",  # disabled for now as it is using south
-     "modal_announcements",
+     "mezzanine_file_collections",  # disabled for now as it is using south
      "mdown",  # markdown support in admin
      "mezzanine_agenda",  # we use a local copy as pip misses migrations
      "careers",
      "wms_client",
      "cartridge.shop",  # mezzanine store
-    'payment'
+     "modal_announcements",
+     'payment'
 )
 
 # mezzanine-mdown options
@@ -152,6 +152,9 @@ SHOP_HANDLER_ORDER = "cartridge.shop.checkout.default_order_handler"
 # is called on submit of the payment checkout step. This is where
 # integration with a payment gateway should be implemented.
 SHOP_HANDLER_PAYMENT = "cartridge.shop.checkout.default_payment_handler"
+
+SHOP_HANDLER_TAX = "core.cartridge.shop.checkout.vat_tax_handler"
+SHOP_HANDLER_TAX_INCLUDE_IN_PRICE = True
 
 # Sequence of value/name pairs for order statuses.
 SHOP_ORDER_STATUS_CHOICES = (

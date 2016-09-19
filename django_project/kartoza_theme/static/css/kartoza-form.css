@@ -43,6 +43,7 @@ input[type="submit"] {
 }
 
 input[type="submit"]:hover {
+    color: #2B2E31;
     background-color: #eaeaea;
     color: #2B2E31;
 }
