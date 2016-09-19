@@ -20,6 +20,7 @@
     </script>
 {% endblock %}
 {% block main %}
+    {% include "payment/includes/payment-information.html" %}
     <div class="row">
         {% if messages %}
             {{ messages }}
