@@ -32,9 +32,6 @@ INSTALLED_APPS += (
      "mezzanine.forms",
      "mezzanine.pages",
      "mezzanine.galleries",
-     "mezzanine.twitter",
-     # Extra apps picked out by Tim
-     "mezzanine_people",
      "mezzanine_references",
      "mezzanine_slides",
      "mdown",  # markdown support in admin
@@ -48,8 +45,6 @@ INSTALLED_APPS += (
 MIGRATION_MODULES = {'accounts': 'core.migration'}
 
 GRAPPELLI_ADMIN_TITLE = 'Site administration panel'
-
-PEOPLE_PER_PAGE = 20
 
 EVENT_USE_FEATURED_IMAGE = True
 # This one must occur before django provided middleware
@@ -199,7 +194,6 @@ INLINE_EDITING_ENABLED = False
 SEARCH_MODEL_CHOICES = (
     'pages.Page',
     'blog.BlogPost',
-    'mezzanine_people.Person',
 )
 
 ####################
