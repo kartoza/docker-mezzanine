@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+{% load mezzanine_tags keyword_tags i18n %}
+
+{% block meta_title %}{% if page %}{{ page.richtextpage.meta_title }}{% else %}{% trans "Careers" %}{% endif %}{% endblock %}
+
+{% block meta_keywords %}{% metablock %}
+{% keywords_for page as keywords %}
+{% for keyword in keywords %}
+{% if not forloop.first %}, {% endif %}
+{{ keyword }}
+{% endfor %}
+{% endmetablock %}{% endblock %}
+
+{% block meta_description %}{% metablock %}
+{{ page.description }}
+{% endmetablock %}{% endblock %}
+
+{% block title %}
+    {% if page %}
+        {% editable page.title %}{{ page.title }}{% endeditable %}
+    {% else %}
+        {% editable person.title %}{{ person.title }}{% endeditable %}
+    {% endif %}
+{% endblock %}
+
+{% block breadcrumb_menu %}
+    {{ block.super }}
+    {% if tag or category or year or month or author %}
+        <li>{% spaceless %}
+            {% if tag %}
+                {% trans "Tag:" %} {{ tag }}
+                {% else %}{% if category %}
+                    {% trans "Category:" %} {{ category }}
+                    {% else %}{% if year or month %}
+                        {% if month %}{{ month }}, {% endif %}{{ year }}
+                        {% else %}{% if author %}
+                            {% trans "Author:" %} {{ author.get_full_name|default:author.username }}
+                        {% endif %}{% endif %}{% endif %}{% endif %}
+        {% endspaceless %}
+        </li>
+    {% endif %}
+{% endblock %}
+
+{% block main %}
+
+{% if tag or category or year or month or author %}
+<p>
+    {% if tag %}
+    {% trans "Viewing posts tagged" %} {{ tag }}
+    {% else %}{% if category %}
+    {% trans "Viewing posts for the category" %} {{ category }}
+    {% else %}{% if year or month %}
+    {% trans "Viewing posts from" %} {% if month %}{{ month }}, {% endif %}
+    {{ year }}
+    {% else %}{% if author %}
+    {% trans "Viewing posts by" %}
+    {{ author.get_full_name|default:author.username }}
+    {% endif %}{% endif %}{% endif %}{% endif %}
+</p>
+{% else %}
+{% if page %}
+{% editable page.richtextpage.content %}
+{{ page.richtextpage.content|safe }}
+{% endeditable %}
+{% endif %}
+{% endif %}
+
+
+{% for jobpost in jobposts.object_list %}
+
+{% editable jobpost.title jobpost.publish_date %}
+<h2>
+    <a href="{{ jobpost.get_absolute_url }}">{{ jobpost.title }}</a>
+</h2>
+<h6>
+    {% trans "Posted" %} {{ jobpost.publish_date|timesince }} {% trans "ago" %}.
+</h6>
+{% endeditable %}
+
+{% editable jobpost.content %}
+{{ jobpost.description_from_content|safe }}
+{% endeditable %}
+
+<p class="job-post-list-detail">
+    {% if jobpost.keyword_list %}
+    {% trans "Tags" %}:
+    {% spaceless %}
+    {% for tag in jobpost.keyword_list %}
+    <a href="{% url " jobpost_list_tag" tag.slug %}" class="tag">{{ tag }}</a>
+    {% endfor %}
+    {% endspaceless %}
+    <br>
+    {% endif %}
+    <a href="{{ jobpost.get_absolute_url }}">{% trans "read more" %}</a>
+</p>
+{% endfor %}
+
+{% pagination_for jobposts %}
+
+{% endblock %}

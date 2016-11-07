@@ -1,0 +1,19 @@
+celery
+Django>=1.8,<1.9
+psycopg2
+git+https://github.com/dimasciput/mezzanine.git@develop
+mezzanine_people
+mezzanine-references
+mezzanine-mdown
+django-compressor
+icalendar==3.0.1b2
+geopy==0.95.1
+filebrowser-safe==0.4.5
+git+https://github.com/meomancer/mezzanine-modal-announcements.git@develop
+git+https://github.com/meomancer/mezzanine-file-collections.git@master
+mezzanine-slides
+# Raven pinned to 3.3.7 - see
+# https://github.com/getsentry/raven-python/issues/337
+raven==5.8.1
+django-sentry==1.13.5
+requests==2.0.0

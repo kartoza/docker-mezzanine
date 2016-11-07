@@ -1,0 +1,16 @@
+{% extends "shop/base.html" %}
+{% load i18n %}
+
+{% block body_id %}complete{% endblock %}
+
+{% block meta_title %}Payment Confirmation Sent{% endblock %}
+
+{% block title %}Payment Confirmation Sent{% endblock %}
+
+
+{% block main %}
+    <p>{% trans "Thank you for shopping with us, your payment confirmation is sent" %}</p>
+    <p>{% trans "Please wait for our next notice" %}</p>
+    Back to <a target="_blank"
+               href="/">Home Page</a>
+{% endblock %}
