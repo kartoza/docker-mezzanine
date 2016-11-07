@@ -79,8 +79,6 @@ uwsgi-ephemeral:
   links:
     - smtp:smtp
     - db:db
-    - rabbitmq:rabbitmq
-    - worker:worker
   user: root
   restart: on-failure:5
 
@@ -91,8 +89,6 @@ uwsgi:
   links:
     - smtp:smtp
     - db:db
-    - rabbitmq:rabbitmq
-    - worker:worker
   restart: always
 
 dbbackups:
