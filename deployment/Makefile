@@ -1,5 +1,5 @@
 PROJECT_ID := qgis-ug
-PRODUCTION_HOST := kartoza4
+PRODUCTION_HOST := qgis-ug-host
 
 SHELL := /bin/bash
 
