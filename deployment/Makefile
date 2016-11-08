@@ -13,7 +13,7 @@ deploy: run
 	@echo
 	@echo "------------------------------------------------------------------"
 	@echo "Bringing up fresh instance "
-	@echo "You can access it on http://localhost:61200"
+	@echo "You can access it on http://localhost:63300"
 	@echo "------------------------------------------------------------------"
 
 build:
