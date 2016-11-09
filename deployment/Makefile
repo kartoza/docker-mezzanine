@@ -1,5 +1,5 @@
-PROJECT_ID := qgis-ug
-PRODUCTION_HOST := qgis-ug-host
+PROJECT_ID := qgis-org-za
+PRODUCTION_HOST := qgis.org.za
 
 SHELL := /bin/bash
 
@@ -259,16 +259,16 @@ mediasync:
 	@echo "------------------------------------------------------------------"
 	@echo "Syncing media files and secret.py from live server"
 	@echo "------------------------------------------------------------------"
-	@rsync -av --progress $(PRODUCTION_HOST):/home/web/kartoza.com/deployment/media/ media
-	@rsync -av --progress $(PRODUCTION_HOST):/home/web/kartoza.com/django_project/core/settings/secret.py ../django_project/core/settings/
+	@rsync -av --progress $(PRODUCTION_HOST):/home/web/qgis.org.za/deployment/media/ media
+	@rsync -av --progress $(PRODUCTION_HOST):/home/web/qgis.org.za/django_project/core/settings/secret.py ../django_project/core/settings/
 
 dbsync:
 	@echo
 	@echo "------------------------------------------------------------------"
 	@echo "Syncing database files from live server"
 	@echo "------------------------------------------------------------------"
-	-@ssh $(PRODUCTION_HOST) "cd /home/web/kartoza.com/deployment; make dbbackup"
-	@rsync -av --progress $(PRODUCTION_HOST):/home/web/kartoza.com/deployment/backups/ backups
+	-@ssh $(PRODUCTION_HOST) "cd /home/web/qgis.org.za/deployment; make dbbackup"
+	@rsync -av --progress $(PRODUCTION_HOST):/home/web/qgis.org.za/deployment/backups/ backups
 
 create-machine:
 	@echo
