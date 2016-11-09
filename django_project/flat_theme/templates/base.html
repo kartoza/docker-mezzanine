@@ -28,7 +28,8 @@
     <link href="{% static "css/main.css" %}" rel="stylesheet">
     <link href="{% static "css/style.css" %}" rel="stylesheet">
 
-
+    <link rel="stylesheet"
+              href="{% static "responsiveslides/responsiveslides.css" %}"/>
 
 
 {% if LANGUAGE_BIDI %}
@@ -60,6 +61,8 @@
 <script src="{% static "js/bootstrap-extras.js" %}"></script>
 {% block extra_js %}{% endblock %}
 {% include "includes/footer_scripts.html" %}
+<script src="{% static "js/responsiveslides/responsiveslides.min.js" %}"></script>
+
 {% endcompress %}
 
 <!--[if lt IE 9]>
@@ -96,6 +99,10 @@
 
 <div class="container">
 
+{% block slides %}
+    {% include "includes/standard_slides.html" %}
+{% endblock %}
+
 {% nevercache %}
 {% if messages %}
 <div class="messages">
@@ -109,17 +116,15 @@
 {% endif %}
 {% endnevercache %}
 
-
-
-
 </div>
+
 {% block top %}
 <section class="emerald" id="title">
         <div class="container">
             <div class="row">
                 <div class="col-sm-6">
                     <h1>{% block title %}{% endblock %}</h1>
-                    
+
                 </div>
                 <div class="col-sm-6">
                     <ul class="breadcrumb pull-right">
@@ -133,19 +138,21 @@
    </section>
 {% endblock %}
 
+{% block all_content %}
+    <div class="container mtb">
+        {% block main_wrapper %}
+            <div>
+                {% block main %}{% endblock %}
+            </div>
+        {% endblock %}
+    </div>
+{% endblock %}
+
 
     {% block left_panel %}
     
     {% endblock %}
 
-
-
-    {% block main %}{% endblock %}
-
-
- 
-   
-    
     
 <section id="bottom" class="wet-asphalt">
 	<div class="container">

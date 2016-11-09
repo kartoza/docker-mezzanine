@@ -127,7 +127,6 @@ a:focus {
 .navbar-default {
     background-color: #007C59;
     border-color: transparent;
-    border-bottom: 2px solid #FCB514;
 }
 
 .dropdown-menu {
@@ -221,8 +220,9 @@ a:focus {
     /*background-image: url(../img/map-header-2.png);*/
     background-repeat: no-repeat;
     background-size: cover;
-    padding-top: 50px;
-    padding-bottom: 0px;
+    margin-top: -25px;
+    padding-top: 0;
+    padding-bottom: 0;
     text-align: center;
     overflow: hidden;
 }
@@ -871,12 +871,10 @@ csmall2 {
 
 .reflex-blue {
     background-color: #E23D28;
-    border-top: 3px solid #007C59;
     color: white;
 }
 
 .white-green {
     background-color: white;
     color: #34495e;
-    border-top: 3px solid #007C59;
 }
