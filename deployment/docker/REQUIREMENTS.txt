@@ -1,7 +1,7 @@
 celery
 Django>=1.8,<1.9
 psycopg2
-mezzanine
+git+https://github.com/dimasciput/mezzanine.git@develop
 mezzanine_people
 mezzanine-references
 mezzanine-mdown
