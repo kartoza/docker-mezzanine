@@ -6,6 +6,7 @@ __date__ = '09/09/16'
 __license__ = "GPL"
 __copyright__ = 'kartoza.com'
 
+import decimal
 from django.utils.translation import ugettext_lazy as _
 
 tax_value = "14%"
@@ -22,5 +23,5 @@ def vat_tax_handler(request, order_form):
     accessible via ``request.cart``
     """
     settings.use_editable()
-    tax = request.cart.total_price() / 100 * 14
+    tax = request.cart.total_price() - (request.cart.total_price() / decimal.Decimal(1.14))
     set_tax(request, _("Vat"), tax)
