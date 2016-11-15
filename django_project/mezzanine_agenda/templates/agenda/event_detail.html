@@ -83,9 +83,9 @@
 <div class="panel panel-default">
     <div class="panel-body">
     {% if settings.EVENT_GOOGLE_MAPS_API_KEY %}
-        {% google_interactive_map event '100%' 350 16 %}
+        {% google_interactive_map event 1180 350 16 %}
     {% else %}
-        {% google_static_map event '100%' 350 16 %}
+        {% google_static_map event 1180 350 16 %}
     {% endif %}
     <p>
 	{{ event.location.address|linebreaksbr }}
