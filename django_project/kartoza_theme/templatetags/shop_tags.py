@@ -95,6 +95,14 @@ def order_totals(context):
     return _order_totals(context)
 
 
+@register.inclusion_tag("shop/includes/order_totals_in_table.html", takes_context=True)
+def order_totals_in_table(context):
+    """
+    HTML version of order_totals.
+    """
+    return _order_totals(context)
+
+
 @register.inclusion_tag("shop/includes/order_totals.txt", takes_context=True)
 def order_totals_text(context):
     """

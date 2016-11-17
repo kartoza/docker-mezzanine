@@ -20,6 +20,3 @@ OWSLib==0.12
 psycopg2
 raven==5.8.1
 requests==2.0.0
-# Raven pinned to 3.3.7 - see
-# https://github.com/getsentry/raven-python/issues/337
-
