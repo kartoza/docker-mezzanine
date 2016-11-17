@@ -331,7 +331,6 @@ body > section {
   border: 3px solid rgba(255, 255, 255, 0.5);
   color: #fff;
   border-radius: 0;
-  margin-top: 5px;
 }
 #main-slider .carousel .btn:hover {
   background-color: rgba(255, 255, 255, 0.3);
@@ -351,7 +350,7 @@ body > section {
   position: absolute;
   width: 100%;
   display: block !important;
-  height: 600px;
+  height: 500px;
   -webkit-transition: opacity ease-in-out 500ms;
   -moz-transition: opacity ease-in-out 500ms;
   -o-transition: opacity ease-in-out 500ms;

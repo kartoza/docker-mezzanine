@@ -6,8 +6,6 @@
 #
 # See accompanying Make commands for easy collectstatic etc.
 
-# Our main nginx service - this is for testing only - normally
-# You would use a standalone nginx instance running on the host!
 rabbitmq:
    image: library/rabbitmq
    hostname: rabbitmq
@@ -17,20 +15,9 @@ rabbitmq:
       - RABBITMQ_NODENAME=rabbit
 
 
-nginx:
-  # Note you cannot scale if you use conteiner_name
-  container_name: qgis-ug-nginx
-  image: nginx
-  hostname: nginx
-  volumes:
-    - ./nginx-conf:/etc/nginx/conf.d
-  ports:
-    - "0.0.0.0:80:80"
-  restart: always
-
 smtp:
   # Note you cannot scale if you use conteiner_name
-  container_name: qgis-ug-smtp
+  container_name: qgis-org-za-smtp
   image: catatnight/postfix
   hostname: postfix
   environment:
@@ -41,7 +28,7 @@ smtp:
 
 db:
   # Note you cannot scale if you use conteiner_name
-  container_name: qgis-ug-db
+  container_name: qgis-org-za-db
   image: kartoza/postgis:9.4-2.1
   volumes:
     - ./pg/postgres_data:/var/lib/postgresql
@@ -62,7 +49,7 @@ uwsgi-base:
     - DATABASE_HOST=db
     - RABBITMQ_HOST=rabbitmq
     - DJANGO_SETTINGS_MODULE=core.settings.prod_docker
-    - VIRTUAL_HOST=qgis-ug.kartoza.com
+    - VIRTUAL_HOST=qgis.org.za
     - VIRTUAL_PORT=8080
     # Set your locale - you need to ensure this is created in Dockerfile too...
     - LC_ALL=en_ZA.UTF-8
@@ -85,7 +72,7 @@ uwsgi-ephemeral:
 uwsgi:
   # Note you cannot scale if you use conteiner_name
   extends: uwsgi-base
-  container_name: qgis-ug-uwsgi
+  container_name: qgis-org-za-uwsgi
   links:
     - smtp:smtp
     - db:db
@@ -93,7 +80,7 @@ uwsgi:
 
 dbbackups:
   # Note you cannot scale if you use conteiner_name
-  container_name: qgis-ug-db-backups
+  container_name: qgis-org-za-db-backups
   image: kartoza/pg-backup:9.4
   hostname: pg-backups
   volumes:
@@ -103,7 +90,7 @@ dbbackups:
   environment:
     # take care to let the project name below match that
     # declared in the top of the makefile
-    - DUMPPREFIX=PG_qgis-ug
+    - DUMPPREFIX=PG_qgis-org-za
     # These are all defaults anyway, but setting explicitly in
     # case we ever want to ever use different credentials
     - PGUSER=docker
@@ -116,7 +103,7 @@ dbbackups:
 # This is normally the main entry point for a production server
 web:
   # Note you cannot scale if you use conteiner_name
-  container_name: qgis-ug-web
+  container_name: qgis-org-za-web
   image: nginx
   hostname: nginx
   volumes:
@@ -125,10 +112,12 @@ web:
     - ./static:/home/web/static:ro
     - ./media:/home/web/media:ro
     - ./logs:/var/log/nginx
+    - /etc/letsencrypt:/etc/letsencrypt
   links:
     - uwsgi:uwsgi
   ports:
-    - "63300:8080"
+    - "80:80"
+    - "443:443"
   restart: always
 
 # This is the entry point for a development server.
@@ -136,10 +125,10 @@ web:
 # from produ environment if wanted
 devweb:
   # Note you cannot scale if you use conteiner_name
-  container_name: qgis-ug-dev-web
+  container_name: qgis-org-za-dev-web
   build: docker
   dockerfile: Dockerfile-dev
-  hostname: qgis-ug-dev-web
+  hostname: qgis-org-za-dev-web
   environment:
     - DATABASE_NAME=gis
     - DATABASE_USERNAME=docker
@@ -148,7 +137,7 @@ devweb:
     - RABBITMQ_HOST=rabbitmq
     - DJANGO_SETTINGS_MODULE=core.settings.prod_docker
     - PYTHONPATH=/home/web/django_project
-    - VIRTUAL_HOST=qgis-ug.kartoza.com
+    - VIRTUAL_HOST=qgis.org.za
     - VIRTUAL_PORT=8080
   volumes:
     - ../django_project:/home/web/django_project
@@ -178,7 +167,7 @@ worker:
      - DATABASE_QGIS_HOST=db_gis
      - RABBITMQ_HOST=rabbitmq
      - DJANGO_SETTINGS_MODULE=core.settings.prod_docker
-     - VIRTUAL_HOST=qgis-ug.kartoza.com
+     - VIRTUAL_HOST=qgis.org.za
      - VIRTUAL_PORT=8080
      - C_FORCE_ROOT=true
    volumes:
