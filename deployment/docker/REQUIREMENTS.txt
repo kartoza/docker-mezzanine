@@ -21,3 +21,5 @@ cartridge
 raven==5.8.1
 django-sentry==1.13.5
 requests==2.0.0
+OWSLib==0.12
+

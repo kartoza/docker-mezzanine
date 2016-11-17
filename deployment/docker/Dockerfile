@@ -25,6 +25,7 @@ ENV LC_ALL en_ZA.UTF-8
 
 ADD REQUIREMENTS.txt /REQUIREMENTS.txt
 RUN pip install -r /REQUIREMENTS.txt
+RUN pip uninstall South
 RUN pip install uwsgi
 
 
