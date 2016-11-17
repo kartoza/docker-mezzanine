@@ -84,11 +84,10 @@
 
 {% block blog_post_list_post_content %}
 {% editable blog_post.content %}
-{{ blog_post.description_from_content|safe }}
+{{ blog_post.content|safe }}
 {% endeditable %}
 {% endblock %}
 
- <a href="{{ blog_post.get_absolute_url }}"  class="btn btn-default">{% trans "read more" %} <i class="icon-angle-right"> </i></a>
 {% block blog_post_list_post_links %}
 {% keywords_for blog_post as tags %}
     {% if tags %}
