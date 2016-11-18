@@ -6,6 +6,7 @@ TESTING = DEBUG
 TEMPLATE_DEBUG = DEBUG
 LOGGING_OUTPUT_ENABLED = DEBUG
 LOGGING_LOG_SQL = DEBUG
+ALLOWED_HOSTS = ['*']
 
 ALLOWED_HOSTS = ['*']
 
@@ -63,6 +64,7 @@ LOGGING = {
 try:
     # noinspection PyUnresolvedReferences
     import devserver  # noqa
+
     INSTALLED_APPS += (
         'devserver',
     )
