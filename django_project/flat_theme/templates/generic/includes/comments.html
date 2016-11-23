@@ -19,15 +19,15 @@ $(function() {
 
 {% endif %}
 </div>
-<div id="comment-form">
-<h3>{% trans "New Comment" %}</h3>
-
-{% if not request.POST.replied_to %}
-		{% include "generic/includes/comment_form.html" with comment_form=posted_comment_form %}
-    {% else %}
-    {{% include "generic/includes/comment_form.html" with comment_form=unposted_comment_form %}
-    {% endif %}
-
-
-</div>
+{#<div id="comment-form">#}
+{#<h3>{% trans "New Comment" %}</h3>#}
+{##}
+{#{% if not request.POST.replied_to %}#}
+{#		{% include "generic/includes/comment_form.html" with comment_form=posted_comment_form %}#}
+{#    {% else %}#}
+{#    {{% include "generic/includes/comment_form.html" with comment_form=unposted_comment_form %}#}
+{#    {% endif %}#}
+{##}
+{##}
+{#</div>#}
 </div>
