@@ -16,14 +16,13 @@ from django.utils.translation import ugettext_lazy as _
 
 from mezzanine.conf import register_setting
 
-
 register_setting(
     name="ADMIN_MENU_ORDER",
     description=_("Controls the ordering and grouping of the admin menu."),
     editable=False,
     default=(
         (_("Content"), ("pages.Page", "blog.BlogPost", "mezzanine_agenda.Event",
-            "generic.ThreadedComment", (_("Media Library"), "fb_browse"),)),
+                        "generic.ThreadedComment", (_("Media Library"), "fb_browse"),)),
         (_("Site"), ("sites.Site", "redirects.Redirect", "conf.Setting")),
         (_("Users"), ("auth.User", "auth.Group",)),
     ),
@@ -40,11 +39,11 @@ register_setting(
     name="EVENT_URLS_DATE_FORMAT",
     label=_("Event URL date format"),
     description=_("A string containing the value ``year``, ``month``, or "
-        "``day``, which controls the granularity of the date portion in the "
-        "URL for each event. Eg: ``year`` will define URLs in the format "
-        "/events/yyyy/slug/, while ``day`` will define URLs with the format "
-        "/events/yyyy/mm/dd/slug/. An empty string means the URLs will only "
-        "use the slug, and not contain any portion of the date at all."),
+                  "``day``, which controls the granularity of the date portion in the "
+                  "URL for each event. Eg: ``year`` will define URLs in the format "
+                  "/events/yyyy/slug/, while ``day`` will define URLs with the format "
+                  "/events/yyyy/mm/dd/slug/. An empty string means the URLs will only "
+                  "use the slug, and not contain any portion of the date at all."),
     editable=False,
     default="",
 )
@@ -61,7 +60,7 @@ register_setting(
     name="EVENT_RSS_LIMIT",
     label=_("Events RSS limit"),
     description=_("Number of most recent events shown in the RSS feed. "
-        "Set to ``None`` to display all events in the RSS feed."),
+                  "Set to ``None`` to display all events in the RSS feed."),
     editable=False,
     default=20,
 )
@@ -96,8 +95,17 @@ register_setting(
 
 register_setting(
     name="EVENT_GOOGLE_MAPS_API_KEY",
-    description="If set, interactive google maps embed will be used instead of static images",
+    description="Api Key for google maps",
     editable=True,
-    default=True,
+    default="",
 )
 
+# Append EVENT_GOOGLE_MAPS_API_KEY
+# accessible in templates.
+register_setting(
+    name="TEMPLATE_ACCESSIBLE_SETTINGS",
+    description=_("Sequence of setting names available within templates."),
+    editable=False,
+    default=("EVENT_GOOGLE_MAPS_API_KEY",),
+    append=True,
+)

@@ -2,6 +2,9 @@
 """
 core.settings.contrib
 """
+# needed so cartridge gets correct currency
+import locale
+import os
 from .base import *  # noqa
 from .secret import (
     COMMENTS_DISQUS_API_PUBLIC_KEY,
@@ -16,8 +19,11 @@ GRAPPELLI_INSTALLED = True
 
 # Extra installed apps - grapelli needs to be added before others
 INSTALLED_APPS += (
+     'raven.contrib.django.raven_compat',  # enable Raven plugin
      PACKAGE_NAME_GRAPPELLI,
-     "solid_theme",
+     "celery",
+     "config",
+     "kartoza_theme",
      "mezzanine",
      "django_comments",
      "compressor",
@@ -34,24 +40,34 @@ INSTALLED_APPS += (
      #"mezzanine.accounts",
      #"mezzanine.mobile",
      # Extra apps picked out by Tim
+     "mezzanine_people",
      "mezzanine_references",
+     "mezzanine_slides",
+     "mezzanine_file_collections",  # disabled for now as it is using south
      "mdown",  # markdown support in admin
-     "mezzanine_agenda"  # we use a local copy as pip misses migrations
+     "mezzanine_agenda",  # we use a local copy as pip misses migrations
+     "careers",
+     "wms_client",
+     "cartridge.shop",  # mezzanine store
+     "modal_announcements",
+     'payment'
 )
 
 # mezzanine-mdown options
-RICHTEXT_WIDGET_CLASS = "mdown.forms.WmdWidget"
-RICHTEXT_FILTER = "mdown.filters.codehilite"
+# RICHTEXT_WIDGET_CLASS = "mdown.forms.WmdWidget"
+# RICHTEXT_FILTER = "mdown.filters.codehilite"
 
 MIGRATION_MODULES = {'accounts': 'core.migration'}
 
 GRAPPELLI_ADMIN_TITLE = 'Site administration panel'
 
+PEOPLE_PER_PAGE = 20
 
+EVENT_USE_FEATURED_IMAGE = True
 # This one must occur before django provided middleware
 MIDDLEWARE_CLASSES = (
-    "mezzanine.core.middleware.UpdateCacheMiddleware",
-) + MIDDLEWARE_CLASSES
+                         "mezzanine.core.middleware.UpdateCacheMiddleware",
+                     ) + MIDDLEWARE_CLASSES
 # And these after django provided middleware
 MIDDLEWARE_CLASSES += (
     "mezzanine.core.request.CurrentRequestMiddleware",
@@ -64,6 +80,7 @@ MIDDLEWARE_CLASSES += (
     # "mezzanine.core.middleware.SSLRedirectMiddleware",
     "mezzanine.pages.middleware.PageMiddleware",
     "mezzanine.core.middleware.FetchFromCacheMiddleware",
+    "cartridge.shop.middleware.ShopMiddleware",
 )
 
 AUTHENTICATION_BACKENDS = ("mezzanine.core.auth_backends.MezzanineBackend",)
@@ -80,6 +97,91 @@ ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 
 EVENT_SLUG = u"events"
 
+######################
+# CARTRIDGE (ecommerce platform for mezzanine) SETTINGS #
+######################
+
+# Cartridge uses locale to determine the number of decimal places for the
+# currency. Unfortunately python does not seem to pick up our system
+# locale well so we set it here. If you need to change to another locale
+# please also see Dockerfile in deployment/docker as it sets up the local
+# for en_ZA and you will need to adjust that before your chosen locale works
+locale.setlocale(locale.LC_ALL, 'en_ZA.UTF-8')
+# The following settings are already defined in cartridge.shop.defaults
+# with default values, but are common enough to be put here, commented
+# out, for conveniently overriding. Please consult the settings
+# documentation for a full list of settings Cartridge implements:
+# http://cartridge.jupo.org/configuration.html#default-settings
+
+# Sequence of available credit card types for payment.
+SHOP_CARD_TYPES = ("Mastercard", "Visa",)
+
+# Setting to turn on featured images for shop categories. Defaults to False.
+# SHOP_CATEGORY_USE_FEATURED_IMAGE = True
+
+# Set an alternative OrderForm class for the checkout process.
+# SHOP_CHECKOUT_FORM_CLASS = 'cartridge.shop.forms.OrderForm'
+
+# If True, the checkout process is split into separate
+# billing/shipping and payment steps.
+# SHOP_CHECKOUT_STEPS_SPLIT = True
+
+# If True, the checkout process has a final confirmation step before
+# completion.
+SHOP_CHECKOUT_STEPS_CONFIRMATION = True
+
+# Controls the formatting of monetary values accord to the locale
+# module in the python standard library. If an empty string is
+# used, will fall back to the system's locale.
+SHOP_CURRENCY_LOCALE = "en_ZA.UTF-8"
+
+# Dotted package path and name of the function that
+# is called on submit of the billing/shipping checkout step. This
+# is where shipping calculation can be performed and set using the
+# function ``cartridge.shop.utils.set_shipping``.
+SHOP_HANDLER_BILLING_SHIPPING = \
+    "cartridge.shop.checkout.default_billship_handler"
+
+# Dotted package path and name of the function that
+# is called once an order is successful and all of the order
+# object's data has been created. This is where any custom order
+# processing should be implemented.
+SHOP_HANDLER_ORDER = "cartridge.shop.checkout.default_order_handler"
+
+# Dotted package path and name of the function that
+# is called on submit of the payment checkout step. This is where
+# integration with a payment gateway should be implemented.
+SHOP_HANDLER_PAYMENT = "cartridge.shop.checkout.default_payment_handler"
+
+SHOP_HANDLER_TAX = "core.cartridge.shop.checkout.vat_tax_handler"
+SHOP_HANDLER_TAX_INCLUDE_IN_PRICE = True
+
+# Sequence of value/name pairs for order statuses.
+SHOP_ORDER_STATUS_CHOICES = (
+    (1, "Unprocessed"),
+    (2, "Processed"),
+)
+
+SHOP_PAYMENT_STEP_ENABLED = False
+
+# Sequence of value/name pairs for types of product options,
+# eg Size, Colour. NOTE: Increasing the number of these will
+# require database migrations!
+SHOP_OPTION_TYPE_CHOICES = (
+    (1, "Course date"),
+    (2, "Course venue"),
+)
+# Sequence of value/name pairs for payment statuses.
+SHOP_PAYMENT_STATUS_CHOICES = (
+    (1, "Unchecked"),
+    (2, "Checked"),
+    (3, "Rejected"),
+)
+
+# Sequence of indexes from the SHOP_OPTION_TYPE_CHOICES setting that
+# control how the options should be ordered in the admin,
+# eg for "Colour" then "Size" given the above:
+SHOP_OPTION_ADMIN_ORDER = (1,)
 
 ######################
 # MEZZANINE SETTINGS #
@@ -94,8 +196,8 @@ SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 # Each one should be a callable that takes the request object as its
 # only parameter and returns a dictionary to add to the context.
 # Implemented in base.py as a dirty hack for now
-#TEMPLATE_CONTEXT_PROCESSORS = (
-#)
+# TEMPLATE_CONTEXT_PROCESSORS = (
+# )
 
 # The following settings are already defined with default values in
 # the ``defaults.py`` module within each of Mezzanine's apps, but are
@@ -108,7 +210,7 @@ SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 #
 ADMIN_MENU_ORDER = (
     ("Content", ("pages.Page", "blog.BlogPost",
-       "generic.ThreadedComment", ("Media Library", "fb_browse"),)),
+                 "generic.ThreadedComment", ("Media Library", "fb_browse"),)),
     ("Site", ("sites.Site", "redirects.Redirect", "conf.Setting")),
     ("Users", ("auth.User", "auth.Group",)),
 )
@@ -168,6 +270,9 @@ PAGE_MENU_TEMPLATES = (
 #
 # BLOG_USE_FEATURED_IMAGE = True
 
+# Front-end inline editing
+# Set false for now, because this causing layout error
+INLINE_EDITING_ENABLED = False
 
 ####################
 # MEZZANINE DYNAMIC SETTINGS #
@@ -179,9 +284,47 @@ PAGE_MENU_TEMPLATES = (
 # without Mezzanine installed, as the case may be when using the
 # fabfile, where setting the dynamic settings below isn't strictly
 # required.
-#try:
+# try:
 ##    from mezzanine.utils.conf import set_dynamic_settings
-#except ImportError:
+# except ImportError:
 #    pass
-#else:
+# else:
 #    set_dynamic_settings(globals())
+
+####################
+# MEZZANINE CAREERS SETTINGS #
+####################
+
+CAREERS_PER_PAGE = 5
+
+####################
+# SEARCH BOX SETTINGS #
+####################
+
+SEARCH_MODEL_CHOICES = (
+    'pages.Page',
+    'blog.BlogPost',
+    'mezzanine_people.Person',
+    'careers.JobPost',
+)
+
+####################
+# FILEBROWSER ALLOWED EXTENSIONS #
+####################
+FILEBROWSER_EXTENSIONS = {
+    'Folder': [''],
+    'Image': ['.jpg', '.jpeg', '.gif', '.png', '.tif', '.tiff'],
+    'Video': ['.mov', '.wmv', '.mpeg', '.mpg', '.avi', '.rm'],
+    'Document': ['.pdf', '.doc', '.rtf', '.txt', '.xls', '.csv', 'zip', 'tar.gz', 'rar'],
+    'Audio': ['.mp3', '.mp4', '.wav', '.aiff', '.midi', '.m4p', '.ogg'],
+    'Code': ['.html', '.py', '.js', '.css']
+}
+# We don't want to have dead connections stored on rabbitmq
+# BROKER_HEARTBEAT = '?heartbeat=30'
+# BROKER_URL += BROKER_HEARTBEAT
+
+BROKER_URL = 'amqp://guest:guest@%s:5672//' % 'rabbitmq'
+
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'

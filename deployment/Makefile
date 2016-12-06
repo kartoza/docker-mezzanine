@@ -1,5 +1,5 @@
 PROJECT_ID := mezzanine
-PRODUCTION_HOST := mountain
+PRODUCTION_HOST := kartoza4
 
 SHELL := /bin/bash
 
@@ -22,6 +22,8 @@ build:
 	@echo "Building in production mode"
 	@echo "------------------------------------------------------------------"
 	@docker-compose -p $(PROJECT_ID) build uwsgi
+	@docker-compose -p $(PROJECT_ID) build uwsgi-ephemeral
+
 
 web:
 	@echo
@@ -29,6 +31,7 @@ web:
 	@echo "Running in production mode"
 	@echo "------------------------------------------------------------------"
 	@docker-compose -p $(PROJECT_ID) up -d web
+	@docker-compose -p $(PROJECT_ID) up -d uwsgi-ephemeral
 	@# Dont confuse this with the dbbackup make command below
 	@# This one runs the postgis-backup cron container
 	@# We add --no-recreate so that it does not destroy & recreate the db container
@@ -45,7 +48,6 @@ permissions:
 	@if [ -d "logs" ]; then sudo chmod -R a+rwx logs; fi
 	@if [ -d "media" ]; then sudo chmod -R a+rwx media; fi
 	@if [ -d "static" ]; then sudo chmod -R a+rwx static; fi
-	@if [ -d "pg" ]; then sudo chmod -R a+rwx pg; fi
 	@if [ -d "backups" ]; then sudo chmod -R a+rwx backups; fi
 
 db:
@@ -77,26 +79,24 @@ migrate:
 	@# We add the '-' prefix to the next line as the migration may fail
 	@# but we want to continue anyway.
 	@#We need to migrate accounts first as it has a reference to user model
-	-@docker-compose -p $(PROJECT_ID) run uwsgi python manage.py migrate auth
-	@docker-compose -p $(PROJECT_ID) run uwsgi python manage.py migrate
+	-@docker-compose -p $(PROJECT_ID) run uwsgi-ephemeral bash -c "pip uninstall -y South && python manage.py migrate auth && python manage.py migrate sites && python manage.py migrate pages && python manage.py migrate"
 
 update-migrations:
 	@echo
 	@echo "------------------------------------------------------------------"
 	@echo "Running update migrations in production mode"
 	@echo "------------------------------------------------------------------"
-	@docker-compose -p $(PROJECT_ID) run uwsgi python manage.py makemigrations
+	@docker-compose -p $(PROJECT_ID) run uwsgi-ephemeral bash -c "pip uninstall -y South && python manage.py makemigrations"
 
 collectstatic:
 	@echo
 	@echo "------------------------------------------------------------------"
 	@echo "Collecting static in production mode"
 	@echo "------------------------------------------------------------------"
-	#@docker-compose -p $(PROJECT_ID) run uwsgi python manage.py collectstatic --noinput
 	#We need to run collect static in the same context as the running
-	# uwsgi container it seems so I use docker exec here
+	# uwsgi-ephemeral container it seems so I use docker exec here
 	# no -it flag so we can run over remote shell
-	@docker exec $(PROJECT_ID)-uwsgi python manage.py collectstatic --noinput
+	@docker-compose -p $(PROJECT_ID) run uwsgi-ephemeral python manage.py collectstatic --noinput
 
 reload:
 	@echo
@@ -112,6 +112,20 @@ kill:
 	@echo "Killing in production mode"
 	@echo "------------------------------------------------------------------"
 	@docker-compose -p $(PROJECT_ID) kill
+
+kill-uwsgi:
+	@echo
+	@echo "------------------------------------------------------------------"
+	@echo "Killing in uwsgi production mode"
+	@echo "------------------------------------------------------------------"
+	@docker-compose -p $(PROJECT_ID) kill uwsgi
+
+kill-uwsgi-ephemeral:
+	@echo
+	@echo "------------------------------------------------------------------"
+	@echo "Killing in uwsgi production mode"
+	@echo "------------------------------------------------------------------"
+	@docker-compose -p $(PROJECT_ID) kill uwsgi-ephemeral
 
 rm: dbbackup rm-only
 
@@ -149,14 +163,14 @@ shell:
 	@echo "------------------------------------------------------------------"
 	@echo "Shelling in in production mode"
 	@echo "------------------------------------------------------------------"
-	@docker-compose -p $(PROJECT_ID) run uwsgi /bin/bash
+	@docker-compose -p $(PROJECT_ID) run uwsgi-ephemeral /bin/bash
 
 superuser:
 	@echo
 	@echo "------------------------------------------------------------------"
 	@echo "Creating a superuser in production mode"
 	@echo "------------------------------------------------------------------"
-	@docker-compose -p $(PROJECT_ID) run uwsgi python manage.py createsuperuser
+	@docker-compose -p $(PROJECT_ID) run uwsgi-ephemeral python manage.py createsuperuser
 
 dbbash:
 	@echo
@@ -242,16 +256,16 @@ mediasync:
 	@echo "------------------------------------------------------------------"
 	@echo "Syncing media files and secret.py from live server"
 	@echo "------------------------------------------------------------------"
-	@rsync -av --progress $(PRODUCTION_HOST):/home/timlinux/mezzanine.kartoza.com/deployment/media/ media
-	@rsync -av --progress $(PRODUCTION_HOST):/home/timlinux/mezzanine.kartoza.com/django_project/core/settings/secret.py ../django_project/core/settings/
+	@rsync -av --progress $(PRODUCTION_HOST):/home/web/kartoza.com/deployment/media/ media
+	@rsync -av --progress $(PRODUCTION_HOST):/home/web/kartoza.com/django_project/core/settings/secret.py ../django_project/core/settings/
 
 dbsync:
 	@echo
 	@echo "------------------------------------------------------------------"
 	@echo "Syncing database files from live server"
 	@echo "------------------------------------------------------------------"
-	-@ssh $(PRODUCTION_HOST) "cd /home/timlinux/mezzanine.kartoza.com/deployment; make dbbackup"
-	@rsync -av --progress $(PRODUCTION_HOST):/home/timlinux/mezzanine.kartoza.com/deployment/backups/ backups
+	-@ssh $(PRODUCTION_HOST) "cd /home/web/kartoza.com/deployment; make dbbackup"
+	@rsync -av --progress $(PRODUCTION_HOST):/home/web/kartoza.com/deployment/backups/ backups
 
 create-machine:
 	@echo
@@ -265,7 +279,7 @@ enable-machine:
 	@echo "------------------------------------------------------------------"
 	@echo "Enabling docker machine."
 	@echo "------------------------------------------------------------------"
-	@echo "eval \"$(docker-machine env projecta)\""
+	@echo "eval \"$(docker-machine env mezzanine)\""
 
 # ----------------------------------------------------------------------------
 #    DEVELOPMENT C O M M A N D S
@@ -329,3 +343,17 @@ help:
 	@echo "* **superuser** - create a django superuser account."
 	@echo "* **update-migrations** - freshen all migration definitions to match the current code base."
 	@echo "* **web** - same as **run** - runs the production site."
+
+worker:
+	@echo
+	@echo "------------------------------------------------------------------"
+	@echo "Running worker production mode"
+	@echo "------------------------------------------------------------------"
+	@docker-compose -p $(PROJECT_ID) up -d worker
+
+workerlogs:
+	@echo
+	@echo "------------------------------------------------------------------"
+	@echo "Showing celery worker logs in production mode"
+	@echo "------------------------------------------------------------------"
+	@docker-compose -p $(PROJECT_ID) logs worker

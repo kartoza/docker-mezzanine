@@ -102,6 +102,7 @@ deployment/media
 deployment/docker/71-apt-cacher-ng
 django_project/static
 django_project/core/settings/secret.py
+django_project/celerybeat-schedule
 
 # local media
 django_project/media

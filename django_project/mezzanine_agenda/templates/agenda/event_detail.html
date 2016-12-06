@@ -62,7 +62,7 @@
 {% endblock %}
 
 {% block event_detail_featured_image %}
-{% if settings.EVENT_USE_FEATURED_IMAGE and event.featured_image %}
+{% if event.featured_image %}
 <p><img class="img-responsive" src="{{ MEDIA_URL }}{% thumbnail event.featured_image 600 0 %}"></p>
 {% endif %}
 {% endblock %}
@@ -82,17 +82,17 @@
 {% editable event.location %}
 <div class="panel panel-default">
     <div class="panel-body">
+    {% if settings.EVENT_GOOGLE_MAPS_API_KEY %}
+        {% google_interactive_map event '100%' 350 16 %}
+    {% else %}
+        {% google_static_map event '100%' 350 16 %}
+    {% endif %}
     <p>
-	{{ event.location.address|linebreaksbr }}<br />
+	{{ event.location.address|linebreaksbr }}
 	<a href="{{ event|google_nav_url }}" target="_blank" class="btn btn-default">
 	    Get Directions
 	</a>
     </p>
-    {% if settings.EVENT_GOOGLE_MAPS_API_KEY %}
-        {% google_interactive_map event 621 250 10 %}
-    {% else %}
-        {% google_static_map event 621 250 10 %}
-    {% endif %}
     </div>
 </div>
 {% endeditable %}

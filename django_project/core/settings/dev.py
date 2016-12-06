@@ -6,6 +6,9 @@ TESTING = DEBUG
 TEMPLATE_DEBUG = DEBUG
 LOGGING_OUTPUT_ENABLED = DEBUG
 LOGGING_LOG_SQL = DEBUG
+ALLOWED_HOSTS = ['*']
+
+ALLOWED_HOSTS = ['*']
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
@@ -61,6 +64,7 @@ LOGGING = {
 try:
     # noinspection PyUnresolvedReferences
     import devserver  # noqa
+
     INSTALLED_APPS += (
         'devserver',
     )
@@ -73,7 +77,7 @@ try:
         # uncomment if you want to show every SQL executed
         # 'devserver.modules.sql.SQLRealTimeModule',
         # show sql query summary
-        'devserver.modules.sql.SQLSummaryModule',
+        # 'devserver.modules.sql.SQLSummaryModule',
         # Total time to render a request
         'devserver.modules.profile.ProfileSummaryModule',
 

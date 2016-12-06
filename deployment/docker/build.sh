@@ -1,2 +1,2 @@
 #!/bin/sh
- docker build -t kartoza/projecta .
+ docker build -t kartoza/mezzanine .
