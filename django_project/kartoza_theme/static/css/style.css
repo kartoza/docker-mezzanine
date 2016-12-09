@@ -835,21 +835,6 @@ csmall2 {
 	CARTRIDGE
 ################################################################# */
 
-.caption {
-    background: rgba(0,0,0, .6) !important;
-}
-
-.caption h6 {
-    color: white !important;
-}
-
-.coming-soon {
-    color: #fcefa1;
-}
-
-.price-info {
-    color: #b2dba1;
-}
 
 .product-thumb {
     padding-top: 5px;

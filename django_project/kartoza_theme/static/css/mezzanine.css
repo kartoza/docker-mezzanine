@@ -588,3 +588,38 @@ float the buttons inside it. This prevents collapsing. */
 #recent-post-section p a:hover, .popular-posts li a:hover {
     opacity: 0.8 !important;
 }
+
+.thumbnail {
+    overflow: hidden;
+    height: 160px;
+    text-align: center;
+    margin-bottom: 0px;
+}
+
+.thumbnail img {
+    max-width: 100%;
+    max-height: 100%;
+    vertical-align: middle;
+}
+
+.thumbnail-caption {
+    width: 100%;
+    padding: 10px;
+    min-height: 100px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #fff !important;
+}
+
+.thumbnail-caption h6 {
+    color: black !important;
+    line-height: 1.5;
+    height: auto !important;
+    margin-top: 0px !important;
+    margin-bottom: 5px !important;
+    border: none !important;
+}
+
+.thumbnail-caption .price-info {
+    color: #6d6d6d !important;
+}
