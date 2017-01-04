@@ -591,9 +591,12 @@ float the buttons inside it. This prevents collapsing. */
 
 .thumbnail {
     overflow: hidden;
-    height: 160px;
     text-align: center;
     margin-bottom: 0px;
+}
+
+.product-thumb .thumbnail {
+    height: 160px;
 }
 
 .thumbnail img {
