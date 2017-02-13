@@ -29,8 +29,8 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Raleway', sans-serif;
-    font-weight: 700;
+    font-family: 'Lato', sans-serif;
+    font-weight: bolder;
 }
 
 p {
@@ -90,7 +90,7 @@ a:focus {
 
 .navbar-brand, .navbar-title {
     font-family: 'Leto', sans-serif;
-    font-weight: 900;
+    font-weight: 600;
 }
 
 .navbar-brand img {
@@ -98,34 +98,42 @@ a:focus {
     height: 30px;
 }
 
+.navbar-brand {
+    padding-top: 19px;
+    padding-bottom: 17px;
+}
+
 .navbar-header .navbar-brand, .navbar-title {
-    color: white;
+    color: #444;
 }
 
 .navbar-title {
     font-style: normal;
-    color: white !important;
+    color: #444;
     font-size: 10pt;
     text-transform: uppercase;
+    font-weight: lighter !important;
 }
 
 .navbar-default .navbar-nav > li > a {
-    color: white;
-    font-weight: 700;
-    font-size: 12px;
+    color: #444;
+    font-weight: 500;
+    font-size: 15px;
+    display: inline-block;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 .navbar-default .navbar-nav > li > a:hover {
-    color: #FCB514;
+    color: #007C59;
 }
 
 .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
-    color: #FCB514;
+    color: #007C59;
     background-color: transparent;
 }
 
 .navbar-default {
-    background-color: #007C59;
     border-color: transparent;
 }
 
@@ -877,4 +885,20 @@ csmall2 {
 .white-green {
     background-color: white;
     color: #34495e;
+}
+
+.alizarin {
+    background-color: #f45d2b;
+}
+
+.intro-m {
+    position: relative;
+    height: 250px;
+}
+
+.intro {
+    position: absolute;
+    top: 50%;
+    height: 100px;
+    margin-top: -50px;
 }

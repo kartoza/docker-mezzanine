@@ -24,7 +24,7 @@
 {% block main %}
 <section id="blog" class="container">
 	<div class="row">
-		<div class="col-sm-8">
+		<div class="col-sm-12">
 			<div class="blog">
 			<div class="blog-item">
 		 {% if settings.BLOG_USE_FEATURED_IMAGE and blog_post.featured_image %}
@@ -61,7 +61,7 @@
                                 <span><i class="icon-calendar"></i> {% blocktrans with sometime=blog_post.publish_date|timesince %}{{ sometime }} ago{% endblocktrans %}</span>
                                 <span><i class="icon-comment"></i> 
                                 {% if blog_post.allow_comments %}
-									
+
 									{% if settings.COMMENTS_DISQUS_SHORTNAME %}
 									<a href="{{ blog_post.get_absolute_url }}#disqus_thread"
 										data-disqus-identifier="{% disqus_id_for blog_post %}">
@@ -73,7 +73,7 @@
 									</a>
 									{% endif %}
 									{% endif %}
-																
+
                                 </span>
                             </div>
 
@@ -84,11 +84,10 @@
 
 {% block blog_post_list_post_content %}
 {% editable blog_post.content %}
-{{ blog_post.description_from_content|safe }}
+{{ blog_post.content|safe }}
 {% endeditable %}
 {% endblock %}
 
- <a href="{{ blog_post.get_absolute_url }}"  class="btn btn-default">{% trans "read more" %} <i class="icon-angle-right"> </i></a>
 {% block blog_post_list_post_links %}
 {% keywords_for blog_post as tags %}
     {% if tags %}
