@@ -1,0 +1,37 @@
+{% load i18n %}
+{% load listify %}
+{% load markdownify %}
+
+{% block body %}
+
+{% for proposal in proposals %}
+  <h2 id="{{ proposal.number }}">#{{ proposal.number }}: {{ proposal.title }}</h2>
+
+  <p>
+  {% if proposal.speakers|listify_if_true:"name"|length == 1 %}
+    <strong>Speaker</strong>:
+  {% else %}
+    <strong>Speakers</strong>:
+  {% endif %}
+
+  {% for speaker in proposal.speakers|listify_if_true:"name" %}
+    <strong>{{ speaker.name }}</strong>{% if speaker.company %} ({{ speaker.company }}){% endif %}{% if not forloop.last %},{% endif %}
+  {% endfor %}
+  </p>
+
+  <h3>Abstract</h3>
+
+  {{ proposal.abstract|markdownify|safe }}
+
+  <p>
+    <strong>Tags</strong>: {{ proposal.tags.all|join:", " }}
+  </p>
+
+  {% if proposal.foss_is_links %}
+  <p>
+    <strong>Link to project</strong>: {{ proposal.foss_is_links|urlize }}
+  </p>
+  {% endif %}
+{% endfor %}
+
+{% endblock %}

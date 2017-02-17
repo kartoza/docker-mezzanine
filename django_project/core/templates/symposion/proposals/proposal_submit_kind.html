@@ -1,0 +1,37 @@
+{% extends "symposion/proposals/base.html" %}
+
+{% load bootstrap %}
+{% load pinax_boxes_tags %}
+{% load i18n %}
+
+{% block page_title %}Submit a Proposal for a {{ kind.name }}{% endblock %}
+
+{% block body %}
+    {% box "example_proposal" %}
+
+    <form method="POST" action="" enctype="multipart/form-data" class="form-horizontal">
+        {% csrf_token %}
+        <fieldset>
+            {{ proposal_form|bootstrap_horizontal }}
+        </fieldset>
+        <div class="form-actions">
+            <p>
+                You will be able to edit your proposal after it has been submitted.
+            </p>
+            <input class="btn btn-primary" type="submit" name="finish" value="Save" />
+            <!-- <span style="float: right; padding: 4px 6px">or</span> -->
+            <input class="btn btn-default" type="submit" name="add-speakers" value="Save and Add Additional Speakers" />
+        </div>
+    </form>
+    {% if kind.slug == 'talk' or kind.slug == 'map' %}
+        <h4>Footnotes:</h4>
+        <p id="fn1">
+            [1] Released under an <a href="http://opensource.org/licenses" target="_blank">OSI approved license</a>.
+        </p>
+        {% if kind.slug == 'map' %}
+            <p id="fn2">
+                [2] Released under an <a href="http://opendefinition.org/licenses/" target="_blank">Open Definition conformant license</a>.
+            </p>
+        {% endif %}
+    {% endif %}
+{% endblock %}

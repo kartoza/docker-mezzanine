@@ -13,7 +13,7 @@
 from __future__ import unicode_literals
 
 from django.conf.urls import patterns, include, url
-from django.conf.urls.i18n import i18n_patterns
+from django.conf.urls.i18n import i18n_patterns, urlpatterns
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
@@ -27,7 +27,6 @@ admin.autodiscover()
 
 urlpatterns = i18n_patterns(
     '',
-
     # Change the admin prefix here to use an alternate URL for the
     # admin interface, which would be marginally more secure.
     ("^admin/", include(admin.site.urls)),
@@ -106,9 +105,16 @@ urlpatterns = i18n_patterns(
 
     # For mezzanine-agenda
     ("^%s/" % settings.EVENT_SLUG, include("mezzanine_agenda.urls")),
+
+    #symposion url
 )
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += (
+    url("^speaker/", include("symposion.speakers.urls")),
+    url("^conference/", include("symposion.conference.urls")),
+    url(r"^account/", include("account.urls")),
+)
 
 # Adds ``STATIC_URL`` to the context of error pages, so that error
 # pages can use JS, CSS and images.

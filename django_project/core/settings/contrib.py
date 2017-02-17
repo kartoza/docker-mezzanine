@@ -35,9 +35,30 @@ INSTALLED_APPS += (
      "mezzanine_references",
      "mezzanine_slides",
      "mdown",  # markdown support in admin
+     "account",
      "mezzanine_agenda",  # we use a local copy as pip misses migrations
+     # theme
+     "bootstrapform",
+     "easy_thumbnails",
+     "taggit",
+     "reversion",
+     "metron",
+     "sitetree",
 )
 
+ACCOUNT_OPEN_SIGNUP = True
+ACCOUNT_EMAIL_UNIQUE = True
+ACCOUNT_EMAIL_CONFIRMATION_REQUIRED = False
+ACCOUNT_SIGNUP_REDIRECT_URL = "dashboard"
+ACCOUNT_LOGIN_REDIRECT_URL = "dashboard"
+ACCOUNT_LOGOUT_REDIRECT_URL = "home"
+ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 2
+ACCOUNT_USE_AUTH_AUTHENTICATE = True
+
+
+AUTHENTICATION_BACKENDS = [
+    "account.auth_backends.UsernameAuthenticationBackend",
+]
 # mezzanine-mdown options
 # RICHTEXT_WIDGET_CLASS = "mdown.forms.WmdWidget"
 # RICHTEXT_FILTER = "mdown.filters.codehilite"

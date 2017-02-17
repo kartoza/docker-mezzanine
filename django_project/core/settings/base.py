@@ -116,6 +116,8 @@ TEMPLATES = [
                 # Dirty hack for now - should be specified in contrib.py
                 "mezzanine.conf.context_processors.settings",
                 "mezzanine.pages.context_processors.page",
+                "account.context_processors.account",
+                "pinax_theme_bootstrap.context_processors.theme",
             ],
         },
     },

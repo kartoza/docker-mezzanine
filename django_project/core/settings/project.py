@@ -14,6 +14,15 @@ from .contrib import *  # noqa
 # Project apps
 INSTALLED_APPS += (
     # Add any additional project apps here
+    # symposion
+    "symposion",
+    "symposion.conference",
+    "symposion.proposals",
+    "symposion.reviews",
+    "symposion.schedule",
+    "symposion.speakers",
+    "symposion.sponsorship",
+    "symposion.teams",
 )
 
 # Due to profile page does not available,
