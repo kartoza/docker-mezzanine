@@ -71,6 +71,7 @@ STATICFILES_DIRS = (
     # Don't forget to use absolute paths, not relative paths.
     absolute_path('core', 'base_static'),
     absolute_path("symposion","site_media"),
+    ("site_media/",absolute_path("symposion","site_media")),
 )
 
 # Additional locations of static files
