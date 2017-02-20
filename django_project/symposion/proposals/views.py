@@ -36,7 +36,7 @@ from symposion.proposals.forms import (
     AddSpeakerForm, SupportingDocumentCreateForm
 )
 
-from foss4g.proposals.models import TalkProposal, WorkshopProposal
+from proposals.models import TalkProposal, WorkshopProposal
 
 
 # Frab expects IDs for all sorts of things to be unique. In order to not
