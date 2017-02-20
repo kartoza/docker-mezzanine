@@ -47,3 +47,4 @@ pinax-boxes==2.1.0
 taggit-selectize==0.1.2
 unicodecsv==0.14.1
 mdx_linkify==0.6
+pinax

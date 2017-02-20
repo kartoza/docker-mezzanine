@@ -77,6 +77,6 @@ from .celery_setting import *  # noqa
 
 CONFERENCE_ID=1
 
-FIXTURE_DIRS = (
-    absolute_path("symposion","fixtures")
-)
+# FIXTURE_DIRS = (
+#     absolute_path("symposion","fixtures"),
+# )
