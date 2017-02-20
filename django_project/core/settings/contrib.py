@@ -35,7 +35,6 @@ INSTALLED_APPS += (
      "mezzanine_references",
      "mezzanine_slides",
      "mdown",  # markdown support in admin
-     "account",
      "mezzanine_agenda",  # we use a local copy as pip misses migrations
      # theme
      "bootstrapform",
@@ -44,6 +43,10 @@ INSTALLED_APPS += (
      "reversion",
      "metron",
      "sitetree",
+     "pinax.boxes",
+     "pinax.eventlog",
+     "pinax_theme_bootstrap",
+
 )
 
 ACCOUNT_OPEN_SIGNUP = True
