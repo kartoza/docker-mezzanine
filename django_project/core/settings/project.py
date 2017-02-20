@@ -74,3 +74,5 @@ else:
     set_dynamic_settings(globals())
 
 from .celery_setting import *  # noqa
+
+CONFERENCE_ID=1

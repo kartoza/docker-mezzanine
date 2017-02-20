@@ -18,6 +18,8 @@ from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
 from mezzanine.core.views import direct_to_template
+import symposion.views
+from core.settings.utils import absolute_path
 
 admin.autodiscover()
 
@@ -110,10 +112,14 @@ urlpatterns = i18n_patterns(
 )
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.SYMPOSION_STATIC_URL, document_root=absolute_path("symposion","site_media"))
 urlpatterns += (
     url("^speaker/", include("symposion.speakers.urls")),
     url("^conference/", include("symposion.conference.urls")),
     url(r"^account/", include("account.urls")),
+    url(r"^dashboard/", symposion.views.dashboard, name="dashboard"),
+    url(r"^sponsors/", include("symposion.sponsorship.urls")),
+    url(r"^boxes/", include("pinax.boxes.urls")),
 )
 
 # Adds ``STATIC_URL`` to the context of error pages, so that error

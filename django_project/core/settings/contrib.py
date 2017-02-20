@@ -43,9 +43,9 @@ INSTALLED_APPS += (
      "reversion",
      "metron",
      "sitetree",
-     "pinax.boxes",
-     "pinax.eventlog",
      "pinax_theme_bootstrap",
+     "pinax.boxes",
+     "account",
 
 )
 
