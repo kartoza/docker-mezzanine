@@ -23,6 +23,7 @@ INSTALLED_APPS += (
     "symposion.speakers",
     "symposion.sponsorship",
     "symposion.teams",
+    "proposals",
 )
 
 # Due to profile page does not available,

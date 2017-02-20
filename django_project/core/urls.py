@@ -119,6 +119,7 @@ urlpatterns += (
     url(r"^account/", include("account.urls")),
     url(r"^dashboard/", symposion.views.dashboard, name="dashboard"),
     url(r"^sponsors/", include("symposion.sponsorship.urls")),
+    url(r"^proposals/", include("symposion.proposals.urls")),
     url(r"^boxes/", include("pinax.boxes.urls")),
 )
 
