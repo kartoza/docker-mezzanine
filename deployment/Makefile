@@ -84,7 +84,9 @@ migrate:
 	@docker-compose -p $(PROJECT_ID) run uwsgi-ephemeral python manage.py migrate pages
 	@docker-compose -p $(PROJECT_ID) run uwsgi-ephemeral python manage.py migrate
 	@#Used to load fixtures for symposion project
-	@docker-compose -p $(PROJECT_ID) run uwsgi-ephemeral python manage.py syncdb
+	@docker exec -t -i qgis-org-za-uwsgi /bin/bash -c "python manage.py loaddata symposion/fixtures/*.json"
+
+
 
 update-migrations:
 	@echo
