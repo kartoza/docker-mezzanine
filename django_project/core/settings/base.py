@@ -8,8 +8,6 @@ from __future__ import absolute_import, unicode_literals
 from .utils import absolute_path
 
 ADMINS = (
-    ('Tim Sutton', 'tim@kartoza.com'),
-    ('Christian Christelis', 'christian@kartoza.com'),
     ('Muhammad Anis', 'anis@kartoza.com'),
 )
 
