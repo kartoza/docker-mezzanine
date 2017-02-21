@@ -8,8 +8,7 @@ from __future__ import absolute_import, unicode_literals
 from .utils import absolute_path
 
 ADMINS = (
-    ('Tim Sutton', 'tim@kartoza.com'),
-    ('Christian Christelis', 'christian@kartoza.com')
+    ('Muhammad Anis', 'anis@kartoza.com'),
 )
 
 MANAGERS = ADMINS
@@ -124,6 +123,7 @@ TEMPLATES = [
                 "mezzanine.pages.context_processors.page",
                 "account.context_processors.account",
                 "pinax_theme_bootstrap.context_processors.theme",
+                "symposion.reviews.context_processors.reviews",
             ],
         },
     },

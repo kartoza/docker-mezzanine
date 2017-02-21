@@ -77,6 +77,11 @@ else:
 from .celery_setting import *  # noqa
 
 CONFERENCE_ID=1
+PROPOSAL_FORMS = {
+    "talk": "proposals.forms.TalkProposalForm",
+    "workshop": "proposals.forms.WorkshopProposalForm",
+    "map": "proposals.forms.MapProposalForm",
+}
 
 # FIXTURE_DIRS = (
 #     absolute_path("symposion","fixtures"),

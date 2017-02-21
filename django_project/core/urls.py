@@ -121,6 +121,11 @@ urlpatterns += (
     url(r"^sponsors/", include("symposion.sponsorship.urls")),
     url(r"^proposals/", include("symposion.proposals.urls")),
     url(r"^boxes/", include("pinax.boxes.urls")),
+    url(r"^sponsors/", include("symposion.sponsorship.urls")),
+    url(r"^reviews/", include("symposion.reviews.urls")),
+    url(r"^schedule/", include("symposion.schedule.urls")),
+
+    url(r"^teams/", include("symposion.teams.urls")),
 )
 
 # Adds ``STATIC_URL`` to the context of error pages, so that error
