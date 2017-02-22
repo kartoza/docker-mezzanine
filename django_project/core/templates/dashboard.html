@@ -5,6 +5,7 @@
 {% load review_tags %}
 {% load teams_tags %}
 {% load sponsorship_tags %}
+{% load pinaxcon_product_tags %}
 
 {% block head_title %}Dashboard{% endblock %}
 
@@ -162,6 +163,8 @@
             </div>
     </div>
     {% endif %}
+
+    {% pinaxcon_list_products "span2" 40 %}
 
     {% available_teams as available_teams %}
     {% if user.memberships.exists or available_teams %}

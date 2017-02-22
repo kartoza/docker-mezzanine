@@ -1,0 +1,13 @@
+{% load static %}
+<ul class="thumbnails">
+{% for p in products %}
+  <li class="{{ span }}">
+    <div class="thumbnail">
+    <a href="{{ p.get_absolute_url }}">
+      <img
+     	src="{% get_media_prefix %}{{ p.image }}" alt="">
+      <h4>{{ p.title }}</h4></a>
+    </div>
+  </li>
+{% endfor %}
+</ul>
