@@ -46,6 +46,7 @@ INSTALLED_APPS += (
      "pinax_theme_bootstrap",
      "pinax.boxes",
      "account",
+     "cartridge.shop",
 
 )
 
@@ -85,6 +86,7 @@ MIDDLEWARE_CLASSES += (
     "mezzanine.core.middleware.SitePermissionMiddleware",
     # Uncomment the following if using any of the SSL settings:
     # "mezzanine.core.middleware.SSLRedirectMiddleware",
+    "cartridge.shop.middleware.ShopMiddleware",
     "mezzanine.pages.middleware.PageMiddleware",
     "mezzanine.core.middleware.FetchFromCacheMiddleware",
 )
