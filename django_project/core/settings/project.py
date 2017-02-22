@@ -76,7 +76,7 @@ else:
 
 from .celery_setting import *  # noqa
 
-CONFERENCE_ID=1
+CONFERENCE_ID=2
 PROPOSAL_FORMS = {
     "talk": "proposals.forms.TalkProposalForm",
     "workshop": "proposals.forms.WorkshopProposalForm",
