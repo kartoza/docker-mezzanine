@@ -44,40 +44,39 @@
     </section><!--/#testimonial-->
 
     <section class="alizarin" id="services">
-        <div class="container">
-            <div id="service">
-
-                <div class="col-lg-12">
-                    <div class="center">
-                        <h2>Regional Meetups</h2>
-                        <p>Since South Africa is a large country, it is not convenient for most of our members to convene in a central location. Instead we are forming regional subgroups.</p>
-                    </div>
-                    <div class="center">
-                        <h2>Mailing list</h2>
-                        <p>We have set up a mailing list that will allow members to communicate with one another and to discuss matters related to QGIS and our User Group. You can join this mailing list by registering on this page:<br /><a href="https://lists.osgeo.org/mailman/listinfo/qgis-za-user">https://lists.osgeo.org/mailman/listinfo/qgis-za-user</a>.</p>
-                    </div>
-		    <div class="gap"></div>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <i class="fa fa-graduation-cap"></i>
-                            <h4>Cape Town</h4>
-                            <p>The Cape Town subgroup had their first meeting on November 10th 2016 at Chief Directorate: National Geo-spatial Information in Mowbray. Have a look at our blog post to see photos from this meeting</p>
-			</div>
-                        <div class="col-md-4">
-                            <i class="fa fa-support"></i>
-                            <h4>Gauteng</h4>
-                            <p>The first Gauteng meetup was held at the CSIR in Pretoria on November 25th 2016. Notes from this meeting appear in our blog post.</p>
+        {% if page.richtextpage.content %}
+            {{ page.richtextpage.content|richtext_filters|safe }}
+        {% else %}
+            <div class="container">
+                <div id="service">
+                    <div class="col-lg-12">
+                        <div class="center">
+                            <h2>Regional Meetups</h2>
+                            <p>Since South Africa is a large country, it is not convenient for most of our members to convene in a central location. Instead we are forming regional subgroups.</p>
                         </div>
-                        <div class="col-md-4">
-                            <i class="fa fa-wrench"></i>
-                            <h4>Your region?</h4>
-                            <p>If you are interested in holding meetups in another region and have sufficient local interest, please let us know and we will add the details here.</p>
+                        <div class="center">
+                            <h2>Mailing list</h2>
+                            <p>We have set up a mailing list that will allow members to communicate with one another and to discuss matters related to QGIS and our User Group. You can join this mailing list by registering on this page:<br /><a href="https://lists.osgeo.org/mailman/listinfo/qgis-za-user">https://lists.osgeo.org/mailman/listinfo/qgis-za-user</a>.</p>
+                        </div>
+                        <div class="gap"></div>
+                        <div class="row">
+                            <div class="col-md-4"><i class="fa fa-graduation-cap"></i>
+                                <h4>Cape Town</h4>
+                                <p>The Cape Town subgroup had their first meeting on November 10th 2016 at Chief Directorate: National Geo-spatial Information in Mowbray. Have a look at our blog post to see photos from this meeting</p>
+                            </div>
+                            <div class="col-md-4"><i class="fa fa-support"></i>
+                                <h4>Gauteng</h4>
+                                <p>The first Gauteng meetup was held at the CSIR in Pretoria on November 25th 2016. Notes from this meeting appear in our blog post.</p>
+                            </div>
+                            <div class="col-md-4"><i class="fa fa-wrench"></i>
+                                <h4>Your region?</h4>
+                                <p>If you are interested in holding meetups in another region and have sufficient local interest, please let us know and we will add the details here.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <! --/container -->
-        </div><! --/service -->
+        {% endif %}
     </section>
 
 {% endblock%}
