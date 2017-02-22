@@ -183,7 +183,14 @@ superuser:
 	@echo "------------------------------------------------------------------"
 	@echo "Creating a superuser in production mode"
 	@echo "------------------------------------------------------------------"
-	@docker-compose -p $(PROJECT_ID) run uwsgi-ephemeral python manage.py createsuperuser
+	@docker-compose -p $(PROJECT_ID) run uwsgi-ephemeral python manage.py create_review_permissions
+
+reviewaccess:
+	@echo
+	@echo "------------------------------------------------------------------"
+	@echo "Creating review permissions in production mode"
+	@echo "------------------------------------------------------------------"
+	@docker-compose -p $(PROJECT_ID) run uwsgi-ephemeral python manage.py
 
 dbbash:
 	@echo
