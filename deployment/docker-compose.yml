@@ -112,12 +112,12 @@ web:
     - ./static:/home/web/static:ro
     - ./media:/home/web/media:ro
     - ./logs:/var/log/nginx
+    - ./webroot-path:/home/web/webroot-path
     - /etc/letsencrypt:/etc/letsencrypt
   links:
     - uwsgi:uwsgi
   ports:
-    - "80:80"
-    - "443:443"
+    - "63300:8080"
   restart: always
 
 # This is the entry point for a development server.
