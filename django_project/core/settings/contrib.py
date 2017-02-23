@@ -16,7 +16,7 @@ GRAPPELLI_INSTALLED = True
 
 # Extra installed apps - grapelli needs to be added before others
 INSTALLED_APPS += (
-     'raven.contrib.django.raven_compat',  # enable Raven plugin
+     # 'raven.contrib.django.raven_compat',  # enable Raven plugin
      PACKAGE_NAME_GRAPPELLI,
      "config",
      "flat_theme",
@@ -36,8 +36,33 @@ INSTALLED_APPS += (
      "mezzanine_slides",
      "mdown",  # markdown support in admin
      "mezzanine_agenda",  # we use a local copy as pip misses migrations
+     # theme
+     "bootstrapform",
+     "easy_thumbnails",
+     "taggit",
+     "reversion",
+     "metron",
+     "sitetree",
+     "pinax_theme_bootstrap",
+     "pinax.boxes",
+     "account",
+     "cartridge.shop",
+
 )
 
+ACCOUNT_OPEN_SIGNUP = True
+ACCOUNT_EMAIL_UNIQUE = True
+ACCOUNT_EMAIL_CONFIRMATION_REQUIRED = False
+ACCOUNT_SIGNUP_REDIRECT_URL = "dashboard"
+ACCOUNT_LOGIN_REDIRECT_URL = "dashboard"
+ACCOUNT_LOGOUT_REDIRECT_URL = "home"
+ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 2
+ACCOUNT_USE_AUTH_AUTHENTICATE = True
+
+
+AUTHENTICATION_BACKENDS = [
+    "account.auth_backends.UsernameAuthenticationBackend",
+]
 # mezzanine-mdown options
 # RICHTEXT_WIDGET_CLASS = "mdown.forms.WmdWidget"
 # RICHTEXT_FILTER = "mdown.filters.codehilite"
@@ -61,6 +86,7 @@ MIDDLEWARE_CLASSES += (
     "mezzanine.core.middleware.SitePermissionMiddleware",
     # Uncomment the following if using any of the SSL settings:
     # "mezzanine.core.middleware.SSLRedirectMiddleware",
+    "cartridge.shop.middleware.ShopMiddleware",
     "mezzanine.pages.middleware.PageMiddleware",
     "mezzanine.core.middleware.FetchFromCacheMiddleware",
 )

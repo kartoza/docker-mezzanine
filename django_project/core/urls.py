@@ -13,11 +13,15 @@
 from __future__ import unicode_literals
 
 from django.conf.urls import patterns, include, url
-from django.conf.urls.i18n import i18n_patterns
+from django.conf.urls.i18n import i18n_patterns, urlpatterns
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
 from mezzanine.core.views import direct_to_template
+import symposion.views
+from core.settings.utils import absolute_path
+
+from cartridge.shop.views import order_history
 
 admin.autodiscover()
 
@@ -27,7 +31,6 @@ admin.autodiscover()
 
 urlpatterns = i18n_patterns(
     '',
-
     # Change the admin prefix here to use an alternate URL for the
     # admin interface, which would be marginally more secure.
     ("^admin/", include(admin.site.urls)),
@@ -64,6 +67,12 @@ urlpatterns = i18n_patterns(
     # should be used if you want to customize the homepage's template.
 
     url("^$", "mezzanine.pages.views.page", {"slug": "/"}, name="home"),
+
+    # TEMPLATE HOMEPAGE FOR FOSS4G
+    # ---------------------------
+    # This pattern simply loads the index.html template.
+
+    url("^foss4g-home/", direct_to_template, {"template": "foss4g-index.html"}, name="foss4g-home"),
 
     # HOMEPAGE FOR A BLOG-ONLY SITE
     # -----------------------------
@@ -109,6 +118,27 @@ urlpatterns = i18n_patterns(
 )
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.SYMPOSION_STATIC_URL, document_root=absolute_path("symposion","site_media"))
+urlpatterns += (
+    url("^speaker/", include("symposion.speakers.urls")),
+    url("^conference/", include("symposion.conference.urls")),
+    url(r"^account/", include("account.urls")),
+    url(r"^dashboard/", symposion.views.dashboard, name="dashboard"),
+    url(r"^sponsors/", include("symposion.sponsorship.urls")),
+    url(r"^proposals/", include("symposion.proposals.urls")),
+    url(r"^boxes/", include("pinax.boxes.urls")),
+    url(r"^sponsors/", include("symposion.sponsorship.urls")),
+    url(r"^reviews/", include("symposion.reviews.urls")),
+    url(r"^schedule/", include("symposion.schedule.urls")),
+
+    url(r"^teams/", include("symposion.teams.urls")),
+)
+
+urlpatterns += [
+    # Cartridge URLs.
+    url("^shop/", include("cartridge.shop.urls")),
+    url("^account/orders/$", order_history, name="shop_order_history"),
+]
 
 # Adds ``STATIC_URL`` to the context of error pages, so that error
 # pages can use JS, CSS and images.

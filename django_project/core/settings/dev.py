@@ -16,6 +16,8 @@ CACHES = {
     }
 }
 
+ALLOWED_HOSTS = ['*']
+
 # Make sure static files storage is set to default
 STATIC_FILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 

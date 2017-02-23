@@ -1,0 +1,79 @@
+{% extends "site_base.html" %}
+
+{% load i18n %}
+{% load sitetree %}
+
+{% block extra_style %}
+    <style type="text/css">
+        div.dataTables_length label {
+            float: left;
+            text-align: left;
+        }
+
+        div.dataTables_length select {
+            width: 75px;
+        }
+
+        div.dataTables_filter label {
+            float: right;
+        }
+
+        div.dataTables_info {
+            padding-top: 8px;
+        }
+
+        div.dataTables_paginate {
+            float: right;
+            margin: 0;
+        }
+
+        table.table {
+            clear: both;
+            margin-bottom: 6px !important;
+            background-color: white;
+        }
+
+        table.table thead .sorting,
+        table.table thead .sorting_asc,
+        table.table thead .sorting_desc,
+        table.table thead .sorting_asc_disabled,
+        table.table thead .sorting_desc_disabled {
+            cursor: pointer;
+            *cursor: hand;
+        }
+
+        table.dataTable th:active {
+            outline: none;
+        }
+    </style>
+{% endblock %}
+
+{% block body_class %}reviews{% endblock %}
+
+{% block body_outer %}
+    <div class="row">
+        <div class="col-md-2">
+            {% block sidebar %}
+                <ul class="nav nav-list well">
+                    {% for review_section in review_sections %}
+                        <!-- The sidebar is shown in the proposals overview as
+                             well as when a single proposal is shown for
+                             review -->
+                        {% if review_section.section == section.section or review_section.section == proposal.section %}
+                            <li class="nav-header">
+                                {{ review_section }}
+                            </li>
+                            <li><a href="{% url "review_section" review_section.section.slug %}">All {{section.section.slug}}</a></li>
+                            <li><a href="{% url "user_reviewed" review_section.section.slug %}">Reviewed by you</a></li>
+                            <li><a href="{% url "user_not_reviewed" review_section.section.slug %}">Not Reviewed by you</a></li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            {% endblock %}
+        </div>
+        <div class="col-md-10">
+            {% block body %}
+            {% endblock %}
+        </div>
+    </div>
+{% endblock %}
