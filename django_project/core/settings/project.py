@@ -24,6 +24,8 @@ INSTALLED_APPS += (
     "symposion.sponsorship",
     "symposion.teams",
     "proposals",
+    "payment",
+    "pinaxcon_theme",
 )
 
 # Due to profile page does not available,
