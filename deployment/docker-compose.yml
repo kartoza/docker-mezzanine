@@ -112,8 +112,8 @@ web:
     - ./static:/home/web/static:ro
     - ./media:/home/web/media:ro
     - ./logs:/var/log/nginx
+    # - /etc/letsencrypt:/etc/letsencrypt
     - ./webroot-path:/home/web/webroot-path
-    - /etc/letsencrypt:/etc/letsencrypt
   links:
     - uwsgi:uwsgi
   ports:

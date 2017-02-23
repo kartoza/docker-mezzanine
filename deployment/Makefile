@@ -83,6 +83,16 @@ migrate:
 	@docker-compose -p $(PROJECT_ID) run uwsgi-ephemeral python manage.py migrate sites
 	@docker-compose -p $(PROJECT_ID) run uwsgi-ephemeral python manage.py migrate pages
 	@docker-compose -p $(PROJECT_ID) run uwsgi-ephemeral python manage.py migrate
+	@#Used to load fixtures for symposion project
+
+fixtures:
+	@echo
+	@echo "------------------------------------------------------------------"
+	@echo "Running migrate static in production mode"
+	@echo "------------------------------------------------------------------"
+	@docker exec -t -i qgis-org-za-uwsgi /bin/bash -c "python manage.py loaddata symposion/fixtures/*.json"
+
+
 
 update-migrations:
 	@echo
@@ -174,6 +184,13 @@ superuser:
 	@echo "Creating a superuser in production mode"
 	@echo "------------------------------------------------------------------"
 	@docker-compose -p $(PROJECT_ID) run uwsgi-ephemeral python manage.py createsuperuser
+
+reviewaccess:
+	@echo
+	@echo "------------------------------------------------------------------"
+	@echo "Creating review permissions in production mode"
+	@echo "------------------------------------------------------------------"
+	@docker-compose -p $(PROJECT_ID) run uwsgi-ephemeral python manage.py create_review_permissions
 
 dbbash:
 	@echo

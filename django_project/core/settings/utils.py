@@ -37,6 +37,11 @@ def ensure_secret_key_file():
             f.write("SECRET_KEY = " + repr(secret_key) + "\n")
             f.write("DISQUS_WEBSITE_SHORTNAME = "
                     + repr(disqus_shortname) + "\n")
+            f.write("COMMENTS_DISQUS_API_SECRET_KEY = ''" + "\n")
+            f.write("COMMENTS_DISQUS_API_PUBLIC_KEY = ''" + "\n")
+            f.write("COMMENTS_DISQUS_SHORTNAME = ''" + "\n")
+            f.write("SENTRY_DSN = ''" + "\n")
+
 
 # Import the secret key
 ensure_secret_key_file()

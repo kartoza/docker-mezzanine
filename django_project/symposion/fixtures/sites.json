@@ -1,0 +1,10 @@
+[
+    {
+        "pk": 1,
+        "model": "sites.site",
+        "fields": {
+            "domain": "proposals.2016.foss4g.org",
+            "name": "FOSS4G 2016"
+        }
+    }
+]

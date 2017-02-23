@@ -1,0 +1,125 @@
+{% extends "base.html" %}
+{% load i18n staticfiles %}
+{% block meta_title %}{% trans "Home" %}{% endblock %}
+{% block title %}{% trans "Home" %}{% endblock %}
+{% block top %}
+
+{% endblock %}
+
+{% block main %}
+<section class="no-margin" id="main-slider">
+        <div class="carousel slide header-background">
+            <ol class="carousel-indicators">
+                <li class="active" data-slide-to="0" data-target="#main-slider" ></li>
+                <li data-slide-to="1" data-target="#main-slider" class=""></li>
+            </ol>
+            <div class="carousel-inner">
+                <div style="background-image: url(static/images/slider/bg1.jpg)" class="item active">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="carousel-content centered" style="margin-top: 265px;">
+                                    <img class="animation animated-item-1" src="{% static 'images/conferences.jpg' %}" width="500px"/>
+                               </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--/.item-->
+                <div style="background-image: url(static/images/slider/bg2.jpg)" class="item">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="carousel-content center centered" style="margin-top: 208.5px;">
+                                    <img class="animation animated-item-1" src="{% static 'images/newkartozalogo.png' %}" width="250px"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--/.item-->
+            </div><!--/.carousel-inner-->
+        </div><!--/.carousel-->
+        <a data-slide="prev" href="#main-slider" class="prev hidden-xs">
+            <i class="icon-angle-left"></i>
+        </a>
+        <a data-slide="next" href="#main-slider" class="next hidden-xs">
+            <i class="icon-angle-right"></i>
+        </a>
+    </section>
+    <section class="reflex-blue" id="services">
+        <div class="container">
+            <div id="service">
+
+                <div class="col-lg-12">
+                    <div class="center">
+                        <h2>Key Business Areas</h2>
+                        <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+                    </div>
+                    <div class="gap"></div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <i class="fa fa-graduation-cap"></i>
+                            <h4>Location</h4>
+                            <p>Cape Town : The Cape Town subgroup will meet at Ulwazi Conference Room, van der Sterr Building (C-Block), Chief Directorate: National Geo-spatial Information, 19 Rhodes Avenue, Mowbray (secure parking can be accesses through Cecil Road - please tell the guards to which meeting and conference room you are going to get access).</p>
+                        </div>
+                        <div class="col-md-4">
+                            <i class="fa fa-support"></i>
+                            <h4>Deployment and Support</h4>
+                            <p>We provide services to help you deploy and maintain FOSSGIS deployments within your organisation.
+                                This includes PostgreSQL/PostGIS, Linux based server deployments, QGIS, UMN Mapserver,
+                                GeoServer and many others.</p>
+                        </div>
+                        <div class="col-md-4">
+                            <i class="fa fa-wrench"></i>
+                            <h4>Software Development</h4>
+                            <p>We provide bespoke services for the development of custom solutions to meet your business needs.
+                                These include desktop application development and web development using FOSSGIS.
+                                We also provide web application development services (focussing on applications that have a
+                                GeoSpatial component)
+                                using technologies such as GeoDjango, OpenLayers, PostGIS and many other components.</p>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        <! --/container -->
+    </div><! --/service -->
+
+    </section>
+	<section id="testimonial" class="white">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="center">
+                        <h2>What our clients say</h2>
+                        <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+                    </div>
+                    <div class="gap"></div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <blockquote>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                                <small>Someone famous in <cite title="Source Title">Source Title</cite></small>
+                            </blockquote>
+                            <blockquote>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                                <small>Someone famous in <cite title="Source Title">Source Title</cite></small>
+                            </blockquote>
+                        </div>
+                        <div class="col-md-6">
+                            <blockquote>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                                <small>Someone famous in <cite title="Source Title">Source Title</cite></small>
+                            </blockquote>
+                            <blockquote>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                                <small>Someone famous in <cite title="Source Title">Source Title</cite></small>
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section><!--/#testimonial-->
+
+
+{% endblock %}
+

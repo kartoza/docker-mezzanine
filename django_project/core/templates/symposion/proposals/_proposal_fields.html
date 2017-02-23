@@ -1,0 +1,71 @@
+{% load i18n %}
+{% load markdownify %}
+
+<dl class="dl-horizontal">
+    <dt>{% trans "Submitted by" %}</dt>
+    <dd>{{ proposal.speaker }}</dd>
+
+
+
+    {% if proposal.additional_speakers.all %}
+        <dt>{% trans "Additional Speakers" %}</dt>
+        <dd>
+            {% for speaker in proposal.additional_speakers.all %}
+                <li>
+                    {% if speaker.user %}
+                        <strong>{{ speaker.name }}</strong> &lt;{{ speaker.email }}&gt;
+                    {% else %}
+                        {{ speaker.email }} ({% trans "Invitation Sent" %})
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </dd>
+    {% endif %}
+
+    <dt>{% trans "Abstract" %}</dt>
+    <dd>{{ proposal.abstract|markdownify|safe }}</dd>
+
+    <dt>Tags</dt>
+    <dd>{{ proposal.tags.all|join:", " }}
+    </dd>
+
+    {% if proposal.foss_is_links %}
+        <dt>Project</dt>
+        <dd>{{ proposal.foss_is_links }}</dd>
+    {% endif %}
+
+
+    {% if proposal.foss_contributing_links %}
+        <dt>Contributions</dt>
+        <dd>{{ proposal.foss_contributing_links }}</dd>
+    {% endif %}
+
+    {% if proposal.foss_using_links %}
+        <dt>Uses</dt>
+        <dd>{{ proposal.foss_using_links }}</dd>
+    {% endif %}
+
+
+
+    {% if proposal.map_image %}
+        <dt>Map</dt>
+        <dd><a href="{{ proposal.map_image.url }}">{{ proposal.map_image.name }}</a></dd>
+
+        <dt>Link to map</dt>
+        <dd><a href="{{ proposal.map_link }}" targe="_blank">{{ proposal.map_link }}</a></dd>
+
+
+        <dt>FOSS software used</dt>
+        <dd>{{ proposal.foss_using }}</dd>
+
+        <dt>Open data used</dt>
+        <dd>{{ proposal.open_data_using }}</dd>
+    {% endif %}
+
+    <dt>{% trans "Notes" %}</dt>
+    <dd>{{ proposal.additional_notes|safe }}&nbsp;</dd>
+
+    <dt>{% trans "Speaker Bio" %}</dt>
+    <dd>{{ proposal.speaker.biography|safe }}&nbsp;</dd>
+
+</dl>

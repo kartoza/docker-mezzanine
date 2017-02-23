@@ -1,0 +1,33 @@
+{% extends "symposion/proposals/base.html" %}
+
+{% load bootstrap %}
+
+{% block head_title %}Editing {{ proposal.title }}{% endblock %}
+
+{% block body %}
+    <h1>Edit: {{ proposal.title }}</h1>
+
+    <p><a href="{% url "proposal_speaker_manage" proposal.pk %}">Manage speakers</a></p>
+
+    <form method="POST" action="" enctype="multipart/form-data" class="form-horizontal">
+        {% csrf_token %}
+        <fieldset>
+            {{ form|bootstrap_horizontal }}
+        </fieldset>
+        <div class="form-actions">
+            <input class="btn btn-primary" type="submit" value="Save" />
+            <a class="btn btn-default" href="{% url "proposal_detail" proposal.pk %}">Cancel</a>
+        </div>
+    </form>
+    {% if kind.slug == 'talk' or kind.slug == 'map' %}
+        <h4>Footnotes:</h4>
+        <p id="fn1">
+            [1] Released under an <a href="http://opensource.org/licenses" target="_blank">OSI approved license</a>.
+        </p>
+        {% if kind.slug == 'map' %}
+            <p id="fn2">
+                [2] Released under an <a href="http://opendefinition.org/licenses/" target="_blank">Open Definition conformant license</a>.
+            </p>
+        {% endif %}
+    {% endif %}
+{% endblock %}

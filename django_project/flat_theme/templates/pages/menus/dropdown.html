@@ -4,12 +4,9 @@
 
 {% if branch_level == 0 %}
 <ul class="nav navbar-nav navbar-right">
-	
+
     {% for page in page_branch %}
     {% if not has_home and page.is_primary and forloop.first %}
-    <li{% if on_home %} class="active"{% endif %} id="dropdown-menu-home">
-        <a href="{% url "home" %}">{% trans "Home" %}</a>
-    </li>
     {% endif %}
     {% if page.in_menu %}
     <li class="{% if page.has_children_in_menu %}dropdown{% endif %}
