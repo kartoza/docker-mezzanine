@@ -86,3 +86,5 @@ PROPOSAL_FORMS = {
 # FIXTURE_DIRS = (
 #     absolute_path("symposion","fixtures"),
 # )
+
+SHOP_CURRENCY_LOCALE = "en_ZA.UTF-8"
