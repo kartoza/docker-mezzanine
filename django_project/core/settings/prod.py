@@ -11,8 +11,7 @@ from .secret import SENTRY_DSN
 # ['*'] for testing but not for production
 
 ALLOWED_HOSTS = [
-    'localhost:63300',
-    'mezzanine.kartoza.com']
+    'localhost:63300',]
 
 # Comment if you are not running behind proxy
 USE_X_FORWARDED_HOST = True
