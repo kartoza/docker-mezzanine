@@ -4,9 +4,9 @@
         "last_updated": "2016-01-10T20:57:01.106Z",
         "created_by": 1,
         "label": "sponsor-top",
-        "content": "We would like to thank our sponsors for their support. <a href=\"http://2016.foss4g.org/index.php/sponsoring.html#sponsor-packages\">Become a sponsor</a>.",
+        "content": "We would like to thank our sponsors for their support. <a href=\"http://2017.foss4g.org/index.php/sponsoring.html#sponsor-packages\">Become a sponsor</a>.",
         "last_updated_by": 1,
-        "content_html": "<p>We would like to thank our sponsors for their support. <a href=\"http://2016.foss4g.org/index.php/sponsoring.html#sponsor-packages\">Become a sponsor</a>.</p>"
+        "content_html": "<p>We would like to thank our sponsors for their support. <a href=\"http://2017.foss4g.org/index.php/sponsoring.html#sponsor-packages\">Become a sponsor</a>.</p>"
     },
     "model": "boxes.box",
     "pk": 1

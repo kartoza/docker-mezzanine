@@ -1,9 +1,9 @@
 [
 {
     "fields": {
-        "body": "Dear {{ proposal.speaker }},\r\n\r\nThe FOSS4G 2016 Workshop Committee is pleased to inform you that your workshop proposal has been accepted for the workshop session at FOSS4G Bonn 2016, which will be held from August 22nd to 26th 2016 at the World Conference Center in Bonn, Germany. The following is your workshop proposal that will be public:\r\n\r\nWorkshop Title:\r\n{{ proposal.title }}\r\n\r\nConditions for Acceptance of the Workshop Proposal:\r\n\r\nAll instructors are required to register for the conference by July 10. 2016 to be allocated in the session. One accepted workshop qualifies for a one time 50% discount on Early Bird fee. Please be aware that Early Bird already ends on May 8. and there is no more 50% discount after that.\r\n\r\nYou will receive the discount code for the registration system and the workshop schedule with further information next week.\r\n\r\nWe appreciate your contribution and look forward to see you in Bonn in August.\r\n\r\nSincerely yours,\r\nThe FOSS4G 2016 Workshop Committee",
-        "subject": "Your Workshop for the FOSS4G 2016 has been accepted",
-        "from_address": "workshops@foss4g2016.org",
+        "body": "Dear {{ proposal.speaker }},\r\n\r\nThe FOSS4G 2017 Workshop Committee is pleased to inform you that your workshop proposal has been accepted for the workshop session at FOSS4G Johannesburg 2017, which will be held from August 22nd to 26th 2016 at the World Conference Center in Bonn, Germany. The following is your workshop proposal that will be public:\r\n\r\nWorkshop Title:\r\n{{ proposal.title }}\r\n\r\nConditions for Acceptance of the Workshop Proposal:\r\n\r\nAll instructors are required to register for the conference by July 10. 2016 to be allocated in the session. One accepted workshop qualifies for a one time 50% discount on Early Bird fee. Please be aware that Early Bird already ends on May 8. and there is no more 50% discount after that.\r\n\r\nYou will receive the discount code for the registration system and the workshop schedule with further information next week.\r\n\r\nWe appreciate your contribution and look forward to see you in Bonn in August.\r\n\r\nSincerely yours,\r\nThe FOSS4G 2016 Workshop Committee",
+        "subject": "Your Workshop for the FOSS4G 2017 has been accepted",
+        "from_address": "workshops@foss4g2017.org",
         "label": "Workshop accepted"
     },
     "model": "symposion_reviews.notificationtemplate",
@@ -11,9 +11,9 @@
 },
 {
     "fields": {
-        "body": "Dear {{ proposal.speaker }},\r\n\r\nThe FOSS4G 2016 Workshop Committee has reviewed the proposals and was extremely pleased by the high quality and the number of the Workshop proposals submitted for the FOSS4G 2016, which will be held from August 22nd. to 26th 2016 at the World Conference Center in Bonn, Germany.\r\n\r\nWe are sorry to inform you that the reviewers were not able to recommend your proposal for the workshop at this conference which means that your proposal has been rejected. The following is your proposal that will not be included in the Workshops:\r\n\r\nWorkshop Title:\r\n{{ proposal.title }}\r\n\r\nWe would like to thank you for the time and effort that you devoted to the submission of your proposal as well as the interest in the FOSS4G 2016 in Bonn. Although your proposal has not been selected on this occasion, we hope you will have the opportunity to join us in Bonn and attend the Conference.\r\n\r\nShould you have any questions, feel free to contact us at workshops@foss4g2016.org or info@foss4g2016.org\r\n\r\nSincerely yours,\r\nThe FOSS4G 2016 Workshop Committee",
-        "subject": "Your Workshop for the FOSS4G 2016 has been rejected",
-        "from_address": "workshops@foss4g2016.org",
+        "body": "Dear {{ proposal.speaker }},\r\n\r\nThe FOSS4G 2017 Workshop Committee has reviewed the proposals and was extremely pleased by the high quality and the number of the Workshop proposals submitted for the FOSS4G 2016, which will be held from August 22nd. to 26th 2016 at the World Conference Center in Bonn, Germany.\r\n\r\nWe are sorry to inform you that the reviewers were not able to recommend your proposal for the workshop at this conference which means that your proposal has been rejected. The following is your proposal that will not be included in the Workshops:\r\n\r\nWorkshop Title:\r\n{{ proposal.title }}\r\n\r\nWe would like to thank you for the time and effort that you devoted to the submission of your proposal as well as the interest in the FOSS4G 2016 in Bonn. Although your proposal has not been selected on this occasion, we hope you will have the opportunity to join us in Bonn and attend the Conference.\r\n\r\nShould you have any questions, feel free to contact us at workshops@foss4g2016.org or info@foss4g2016.org\r\n\r\nSincerely yours,\r\nThe FOSS4G 2016 Workshop Committee",
+        "subject": "Your Workshop for the FOSS4G 2017 has been rejected",
+        "from_address": "workshops@foss4g2017.org",
         "label": "Workshop rejected"
     },
     "model": "symposion_reviews.notificationtemplate",
