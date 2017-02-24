@@ -1,7 +1,7 @@
 #--------- Generic stuff all our Dockerfiles should start with so we get caching ------------
 # Note this base image is based on debian
 FROM qgisorgza_uwsgi
-MAINTAINER Tim Sutton<tim@kartoza.com>
+MAINTAINER Muhammad Anis<anis@kartoza.com>
 
 # Use local cached debs from host (saves your bandwidth!)
 # Change ip below to that of your apt-cacher-ng host
