@@ -1,5 +1,5 @@
-{% extends "base.html" %}
-{% load i18n staticfiles %}
+{% extends "pages/page.html" %}
+{% load pages_tags mezzanine_tags i18n future staticfiles blog_tags keyword_tags %}
 {% block meta_title %}{% trans "Home" %}{% endblock %}
 {% block title %}{% trans "Home" %}{% endblock %}
 {% block top %}
@@ -21,7 +21,11 @@
     <div class="container mtb">
         <div>
             <section class="container">
-
+                {% if page.richtextpage.content %}
+                    {{ page.richtextpage.content|richtext_filters|safe }}
+                {% else %}
+                    Hello World
+                {% endif %}
             </section>
         </div>
     </div>
