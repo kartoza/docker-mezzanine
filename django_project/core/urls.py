@@ -66,7 +66,10 @@ urlpatterns = i18n_patterns(
     # "/.html" - so for this case, the template "pages/index.html"
     # should be used if you want to customize the homepage's template.
 
-    url("^$", "mezzanine.pages.views.page", {"slug": "/"}, name="home"),
+
+    #overriding mezzanine pages management
+    #for custom data (rich text), add a page with name foss4g-home
+    url("^$", "core.views.page", {"slug": "/"}, name="home"),
 
     # TEMPLATE HOMEPAGE FOR FOSS4G
     # ---------------------------
