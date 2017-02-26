@@ -28,7 +28,25 @@
 
         <fieldset>
             <legend>{% trans "Billing Details" %}</legend>
-            {% fields_for form.billing_detail_fields %}
+{#            {% fields_for form.billing_detail_fields %}#}
+        {% for field in form.billing_detail_fields %}
+            <div class="form-group input_{{ field.id_for_label }} {{ field.field.type }}
+                {% if field.errors %} has-error{% endif %}">
+                <label class="control-label" for="{{ field.auto_id }}">{{ field.label }}</label>
+                {{ field }}
+                {% if field.errors %}
+                <p class="help-block">
+                    {% for e in field.errors %}
+                    {% if not forloop.first %} / {% endif %}{{ e }}
+                    {% endfor %}
+                </p>
+                {% elif field.help_text %}
+                <p class="help-block">{{ field.help_text }}</p>
+                {% elif field.field.required %}
+                <p class="help-block">{% trans "required" %}</p>
+                {% endif %}
+            </div>
+        {% endfor %}
         </fieldset>
 
         <fieldset>
@@ -50,83 +68,6 @@
 
 
 {% block extra_js %}
-    <script>
-        {# additional script to add label for billing information #}
-        {# Check if div already contain label #}
-        $(document).ready(function () {
-            {# First Name #}
-            $('div.input_id_billing_detail_first_name').each(function() {
-                if ($(this).find('> label').length == 0) {
-                    var $label = $("<label>").text('First Name');
-                    $(this).prepend($label);
-                }
-            });
-            {# Last Name #}
-            $('div.input_id_billing_detail_last_name').each(function() {
-                if ($(this).find('> label').length == 0) {
-                    var $label = $("<label>").text('Last Name');
-                    $(this).prepend($label);
-                }
-            });
-
-            {# Street #}
-            $('div.input_id_billing_detail_street').each(function() {
-                if ($(this).find('> label').length == 0) {
-                    var $label = $("<label>").text('Street');
-                    $(this).prepend($label);
-                }
-            });
-
-            {# City #}
-            $('div.input_id_billing_detail_city').each(function() {
-                if ($(this).find('> label').length == 0) {
-                    var $label = $("<label>").text('City');
-                    $(this).prepend($label);
-                }
-            });
-
-            {# State #}
-            $('div.input_id_billing_detail_state').each(function() {
-                if ($(this).find('> label').length == 0) {
-                    var $label = $("<label>").text('State');
-                    $(this).prepend($label);
-                }
-            });
-
-            {# PostCode #}
-            $('div.input_id_billing_detail_postcode').each(function() {
-                if ($(this).find('> label').length == 0) {
-                    var $label = $("<label>").text('Post Code');
-                    $(this).prepend($label);
-                }
-            });
-
-            {# Country #}
-            $('div.input_id_billing_detail_country').each(function() {
-                if ($(this).find('> label').length == 0) {
-                    var $label = $("<label>").text('Country');
-                    $(this).prepend($label);
-                }
-            });
-
-            {# Phone #}
-            $('div.input_id_billing_detail_phone').each(function() {
-                if ($(this).find('> label').length == 0) {
-                    var $label = $("<label>").text('Phone');
-                    $(this).prepend($label);
-                }
-            });
-
-            {# Email #}
-            $('div.input_id_billing_detail_email').each(function() {
-                if ($(this).find('> label').length == 0) {
-                    var $label = $("<label>").text('Email');
-                    $(this).prepend($label);
-                }
-            });
-
-        });
-    </script>
     <script>
         $(document).ready(function () {
             var phone_pattern = '^0.*$';
