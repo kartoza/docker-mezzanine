@@ -100,6 +100,7 @@ TEMPLATES = [
             # project level templates
             absolute_path('core', 'templates'),
             absolute_path('solid_theme', 'templates'),
+            absolute_path('pinaxcon_theme',"templates"),
         ],
         'APP_DIRS': False,
         'OPTIONS': {
