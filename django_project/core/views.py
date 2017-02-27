@@ -5,6 +5,7 @@ from django.template.response import TemplateResponse
 
 from mezzanine.utils.urls import home_slug
 from mezzanine.pages.models import Page
+from urlparse import urlparse
 
 def page(request, slug, template=u"pages/page.html", extra_context=None):
     """
@@ -39,16 +40,15 @@ def page(request, slug, template=u"pages/page.html", extra_context=None):
     # used, since the slug "/" won't match a template name.
     # template_name = str(slug) if slug != home_slug() else "index"
     if slug == home_slug():
-        host = request.get_host()
-        if "foss4g-africa.org" in host :
-            template_name = "fossg-home"
-            #get requested object from rich text page. We should move this as metadata in site django
-            pages = Page.objects.with_ascendants_for_slug("foss4g-home-2017",
-                                                         for_user=request.user,
-                                                         include_login_required=True)
-            if pages:
-                home_page = pages[0]
-                setattr(request,"page",home_page)
+        #if host contains staging,https and port, then remove it
+        host = request.get_host().split("//")[-1].split("/")[0].split(":")[0].replace("staging.","")
+        pages = Page.objects.with_ascendants_for_slug(host,
+                                                      for_user=request.user,
+                                                      include_login_required=True)
+        if pages:
+            template_name = host
+            home_page = pages[0]
+            setattr(request, "page", home_page)
         else:
             template_name = "index"
 
