@@ -75,9 +75,6 @@ urlpatterns = i18n_patterns(
     # ---------------------------
     # This pattern simply loads the index.html template.
 
-    url("^foss4g-home/", direct_to_template, {"template": "foss4g-index.html"}, name="foss4g-home"),
-    url("^foss4g-home-2017/", direct_to_template, {"template": "foss4g-home.html"}, name="foss4g-home-2017"),
-
     # HOMEPAGE FOR A BLOG-ONLY SITE
     # -----------------------------
     # This pattern points the homepage to the blog post listing page,
