@@ -24,6 +24,8 @@ INSTALLED_APPS += (
     "symposion.sponsorship",
     "symposion.teams",
     "proposals",
+    "payment",
+    "pinaxcon_theme",
 )
 
 # Due to profile page does not available,
@@ -86,3 +88,5 @@ PROPOSAL_FORMS = {
 # FIXTURE_DIRS = (
 #     absolute_path("symposion","fixtures"),
 # )
+
+SHOP_CURRENCY_LOCALE = "en_ZA.UTF-8"
