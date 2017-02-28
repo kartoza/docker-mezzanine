@@ -32,6 +32,16 @@
 		</ul>
 	</li>
 	{% endifinstalled %}
+    <li class="dropdown">
+        <a href="/dashboard">
+             {% if user.is_authenticated %}
+                 Dashboard
+             {% else %}
+                 Register
+             {% endif %}
+        </a>
+
+    </li>
 </ul>
 
 {% else %}
