@@ -1,0 +1,52 @@
+[
+{
+    "fields": {
+        "type": "weblogo",
+        "name": "Web Logo",
+        "content_type": "simple",
+        "description": "Logo to appear on the website"
+    },
+    "model": "symposion_sponsorship.benefit",
+    "pk": 2
+},
+{
+    "fields": {
+        "type": "file",
+        "name": "Print Logo",
+        "content_type": "simple",
+        "description": "Logo to appear in print"
+    },
+    "model": "symposion_sponsorship.benefit",
+    "pk": 3
+},
+{
+    "fields": {
+        "type": "text",
+        "name": "Sponsor Description",
+        "content_type": "simple",
+        "description": "Description to appear on website and in print"
+    },
+    "model": "symposion_sponsorship.benefit",
+    "pk": 4
+},
+{
+    "fields": {
+        "other_limits": "",
+        "benefit": 2,
+        "max_words": null,
+        "level": 5
+    },
+    "model": "symposion_sponsorship.benefitlevel",
+    "pk": 12
+},
+{
+    "fields": {
+        "other_limits": "",
+        "benefit": 2,
+        "max_words": null,
+        "level": 6
+    },
+    "model": "symposion_sponsorship.benefitlevel",
+    "pk": 13
+}
+]

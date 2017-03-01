@@ -8,8 +8,7 @@ from __future__ import absolute_import, unicode_literals
 from .utils import absolute_path
 
 ADMINS = (
-    ('Tim Sutton', 'tim@kartoza.com'),
-    ('Christian Christelis', 'christian@kartoza.com')
+    ('Muhammad Anis', 'anis@kartoza.com'),
 )
 
 MANAGERS = ADMINS
@@ -62,13 +61,19 @@ STATIC_ROOT = '/home/web/static'
 # Example: "http://example.com/static/", "http://static.example.com/"
 STATIC_URL = '/static/'
 
+SYMPOSION_STATIC_URL = "/site_media/"
+
 # Additional locations of static files
 STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    # absolute_path('core', 'basstatic'),
+    absolute_path('core', 'base_static'),
+    absolute_path("symposion","site_media"),
+    ("site_media/",absolute_path("symposion","site_media")),
 )
+
+# Additional locations of static files
 
 # List of finder classes that know how to find static files in
 # various locations.
@@ -95,6 +100,7 @@ TEMPLATES = [
             # project level templates
             absolute_path('core', 'templates'),
             absolute_path('solid_theme', 'templates'),
+            absolute_path('pinaxcon_theme',"templates"),
         ],
         'APP_DIRS': False,
         'OPTIONS': {
@@ -116,6 +122,9 @@ TEMPLATES = [
                 # Dirty hack for now - should be specified in contrib.py
                 "mezzanine.conf.context_processors.settings",
                 "mezzanine.pages.context_processors.page",
+                "account.context_processors.account",
+                "pinax_theme_bootstrap.context_processors.theme",
+                "symposion.reviews.context_processors.reviews",
             ],
         },
     },

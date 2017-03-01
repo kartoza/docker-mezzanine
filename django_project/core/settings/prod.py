@@ -11,8 +11,7 @@ from .secret import SENTRY_DSN
 # ['*'] for testing but not for production
 
 ALLOWED_HOSTS = [
-    'localhost:63300',
-    'mezzanine.kartoza.com']
+    'localhost:63300',]
 
 # Comment if you are not running behind proxy
 USE_X_FORWARDED_HOST = True
@@ -23,7 +22,7 @@ TESTING = DEBUG
 
 SERVER_EMAIL = 'tim@kartoza.com'
 EMAIL_HOST = 'kartoza.com'
-DEFAULT_FROM_EMAIL = 'tim@kartoza.com'
+DEFAULT_FROM_EMAIL = 'no-reply@kartoza.com'
 
 
 STATICFILES_FINDERS += (

@@ -1,0 +1,45 @@
+[
+{
+    "fields": {
+        "timezone": "Europe/Berlin",
+        "start_date": "2017-02-10",
+        "end_date": "2017-08-26",
+        "title": "FOSS4G 2017"
+    },
+    "model": "symposion_conference.conference",
+    "pk": 2
+},
+{
+    "fields": {
+        "conference": 2,
+        "start_date": "2017-02-10",
+        "name": "General Track",
+        "end_date": "2017-08-26",
+        "slug": "general-track"
+    },
+    "model": "symposion_conference.section",
+    "pk": 2
+},
+{
+    "fields": {
+        "conference": 2,
+        "start_date": "2017-02-10",
+        "name": "Workshops",
+        "end_date": "2017-08-23",
+        "slug": "workshops"
+    },
+    "model": "symposion_conference.section",
+    "pk": 3
+},
+{
+    "fields": {
+        "conference": 2,
+        "start_date": "2017-02-20",
+        "name": "Maps",
+        "end_date": "2017-08-26",
+        "slug": "maps"
+    },
+    "model": "symposion_conference.section",
+    "pk": 4
+}
+]

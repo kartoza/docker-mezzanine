@@ -1,0 +1,42 @@
+[
+{
+    "fields": {
+        "body": "Dear {{ proposal.speaker }},\r\n\r\nThe FOSS4G 2017 Workshop Committee is pleased to inform you that your workshop proposal has been accepted for the workshop session at FOSS4G Johannesburg 2017, which will be held from August 22nd to 26th 2017 at the World Conference Center in Bonn, Germany. The following is your workshop proposal that will be public:\r\n\r\nWorkshop Title:\r\n{{ proposal.title }}\r\n\r\nConditions for Acceptance of the Workshop Proposal:\r\n\r\nAll instructors are required to register for the conference by July 10. 2017 to be allocated in the session. One accepted workshop qualifies for a one time 50% discount on Early Bird fee. Please be aware that Early Bird already ends on May 8. and there is no more 50% discount after that.\r\n\r\nYou will receive the discount code for the registration system and the workshop schedule with further information next week.\r\n\r\nWe appreciate your contribution and look forward to see you in Bonn in August.\r\n\r\nSincerely yours,\r\nThe FOSS4G 2017 Workshop Committee",
+        "subject": "Your Workshop for the FOSS4G 2017 has been accepted",
+        "from_address": "workshops@foss4g2017.org",
+        "label": "Workshop accepted"
+    },
+    "model": "symposion_reviews.notificationtemplate",
+    "pk": 1
+},
+{
+    "fields": {
+        "body": "Dear {{ proposal.speaker }},\r\n\r\nThe FOSS4G 2017 Workshop Committee has reviewed the proposals and was extremely pleased by the high quality and the number of the Workshop proposals submitted for the FOSS4G 2017, which will be held from August 22nd. to 26th 2017 at the World Conference Center in Bonn, Germany.\r\n\r\nWe are sorry to inform you that the reviewers were not able to recommend your proposal for the workshop at this conference which means that your proposal has been rejected. The following is your proposal that will not be included in the Workshops:\r\n\r\nWorkshop Title:\r\n{{ proposal.title }}\r\n\r\nWe would like to thank you for the time and effort that you devoted to the submission of your proposal as well as the interest in the FOSS4G 2017 in Bonn. Although your proposal has not been selected on this occasion, we hope you will have the opportunity to join us in Bonn and attend the Conference.\r\n\r\nShould you have any questions, feel free to contact us at workshops@foss4g2017.org or info@foss4g2017.org\r\n\r\nSincerely yours,\r\nThe FOSS4G 2017 Workshop Committee",
+        "subject": "Your Workshop for the FOSS4G 2017 has been rejected",
+        "from_address": "workshops@foss4g2017.org",
+        "label": "Workshop rejected"
+    },
+    "model": "symposion_reviews.notificationtemplate",
+    "pk": 2
+},
+{
+    "fields": {
+        "body": "Dear {{proposal.speaker}},\r\n\r\nthank you for submitting a presentation proposal to FOSS4G 2017.\r\nThe Program Committee has worked very hard to decide which proposals\r\nwere the best fit for the conference and to create an exciting and\r\nengaging program for our attendees.\r\n\r\nYour talk\r\n\r\n    {{proposal.title}}\r\n\r\nhas been ACCEPTED.\r\n\r\nDetails about the review process can be found at:\r\nhttp://2017.foss4g.org/news-entry/abstract-review-process.html\r\n\r\nA list of all accepted talks will be published on the FOSS4G website\r\non May 1st.\r\n\r\nIf you are UNABLE to attend, please let the committee know as\r\nsoon as possible, but not later than July 1st, by sending an e-mail\r\nto program@foss4g2017.org. If you are able to attend, then there\r\nis no need to let us know.\r\n\r\nIf you haven't registered for the conference by July 1st, expect\r\nan e-mail from us asking you about your plans. Remember, the early\r\nbird discount ends on May 8th, so just go ahead and register now.\r\n\r\nUnfortunately, we are not able to offer any additional discount to\r\npresenters. However, we've setup a travel grant program. Please\r\nread all the details carefully before considering an application:\r\nhttp://2017.foss4g.org/attending.html#travel-grants\r\n\r\nPlease look over your proposal at https://proposals.2017.foss4g.org/\r\nagain and review for grammar, typos, etc. This information will appear\r\non the website and in the printed program.\r\n\r\nThank you for you proposal and we look forward to see you in Bonn.\r\n\r\nThe FOSS4G 2017 Program Committee\r\n",
+        "subject": "Your talk for the FOSS4G 2017 has been accepted",
+        "from_address": "program@foss4g2017.org",
+        "label": "General Talk Accepted"
+    },
+    "model": "symposion_reviews.notificationtemplate",
+    "pk": 3
+},
+{
+    "fields": {
+        "body": "Dear {{proposal.speaker}},\r\n\r\nthank you for submitting a presentation proposal to FOSS4G 2017.\r\nThe Program Committee has worked very hard to decide which proposals\r\nwere the best fit for the conference and to create an exciting and\r\nengaging program for our attendees.\r\n\r\nYour talk\r\n\r\n    {{proposal.title}}\r\n\r\nhas been DECLINED.\r\n\r\nDetails about the review process can be found at:\r\nhttp://2017.foss4g.org/news-entry/abstract-review-process.html\r\n\r\nA list of all accepted talks will be published on the FOSS4G website\r\non May 1st.\r\n\r\nYou're awesome. Your proposal was awesome. We just couldn't accept\r\nthem all.\r\n\r\nCome to FOSS4G! One of the best things about FOSS4G is that it\r\ngives attendees an opportunity to see what everyone is talking\r\nabout, what's up and coming, and most of all it's inspiring! You\r\nare guaranteed to get more ideas for talks for you to propose at\r\nthe next FOSS4G.\r\n\r\nWe also have an area called \"demo theatre\" where you can briefly\r\npresent your work/projects without the need to apply for it. More\r\ninformation will be available on the website soon.\r\n\r\nThank you for you proposal and we look forward to see you in Bonn.\r\n\r\nThe FOSS4G 2017 Program Committee\r\n",
+        "subject": "Your talk for the FOSS4G 2017 has been declined",
+        "from_address": "program@foss4g2017.org",
+        "label": "General Talk Rejected"
+    },
+    "model": "symposion_reviews.notificationtemplate",
+    "pk": 4
+}
+]

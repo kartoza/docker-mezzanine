@@ -1,0 +1,114 @@
+{% extends "symposion/reviews/base.html" %}
+
+{% load i18n %}
+{% load bootstrap %}
+{% load account_tags %}
+{% load markdownify %}
+
+
+{% block body %}
+    {% if request.user.is_staff %}
+        <div class="pull-right">
+            <form class="result-form form-inline" method="POST" action="">
+                {% csrf_token %}
+                <div class="btn-group">
+                    {% if proposal.result.status == "accepted" %}
+                        <a class="btn dropdown-toggle btn-success" data-toggle="dropdown" href="#">Accepted <span class="caret"></span></a>
+                        <div class="dropdown-menu pull-right" style="width: 200px; padding-left: 10px;">
+                            <div class="btn-group">
+                                <input type="submit" name="result_submit" value="reject" class="btn btn-xs btn-danger" />
+                                <input type="submit" name="result_submit" value="standby" class="btn btn-xs" />
+                                <input type="submit" name="result_submit" value="undecide" class="btn btn-default btn-xs" />
+                            </div>
+                        </div>
+                    {% else %}
+                        {% if proposal.result.status == "rejected" %}
+                            <a class="btn dropdown-toggle btn-danger" data-toggle="dropdown" href="#">Rejected <span class="caret"></span></a>
+                            <div class="dropdown-menu pull-right" style="width: 200px; padding-left: 10px;">
+                                <div class="btn-group">
+                                    <input type="submit" name="result_submit" value="accept" class="btn btn-xs btn-success" />
+                                    <input type="submit" name="result_submit" value="standby" class="btn btn-xs" />
+                                    <input type="submit" name="result_submit" value="undecide" class="btn btn-default btn-xs" />
+                                </div>
+                            </div>
+                        {% else %}
+                            {% if proposal.result.status == "standby" %}
+                                <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">Standby <span class="caret"></span></a>
+                                <div class="dropdown-menu pull-right" style="width: 200px; padding-left: 10px;">
+                                    <div class="btn-group">
+                                        <input type="submit" name="result_submit" value="accept" class="btn btn-xs btn-success" />
+                                        <input type="submit" name="result_submit" value="reject" class="btn btn-xs btn-danger" />
+                                        <input type="submit" name="result_submit" value="undecide" class="btn btn-default btn-xs" />
+                                    </div>
+                                </div>
+                            {% else %}
+                                <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">Undecided <span class="caret"></span></a>
+                                <div class="dropdown-menu pull-right" style="width: 200px; padding-left: 10px;">
+                                    <div class="btn-group">
+                                        <input type="submit" name="result_submit" value="accept" class="btn btn-xs btn-success" />
+                                        <input type="submit" name="result_submit" value="reject" class="btn btn-xs btn-danger" />
+                                        <input type="submit" name="result_submit" value="standby" class="btn btn-default btn-xs" />
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endif %}
+                    {% endif %}
+                </div>
+            </form>
+        </div>
+    {% endif %}
+
+    <h3>#{{ proposal.number }}: {{ proposal.title }}</h3>
+
+
+    <h3>{% trans "Abstract" %}</h3>
+    <p>{{ proposal.abstract|markdownify|safe }}</p>
+
+    {% if proposal.tags.all %}
+    <p><strong>Tags:</strong> {{ proposal.tags.all|join:", " }}</p>
+    {% endif %}
+
+    <h3>This project/case study…</h3>
+    <dl>
+    {% if proposal.foss_is_links %}
+        <dt>…is open source:</dt>
+        <dd>{{ proposal.foss_is_links|markdownify|safe }}</dd>
+    {% endif %}
+
+    {% if proposal.foss_contributing_links %}
+        <dt>…contributes to open source:</dt>
+        <dd>{{ proposal.foss_contributing_links|markdownify|safe }}</dd>
+    {% endif %}
+
+    {% if proposal.foss_using_links %}
+        <dt>…uses open source:</dt>
+        <dd>{{ proposal.foss_using_links|markdownify|safe }}</dd>
+    {% endif %}
+    </dl>
+    {% if not proposal.foss_is_links and not proposal.foss_contributing_links and not proposal.foss_is_links %}
+    didn't give any links in regards to its open sourcyness
+    {% endif %}
+
+    {% if proposal.additional_notes %}
+    <h3>Notes from submitter</h3>
+    <p>{{ proposal.additional_notes|markdownify|safe }}</p>
+    {% endif %}
+
+
+
+     <hr />
+
+     {% if review_form %}
+         <form method="POST" action="" class="review-form">
+             {% csrf_token %}
+                 {{ review_form|bootstrap_horizontal }}
+                 <div class="form-action">
+                     <input type="submit" class="btn btn-primary" name="vote_submit" value="Submit Review" />
+                 </div>
+         </form>
+     {% else %}
+         <p>You do not have permission to vote on this proposal.</p>
+     {% endif %}
+
+
+{% endblock %}

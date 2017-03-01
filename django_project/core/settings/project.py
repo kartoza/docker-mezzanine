@@ -14,6 +14,18 @@ from .contrib import *  # noqa
 # Project apps
 INSTALLED_APPS += (
     # Add any additional project apps here
+    # symposion
+    "symposion",
+    "symposion.conference",
+    "symposion.proposals",
+    "symposion.reviews",
+    "symposion.schedule",
+    "symposion.speakers",
+    "symposion.sponsorship",
+    "symposion.teams",
+    "proposals",
+    "payment",
+    "pinaxcon_theme",
 )
 
 # Due to profile page does not available,
@@ -65,3 +77,16 @@ else:
     set_dynamic_settings(globals())
 
 from .celery_setting import *  # noqa
+
+CONFERENCE_ID=2
+PROPOSAL_FORMS = {
+    "talk": "proposals.forms.TalkProposalForm",
+    "workshop": "proposals.forms.WorkshopProposalForm",
+    "map": "proposals.forms.MapProposalForm",
+}
+
+# FIXTURE_DIRS = (
+#     absolute_path("symposion","fixtures"),
+# )
+
+SHOP_CURRENCY_LOCALE = "en_ZA.UTF-8"
