@@ -7,7 +7,7 @@ SHELL := /bin/bash
 #    P R O D U C T I O N     C O M M A N D S
 # ----------------------------------------------------------------------------
 default: web
-run: build permissions web migrate collectstatic
+run: build permissions web migrate collectstatic fixtures reviewaccess
 
 deploy: run
 	@echo
@@ -88,7 +88,7 @@ migrate:
 fixtures:
 	@echo
 	@echo "------------------------------------------------------------------"
-	@echo "Running migrate static in production mode"
+	@echo "Running Copy Fixtures in production mode"
 	@echo "------------------------------------------------------------------"
 	@docker exec -t -i qgis-org-za-uwsgi /bin/bash -c "python manage.py loaddata symposion/fixtures/*.json"
 
