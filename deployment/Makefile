@@ -7,7 +7,7 @@ SHELL := /bin/bash
 #    P R O D U C T I O N     C O M M A N D S
 # ----------------------------------------------------------------------------
 default: web
-run: build permissions web migrate collectstatic fixtures reviewaccess
+run: build permissions web migrate collectstatic collectfixtures reviewaccess
 
 deploy: run
 	@echo
@@ -83,15 +83,6 @@ migrate:
 	@docker-compose -p $(PROJECT_ID) run uwsgi-ephemeral python manage.py migrate sites
 	@docker-compose -p $(PROJECT_ID) run uwsgi-ephemeral python manage.py migrate pages
 	@docker-compose -p $(PROJECT_ID) run uwsgi-ephemeral python manage.py migrate
-	@#Used to load fixtures for symposion project
-
-fixtures:
-	@echo
-	@echo "------------------------------------------------------------------"
-	@echo "Running Copy Fixtures in production mode"
-	@echo "------------------------------------------------------------------"
-	@docker exec -t -i qgis-org-za-uwsgi /bin/bash -c "python manage.py loaddata symposion/fixtures/*.json"
-
 
 
 update-migrations:
@@ -100,6 +91,14 @@ update-migrations:
 	@echo "Running update migrations in production mode"
 	@echo "------------------------------------------------------------------"
 	@docker-compose -p $(PROJECT_ID) run uwsgi-ephemeral python manage.py makemigrations
+
+collectfixtures:
+	@echo
+	@echo "------------------------------------------------------------------"
+	@echo "Running fixtures migrations in production mode"
+	@echo "------------------------------------------------------------------"
+	@docker exec -t -i qgis-org-za-uwsgi /bin/bash -c "python manage.py loaddata symposion/fixtures/*.json"
+
 
 collectstatic:
 	@echo
