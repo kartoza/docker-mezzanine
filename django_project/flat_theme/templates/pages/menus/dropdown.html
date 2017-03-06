@@ -8,20 +8,23 @@
     {% for page in page_branch %}
     {% if not has_home and page.is_primary and forloop.first %}
     {% endif %}
-    {% if page.in_menu and not page.is_auth %}
-    <li class="{% if page.has_children_in_menu %}dropdown{% endif %}
-               {% if page.is_current_or_ascendant %}active{% endif %}"
-        id="{{ page.html_id }}">
-        <a href="{{ page.get_absolute_url }}"
-        {% if page.has_children_in_menu %}
-        class="dropdown-toggle disabled" data-toggle="dropdown"
-        {% endif %}>
-            {{ page.title }}
-            {% if page.has_children_in_menu %}<b class="caret"></b>{% endif %}
-        </a>
-        {% if page.has_children_in_menu %}{% page_menu page %}{% endif %}
-    </li>
+    {% if page.show_before_login or page.show_after_login and user.is_authenticated %}
+        {% if page.in_menu %}
+            <li class="{% if page.has_children_in_menu %}dropdown{% endif %}
+                       {% if page.is_current_or_ascendant %}active{% endif %}"
+                id="{{ page.html_id }}">
+                <a href="{{ page.get_absolute_url }}"
+                {% if page.has_children_in_menu %}
+                class="dropdown-toggle disabled" data-toggle="dropdown"
+                {% endif %}>
+                    {{ page.title }}
+                    {% if page.has_children_in_menu %}<b class="caret"></b>{% endif %}
+                </a>
+                {% if page.has_children_in_menu %}{% page_menu page %}{% endif %}
+            </li>
+        {% endif %}
     {% endif %}
+
     {% endfor %}
     {% ifinstalled mezzanine.accounts %}
     <li class="dropdown"><a href="" class="dropdown-toggle disabled" data-toggle="dropdown"><i class="icon-user"></i></a>
