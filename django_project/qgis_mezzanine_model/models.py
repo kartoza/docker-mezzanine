@@ -1,5 +1,5 @@
-from django.utils.translation import ugettext_lazy as _
-from mezzanine.pages.models import Link
+from mezzanine.core.models import ContentTyped
+from mezzanine.pages.models import Page
 from django.utils.translation import ugettext_lazy as _
 from django.db import models
 
@@ -8,7 +8,7 @@ import logging
 logger = logging.getLogger(__name__)
 
 
-class AuthLink(Link):
+class AuthLink(Page):
     """Page bucket for media files."""
     is_auth = models.BooleanField(_("Use Authentication"),default=False)
     class Meta:

@@ -8,7 +8,7 @@
     {% for page in page_branch %}
     {% if not has_home and page.is_primary and forloop.first %}
     {% endif %}
-    {% if page.in_menu %}
+    {% if page.in_menu and not page.is_auth %}
     <li class="{% if page.has_children_in_menu %}dropdown{% endif %}
                {% if page.is_current_or_ascendant %}active{% endif %}"
         id="{{ page.html_id }}">
@@ -32,16 +32,6 @@
 		</ul>
 	</li>
 	{% endifinstalled %}
-    <li class="dropdown">
-        <a href="/dashboard">
-             {% if user.is_authenticated %}
-                 Dashboard
-             {% else %}
-                 Register
-             {% endif %}
-        </a>
-
-    </li>
 </ul>
 
 {% else %}
