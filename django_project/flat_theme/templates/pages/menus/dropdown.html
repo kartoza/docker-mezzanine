@@ -1,4 +1,4 @@
-{% load i18n future pages_tags mezzanine_tags%}
+{% load i18n future pages_tags mezzanine_tags dropdown_tags %}
 {% spaceless %}
 {% if page_branch_in_menu %}
 
@@ -8,7 +8,38 @@
     {% for page in page_branch %}
     {% if not has_home and page.is_primary and forloop.first %}
     {% endif %}
-    {% if page.show_before_login or page.show_after_login and user.is_authenticated %}
+
+    {% if page.content_model != "authlink" %}
+        {% if page.in_menu %}
+            <li class="{% if page.has_children_in_menu %}dropdown{% endif %}
+                       {% if page.is_current_or_ascendant %}active{% endif %}"
+                id="{{ page.html_id }}">
+                <a href="{{ page.get_absolute_url }}"
+                {% if page.has_children_in_menu %}
+                class="dropdown-toggle disabled" data-toggle="dropdown"
+                {% endif %}>
+                    {{ page.title }}
+                    {% if page.has_children_in_menu %}<b class="caret"></b>{% endif %}
+                </a>
+                {% if page.has_children_in_menu %}{% page_menu page %}{% endif %}
+            </li>
+        {% endif %}
+    {% elif page.authlink.show_before_login and not user.is_authenticated %}
+        {% if page.in_menu %}
+            <li class="{% if page.has_children_in_menu %}dropdown{% endif %}
+                       {% if page.is_current_or_ascendant %}active{% endif %}"
+                id="{{ page.html_id }}">
+                <a href="{{ page.get_absolute_url }}"
+                {% if page.has_children_in_menu %}
+                class="dropdown-toggle disabled" data-toggle="dropdown"
+                {% endif %}>
+                    {{ page.title }}
+                    {% if page.has_children_in_menu %}<b class="caret"></b>{% endif %}
+                </a>
+                {% if page.has_children_in_menu %}{% page_menu page %}{% endif %}
+            </li>
+        {% endif %}
+    {% elif page.authlink.show_after_login and  user.is_authenticated %}
         {% if page.in_menu %}
             <li class="{% if page.has_children_in_menu %}dropdown{% endif %}
                        {% if page.is_current_or_ascendant %}active{% endif %}"
