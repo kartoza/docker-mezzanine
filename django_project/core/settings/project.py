@@ -90,3 +90,14 @@ PROPOSAL_FORMS = {
 # )
 
 SHOP_CURRENCY_LOCALE = "en_ZA.UTF-8"
+
+#Mezzanine Link Config
+
+EXTRA_MODEL_FIELDS = (
+    (
+        "mezzanine.pages.models.Link.is_auth"
+        "BooleanField", # 'django.db.models.' is implied if path is omitted.
+        ("Show If Authenticated",),
+        {"blank": True, "default": False},
+    ),
+)
