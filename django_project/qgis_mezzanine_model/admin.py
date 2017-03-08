@@ -8,7 +8,11 @@ link_fieldsets = deepcopy(LinkAdmin.fieldsets)
 link_fieldsets[0][1]["fields"].insert(-2, "show_before_login")
 link_fieldsets[0][1]["fields"].insert(-3, "show_after_login")
 
+
 class CoreLinkAdmin(LinkAdmin):
+    """
+    Fieldsets to show in form
+    """
     fieldsets = link_fieldsets
 
 admin.site.unregister(Link)
