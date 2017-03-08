@@ -22,7 +22,7 @@ TESTING = DEBUG
 
 SERVER_EMAIL = 'tim@kartoza.com'
 EMAIL_HOST = 'kartoza.com'
-DEFAULT_FROM_EMAIL = 'no-reply@kartoza.com'
+DEFAULT_FROM_EMAIL = 'secretary@sagta.org.za'
 
 
 STATICFILES_FINDERS += (

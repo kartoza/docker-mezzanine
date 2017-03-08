@@ -48,6 +48,7 @@ INSTALLED_APPS += (
      "pinax.boxes",
      "account",
      "cartridge.shop",
+     "qgis_mezzanine_model",
 
 )
 

@@ -45,12 +45,7 @@ def page(request, slug, template=u"pages/page.html", extra_context=None):
         pages = Page.objects.with_ascendants_for_slug(host,
                                                       for_user=request.user,
                                                       include_login_required=True)
-        if pages:
-            template_name = host
-            home_page = pages[0]
-            setattr(request, "page", home_page)
-        else:
-            template_name = "index"
+        template_name = host
 
     else:
         template_name = str(slug)
