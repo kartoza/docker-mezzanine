@@ -83,6 +83,11 @@ PROPOSAL_FORMS = {
     "talk": "proposals.forms.TalkProposalForm",
     "workshop": "proposals.forms.WorkshopProposalForm",
     "map": "proposals.forms.MapProposalForm",
+    "academic-presentation" : "proposals.forms.TalkProposalForm",
+    "sagta-workshop" : "proposals.forms.WorkshopProposalForm",
+    "foss4g-general-presentation" : "proposals.forms.TalkProposalForm",
+    "foss4g-workshop" : "proposals.forms.WorkshopProposalForm",
+    "sagta-general-presentation" : "proposals.forms.TalkProposalForm",
 }
 
 # FIXTURE_DIRS = (
