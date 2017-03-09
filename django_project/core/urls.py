@@ -34,6 +34,20 @@ urlpatterns = i18n_patterns(
     # Change the admin prefix here to use an alternate URL for the
     # admin interface, which would be marginally more secure.
     ("^admin/", include(admin.site.urls)),
+    url(r"^dashboard/", symposion.views.dashboard, name="dashboard"),
+    url("^speaker/", include("symposion.speakers.urls")),
+    url("^conference/", include("symposion.conference.urls")),
+    url(r"^account/", include("account.urls")),
+    url(r"^sponsors/", include("symposion.sponsorship.urls")),
+    url(r"^proposals/", include("symposion.proposals.urls")),
+    url(r"^boxes/", include("pinax.boxes.urls")),
+    url(r"^sponsors/", include("symposion.sponsorship.urls")),
+    url(r"^reviews/", include("symposion.reviews.urls")),
+    url(r"^schedule/", include("symposion.schedule.urls")),
+    url("^shop/", include("cartridge.shop.urls")),
+    url("^account/orders/$", order_history, name="shop_order_history"),
+
+    url(r"^teams/", include("symposion.teams.urls")),
 
     # For mezzanine-people
     ("^people/", include('mezzanine_people.urls')),
@@ -121,24 +135,12 @@ urlpatterns = i18n_patterns(
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns += static(settings.SYMPOSION_STATIC_URL, document_root=absolute_path("symposion","site_media"))
 urlpatterns += (
-    url("^speaker/", include("symposion.speakers.urls")),
-    url("^conference/", include("symposion.conference.urls")),
-    url(r"^account/", include("account.urls")),
-    url(r"^dashboard/", symposion.views.dashboard, name="dashboard"),
-    url(r"^sponsors/", include("symposion.sponsorship.urls")),
-    url(r"^proposals/", include("symposion.proposals.urls")),
-    url(r"^boxes/", include("pinax.boxes.urls")),
-    url(r"^sponsors/", include("symposion.sponsorship.urls")),
-    url(r"^reviews/", include("symposion.reviews.urls")),
-    url(r"^schedule/", include("symposion.schedule.urls")),
 
-    url(r"^teams/", include("symposion.teams.urls")),
 )
 
 urlpatterns += [
     # Cartridge URLs.
-    url("^shop/", include("cartridge.shop.urls")),
-    url("^account/orders/$", order_history, name="shop_order_history"),
+
 ]
 
 # Adds ``STATIC_URL`` to the context of error pages, so that error
