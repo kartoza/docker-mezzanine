@@ -7124,8 +7124,8 @@ button.close {
  * -------------------------- */
 @font-face {
   font-family: 'FontAwesome';
-  src: url(/site_media/static/fonts/fontawesome-webfont.eot?45c73723862c6fc5eb3d6961db2d71fb);
-  src: url(/site_media/static/fonts/fontawesome-webfont.eot?45c73723862c6fc5eb3d6961db2d71fb?#iefix&v=4.4.0) format('embedded-opentype'), url(/site_media/static/fonts/fontawesome-webfont.woff2?4b5a84aaf1c9485e060c503a0ff8cadb) format('woff2'), url(/site_media/static/fonts/fontawesome-webfont.woff?dfb02f8f6d0cedc009ee5887cc68f1f3) format('woff'), url(/site_media/static/fonts/fontawesome-webfont.ttf?7c87870ab40d63cfb8870c1f183f9939) format('truetype'), url(/site_media/static/fonts/fontawesome-webfont.svg?76a4f23c6be74fd309e0d0fd2c27a5de#fontawesomeregular) format('svg');
+  src: url(/static/fonts/fontawesome-webfont.eot?45c73723862c6fc5eb3d6961db2d71fb);
+  src: url(/static/fonts/fontawesome-webfont.eot?45c73723862c6fc5eb3d6961db2d71fb?#iefix&v=4.4.0) format('embedded-opentype'), url(/static/fonts/fontawesome-webfont.woff2?4b5a84aaf1c9485e060c503a0ff8cadb) format('woff2'), url(/static/fonts/fontawesome-webfont.woff?dfb02f8f6d0cedc009ee5887cc68f1f3) format('woff'), url(/static/fonts/fontawesome-webfont.ttf?7c87870ab40d63cfb8870c1f183f9939) format('truetype'), url(/static/fonts/fontawesome-webfont.svg?76a4f23c6be74fd309e0d0fd2c27a5de#fontawesomeregular) format('svg');
   font-weight: normal;
   font-style: normal;
 }

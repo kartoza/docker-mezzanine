@@ -46,11 +46,6 @@ def page(request, slug, template=u"pages/page.html", extra_context=None):
                                                       for_user=request.user,
                                                       include_login_required=True)
         template_name = host
-        # if pages:
-        #     home_page = pages[0]
-        #     setattr(request, "page", home_page)
-        # else:
-        #     template_name = "index"
 
     else:
         template_name = str(slug)
