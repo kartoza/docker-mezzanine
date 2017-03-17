@@ -1,0 +1,4 @@
+A user on FOSS4G 2017 has created an account using this email address.
+To confirm this email address, go to http://foss4g-africa.org/en/account/confirm_email/{{ key }}
+
+If you did not sign up for this site, you can ignore this message.
