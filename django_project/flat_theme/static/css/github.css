@@ -1,0 +1,35 @@
+.github-button {
+    width: 100%;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    padding: 9px 20px;
+    border: 1px solid #272727;
+    border-radius: 0;
+    background: #373737;
+    color: #ffffff !important;
+    opacity: 1 !important;
+}
+
+.github-button .text-button {
+    display: inline-block;
+    float: left !important;
+}
+.github-button:hover,
+.github-button:focus {
+    border: 1px solid #2b2b2b;
+    background: #2f2f2f;
+    color: #ffffff;
+    text-decoration: none;
+}
+.github-button img{
+    display: inline-block;
+    height: 24px;
+    width: 24px;
+    float: left;
+    margin: -2px 14px -6px -4px;
+}
+
+a.text-button{
+    color: white;
+}

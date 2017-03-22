@@ -2,12 +2,15 @@
 
 {% load staticfiles %}
 {% load metron_tags %}
+{% load static %}
 {% load i18n %}
 {% load sitetree %}
 
 
 {% block styles %}
     {% include "_styles.html" %}
+    <link href='/static/css/github.css' rel='stylesheet' />
+
 {% endblock %}
 
 

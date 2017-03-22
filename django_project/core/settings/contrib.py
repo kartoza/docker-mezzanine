@@ -67,7 +67,6 @@ HOOKSET = "pinaxcon_theme.hooks.Foss4GAccountHookset"
 
 AUTHENTICATION_BACKENDS = [
     "account.auth_backends.UsernameAuthenticationBackend",
-    "social_core.backends.github.GithubOAuth2",
 ]
 # mezzanine-mdown options
 # RICHTEXT_WIDGET_CLASS = "mdown.forms.WmdWidget"
@@ -97,7 +96,14 @@ MIDDLEWARE_CLASSES += (
     "mezzanine.core.middleware.FetchFromCacheMiddleware",
 )
 
-AUTHENTICATION_BACKENDS = ("mezzanine.core.auth_backends.MezzanineBackend",)
+AUTHENTICATION_BACKENDS = (
+    "mezzanine.core.auth_backends.MezzanineBackend",
+    "social_core.backends.github.GithubOAuth2",
+)
+
+SOCIAL_AUTH_GITHUB_KEY = '8f650ca006d7d1674820'
+SOCIAL_AUTH_GITHUB_SECRET = '8a4ad8ab6c3a9adecb7f10cf2d9229a4c44fc57e'
+LOGIN_REDIRECT_URL = 'home'
 
 ACCOUNT_UNIQUE_EMAIL = True
 ACCOUNT_USERNAME_REQUIRED = True
