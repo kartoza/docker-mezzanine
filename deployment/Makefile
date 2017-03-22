@@ -7,7 +7,7 @@ SHELL := /bin/bash
 #    P R O D U C T I O N     C O M M A N D S
 # ----------------------------------------------------------------------------
 default: web
-run: build permissions web migrate collectstatic  reviewaccess
+run: build permissions web migrate collectstatic
 
 deploy: run
 	@echo
