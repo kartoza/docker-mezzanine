@@ -1,7 +1,7 @@
 celery
 Django==1.8.5
 psycopg2
-git+https://github.com/dimasciput/mezzanine.git@develop
+mezzanine==4.2.3
 mezzanine_people
 mezzanine-references
 mezzanine-mdown
@@ -50,3 +50,6 @@ taggit-selectize
 unicodecsv==0.14.1
 mdx_linkify==0.6
 pinax
+
+social-auth-core==1.1.0
+social-auth-app-django==1.1.0

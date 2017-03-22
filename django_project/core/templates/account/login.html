@@ -1,6 +1,6 @@
 {% extends "site_base.html" %}
 
-{% load account_tags %}
+{% load account_tags social %}
 {% load i18n %}
 {% load bootstrap %}
 
@@ -29,6 +29,7 @@
                         {% trans "Don't have an account?" %}  <strong><a href="{% url 'account_signup' %}">{% trans "Sign up" %}</a></strong>
                     </small>
                 </p>
+                <a href="{% url "social:begin" "githuboauth2" %}">Github</a>
             {% endif %}
         </div>
     </div>

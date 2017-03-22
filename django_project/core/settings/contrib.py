@@ -49,6 +49,8 @@ INSTALLED_APPS += (
      "account",
      "cartridge.shop",
      "qgis_mezzanine_model",
+     "social_django",
+     "social_core",
 
 )
 
@@ -65,6 +67,7 @@ HOOKSET = "pinaxcon_theme.hooks.Foss4GAccountHookset"
 
 AUTHENTICATION_BACKENDS = [
     "account.auth_backends.UsernameAuthenticationBackend",
+    "social_core.backends.github.GithubOAuth2",
 ]
 # mezzanine-mdown options
 # RICHTEXT_WIDGET_CLASS = "mdown.forms.WmdWidget"
