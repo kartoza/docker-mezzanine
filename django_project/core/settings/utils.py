@@ -41,6 +41,8 @@ def ensure_secret_key_file():
             f.write("COMMENTS_DISQUS_API_PUBLIC_KEY = ''" + "\n")
             f.write("COMMENTS_DISQUS_SHORTNAME = ''" + "\n")
             f.write("SENTRY_DSN = ''" + "\n")
+            f.write("SOCIAL_AUTH_GITHUB_KEY = ''" + "\n")
+            f.write("SOCIAL_AUTH_GITHUB_SECRET = ''" + "\n")
 
 
 # Import the secret key

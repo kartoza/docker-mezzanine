@@ -7,6 +7,8 @@ import locale
 from .secret import (
     COMMENTS_DISQUS_API_PUBLIC_KEY,
     COMMENTS_DISQUS_API_SECRET_KEY,
+    SOCIAL_AUTH_GITHUB_KEY,
+    SOCIAL_AUTH_GITHUB_SECRET,
     COMMENTS_DISQUS_SHORTNAME)
 
 # Store these package names here as they may change in the future since
@@ -101,9 +103,6 @@ AUTHENTICATION_BACKENDS = (
     "social_core.backends.github.GithubOAuth2",
 )
 
-SOCIAL_AUTH_GITHUB_KEY = '8f650ca006d7d1674820'
-SOCIAL_AUTH_GITHUB_SECRET = '8a4ad8ab6c3a9adecb7f10cf2d9229a4c44fc57e'
-LOGIN_REDIRECT_URL = 'home'
 
 ACCOUNT_UNIQUE_EMAIL = True
 ACCOUNT_USERNAME_REQUIRED = True
