@@ -9,7 +9,7 @@ __copyright__ = 'kartoza.com'
 import decimal
 from django.utils.translation import ugettext_lazy as _
 
-tax_value = "14%"
+tax_value = "0%"
 
 
 def vat_tax_handler(request, order_form):
@@ -23,5 +23,5 @@ def vat_tax_handler(request, order_form):
     accessible via ``request.cart``
     """
     settings.use_editable()
-    tax = request.cart.total_price() - (request.cart.total_price() / decimal.Decimal(1.14))
-    set_tax(request, _("Vat"), tax)
+    tax = 0
+    # set_tax(request, _("Vat"), tax)

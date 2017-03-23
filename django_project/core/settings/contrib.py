@@ -311,7 +311,9 @@ SHOP_HANDLER_ORDER = "cartridge.shop.checkout.default_order_handler"
 SHOP_HANDLER_PAYMENT = "cartridge.shop.checkout.default_payment_handler"
 
 SHOP_HANDLER_TAX = "payment.checkout.vat_tax_handler"
-SHOP_HANDLER_TAX_INCLUDE_IN_PRICE = True
+SHOP_HANDLER_TAX_INCLUDE_IN_PRICE = False
+SHOP_DEFAULT_SHIPPING_VALUE = 0
+SHOP_ORDER_FROM_EMAIL = "secretary@sagta.org.za"
 
 # Sequence of value/name pairs for order statuses.
 SHOP_ORDER_STATUS_CHOICES = (
