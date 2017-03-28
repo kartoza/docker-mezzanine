@@ -18,7 +18,7 @@
 
         .left-title {
             color: #8C8B8B;
-            font-size: 42px;
+            font-size: 27px;
             font-family: 'Leto', sans-serif;
             font-weight: 900;
         }
@@ -30,7 +30,7 @@
         }
 
         .left-title-desc {
-            font-size: 12px;
+            font-size: 20px;
         }
 
         .big-title {
@@ -94,22 +94,15 @@
             <td align="left" width="60%" valign="top" style="padding-right: 30px;">
                 <span class="left-title">
                     <img src="{{ MEDIA_URL }}uploads/images/foss4g-logo-150px-small.png" alt="{{ SITE_NAME }}" />
-                    {{ settings.SITE_TITLE }}
+                    SAGTA / FOSS4G Africa 2017
                 </span>
                 <p class="left-title-desc">
-                    <b>Company registration no</b>: 2014/109067/07
+                    <b>Geography Gauteng</b>
                     <br>
-                    <b>Address</b>: Block C Top floor Unit 9C, Carpe Diem, 26 Quantum
-                    Street, Technopark,
-                    Stellenbosch, 7600, South Africa
+                    on behalf of SAGTA, OSGeo Africa and the QGIS ZA User Group
                     <br>
-                    <b>VAT Number</b>: 4450266806
+                    <b>Pat Jay: secretary@sagta.org.za</b>: 0829775025
                     <br>
-                    <b>Tel</b>: +27 (0)21 880 0990 / +27 (0)73 768 8108 / +27 (0)87 809 2702 Fax: +27 (0)86 564 4056
-                    <br>
-                    <b>Web</b>: <a href="http://kartoza.com" target="_blank">http://kartoza.com</a>
-                    <br>
-                    <b>Email</b>: info@kartoza.com
                 </p>
             </td>
             <td align="right" width="40%" class="right-title" valign="top">
@@ -132,22 +125,11 @@
     <table class="bordered" width="100%" cellspacing="0" cellpadding="10">
         <tr>
             <th align="left" width="50%">{% trans "Billing Details" %}</th>
-            <th align="left" width="50%">{% trans "Shipping Details" %}</th>
         </tr>
         <tr>
             <td valign="top">
                 <table class="borderless" border="0">
                     {% for field, value in order_billing_detail_fields %}
-                        <tr>
-                            <td>{{ field }}&nbsp;&nbsp;&nbsp;</td>
-                            <td>: {{ value }}</td>
-                        </tr>
-                    {% endfor %}
-                </table>
-            </td>
-            <td valign="top">
-                <table class="borderless" border="0">
-                    {% for field, value in order_shipping_detail_fields %}
                         <tr>
                             <td>{{ field }}&nbsp;&nbsp;&nbsp;</td>
                             <td>: {{ value }}</td>
