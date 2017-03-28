@@ -11,5 +11,5 @@ def markdownify(text):
     untrusted_text = markdown.markdown(text)
     html = bleach.clean(untrusted_text,
                         tags=settings.MARKDOWNIFY_WHITELIST_TAGS, )
-    # html = bleach.linkify(html)
-    return untrusted_text
+    html = bleach.linkify(html)
+    return html
