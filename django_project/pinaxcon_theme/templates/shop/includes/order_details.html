@@ -1,4 +1,4 @@
-{% load shop_tags i18n %}
+{% load shop_tags i18n pinax_shop_tags %}
 
 {% block extra_css %}
     <style>
@@ -176,5 +176,6 @@
                 <td align="right" valign="top">{{ item.total_price|currency }}</td>
             </tr>
         {% endfor %}
+        {% order_totals_in_table %}
     </table>
 </div>
