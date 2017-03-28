@@ -47,7 +47,7 @@ urlpatterns = i18n_patterns(
     url("^shop/", include("cartridge.shop.urls")),
     url("^account/orders/$", order_history, name="shop_order_history"),
     url("^social/", include('social_django.urls', namespace='social')),
-
+    url("^payment/", include("payment.urls")),
     url(r"^teams/", include("symposion.teams.urls")),
 
     # For mezzanine-people

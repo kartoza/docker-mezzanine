@@ -81,6 +81,14 @@
             $phone_label.html($phone_label.html() + " <i>(with leading 0)</i>");
             $phone_input = $('.input_id_shipping_detail_phone input');
             $phone_input.attr('pattern', phone_pattern);
+
+            var $same_delivery_label = '<label class="control-label" for="id_same_billing_shipping">My delivery details are the same as my billing details</label>';
+            var $input = $('#id_same_billing_shipping');
+            $input.closest('div').append($same_delivery_label);
+
+            var $remember_address_label = '<label class="control-label" for="id_remember">Remember My Adress Later</label>';
+            $("#id_remember").closest('div').append($remember_address_label);
+
         });
     </script>
 
