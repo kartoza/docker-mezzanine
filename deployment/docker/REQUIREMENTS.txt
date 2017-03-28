@@ -31,11 +31,12 @@ django-taggit==0.21.5
 django-timezone-field==1.3
 django-user-accounts==1.2.0
 easy-thumbnails==2.2
-html5lib==0.9999999
+html5lib==0.999999999
 markdown==2.6.2
 pytz==2015.6
 pyyaml==3.11
 ruamel.yaml==0.13.14
+bleach==2.0.0
 
 pinax-theme-bootstrap==7.1.1
 metron==1.3.5
@@ -51,5 +52,5 @@ unicodecsv==0.14.1
 mdx_linkify==0.6
 pinax
 
-social-auth-core==1.1.0
+social-auth-core==1.2.0
 social-auth-app-django==1.1.0

@@ -5,7 +5,7 @@ from .prod import *  # noqa
 import os
 print os.environ
 
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
