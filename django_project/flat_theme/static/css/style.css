@@ -902,3 +902,26 @@ csmall2 {
     height: 100px;
     margin-top: -50px;
 }
+
+
+.product-list .caption, .related-products .caption {
+    position: relative !important;
+}
+
+.caption h6 {
+    font-weight: 500 !important;
+    font-size: 15px;
+    color: #34495e !important;
+}
+
+.caption {
+    background: rgb(248, 248, 248) !important;
+}
+
+.price-info {
+    color: #0C5404;
+}
+
+.old-price {
+    color: #dca7a7 !important;
+}
