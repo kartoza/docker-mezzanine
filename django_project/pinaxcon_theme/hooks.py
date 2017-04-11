@@ -10,9 +10,3 @@ class Foss4GAccountHookset(AccountDefaultHookSet):
         subject = "".join(subject.splitlines())  # remove superfluous line breaks
         message = render_to_string("account/email/email_confirmation_message.txt", ctx)
         send_mail(subject, message, settings.DEFAULT_FROM_EMAIL, to)
-
-    def send_complete_profile_email(self,to,ctx):
-        subject = render_to_string("account/email/email_complete_profile_subject.txt",ctx)
-        subject = "".join(subject.splitlines())  # remove superfluous line breaks
-        message = render_to_string("account/email/email_complete_profile_message.txt", ctx)
-        send_mail(subject, message, settings.DEFAULT_FROM_EMAIL, to)

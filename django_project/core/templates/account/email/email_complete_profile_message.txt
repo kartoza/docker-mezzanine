@@ -1,0 +1,10 @@
+Dear {{ username }}
+
+Thank you for registering on FOSS4G 2017
+
+Please complete your profile here:
+{{host}}/en/speaker/edit/
+
+And you can change your profile settings here
+
+{{host}}/en/account/settings
