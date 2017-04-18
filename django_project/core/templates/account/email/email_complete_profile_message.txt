@@ -1,6 +1,6 @@
 Dear {{ username }}
 
-Thank you for registering on FOSS4G 2017
+Thank you for registering for FOSS4G 2017
 
 Please complete your profile here:
 {{host}}/en/speaker/edit/
