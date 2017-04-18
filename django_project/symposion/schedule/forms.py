@@ -8,6 +8,7 @@ from django import forms
 from django.contrib import messages
 from django.db import IntegrityError, transaction
 from django.db.models import Q
+import locale
 
 from symposion.schedule.models import (Day, Presentation, Room, SlotKind, Slot,
                                        SlotRoom)
@@ -74,9 +75,10 @@ class ScheduleSectionForm(forms.Form):
     def _get_start_end_times(self, data):
         "Return start and end time objects"
         times = []
+        locals = locale.getlocale()
         for x in [data[self.START_KEY], data[self.END_KEY]]:
             try:
-                time_obj = time.strptime(x, '%I:%M %p')
+                time_obj = time.strptime(x, '%H:%M')
             except:
                 return messages.ERROR, u'Malformed time found: %s.' % x
             time_obj = datetime(100, 1, 1, time_obj.tm_hour, time_obj.tm_min, 00)
