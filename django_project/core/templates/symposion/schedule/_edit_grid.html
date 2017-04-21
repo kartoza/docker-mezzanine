@@ -1,7 +1,7 @@
 <table class="calendar table table-bordered">
     <thead>
         <tr>
-            <th class="time">&nbsp;</th>
+            <th class="time" style="width: 80px">&nbsp;</th>
             {% for room in timetable.rooms %}
                 <th>{{ room.name }}</th>
             {% endfor %}
@@ -11,28 +11,32 @@
         {% for row in timetable %}
             <tr>
                 <td class="time">{{ row.time|date:"h:iA" }}</td>
-                {% for slot in row.slots %}
-                    <td class="slot slot-{{ slot.kind.label }}" colspan="{{ slot.colspan }}" rowspan="{{ slot.rowspan }}">
-                        {% if slot.kind.label == "talk" or slot.kind.label == "tutorial" %}
-                            {% if not slot.content %}
-                                <a class="btn btn-xs edit-slot" data-action="{% url "schedule_slot_edit" schedule.section.slug slot.pk %}" href="#">+</a>
-                            {% else %}
-                                <span class="title"><a class="edit-slot" data-action="{% url "schedule_slot_edit" schedule.section.slug slot.pk %}" href="#">{{ slot.content.title }}</a></span>
-                                <span class="speaker">{{ slot.content.speaker }}</span>
-                            {% endif %}
-                        {% else %}
-                            {% if slot.content_override.raw %}
-                                {{ slot.content_override.rendered|safe }}
-                            {% else %}
-                                {{ slot.kind.label }}
-                            {% endif %}
-                            &mdash; <a class="edit-slot" data-action="{% url "schedule_slot_edit" schedule.section.slug slot.pk %}" href="#">edit</a>
-                        {% endif %}
-                    </td>
-                {% endfor %}
-                {% if forloop.last %}
-                    <td colspan="{{ timetable.rooms|length }}"></td>
-                {% endif %}
+                    {% for room in timetable.rooms %}
+                        <td class="slot slot-{{ slot.kind.label }}" colspan="{{ slot.colspan }}" rowspan="{{ slot.rowspan }}">
+                            {% for slot in row.slots %}
+                            {% for slotroom in slot.rooms %}
+                                {% ifequal slotroom.name room.name %}
+                                    {% if slot.kind.label == "talk" or slot.kind.label == "tutorial" %}
+                                        {% if not slot.content %}
+                                            <a class="btn btn-xs edit-slot" data-action="{% url "schedule_slot_edit" schedule.section.slug slot.pk %}" href="#">+</a>
+                                        {% else %}
+                                            <span class="title"><a class="edit-slot" data-action="{% url "schedule_slot_edit" schedule.section.slug slot.pk %}" href="#">{{ slot.content.title }}</a></span>
+                                            <span class="speaker">{{ slot.content.speaker }}</span>
+                                        {% endif %}
+                                    {% else %}
+                                        {% if slot.content_override.raw %}
+                                            {{ slot.content_override.rendered|safe }}
+                                        {% else %}
+                                            {{ slot.kind.label }}
+                                        {% endif %}
+                                    &mdash; <a class="edit-slot" data-action="{% url "schedule_slot_edit" schedule.section.slug slot.pk %}" href="#">edit<br></a>
+                                    {% endif %}
+                                {% endifequal %}
+                            {% endfor %}
+                            {% endfor %}
+                        </td>
+                    {% endfor %}
+
             </tr>
         {% endfor %}
     </tbody>
