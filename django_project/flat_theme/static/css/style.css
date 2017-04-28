@@ -427,15 +427,14 @@ a:focus {
 }
 
 #blue {
-    background-image: url(../img/map-header-2.png);
-    background-repeat: no-repeat;
+    background-color: #3399ff;
     background-size: cover;
-    margin-top: 50px;
-    padding-top: 25px;
-    padding-bottom: 25px;
+    margin-top: 0;
+    padding-top: 40px;
+    padding-bottom: 40px;
 }
 
-#blue h3 {
+#blue h3, #blue h2 {
     color: white;
     margin-left: 15px;
 }
@@ -924,4 +923,46 @@ csmall2 {
 
 .old-price {
     color: #dca7a7 !important;
+}
+
+.btn-buy {
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-bottom: 10px;
+    background-color: #2eb82e !important;
+    color: white !important;
+    border-color: #196619 !important;
+}
+
+.btn-buy:hover {
+    background-color: #28a428 !important;
+}
+
+.btn-cart {
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.btn-cart img {
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+    margin-top: -5px;
+}
+
+.btn-wishlist-buy, .btn-wishlist-remove {
+    width: 120px;
+}
+
+.btn-wishlist-buy {
+    height: 30px !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+.wishlist-row td {
+    padding-top: 30px !important;
+    padding-bottom: 30px !important;
 }
