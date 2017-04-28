@@ -195,3 +195,10 @@ def sponsor_zip_logo_files(request):
     response['Content-Disposition'] = \
         'attachment; filename="%s_sponsorlogos.zip"' % prefix
     return response
+
+@login_required
+def sponsor_packages(request):
+    if not request.user.is_staff:
+        raise Http404()
+
+    return render_to_response("symposion/sponsorship/packages.html", context_instance=RequestContext(request))

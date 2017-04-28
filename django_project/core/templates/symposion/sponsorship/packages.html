@@ -1,0 +1,196 @@
+{% extends "theme_bootstrap/base.html" %}
+
+{% load staticfiles %}
+{% load metron_tags %}
+{% load static %}
+{% load i18n %}
+{% load sitetree %}
+{% load bootstrap %}
+
+{% block styles %}
+    {% include "_styles.html" %}
+    <link href='/static/css/github.css' rel='stylesheet' />
+
+{% endblock %}
+
+{% block head_title %}{% trans "Sponsor Packages" %}{% endblock %}
+
+{% block body_class %}sponsorships{% endblock %}
+
+{% block body %}
+    <h1>Sponsor Packages</h1>
+
+    <section id="content_body">
+        <div class="container">
+            <p>
+                Please note that if you are a sponsor you can additionally book Exhibition space.
+            </p>
+        </div>
+
+        <style>
+            table{
+                border-collapse: collapse;
+                width: 90%;
+                margin-left: 20px;
+                margin-top: 10px;
+            }
+            th {
+                padding: 10px 10px;
+            }
+            td {
+                padding: 5px 10px;
+            }
+            table, th, td {
+                border: 1px solid lightgrey;
+                text-align: center;
+            }
+        </style>
+
+        <div class="table">
+            <table>
+                <tr>
+                    <th style="text-align: left" width="35%">Sponsorship Levels</th>
+                    <th>Platinum</th>
+                    <th>Gold</th>
+                    <th>Silver</th>
+                    <th>Bronze</th>
+                    <th>Supporter</th>
+                </tr>
+                <tr>
+                    <th style="text-align: left">Conference Contents</th>
+                </tr>
+                <tr>
+                    <td style="text-align: left">Sponsored talk in main track</td>
+                    <td>x</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td style="text-align: left">Sponsored Workshop</td>
+                    <td>x</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td style="text-align: left">Conference Passes</td>
+                    <td>6</td>
+                    <td>4</td>
+                    <td>2</td>
+                    <td>1</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td style="text-align: left">B2B Conference</td>
+                    <td>free</td>
+                    <td>free</td>
+                    <td>free</td>
+                    <td>free</td>
+                    <td>free</td>
+                </tr>
+                 <tr>
+                    <th style="text-align: left">Marketing</th>
+                </tr>
+                <tr>
+                    <td style="text-align: left">Logo in Venue</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td>x</td>
+                </tr>
+                <tr>
+                    <td style="text-align: left">Add marketing items to conference bag</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td style="text-align: left">Logo on main web page</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td style="text-align: left">Logo on sponsor page</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td>x</td>
+                </tr>
+                <tr>
+                    <td style="text-align: left">Logo in official emails</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td style="text-align: left">Twitter Messages</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td>x</td>
+                </tr>
+                <tr>
+                    <th style="text-align: left">Other Conference materials</th>
+                    <th>Discuss</th>
+                    <th>Discuss</th>
+                    <th>Discuss</th>
+                    <th>Discuss</th>
+                    <th>Discuss</th>
+                </tr>
+            </table>
+        </div>
+
+        <div class="container">
+            <h4>We are open to your ideas for sponsoring any of the following items:</h4>
+            <ul>
+                <li>Ice Breaker</li>
+                <li>Coffee breaks</li>
+                <li>Gala event</li>
+                <li>...</li>
+            </ul>
+            <p>Further information please contact
+                <a href="mailto:secretary@sagta.org.za">secretary@sagta.org.za</a>.</p>
+        </div>
+
+
+    </section>
+{% endblock %}
+
+{% block footer %}
+    {% include "_footer.html" %}
+    <div class="container">
+            </div>
+             <nav class="navbar navbar-default navbar-fixed-bottom center" role="navigation">
+                <p class="text-center" style="padding-top: 8px">
+                    Site Hosting by <a href="http://kartoza.com">
+                    Kartoza (Pty) Ltd.
+                    <img src="{% static "img/kartoza.png" %}" />
+                    </a>
+                </p>
+                </nav>
+            </div>
+        </div>
+{% endblock %}
+
+
+{% block scripts %}
+    {% include "_scripts.html" %}
+{% endblock %}
+
+{% block extra_body_base %}
+    {% analytics %}
+    {% block extra_body %}{% endblock %}
+{% endblock %}
