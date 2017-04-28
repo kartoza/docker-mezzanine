@@ -50,106 +50,25 @@
             <table>
                 <tr>
                     <th style="text-align: left" width="35%">Sponsorship Levels</th>
-                    <th>Platinum</th>
-                    <th>Gold</th>
-                    <th>Silver</th>
-                    <th>Bronze</th>
-                    <th>Supporter</th>
+                    {% for level in sponsorlevels %}
+                    <th>{{ level.name }}<br>{{ level.cost }}</th>
+                    {% endfor %}
                 </tr>
+            {% for benefit in benefits %}
                 <tr>
-                    <th style="text-align: left">Conference Contents</th>
+                    <td style="text-align: left">{{ benefit.name }}</td>
+                    {% for level in sponsorlevels %}
+                        <td>
+                            {% for benefitlevel in benefitlevels %}
+                                {% if level.name == benefitlevel.level.name and benefit.name == benefitlevel.benefit.name %}
+                                    x
+                                {% endif %}
+                            {% endfor %}
+                        </td>
+                    {% endfor %}
+
                 </tr>
-                <tr>
-                    <td style="text-align: left">Sponsored talk in main track</td>
-                    <td>x</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td style="text-align: left">Sponsored Workshop</td>
-                    <td>x</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td style="text-align: left">Conference Passes</td>
-                    <td>6</td>
-                    <td>4</td>
-                    <td>2</td>
-                    <td>1</td>
-                    <td>1</td>
-                </tr>
-                <tr>
-                    <td style="text-align: left">B2B Conference</td>
-                    <td>free</td>
-                    <td>free</td>
-                    <td>free</td>
-                    <td>free</td>
-                    <td>free</td>
-                </tr>
-                 <tr>
-                    <th style="text-align: left">Marketing</th>
-                </tr>
-                <tr>
-                    <td style="text-align: left">Logo in Venue</td>
-                    <td>x</td>
-                    <td>x</td>
-                    <td>x</td>
-                    <td>x</td>
-                    <td>x</td>
-                </tr>
-                <tr>
-                    <td style="text-align: left">Add marketing items to conference bag</td>
-                    <td>x</td>
-                    <td>x</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td style="text-align: left">Logo on main web page</td>
-                    <td>x</td>
-                    <td>x</td>
-                    <td>x</td>
-                    <td>x</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td style="text-align: left">Logo on sponsor page</td>
-                    <td>x</td>
-                    <td>x</td>
-                    <td>x</td>
-                    <td>x</td>
-                    <td>x</td>
-                </tr>
-                <tr>
-                    <td style="text-align: left">Logo in official emails</td>
-                    <td>x</td>
-                    <td>x</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td style="text-align: left">Twitter Messages</td>
-                    <td>x</td>
-                    <td>x</td>
-                    <td>x</td>
-                    <td>x</td>
-                    <td>x</td>
-                </tr>
-                <tr>
-                    <th style="text-align: left">Other Conference materials</th>
-                    <th>Discuss</th>
-                    <th>Discuss</th>
-                    <th>Discuss</th>
-                    <th>Discuss</th>
-                    <th>Discuss</th>
-                </tr>
+            {% endfor %}
             </table>
         </div>
 

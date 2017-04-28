@@ -19,7 +19,7 @@ from account.decorators import login_required
 from symposion.sponsorship.forms import SponsorApplicationForm, \
     SponsorDetailsForm, SponsorBenefitsFormSet
 from symposion.sponsorship.models import Benefit, Sponsor, SponsorBenefit, \
-    SponsorLevel
+    SponsorLevel, BenefitLevel
 
 
 log = logging.getLogger(__name__)
@@ -196,9 +196,18 @@ def sponsor_zip_logo_files(request):
         'attachment; filename="%s_sponsorlogos.zip"' % prefix
     return response
 
+
 @login_required
 def sponsor_packages(request):
     if not request.user.is_staff:
         raise Http404()
 
-    return render_to_response("symposion/sponsorship/packages.html", context_instance=RequestContext(request))
+    sponsorlevels = SponsorLevel.objects.all()
+    benefitlevels = BenefitLevel.objects.all()
+    benefits = Benefit.objects.all()
+
+    return render_to_response("symposion/sponsorship/packages.html",
+                              { 'sponsorlevels': sponsorlevels,
+                                'benefits': benefits,
+                                'benefitlevels': benefitlevels},
+                              context_instance=RequestContext(request))
