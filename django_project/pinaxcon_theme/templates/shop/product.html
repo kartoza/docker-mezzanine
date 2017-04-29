@@ -111,9 +111,13 @@ $(document).ready(function() {
 <form method="post" id="add-cart" class="shop-form">
     {% fields_for add_product_form %}
     <div class="form-actions">
-        <input type="submit" class="btn btn-primary btn-lg pull-right" name="add_cart" value="{% trans "Buy" %}">
+        <button type="submit" class="btn btn-primary btn-lg pull-right btn-buy" name="add_cart">
+            <i class="fa fa-shopping-cart" aria-hidden="true"></i> {% trans "Add to Cart" %}
+        </button>
         {% if settings.SHOP_USE_WISHLIST %}
-        <input type="submit" class="btn btn-default btn-lg pull-left" name="add_wishlist" value="{% trans "Add to Cart" %}">
+        <button type="submit" class="btn btn-default btn-lg pull-left btn-cart" name="add_wishlist" style="">
+            {% trans "Save to Wishlist" %}
+        </button>
         {% endif %}
     </div>
 </form>
@@ -122,12 +126,14 @@ $(document).ready(function() {
 {% endif %}
 
 {% if settings.SHOP_USE_RATINGS %}
-<div class="panel panel-default rating">
-    <div class="panel-body">{% rating_for product %}</div>
-</div>
+{#<div class="panel panel-default rating">#}
+{#    <div class="panel-body">{% rating_for product %}</div>#}
+{#</div>#}
 {% endif %}
 
+
 {% if settings.SHOP_USE_RELATED_PRODUCTS and related_products %}
+<hr style="margin-top:50px;"/>
 <h2>{% trans "Related Products" %}</h2>
 <div class="row related-products">
     {% for product in related_products %}
