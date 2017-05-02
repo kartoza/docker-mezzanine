@@ -141,6 +141,10 @@ a.active.selector-clearall {
     cursor: pointer;
 }
 
+.related-widget-wrapper select {
+    width: 500px;
+}
+
 /* STACKED SELECTORS */
 
 .stacked {

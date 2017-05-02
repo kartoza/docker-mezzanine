@@ -4,8 +4,14 @@ import reversion
 
 from symposion.teams.models import Team, Membership
 
-admin.site.register(Team,
-                    prepopulated_fields={"slug": ("name",)})
+class TeamAdmin(admin.ModelAdmin):
+
+    class Media:
+        css = {'all': ('/static/admin/css/widgets.css',)}
+
+    prepopulated_fields = {"slug": ("name",)}
+
+admin.site.register(Team,TeamAdmin)
 
 
 class MembershipAdmin(reversion.VersionAdmin):
