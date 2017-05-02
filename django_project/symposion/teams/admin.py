@@ -10,8 +10,9 @@ class TeamAdmin(admin.ModelAdmin):
         css = {'all': ('/static/admin/css/widgets.css',)}
 
     prepopulated_fields = {"slug": ("name",)}
+    filter_vertical = ('permissions', 'manager_permissions',)
 
-admin.site.register(Team,TeamAdmin)
+admin.site.register(Team, TeamAdmin)
 
 
 class MembershipAdmin(reversion.VersionAdmin):
