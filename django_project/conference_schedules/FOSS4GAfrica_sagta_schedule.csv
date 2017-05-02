@@ -1,42 +1,42 @@
 "date","time_start","time_end","kind","room","topic"
-"2017-06-26","07:30","08:30","registration","Quad",
-"2017-06-26","08:30","09:30","plenary","REA","welcome, introductions; Pule Ramakotswa, Paul Edey"
-"2017-06-26","09:30","10:15","plenary","REA","Keynote: Dr Di Wilmot, Geography communities"
-"2017-06-26","10:15","10:45","tea","REA",
-"2017-06-26","10:45","11:30","plenary","REA","keynote"
-"2017-06-26","11:30","12:00","talk","REA","Fiona Kapman: 21st century learning skills"
-"2017-06-26","11:30","12:00","talk","Room1","Graham Evans: Making statistics meaningful in education"
-"2017-06-26","11:30","12:00","talk","Room2","Celia Sauerman: SAGTA"
-"2017-06-26","11:30","12:00","talk","Room3","GCRO"
-"2017-06-26","12:00","12:30","talk","REA","Dr Colleen Henning"
-"2017-06-26","12:00","12:30","talk","Room1","Pam Esterhuisen: Geo mentoring"
-"2017-06-26","11:30","12:00","talk","Room2","Clinton van der Merwe: Geography Olympiad"
-"2017-06-26","11:30","12:00","talk","Room3","Dean Peters"
-"2017-06-26","12:30","13:30","lunch","Darragh",
-"2017-06-26","13:30","15:00","workshop","Lab1","OSM mapping 1: Tukkies, Victoria Rautenbach"
-"2017-06-26","13:30","15:00","workshop","Lab2","Intro to QGIS - Admire, Brandon"
-"2017-06-26","15:00","15:30","tea","REA",
-"2017-06-26","15:30","17:00","workshop","Lab1","Practical geography lessons using QGIS – Brandon"
-"2017-06-26","15:30","17:00","workshop","Lab2","Malcolm McInerney Lab 1"
-"2017-06-26","17:00","18:00","meetings","various","SAGTA AGM; interest group meetings"
-"2017-06-27","07:30","08:30","registration","Quad",
-"2017-06-27","08:30","09:30","plenary","REA","lightning talks"
-"2017-06-27","09:30","10:15","plenary","REA","Keynote: Malcolm McInerney: Lessons learnt with GIS in the Australian school curriculum"
-"2017-06-27","10:15","10:45","tea","REA",
-"2017-06-27","10:45","11:30","plenary","REA","keynote"
-"2017-06-27","11:30","12:00","talk","REA","Brandon Louw: Practical lessons in GIS"
-"2017-06-27","11:30","12:00","talk","Room1","Greg Hingle: Making geography practical in the lab"
-"2017-06-27","11:30","12:00","talk","Room2","Aslam Parker"
-"2017-06-27","11:30","12:00","talk","Room3","John Lanser Google Earth / Potch Uni GIS"
-"2017-06-27","12:00","12:30","talk","REA","Elisabeth Niebert: An interdisciplinary approach to education"
-"2017-06-27","12:00","12:30","talk","Room1","Bridget Flemiing: School GIS Olympiad"
-"2017-06-27","11:30","12:00","talk","Room2","Glen Samaai"
-"2017-06-27","11:30","12:00","talk","Room3","Andre Jacobs"
-"2017-06-27","12:30","13:30","lunch","Darragh",
-"2017-06-27","13:30","15:00","workshop","Lab1","Platinum Digital Atlas – Heather"
-"2017-06-27","13:30","15:00","workshop","Lab2","SANSA remote sensing"
-"2017-06-27","15:00","15:30","tea","REA",
-"2017-06-27","15:30","17:00","workshop","Lab1","Interactive 3D visualisationArena Basson"
-"2017-06-27","15:30","17:00","workshop","Lab2","Making too maps – Brandon"
-"2017-06-27","17:00","18:00","meetings","various","interest group meetings"
-"2017-06-27","09:00","16:45","seminar","Jeffrey","SASDI"
+"06/26/2017","07:30","08:30","registration","Quad",
+"06/26/2017","08:30","09:30","plenary","REA","welcome, introductions; Pule Ramakotswa, Paul Edey"
+"06/26/2017","09:30","10:15","plenary","REA","Keynote: Dr Di Wilmot, Geography communities"
+"06/26/2017","10:15","10:45","tea","REA",
+"06/26/2017","10:45","11:30","plenary","REA","keynote"
+"06/26/2017","11:30","12:00","talk","REA","Fiona Kapman: 21st century learning skills"
+"06/26/2017","11:30","12:00","talk","Room1","Graham Evans: Making statistics meaningful in education"
+"06/26/2017","11:30","12:00","talk","Room2","Celia Sauerman: SAGTA"
+"06/26/2017","11:30","12:00","talk","Room3","GCRO"
+"06/26/2017","12:00","12:30","talk","REA","Dr Colleen Henning"
+"06/26/2017","12:00","12:30","talk","Room1","Pam Esterhuisen: Geo mentoring"
+"06/26/2017","11:30","12:00","talk","Room2","Clinton van der Merwe: Geography Olympiad"
+"06/26/2017","11:30","12:00","talk","Room3","Dean Peters"
+"06/26/2017","12:30","13:30","lunch","Darragh",
+"06/26/2017","13:30","15:00","workshop","Lab1","OSM mapping 1: Tukkies, Victoria Rautenbach"
+"06/26/2017","13:30","15:00","workshop","Lab2","Intro to QGIS - Admire, Brandon"
+"06/26/2017","15:00","15:30","tea","REA",
+"06/26/2017","15:30","17:00","workshop","Lab1","Practical geography lessons using QGIS – Brandon"
+"06/26/2017","15:30","17:00","workshop","Lab2","Malcolm McInerney Lab 1"
+"06/26/2017","17:00","18:00","meetings","various","SAGTA AGM; interest group meetings"
+"06/27/2017","07:30","08:30","registration","Quad",
+"06/27/2017","08:30","09:30","plenary","REA","lightning talks"
+"06/27/2017","09:30","10:15","plenary","REA","Keynote: Malcolm McInerney: Lessons learnt with GIS in the Australian school curriculum"
+"06/27/2017","10:15","10:45","tea","REA",
+"06/27/2017","10:45","11:30","plenary","REA","keynote"
+"06/27/2017","11:30","12:00","talk","REA","Brandon Louw: Practical lessons in GIS"
+"06/27/2017","11:30","12:00","talk","Room1","Greg Hingle: Making geography practical in the lab"
+"06/27/2017","11:30","12:00","talk","Room2","Aslam Parker"
+"06/27/2017","11:30","12:00","talk","Room3","John Lanser Google Earth / Potch Uni GIS"
+"06/27/2017","12:00","12:30","talk","REA","Elisabeth Niebert: An interdisciplinary approach to education"
+"06/27/2017","12:00","12:30","talk","Room1","Bridget Flemiing: School GIS Olympiad"
+"06/27/2017","11:30","12:00","talk","Room2","Glen Samaai"
+"06/27/2017","11:30","12:00","talk","Room3","Andre Jacobs"
+"06/27/2017","12:30","13:30","lunch","Darragh",
+"06/27/2017","13:30","15:00","workshop","Lab1","Platinum Digital Atlas – Heather"
+"06/27/2017","13:30","15:00","workshop","Lab2","SANSA remote sensing"
+"06/27/2017","15:00","15:30","tea","REA",
+"06/27/2017","15:30","17:00","workshop","Lab1","Interactive 3D visualisationArena Basson"
+"06/27/2017","15:30","17:00","workshop","Lab2","Making too maps – Brandon"
+"06/27/2017","17:00","18:00","meetings","various","interest group meetings"
+"06/27/2017","09:00","16:45","seminar","Jeffrey","SASDI"
