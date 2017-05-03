@@ -356,3 +356,6 @@ SHOP_PAYMENT_STATUS_CHOICES = (
 # control how the options should be ordered in the admin,
 # eg for "Colour" then "Size" given the above:
 SHOP_OPTION_ADMIN_ORDER = (1,)
+
+# users must create a login for the checkout process.
+SHOP_CHECKOUT_ACCOUNT_REQUIRED = True

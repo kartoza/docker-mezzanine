@@ -98,3 +98,5 @@ SHOP_CURRENCY_LOCALE = "en_ZA.UTF-8"
 
 ACCOUNT_HOOKSET = "core.adapter.PinaxAccountHookset"
 CONFERENCE_DOMAIN = "https://foss4g-africa.org"
+
+LOGIN_URL = '/account/login/'
