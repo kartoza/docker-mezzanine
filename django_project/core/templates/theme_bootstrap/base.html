@@ -3,7 +3,7 @@
 <html lang="{{ LANGUAGE_CODE }}">
     <head>
         <meta charset="utf-8" />
-        <title>{% block head_title_base %}{% if SITE_NAME %}{{ SITE_NAME }} | {% endif %}{% block head_title %}{% endblock %}{% endblock %}</title>
+        <title>{% block head_title_base %}{% if SITE_NAME %}FOSS4G Africa | {% endif %}{% block head_title %}{% endblock %}{% endblock %}</title>
         {% block viewport %}
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
         {% endblock %}
@@ -33,7 +33,7 @@
                                 <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                                     <span class="fa fa-bars"></span>
                                 </button>
-                                {% block site_brand %}<a class="navbar-brand" href="{% url "home" %}"><img src="{{ MEDIA_URL }}/images/foss4g-logo-150px-small.png" alt="FOSS4G Africa" /></a>{% endblock %}
+                                {% block site_brand %}<a class="navbar-brand" href="{% url "home" %}"><img src="{{ MEDIA_URL }}uploads/images/foss4g-logo-150px-small.png" alt="{{ SITE_NAME }}" /></a>{% endblock %}
                             </div>
                             <div class="collapse navbar-collapse navbar-responsive-collapse">
                                 {% block nav %}
