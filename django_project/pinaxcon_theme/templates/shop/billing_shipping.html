@@ -29,24 +29,154 @@
         <fieldset>
             <legend>{% trans "Billing Details" %}</legend>
 {#            {% fields_for form.billing_detail_fields %}#}
-        {% for field in form.billing_detail_fields %}
-            <div class="form-group input_{{ field.id_for_label }} {{ field.field.type }}
-                {% if field.errors %} has-error{% endif %}">
-                <label class="control-label" for="{{ field.auto_id }}">{{ field.label }}</label>
-                {{ field }}
-                {% if field.errors %}
-                <p class="help-block">
-                    {% for e in field.errors %}
-                    {% if not forloop.first %} / {% endif %}{{ e }}
-                    {% endfor %}
-                </p>
-                {% elif field.help_text %}
-                <p class="help-block">{{ field.help_text }}</p>
-                {% elif field.field.required %}
+            <div class="form-group input_{{ form.billing_detail_first_name.id_for_label }} {{ form.billing_detail_first_name.field.type }}
+                ">
+                <label class="control-label" >{{ form.billing_detail_first_name.label }}</label>
+                {{ form.billing_detail_first_name }}
+                {% if form.billing_detail_first_name.help_text %}
+                <p class="help-block">{{ form.billing_detail_first_name.help_text }}</p>
+                {% elif form.billing_detail_first_name.field.required %}
                 <p class="help-block">{% trans "required" %}</p>
                 {% endif %}
             </div>
-        {% endfor %}
+
+            <div class="form-group input_{{ form.billing_detail_last_name.id_for_label }} {{ form.billing_detail_last_name.field.type }}
+                ">
+                <label class="control-label" >{{ form.billing_detail_last_name.label }}</label>
+                {{ form.billing_detail_last_name }}
+                {% if form.billing_detail_last_name.help_text %}
+                <p class="help-block">{{ form.billing_detail_last_name.help_text }}</p>
+                {% elif form.billing_detail_last_name.field.required %}
+                <p class="help-block">{% trans "required" %}</p>
+                {% endif %}
+            </div>
+
+            <div class="form-group input_{{ form.billing_detail_street.id_for_label }} {{ form.billing_detail_street.field.type }}
+                ">
+                <label class="control-label" >{{ form.billing_detail_street.label }}</label>
+                {{ form.billing_detail_street }}
+                {% if form.billing_detail_street.help_text %}
+                <p class="help-block">{{ form.billing_detail_street.help_text }}</p>
+                {% elif form.billing_detail_street.field.required %}
+                <p class="help-block">{% trans "required" %}</p>
+                {% endif %}
+            </div>
+
+            <div class="form-group input_{{ form.billing_detail_city.id_for_label }} {{ form.billing_detail_city.field.type }}
+                ">
+                <label class="control-label" >{{ form.billing_detail_city.label }}</label>
+                {{ form.billing_detail_city }}
+                {% if form.billing_detail_city.help_text %}
+                <p class="help-block">{{ form.billing_detail_city.help_text }}</p>
+                {% elif form.billing_detail_city.field.required %}
+                <p class="help-block">{% trans "required" %}</p>
+                {% endif %}
+            </div>
+
+            <div class="form-group input_{{ form.billing_detail_state.id_for_label }} {{ form.billing_detail_state.field.type }}
+                ">
+                <label class="control-label" >{{ form.billing_detail_state.label }}</label>
+                {{ form.billing_detail_state }}
+                {% if form.billing_detail_state.help_text %}
+                <p class="help-block">{{ form.billing_detail_state.help_text }}</p>
+                {% elif form.billing_detail_state.field.required %}
+                <p class="help-block">{% trans "required" %}</p>
+                {% endif %}
+            </div>
+
+            <div class="form-group input_{{ form.billing_detail_postcode.id_for_label }} {{ form.billing_detail_postcode.field.type }}
+                ">
+                <label class="control-label" >{{ form.billing_detail_postcode.label }}</label>
+                {{ form.billing_detail_postcode }}
+                {% if form.billing_detail_postcode.help_text %}
+                <p class="help-block">{{ form.billing_detail_postcode.help_text }}</p>
+                {% elif form.billing_detail_postcode.field.required %}
+                <p class="help-block">{% trans "required" %}</p>
+                {% endif %}
+            </div>
+
+            <div class="form-group input_{{ form.billing_detail_country.id_for_label }} {{ form.billing_detail_country.field.type }}
+                ">
+                <label class="control-label" >{{ form.billing_detail_country.label }}</label>
+                {{ form.billing_detail_country }}
+                {% if form.billing_detail_country.help_text %}
+                <p class="help-block">{{ form.billing_detail_country.help_text }}</p>
+                {% elif form.billing_detail_country.field.required %}
+                <p class="help-block">{% trans "required" %}</p>
+                {% endif %}
+            </div>
+
+            <div class="form-group input_{{ form.billing_detail_phone.id_for_label }} {{ form.billing_detail_phone.field.type }}
+                ">
+                <label class="control-label" >{{ form.billing_detail_phone.label }}</label>
+                {{ form.billing_detail_phone }}
+                {% if form.billing_detail_phone.help_text %}
+                <p class="help-block">{{ form.billing_detail_phone.help_text }}</p>
+                {% elif form.billing_detail_phone.field.required %}
+                <p class="help-block">{% trans "required" %}</p>
+                {% endif %}
+            </div>
+
+            <div class="form-group input_{{ form.billing_detail_email.id_for_label }} {{ form.billing_detail_email.field.type }}
+                ">
+                <label class="control-label" >{{ form.billing_detail_email.label }}</label>
+                {{ form.billing_detail_email }}
+                {% if form.billing_detail_email.help_text %}
+                <p class="help-block">{{ form.billing_detail_email.help_text }}</p>
+                {% elif form.billing_detail_email.field.required %}
+                <p class="help-block">{% trans "required" %}</p>
+                {% endif %}
+            </div>
+
+        <div class="form-group input_{{ form.billing_detail_shirt_size.id_for_label }} {{ form.billing_detail_shirt_size.field.type }}
+                ">
+                <label class="control-label" >{{ form.billing_detail_shirt_size.label }}</label>
+                {{ form.billing_detail_shirt_size }}
+                {% if form.billing_detail_shirt_size.help_text %}
+                <p class="help-block">{{ form.billing_detail_shirt_size.help_text }}</p>
+                {% elif form.billing_detail_shirt_size.field.required %}
+                <p class="help-block">{% trans "required" %}</p>
+                {% endif %}
+            </div>
+
+            <div class="form-group input_{{ form.billing_detail_dietary_preferences.id_for_label }} {{ form.billing_detail_dietary_preferences.field.type }}
+                ">
+                <label class="control-label" >{{ form.billing_detail_dietary_preferences.label }}</label>
+                {{ form.billing_detail_dietary_preferences }}
+                {% if form.billing_detail_dietary_preferences.help_text %}
+                <p class="help-block">{{ form.billing_detail_dietary_preferences.help_text }}</p>
+                {% elif form.billing_detail_dietary_preferences.field.required %}
+                <p class="help-block">{% trans "required" %}</p>
+                {% endif %}
+            </div>
+
+            <div class="form-group input_{{ form.billing_detail_institution_school.id_for_label }} {{ form.billing_detail_nstitution_school.field.type }}
+                ">
+                <label class="control-label" >{{ form.billing_detail_institution_school.label }}</label>
+                {{ form.billing_detail_institution_school }}
+                {% if form.billing_detail_institution_school.help_text %}
+                <p class="help-block">{{ form.billing_detail_institution_school.help_text }}</p>
+                {% elif form.billing_detail_institution_school.field.required %}
+                <p class="help-block">{% trans "required" %}</p>
+                {% endif %}
+            </div>
+
+            <div class="form-group input_{{ form.billing_detail_sagta_member.id_for_label }} {{ form.billing_detail_sagta_member.field.type }}
+                ">
+                <label class="control-label" >{{ form.billing_detail_sagta_member.label }}</label>
+                {{ form.billing_detail_sagta_member }}
+                {% if form.billing_detail_sagta_member.help_text %}
+                <p class="help-block">{{ form.billing_detail_sagta_member.help_text }}</p>
+                {% elif form.billing_detail_sagta_member.field.required %}
+                <p class="help-block">{% trans "required" %}</p>
+                {% endif %}
+            </div>
+
+            <div class="form-group input_{{ form.billing_detail_gis_experience.id_for_label }} {{ form.billing_detail_gis_experience.field.type }}
+                ">
+                <label class="control-label" >{{ form.billing_detail_gis_experience.label }}</label>
+                {{ form.billing_detail_gis_experience }}
+            </div>
         </fieldset>
 
         <fieldset>
@@ -61,7 +191,7 @@
             {% include "shop/includes/payment_fields.html" %}
         {% endif %}
 
-        {% fields_for form.other_fields %}
+
 
     {% endif %}
 {% endblock %}

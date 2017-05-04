@@ -369,7 +369,7 @@ EXTRA_MODEL_FIELDS = (
      "CharField",
      ("Dietary Preferences",),
      {"blank": True, "max_length": 250},),
-    ("cartridge.shop.models.Order.billing_detail_Institution_school",
+    ("cartridge.shop.models.Order.billing_detail_institution_school",
      "CharField",
      ("Institution/school",),
      {"blank": True, "max_length": 250},),
@@ -380,5 +380,5 @@ EXTRA_MODEL_FIELDS = (
     ("cartridge.shop.models.Order.billing_detail_gis_experience",
      "IntegerField",
      ("(teachers) GIS experience scale 1-5",),
-     {"blank": True, "default": None},),
+     {"null": True, "default": None},),
 )
