@@ -190,12 +190,8 @@
         {% if not settings.SHOP_CHECKOUT_STEPS_SPLIT and settings.SHOP_PAYMENT_STEP_ENABLED %}
             {% include "shop/includes/payment_fields.html" %}
         {% endif %}
-
-
-
     {% endif %}
 {% endblock %}
-
 
 {% block extra_js %}
     <script>
