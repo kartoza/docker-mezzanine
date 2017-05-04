@@ -21,7 +21,7 @@
             {% for sponsor in level.sponsors %}
                 <div style="margin: 10px 0;">
                     <a href="{{ sponsor.external_url }}">
-                        <img src="{{ MEDIA_URL }}{{ sponsor.sponsor_logo.upload }}" width="60" height="60" alt="{{ sponsor.name }}" />
+                        <img src="{{ MEDIA_URL }}{{ sponsor.sponsor_logo.upload }}"  height="60" alt="{{ sponsor.name }}" />
                     </a>
                 </div>
             {% endfor %}
