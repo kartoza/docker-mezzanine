@@ -11,26 +11,29 @@
         {% for row in timetable %}
             <tr>
                 <td class="time">{{ row.time|date:"h:iA" }}</td>
-                {% for slot in row.slots %}
-                    <td style="text-align: center;" class="slot slot-{{ slot.kind.label }}" colspan="{{ slot.colspan }}" rowspan="{{ slot.rowspan }}">
-                        {% if slot.kind.label == "talk" or slot.kind.label == "tutorial" %}
-                            {% if not slot.content %}
-                            {% else %}
-                                <span class="title">
-                                    <a href="{% url "schedule_presentation_detail" slot.content.pk %}">{{ slot.content.title }}</a>
-                                </span>
-                                <span class="speaker">
-                                    {{ slot.content.speakers|join:", " }}
-                                </span>
-                            {% endif %}
-                        {% else %}
-                            {% if slot.content_override.raw %}
-                                {{ slot.content_override.rendered|safe }}
-                            {% else %}
-                                {{ slot.kind.label }}
-                            {% endif %}
-                        {% endif %}
-                    </td>
+                {% for room in timetable.rooms %}
+                        <td class="slot slot-{{ slot.kind.label }}" colspan="{{ slot.colspan }}" rowspan="{{ slot.rowspan }}">
+                            {% for slot in row.slots %}
+                            {% for slotroom in slot.rooms %}
+                                {% ifequal slotroom.name room.name %}
+                                    {% if slot.kind.label == "talk" or slot.kind.label == "tutorial" %}
+                                        {% if not slot.content %}
+                                            <a class="btn btn-xs edit-slot" data-action="{% url "schedule_slot_edit" schedule.section.slug slot.pk %}" href="#">+</a>
+                                        {% else %}
+                                            <span class="title"><a class="edit-slot" data-action="{% url "schedule_slot_edit" schedule.section.slug slot.pk %}" href="#">{{ slot.content.title }}</a></span>
+                                            <span class="speaker">{{ slot.content.speaker }}</span>
+                                        {% endif %}
+                                    {% else %}
+                                        {% if slot.content_override.raw %}
+                                            {{ slot.content_override.rendered|safe }}
+                                        {% else %}
+                                            {{ slot.kind.label }}
+                                        {% endif %}
+                                    {% endif %}
+                                {% endifequal %}
+                            {% endfor %}
+                            {% endfor %}
+                        </td>
                 {% endfor %}
             </tr>
         {% endfor %}
