@@ -380,5 +380,5 @@ EXTRA_MODEL_FIELDS = (
     ("cartridge.shop.models.Order.billing_detail_gis_experience",
      "IntegerField",
      ("(teachers) GIS experience scale 1-5",),
-     {"null": True, "default": None},),
+     {"null": True, "default": None, "blank": True},),
 )
