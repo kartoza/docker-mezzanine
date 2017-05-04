@@ -29,10 +29,6 @@
                         {% trans "Don't have an account?" %}  <strong><a href="{% url 'account_signup' %}">{% trans "Sign up" %}</a></strong>
                     </small>
                 </p>
-                 <div class="github-button" hidden>
-                            <img src="{% static "images/github.png" %}" />
-                            <a class="text-button" href="{% url "social:begin" "github" %}">Login with Github</a>
-                        </div>
             {% endif %}
         </div>
     </div>
