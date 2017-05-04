@@ -359,3 +359,26 @@ SHOP_OPTION_ADMIN_ORDER = (1,)
 
 # users must create a login for the checkout process.
 SHOP_CHECKOUT_ACCOUNT_REQUIRED = True
+
+EXTRA_MODEL_FIELDS = (
+    ("cartridge.shop.models.Order.billing_detail_shirt_size",
+     "CharField",
+     ("Shirt Size",),
+     {"blank": True, "max_length": 100},),
+    ("cartridge.shop.models.Order.billing_detail_dietary_preferences",
+     "CharField",
+     ("Dietary Preferences",),
+     {"blank": True, "max_length": 250},),
+    ("cartridge.shop.models.Order.billing_detail_Institution_school",
+     "CharField",
+     ("Institution/school",),
+     {"blank": True, "max_length": 250},),
+    ("cartridge.shop.models.Order.billing_detail_sagta_member",
+     "BooleanField",
+     ("SAGTA member",),
+     {"default": False},),
+    ("cartridge.shop.models.Order.billing_detail_gis_experience",
+     "IntegerField",
+     ("(teachers) GIS experience scale 1-5",),
+     {"blank": True, "default": None},),
+)
