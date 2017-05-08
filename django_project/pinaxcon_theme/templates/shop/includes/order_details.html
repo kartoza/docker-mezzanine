@@ -165,22 +165,58 @@
         <tr>
             <td valign="top">
                 <table class="borderless" border="0">
-                    {% for field, value in order_billing_detail_fields %}
-                        {% if field  == "First name" or field  == "Last name" or field  == "Street" or field  == "City/Suburb" or field  == "State/Region" or field == "Zip/Postcode" or field == "Country" or field == "Phone" or field == "Email" %}
-                        <tr>
-                            <td>{{ field }}&nbsp;&nbsp;&nbsp;</td>
-                            <td>: {{ value }}</td>
-                        </tr>
-                        {% endif %}
-                    {% endfor %}
-                {% for field, value in order_billing_detail_fields %}
-                        {% if field  == "Shirt Size" or field  == "Dietary Preferences" or field  == "Institution/school" or field  == "SAGTA member" or field  == "(teachers) GIS experience scale 1-5" %}
-                        <tr>
-                            <td>{{ field }}&nbsp;&nbsp;&nbsp;</td>
-                            <td>: {{ value }}</td>
-                        </tr>
-                        {% endif %}
-                    {% endfor %}
+                    <tr>
+                        <td>First Name&nbsp;&nbsp;&nbsp;</td>
+                        <td>: {{ order.billing_detail_first_name }}</td>
+                    </tr>
+                    <tr>
+                        <td>Last Name&nbsp;&nbsp;&nbsp;</td>
+                        <td>: {{ order.billing_detail_last_name }}</td>
+                    </tr>
+                    <tr>
+                        <td>Street&nbsp;&nbsp;&nbsp;</td>
+                        <td>: {{ order.billing_detail_street }}</td>
+                    </tr>
+                    <tr>
+                        <td>City/Suburb&nbsp;&nbsp;&nbsp;</td>
+                        <td>: {{ order.billing_detail_city }}</td>
+                    </tr>
+                    <tr>
+                        <td>State/Region&nbsp;&nbsp;&nbsp;</td>
+                        <td>: {{ order.billing_detail_state }}</td>
+                    </tr>
+                    <tr>
+                        <td>Zip/Postcode&nbsp;&nbsp;&nbsp;</td>
+                        <td>: {{ order.billing_detail_postcode }}</td>
+                    </tr>
+                    <tr>
+                        <td>Phone&nbsp;&nbsp;&nbsp;</td>
+                        <td>: {{ order.billing_detail_phone }}</td>
+                    </tr>
+                    <tr>
+                        <td>Email&nbsp;&nbsp;&nbsp;</td>
+                        <td>: {{ order.billing_detail_email }}</td>
+                    </tr>
+                    <tr>
+                        <td>Shirt Size&nbsp;&nbsp;&nbsp;</td>
+                        <td>: {{ order.billing_detail_shirt_size }}</td>
+                    </tr>
+                    <tr>
+                        <td>Dietary Preferences&nbsp;&nbsp;&nbsp;</td>
+                        <td>: {{ order.billing_detail_dietary_preferences }}</td>
+                    </tr>
+                    <tr>
+                        <td>Institution/School&nbsp;&nbsp;&nbsp;</td>
+                        <td>: {{ order.billing_detail_institution_school }}</td>
+                    </tr>
+                    <tr>
+                        <td>SAGTA member&nbsp;&nbsp;&nbsp;</td>
+                        <td>: {{ order.billing_detail_sagta_member }}</td>
+                    </tr>
+                    <tr>
+                        <td>(teachers) GIS experience scale 1-5&nbsp;&nbsp;&nbsp;</td>
+                        <td>: {{ order.billing_detail_gis_experience }}</td>
+                    </tr>
                 </table>
             </td>
         </tr>
