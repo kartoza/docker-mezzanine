@@ -8,6 +8,9 @@
             <i class="fa fa-user"></i> {% user_display request.user %}
         </span>
         <li>
+            <a href="{% url "home" %}"><i class="fa fa-home"></i> {% trans "Home" %}</a>
+        </li>
+        <li>
             <a href="{% url "dashboard" %}"><i class="fa fa-tasks"></i> {% trans "Dashboard" %}</a>
         </li>
         <li>
