@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load mezzanine_tags keyword_tags i18n %}
+
+{% block meta_title %}{% if page %}{{ page.richtextpage.meta_title }}{% else %}{% trans "Plugins" %}
+{% endif %}{% endblock %}
+
+{% load static %}
+{% block title %}{% trans "Plugins List" %}{% endblock %}
+{% block main %}
+
+    <div class="container">
+        <p style="font-size: 18px; padding-bottom: 30px; margin-top: 0px;">
+            <a style="float: right" href="{% url 'qgis_plugin' %}">Qgis plugin repositories page </a>
+        </p>
+        {% for plugin in plugins %}
+          <div class="jumbotron">
+            <h2 style="margin-top: 0 !important;">{{ plugin.name }}</h2>
+              {% for release in releases %}
+                  {% if release.plugin == plugin %}
+                      <a class="download-plugin" href="{{ release.file.url }}">
+                        Version : {{ release.version }} ( {{ release.date }} )
+                      </a>
+                      <br/>
+                  {% endif %}
+              {% endfor %}
+          </div>
+        {% endfor %}
+    </div>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('a.download-plugin').attr({target: '_blank',
+                    href  : $(this).attr('href')});
+        })
+    </script>
+{% endblock %}

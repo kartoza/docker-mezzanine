@@ -26,97 +26,100 @@ admin.autodiscover()
 # to the project's homepage.
 
 urlpatterns = i18n_patterns(
-    '',
+        '',
 
-    # Change the admin prefix here to use an alternate URL for the
-    # admin interface, which would be marginally more secure.
-    ("^admin/", include(admin.site.urls)),
+        # Change the admin prefix here to use an alternate URL for the
+        # admin interface, which would be marginally more secure.
+        ("^admin/", include(admin.site.urls)),
 
-    # For mezzanine-people
-    ("^people/", include('mezzanine_people.urls')),
-    ("^api/people/", "core.views.get_all_people"),
-    # Mezzanine Careers
-    ("^careers/", include("careers.urls")),
-    ("^map/", include("wms_client.urls")),
-    # For cartridge, the mezzanine ecommerce platform.
-    ("^shop/", include("cartridge.shop.urls")),
-    ("^payment/", include("payment.urls")),
-    url("^account/orders/$", "cartridge.shop.views.order_history",
-        name="shop_order_history"),
+        # For mezzanine-people
+        ("^people/", include('mezzanine_people.urls')),
+        ("^api/people/", "core.views.get_all_people"),
+        # Mezzanine Careers
+        ("^careers/", include("careers.urls")),
+        ("^map/", include("wms_client.urls")),
+        # For cartridge, the mezzanine ecommerce platform.
+        ("^shop/", include("cartridge.shop.urls")),
+        ("^payment/", include("payment.urls")),
+        url("^account/orders/$", "cartridge.shop.views.order_history",
+            name="shop_order_history"),
 
-    ("^clients/", include('clients.urls')),
+        ("^clients/", include('clients.urls')),
 
-    # For mezzanine-agenda
-    ("^%s/" % settings.EVENT_SLUG, include("mezzanine_agenda.urls")),
+        ("^plugins/", include('plugins.urls')),
 
-    # We don't want to presume how your homepage works, so here are a
-    # few patterns you can use to set it up.
+        # For mezzanine-agenda
+        ("^%s/" % settings.EVENT_SLUG, include("mezzanine_agenda.urls")),
 
-    # HOMEPAGE AS STATIC TEMPLATE
-    # ---------------------------
-    # This pattern simply loads the index.html template. It isn't
-    # commented out like the others, so it's the default. You only need
-    # one homepage pattern, so if you use a different one, comment this
-    # one out.
+        # We don't want to presume how your homepage works, so here are a
+        # few patterns you can use to set it up.
 
-    # url("^$", direct_to_template, {"template": "index.html"}, name="home"),
+        # HOMEPAGE AS STATIC TEMPLATE
+        # ---------------------------
+        # This pattern simply loads the index.html template. It isn't
+        # commented out like the others, so it's the default. You only need
+        # one homepage pattern, so if you use a different one, comment this
+        # one out.
 
-    # HOMEPAGE AS AN EDITABLE PAGE IN THE PAGE TREE
-    # ---------------------------------------------
-    # This pattern gives us a normal ``Page`` object, so that your
-    # homepage can be managed via the page tree in the admin. If you
-    # use this pattern, you'll need to create a page in the page tree,
-    # and specify its URL (in the Meta Data section) as "/", which
-    # is the value used below in the ``{"slug": "/"}`` part.
-    # Also note that the normal rule of adding a custom
-    # template per page with the template name using the page's slug
-    # doesn't apply here, since we can't have a template called
-    # "/.html" - so for this case, the template "pages/index.html"
-    # should be used if you want to customize the homepage's template.
 
-    url("^$", "mezzanine.pages.views.page", {"slug": "/"}, name="home"),
+        # url("^$", direct_to_template, {"template": "index.html"}, name="home"),
 
-    # HOMEPAGE FOR A BLOG-ONLY SITE
-    # -----------------------------
-    # This pattern points the homepage to the blog post listing page,
-    # and is useful for sites that are primarily blogs. If you use this
-    # pattern, you'll also need to set BLOG_SLUG = "" in your
-    # ``settings/contrib.py`` module, and delete the blog page object from the
-    # page tree in the admin if it was installed.
+        # HOMEPAGE AS AN EDITABLE PAGE IN THE PAGE TREE
+        # ---------------------------------------------
+        # This pattern gives us a normal ``Page`` object, so that your
+        # homepage can be managed via the page tree in the admin. If you
+        # use this pattern, you'll need to create a page in the page tree,
+        # and specify its URL (in the Meta Data section) as "/", which
+        # is the value used below in the ``{"slug": "/"}`` part.
+        # Also note that the normal rule of adding a custom
+        # template per page with the template name using the page's slug
+        # doesn't apply here, since we can't have a template called
+        # "/.html" - so for this case, the template "pages/index.html"
+        # should be used if you want to customize the homepage's template.
 
-    # url("^$", "mezzanine.blog.views.blog_post_list", name="home"),
+        url("^$", "mezzanine.pages.views.page", {"slug": "/"}, name="home"),
 
-    # MEZZANINE'S URLS
-    # ----------------
-    # ADD YOUR OWN URLPATTERNS *ABOVE* THE LINE BELOW.
-    # ``mezzanine.urls`` INCLUDES A *CATCH ALL* PATTERN
-    # FOR PAGES, SO URLPATTERNS ADDED BELOW ``mezzanine.urls``
-    # WILL NEVER BE MATCHED!
+        # HOMEPAGE FOR A BLOG-ONLY SITE
+        # -----------------------------
+        # This pattern points the homepage to the blog post listing page,
+        # and is useful for sites that are primarily blogs. If you use this
+        # pattern, you'll also need to set BLOG_SLUG = "" in your
+        # ``settings/contrib.py`` module, and delete the blog page object from the
+        # page tree in the admin if it was installed.
 
-    # If you'd like more granular control over the patterns in
-    # ``mezzanine.urls``, go right ahead and take the parts you want
-    # from it, and use them directly below instead of using
-    # ``mezzanine.urls``.
-    ("^", include("mezzanine.urls")),
+        # url("^$", "mezzanine.blog.views.blog_post_list", name="home"),
 
-    # MOUNTING MEZZANINE UNDER A PREFIX
-    # ---------------------------------
-    # You can also mount all of Mezzanine's urlpatterns under a
-    # URL prefix if desired. When doing this, you need to define the
-    # ``SITE_PREFIX`` setting, which will contain the prefix. Eg:
-    # SITE_PREFIX = "my/site/prefix"
-    # For convenience, and to avoid repeating the prefix, use the
-    # commented out pattern below (commenting out the one above of course)
-    # which will make use of the ``SITE_PREFIX`` setting. Make sure to
-    # add the import ``from django.conf import settings`` to the top
-    # of this file as well.
-    # Note that for any of the various homepage patterns above, you'll
-    # need to use the ``SITE_PREFIX`` setting as well.
+        # MEZZANINE'S URLS
+        # ----------------
+        # ADD YOUR OWN URLPATTERNS *ABOVE* THE LINE BELOW.
+        # ``mezzanine.urls`` INCLUDES A *CATCH ALL* PATTERN
+        # FOR PAGES, SO URLPATTERNS ADDED BELOW ``mezzanine.urls``
+        # WILL NEVER BE MATCHED!
 
-    # ("^%s/" % settings.SITE_PREFIX, include("mezzanine.urls"))
+        # If you'd like more granular control over the patterns in
+        # ``mezzanine.urls``, go right ahead and take the parts you want
+        # from it, and use them directly below instead of using
+        # ``mezzanine.urls``.
+        ("^", include("mezzanine.urls")),
 
-    # For mezzanine-agenda
-    ("^%s/" % settings.EVENT_SLUG, include("mezzanine_agenda.urls")),
+        # MOUNTING MEZZANINE UNDER A PREFIX
+        # ---------------------------------
+        # You can also mount all of Mezzanine's urlpatterns under a
+        # URL prefix if desired. When doing this, you need to define the
+        # ``SITE_PREFIX`` setting, which will contain the prefix. Eg:
+        # SITE_PREFIX = "my/site/prefix"
+        # For convenience, and to avoid repeating the prefix, use the
+        # commented out pattern below (commenting out the one above of course)
+        # which will make use of the ``SITE_PREFIX`` setting. Make sure to
+        # add the import ``from django.conf import settings`` to the top
+        # of this file as well.
+        # Note that for any of the various homepage patterns above, you'll
+        # need to use the ``SITE_PREFIX`` setting as well.
+
+        # ("^%s/" % settings.SITE_PREFIX, include("mezzanine.urls"))
+
+        # For mezzanine-agenda
+        ("^%s/" % settings.EVENT_SLUG, include("mezzanine_agenda.urls")),
 )
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

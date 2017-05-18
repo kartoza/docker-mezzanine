@@ -56,7 +56,7 @@
                     <div class="text-wrapper" onclick="location.href='/people/person/{{ person.slug }}'">
                         {% if person.bio %}
                         <div class="person-bio">
-                            {{ person.bio|richtext_filter|safe|truncatechars:250 }}
+                            {{ person.bio|safe|truncatechars:250 }}
                             {% if person.bio|length > 180 %}
                                 <a href="/people/person/{{ person.slug }}">[see more]</a>
                             {% endif %}
