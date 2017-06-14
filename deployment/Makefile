@@ -363,4 +363,4 @@ rsync:
 	@echo "------------------------------------------------------------------"
 	@echo "Rsyncing live site"
 	@echo "------------------------------------------------------------------"
-	@rsync -av kartoza.com:/home/web/kartoza.com/ .
+	@rsync -av --exclude .git kartoza.com:/home/web/kartoza.com/ .
