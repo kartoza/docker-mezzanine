@@ -19,6 +19,8 @@ mezzanine-slides==2.1.2
 OWSLib==0.12
 psycopg2
 raven==5.8.1
-requests==2.0.0
 
 git+https://github.com/kartoza/plugin-host.git@apps
+
+requests==2.0.0
+
