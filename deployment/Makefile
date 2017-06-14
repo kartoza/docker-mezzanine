@@ -357,3 +357,10 @@ workerlogs:
 	@echo "Showing celery worker logs in production mode"
 	@echo "------------------------------------------------------------------"
 	@docker-compose -p $(PROJECT_ID) logs worker
+
+rsync:
+	@echo
+	@echo "------------------------------------------------------------------"
+	@echo "Rsyncing live site"
+	@echo "------------------------------------------------------------------"
+	@rsync -av --exclude .git kartoza.com:/home/web/kartoza.com/ .
