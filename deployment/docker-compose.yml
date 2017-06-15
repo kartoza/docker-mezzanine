@@ -196,3 +196,13 @@ worker:
      - db:db
      - rabbitmq:rabbitmq
    restart: on-failure:5
+
+btsync:
+  image: kartoza/btsync
+  container_name:  kartoza_btsync
+  hostname: kartoza_btsync
+  volumes:
+    - /home/web/kartoza.com/deployment/backups:/web
+  env_file:
+    - btsync.env
+  restart: on-failure:5    
