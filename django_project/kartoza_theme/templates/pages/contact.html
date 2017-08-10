@@ -1,0 +1,113 @@
+{% extends "pages/page.html" %}
+
+{% load mezzanine_tags %}
+{% block left_wrapper %}
+{% endblock %}
+<div class="col-md-{% block main_width %}12 {% endblock %} middle">
+{% block main %}{{ block.super }}
+</div>
+{% editable page.richtextpage.content %}
+
+        <div class="title" style="margin-top: 0;">Use the contact form if you want to send us a quick
+            message. You're welcome to pop in for a visit - please make an
+            appointment!
+        </div>
+{% endeditable %}
+
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+
+    <form action="https://googleapps.insight.ly/WebToContact/Create"
+          method="post" name="insightly_web_to_contact">
+        <div class="col-lg-8">
+            <h2 class="input-section">Contact forms</h2>
+            <div class="input-section col-lg-6"><input name="formId"
+                                                       type="hidden"
+                                                       value="HhfP9pdb2KSSlLxCyQHmeg=="/>
+                <label for="insightly_firstName">First Name</label> <input
+                        id="insightly_firstName" name="FirstName" type="text"/>
+            </div>
+            <div class="input-section col-lg-6"><label
+                    for="insightly_lastName">Last Name&nbsp;</label> <input
+                    id="insightly_lastName" name="LastName" type="text"/></div>
+            <div class="clear"></div>
+            <div class="input-section"><label for="insightly_organization">Organization</label>
+                <input id="insightly_organization" name="Organization"
+                       type="text"/></div>
+            <div class="clear"></div>
+            <div class="input-section col-lg-6"><input name="emails[0].Label"
+                                                       type="hidden"
+                                                       value="Work"/> <label
+                    for="email[0]_Value">Work Email&nbsp;</label> <input
+                    id="emails[0]_Value" name="emails[0].Value" type="text"/>
+            </div>
+            <div class="input-section col-lg-6"><input name="phones[0].Label"
+                                                       type="hidden"
+                                                       value="Work"/> <label
+                    for="phones[0]_Value">Work Phone&nbsp;</label> <input
+                    id="phones[0]_Value" name="phones[0].Value" type="text"/>
+            </div>
+            <div class="clear"></div>
+            <div class="input-section"><label
+                    for="insightly_role">Title&nbsp;</label> <input
+                    id="insightly_role" name="Role" type="text"/></div>
+            <div class="input-section"><label for="insightly_background">Additional
+                background information</label> <textarea
+                    id="insightly_background" name="background"></textarea>
+                <input type="submit" value="Submit"/></div>
+        </div>
+        <div class="g-recaptcha" data-sitekey="6LfqZSwUAAAAADx8FsPm3JtkamTg_SlPJPYdJVEL" style="margin-left: 30px;"></div>
+    </form>
+
+        <div class="col-lg-4 right-info">
+            <h3>Kartoza (Pty) Ltd</h3>
+            <p class="p1"><span
+                    class="s1"><strong>Company registration no:</strong> 2014/109067/07</span>
+            </p>
+            <p><strong>VAT Number</strong>: 4450266806</p>
+            <p class="p1"><span
+                    class="s1"><strong>Joint Managing Directors:</strong> Tim Sutton MA, Gavin Fleming MSc PrGISc [PGP1234]</span>
+            </p>
+            <p class="p1"><span class="s1"><strong>Director:</strong> Christian Christelis MSc Eng.</span>
+            </p>
+            <p class="p1"><span
+                    class="s1"><strong>Non-Executive Directors:</strong> Lawrence Hyslop M.Sc, MBA, PR Eng., Gordon Perchtold BComm, MBA</span>
+            </p>
+            <p class="p1"><span
+                    class="s1"><strong>Stellenbosch Office:</strong> Block C Top floor Unit 9C, Carpe Diem, 26 Quantum Street, Technopark, Stellenbosch, 7600, South Africa<br/></span>
+            </p>
+            <p class="p1"><span
+                    class="s1"><strong>Johannesburg Office:</strong> Randburg, Johannesburg</span>
+            </p>
+            <p class="p3"><span class="s1"><strong>Tel:</strong> +27 (0)21 880 0990 / +27 (0)73 768 8108 / +27 (0)87 809 2702 <strong>Fax:</strong> +27 (0)86 564 4056</span>
+            </p>
+            <p class="p3"><span class="s1"><strong> Web:</strong> <a
+                    href="http://kartoza.com">http://kartoza.com</a></span></p>
+            <p class="p3"><span class="s1"><strong>Email:</strong> <a
+                    href="mailto://info@kartoza.com">info@kartoza.com</a><span
+                    class="Apple-converted-space">&nbsp;</span></span></p>
+            <p><a href="http://w3w.co/grouping.united.inviting"
+                  target="_blank"> <img height="20"
+                                        src="http://what3words.com/calls/embed/text/grouping.united.inviting/dark"/></a>
+            </p>
+            <iframe width="100%" height="350" style="border: 1px solid black;"
+                    src="http://www.openstreetmap.org/export/embed.html?bbox=18.804302215576172%2C-33.99204973654445%2C18.876399993896484%2C-33.93880275084579&amp;layer=mapnik&amp;marker=-33.96543041046478%2C18.840351104736328"></iframe>
+            <br/>
+            <small><a
+                    href="http://www.openstreetmap.org/?mlat=-33.9654&amp;mlon=18.8404#map=14/-33.9654/18.8404&amp;layers=N"
+                    target="_blank">View Larger Map</a></small>
+        </div>
+
+    <script>
+        $("form").submit(function(event) {
+           var recaptcha = $("#g-recaptcha-response").val();
+           if (recaptcha === "") {
+              event.preventDefault();
+              alert("Please check the recaptcha");
+           }
+        });
+
+    </script>
+
+{% endblock %}
+{% block right_wrapper %}
+{% endblock %}

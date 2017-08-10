@@ -51,6 +51,8 @@ urlpatterns = i18n_patterns(
         # For mezzanine-agenda
         ("^%s/" % settings.EVENT_SLUG, include("mezzanine_agenda.urls")),
 
+        url("^contact/$", direct_to_template, {"template": "pages/contact.html"}, name="contact"),
+
         # We don't want to presume how your homepage works, so here are a
         # few patterns you can use to set it up.
 
