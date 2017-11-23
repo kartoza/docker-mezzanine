@@ -2,8 +2,33 @@
 
 {% block extra_css %}
     <style>
+        @page {
+            size: a4 portrait;
+            @frame header_frame {
+                -pdf-frame-content: header_content;
+                left: 50pt;
+                width: 512pt;
+                top: 50pt;
+                height: 220pt;
+            }
+            @frame content_frame {
+                left: 50pt;
+                width: 512pt;
+                top:    220pt;
+                height: 632pt;
+            }
+            @frame footer_frame {
+                -pdf-frame-content: footer_content;
+                left: 50pt;
+                width: 512pt;
+                top:    772pt;
+                height: 20pt;
+            }
+        }
+
         table {
-            border-collapse: collapse
+            border-collapse: collapse;
+            -pdf-keep-with-next: true;
         }
 
         a {
@@ -14,6 +39,7 @@
             margin: auto;
             padding-bottom: 20px;
             width: 800px;
+            font-family: Helvetica;
         }
 
         .left-title {
@@ -64,7 +90,7 @@
         .download-button {
             background: #384452;
             border-radius: 50%;
-            bottom: 20px;
+            top: 200px;
             cursor: pointer;
             height: 20px;
             position: absolute;
@@ -85,10 +111,12 @@
 
     </style>
 {% endblock %}
-<div class="download-button" onClick="window.print()">
-    <img src="/static/img/save.png">
-</div>
-<div class="container">
+    <span class="download-button" onClick="window.print()">
+        <img src="/static/img/save.png">
+    </span>
+
+<!-- HEADER FRAME -->
+<div id="header_content">
     <table width="100%" cellspacing="0" cellpadding="10">
         <tr>
             <td align="left" width="60%" valign="top" style="padding-right: 30px;">
@@ -124,30 +152,31 @@
             </td>
         </tr>
     </table>
-    <br>
-    <br>
+</div>
+
+<!-- HTML CONTENT -->
     <table class="borderless" width="100%" cellspacing="0" cellpadding="10">
         <tr>
             <th align="left" width="50%">{% trans "Billing Details" %}</th>
             <th align="left" width="50%">{% trans "Shipping Details" %}</th>
         </tr>
         <tr>
-            <td valign="top">
+            <td valign="top" width="50%">
                 <table class="borderless" border="0">
                     {% for field, value in order_billing_detail_fields %}
                         <tr>
-                            <td>{{ field }}&nbsp;&nbsp;:&nbsp;</td>
-                            <td>{{ value }}</td>
+                            <td width="50%">{{ field }}&nbsp;&nbsp;:&nbsp;</td>
+                            <td width="50%">{{ value }}</td>
                         </tr>
                     {% endfor %}
                 </table>
             </td>
-            <td valign="top">
+            <td valign="top" width="50%">
                 <table class="borderless" border="0">
                     {% for field, value in order_shipping_detail_fields %}
                         <tr>
-                            <td>{{ field }}&nbsp;&nbsp;:&nbsp;</td>
-                            <td>{{ value }}</td>
+                            <td width="50%">{{ field }}&nbsp;&nbsp;:&nbsp;</td>
+                            <td width="50%">{{ value }}</td>
                         </tr>
                     {% endfor %}
                 </table>
@@ -175,4 +204,11 @@
         {% endfor %}
         {% order_totals_in_table %}
     </table>
+    <br>
+
+<!-- FOOTER FRAME -->
+<div id="footer_content">
+    <a href="{{ SITEURL }}{% url "shop_invoice" order.id %}?format=pdf" target="_blank">{% trans "Download PDF invoice" %} </a> &nbsp;&nbsp;|&nbsp;&nbsp;
+    <a href="{{ SITEURL }}{% url "shop_invoice_resend" order.id %}" target="_blank">Resend Invoice</a>
 </div>
+
