@@ -32,6 +32,42 @@ $(document).ready(function() {
             enabled: true,
         }
     });
+    $('#id_option1').change( function() {
+        var_option1 = $('#id_option1 :selected').text()
+        var_option2 = "";
+        $('div.variations-options ul li').filter(function(index)
+        {
+           if($(this).html().indexOf(var_option1) >= 0)
+           {
+               var_option2 = $(this).html()
+           }
+        });
+
+        if(var_option2 != "")
+        {
+            option1_length = var_option1.length;
+            value_option2 = var_option2.substring(option1_length + 3);
+            $('#id_option2').val(value_option2)
+        }
+    });
+    $('#id_option2').change( function() {
+        var_option2 = $('#id_option2 :selected').text()
+        var_option1 = "";
+        $('div.variations-options ul li').filter(function(index)
+        {
+           if($(this).html().indexOf(var_option2) >= 0)
+           {
+               var_option1 = $(this).html()
+           }
+        });
+
+        if(var_option1 != "")
+        {
+            option2_length = var_option2.length;
+            value_option1 = var_option1.substring(0, var_option1.length - (option2_length + 3));
+            $('#id_option1').val(value_option1)
+        }
+    });
 });
 </script>
 {% endblock %}
@@ -112,7 +148,7 @@ $(document).ready(function() {
     {% fields_for add_product_form %}
     {#  Add possible combinations  #}
     {% if variations|length > 1 %}
-    <div>
+    <div class="variations-options">
         Available course dates - venues:
         <ul>
         {% for variation in variations %}
