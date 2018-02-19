@@ -81,12 +81,6 @@ if 'raven.contrib.django.raven_compat' in INSTALLED_APPS:
             }
         },
         'loggers': {
-            # Special rules to not bother logging when host is
-            # not allowed otherwise we get lots of mail spam....
-            'django.security.DisallowedHost': {
-                'handlers': ['null'],
-                'propagate': False,
-            },
             'django.db.backends': {
                 'level': 'ERROR',
                 'handlers': ['console'],
