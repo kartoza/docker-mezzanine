@@ -1,8 +1,13 @@
 # coding=utf-8
 
 """Project level settings."""
+from os.path import exists, dirname, join
+
 from .project import *  # noqa
-from .secret import SENTRY_DSN
+try:
+    from .secret import SENTRY_KEY
+except ImportError:
+    SENTRY_KEY = None
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
@@ -31,18 +36,28 @@ STATICFILES_FINDERS += (
 )
 
 # Logging
-if 'raven.contrib.django.raven_compat' in INSTALLED_APPS:
+if 'raven.contrib.django.raven_compat' in INSTALLED_APPS and SENTRY_KEY:
     # noinspection PyUnresolvedReferences
     import raven  # noqa
 
+    # The version file is made by the tag_and_deploy script
+    version_file = join(dirname(dirname(dirname(__file__))), '.version')
+    if exists(version_file):
+        with open(version_file, 'r') as version:
+            release = version.read()
+    else:
+        release = 'unknown'
+
     RAVEN_CONFIG = {
         # sentry url
-        'dsn': SENTRY_DSN,
+        'dsn': SENTRY_KEY,
         # If you are using git, you can also automatically configure the
         # release based on the git info.
         # Note from Tim: This won't work since we don't mount the root
         # of the git project into the docker container...
         # 'release': raven.fetch_git_sha(os.path.dirname(__file__)),
+        # Note from Etienne: So let's read the .version file
+        'release': release,
     }
 
     MIDDLEWARE_CLASSES = (
