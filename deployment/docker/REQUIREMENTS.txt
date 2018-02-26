@@ -8,7 +8,8 @@ git+https://github.com/dimasciput/mezzanine-careers.git@develop
 git+https://github.com/meomancer/mezzanine-modal-announcements.git@develop
 git+https://github.com/meomancer/mezzanine-file-collections.git@master
 git+https://github.com/meomancer/django-wms-client.git@mezzanine
-html5lib==1.0b8
+#html5lib==1.0b8
+html5lib==0.999999999
 icalendar==3.0.1b2
 mezzanine==4.2.3
 mezzanine-mdown==0.1a3
