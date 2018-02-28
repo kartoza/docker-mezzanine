@@ -70,8 +70,8 @@
                 </div>
             </div>
         </div>
-        <! --/container -->
-    </div><! --/service -->
+        <!--/container -->
+    </div><!--/service -->
 
     <!-- *****************************************************************************************************************
      PORTFOLIO SECTION
@@ -109,6 +109,16 @@
             </div>
 
             <div class="col-lg-3">
+
+                <div class="fb-page" data-href="https://www.facebook.com/kartozaGIS" data-tabs="timeline"
+                     data-height="300" data-small-header="false" data-adapt-container-width="true"
+                     data-hide-cover="false" data-show-facepile="true">
+                    <blockquote cite="https://www.facebook.com/kartozaGIS" class="fb-xfbml-parse-ignore"><a
+                            href="https://www.facebook.com/kartozaGIS">Kartoza</a></blockquote>
+                </div>
+            </div>
+
+            <div class="col-lg-3">
             </div>
             {% blog_recent_posts settings.FRONT_PAGE_RECENT_POST as recent_posts %}
             {% if recent_posts %}
@@ -123,8 +133,8 @@
             {% endif %}
 
         </div>
-        <! --/row -->
-    </div><! --/container -->
+        <!--/row -->
+    </div><!--/container -->
 
     <!-- *****************************************************************************************************************
      TESTIMONIALS
@@ -138,16 +148,16 @@
             <h3 style="margin-bottom: 15px;">OUR CLIENTS</h3>
             <div class="pure-g clients-wrapper justify-center">
             </div>
-            <! --/row -->
+            <!--/row -->
         </div>
-        <! --/container -->
-    </div><! --/cwrap -->
+        <!--/container -->
+    </div><!--/cwrap -->
 {% endblock %}
 
 
 {% block main %}
 
-{{ block.super }}
+    {{ block.super }}
 
 {% endblock %}
 
@@ -157,17 +167,17 @@
 
             // Get client list
             $.ajax({
-                url:"/clients/all/",
+                url: "/clients/all/",
                 method: "GET",
-                success: function(data) {
+                success: function (data) {
                     var clients = JSON.parse(data);
                     $(clients).each(function (index, client) {
                         $('.clients-wrapper').append(
-                            '<div class="pure-u-1-5 client">'+
-                                '<a href="'+ client.fields.link +'" target=_onblank>'+
-                                '<img src="{{ MEDIA_URL }}'+ client.fields.logo + '" class="img-responsive">'+
-                                '</a>'+
-                            '</div>'
+                                '<div class="pure-u-1-5 client">' +
+                                '<a href="' + client.fields.link + '" target=_onblank>' +
+                                '<img src="{{ MEDIA_URL }}' + client.fields.logo + '" class="img-responsive">' +
+                                '</a>' +
+                                '</div>'
                         );
                         console.log(client.fields.link);
                     });
@@ -208,5 +218,25 @@
                 }
             })
         });
+    </script>
+    <script>
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: '1015076958590629',
+                xfbml: true,
+                version: 'v2.7'
+            });
+        };
+
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {
+                return;
+            }
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
     </script>
 {% endblock %}
