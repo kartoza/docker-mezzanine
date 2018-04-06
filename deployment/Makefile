@@ -1,5 +1,5 @@
 PROJECT_ID := mezzanine
-PRODUCTION_HOST := kartoza4
+PRODUCTION_HOST := kartoza.com
 
 SHELL := /bin/bash
 
