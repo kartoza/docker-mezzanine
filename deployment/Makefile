@@ -1,5 +1,7 @@
 PROJECT_ID := mezzanine
 PRODUCTION_HOST := kartoza.com
+STAGING_HOST := staging.kartoza.com
+TESTING_HOST := testing.kartoza.com
 
 SHELL := /bin/bash
 
@@ -209,9 +211,19 @@ dbrestore:
 	@echo "Restore dump from backups/latest.dmp in production mode"
 	@echo "------------------------------------------------------------------"
 	@# - prefix causes command to continue even if it fails
-	-@docker exec -t -i $(PROJECT_ID)-db su - postgres -c "dropdb gis"
-	@docker exec -t -i $(PROJECT_ID)-db su - postgres -c "createdb -O docker -T template_postgis gis"
-	@docker exec -t -i $(PROJECT_ID)-db pg_restore /backups/latest.dmp | docker exec -i $(PROJECT_ID)-db su - postgres -c "psql gis"
+	@echo "stopping uwsgi container"
+	@docker-compose -p $(PROJECT_ID) stop uwsgi
+	@echo "dropping gis"
+	@docker exec -t $(PROJECT_ID)-db su - postgres -c "dropdb gis"
+	@echo "creating gis"
+	@docker exec -t $(PROJECT_ID)-db su - postgres -c "createdb -O docker -T template_postgis gis"
+	@echo "restoring gis"
+	@# Because we pipe from one docker command to another and we are going
+	@# to execute this Make command from a remote server at times, we need to using use interactive mode (-i)
+	@# in the first command and not use terminal (-t) in the second. Please do not change these!
+	@docker exec -t  $(PROJECT_ID)-db pg_restore /backups/latest.dmp | docker exec -i $(PROJECT_ID)-db su - postgres -c "psql gis"
+	@docker-compose -p $(PROJECT_ID) start uwsgi
+	@echo "starting uwsgi container"
 
 dbbackup:
 	@echo
@@ -266,6 +278,26 @@ dbsync:
 	@echo "------------------------------------------------------------------"
 	-@ssh $(PRODUCTION_HOST) "cd /home/web/kartoza.com/deployment; make dbbackup"
 	@rsync -av --progress $(PRODUCTION_HOST):/home/web/kartoza.com/deployment/backups/ backups
+
+staging-sync:
+	@echo
+	@echo "------------------------------------------------------------------"
+	@echo "Syncing database and media files from this host to staging server"
+	@echo "Then doing a dbrestore and migrate on the staging server"
+	@echo "------------------------------------------------------------------"
+	@rsync -av --progress --exclude=.sync --exclude=.DS_Store backups $(STAGING_HOST):/home/web/staging.kartoza.com/deployment
+	@rsync -av --progress --exclude=.sync --exclude=.DS_Store media $(STAGING_HOST):/home/web/staging.kartoza.com/deployment
+	-@ssh $(STAGING_HOST) "cd /home/web/staging.kartoza.com/deployment; make dbrestore; make migrate; make collectstatic"
+
+testing-sync:
+	@echo
+	@echo "------------------------------------------------------------------"
+	@echo "Syncing database and media files from this host to testing server"
+	@echo "Then doing a dbrestore and migrate on the testing server"
+	@echo "------------------------------------------------------------------"
+	@rsync -av --progress --exclude=.sync --exclude=.DS_Store backups $(TESTING_HOST):/home/web/testing.kartoza.com/deployment
+	@rsync -av --progress --exclude=.sync --exclude=.DS_Store media $(TESTING_HOST):/home/web/testing.kartoza.com/deployment
+	-@ssh $(TESTING_HOST) "cd /home/web/testing.kartoza.com/deployment; make dbrestore; make migrate; make collectstatic"
 
 create-machine:
 	@echo
