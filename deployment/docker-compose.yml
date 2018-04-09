@@ -25,7 +25,7 @@ smtp:
     # You could change this to something more suitable
     - maildomain=kartoza.com
     - smtp_user=noreply:docker
-  restart: always
+  restart: unless-stopped
 
 db:
   # Note you cannot scale if you use conteiner_name
@@ -37,7 +37,7 @@ db:
   environment:
     - USERNAME=docker
     - PASS=docker
-  restart: always
+  restart: unless-stopped
 
 uwsgi-base:
   # Note you cannot scale if you use conteiner_name
@@ -70,7 +70,7 @@ uwsgi-ephemeral:
     - rabbitmq:rabbitmq
     - worker:worker
   user: root
-  restart: on-failure:5
+  restart: unless-stopped
 
 uwsgi:
   # Note you cannot scale if you use conteiner_name
@@ -81,7 +81,7 @@ uwsgi:
     - db:db
     - rabbitmq:rabbitmq
     - worker:worker
-  restart: always
+  restart: unless-stopped
 
 dbbackups:
   # Note you cannot scale if you use conteiner_name
@@ -103,7 +103,7 @@ dbbackups:
     - PGPORT=5432
     - PGHOST=db
     - PGDATABASE=gis
-  restart: always
+  restart: unless-stopped
 
 # This is normally the main entry point for a production server
 web:
@@ -121,7 +121,7 @@ web:
     - uwsgi:uwsgi
   ports:
     - "80:8080"
-  restart: always
+  restart: unless-stopped
 
 # This is the entry point for a development server.
 # Run with --no-deps to run attached to the services
@@ -183,7 +183,7 @@ worker:
      - smtp:smtp
      - db:db
      - rabbitmq:rabbitmq
-   restart: on-failure:5
+   restart: unless-stopped
 
 btsync:
   image: kartoza/btsync
@@ -193,4 +193,4 @@ btsync:
     - /home/web/kartoza.com/deployment/backups:/web
   env_file:
     - btsync.env
-  restart: on-failure:5    
+  restart: unless-stopped
