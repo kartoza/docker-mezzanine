@@ -1,7 +1,11 @@
 PROJECT_ID := mezzanine
+# define all hosts below in your local ssh config
 PRODUCTION_HOST := kartoza.com
 STAGING_HOST := staging.kartoza.com
 TESTING_HOST := testing.kartoza.com
+# change this parameters accordingly if both testing and staging server on the same machine
+STAGING_FOLDER := kartoza.com
+TESTING_FOLDER := kartoza.com
 
 SHELL := /bin/bash
 
@@ -285,9 +289,8 @@ staging-sync:
 	@echo "Syncing database and media files from this host to staging server"
 	@echo "Then doing a dbrestore and migrate on the staging server"
 	@echo "------------------------------------------------------------------"
-	@rsync -av --progress --exclude=.sync --exclude=.DS_Store backups $(STAGING_HOST):/home/web/staging.kartoza.com/deployment
-	@rsync -av --progress --exclude=.sync --exclude=.DS_Store media $(STAGING_HOST):/home/web/staging.kartoza.com/deployment
-	-@ssh $(STAGING_HOST) "cd /home/web/staging.kartoza.com/deployment; make dbrestore; make migrate; make collectstatic"
+	@rsync -av --progress --exclude=.sync --exclude=.DS_Store backups $(STAGING_HOST):/home/web/$(STAGING_FOLDER)/deployment
+	@rsync -av --progress --exclude=.sync --exclude=.DS_Store media $(STAGING_HOST):/home/web/$(STAGING_FOLDER)/deployment
 
 testing-sync:
 	@echo
@@ -295,9 +298,8 @@ testing-sync:
 	@echo "Syncing database and media files from this host to testing server"
 	@echo "Then doing a dbrestore and migrate on the testing server"
 	@echo "------------------------------------------------------------------"
-	@rsync -av --progress --exclude=.sync --exclude=.DS_Store backups $(TESTING_HOST):/home/web/testing.kartoza.com/deployment
-	@rsync -av --progress --exclude=.sync --exclude=.DS_Store media $(TESTING_HOST):/home/web/testing.kartoza.com/deployment
-	-@ssh $(TESTING_HOST) "cd /home/web/testing.kartoza.com/deployment; make dbrestore; make migrate; make collectstatic"
+	@rsync -av --progress --exclude=.sync --exclude=.DS_Store backups $(TESTING_HOST):/home/web/$(TESTING_FOLDER)/deployment
+	@rsync -av --progress --exclude=.sync --exclude=.DS_Store media $(TESTING_HOST):/home/web/$(TESTING_FOLDER)/deployment
 
 create-machine:
 	@echo
