@@ -81,14 +81,14 @@ migrate:
 	@# We add the '-' prefix to the next line as the migration may fail
 	@# but we want to continue anyway.
 	@#We need to migrate accounts first as it has a reference to user model
-	-@docker-compose -p $(PROJECT_ID) run uwsgi-ephemeral bash -c "pip uninstall -y South && python manage.py migrate auth && python manage.py migrate sites && python manage.py migrate pages && python manage.py migrate"
+	-@docker-compose -p $(PROJECT_ID) run uwsgi-ephemeral bash -c "python manage.py migrate auth && python manage.py migrate sites && python manage.py migrate pages && python manage.py migrate"
 
 update-migrations:
 	@echo
 	@echo "------------------------------------------------------------------"
 	@echo "Running update migrations in production mode"
 	@echo "------------------------------------------------------------------"
-	@docker-compose -p $(PROJECT_ID) run uwsgi-ephemeral bash -c "pip uninstall -y South && python manage.py makemigrations"
+	@docker-compose -p $(PROJECT_ID) run uwsgi-ephemeral bash -c "python manage.py makemigrations"
 
 collectstatic:
 	@echo

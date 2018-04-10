@@ -27,7 +27,6 @@ RUN echo "export VISIBLE=now" >> /etc/profile
 
 ADD REQUIREMENTS-dev.txt /REQUIREMENTS-dev.txt
 RUN pip install -r /REQUIREMENTS-dev.txt
-RUN pip uninstall -y South
 ADD bashrc /root/.bashrc
 
 # --------------------------------------------------------
