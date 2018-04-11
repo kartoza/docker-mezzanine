@@ -9,13 +9,16 @@ def sort_product_options(value):
     # sorting option1
     old_list = list()
     ref_list = {}
-    for label, choice in value.fields['option1'].choices:
-        # strip out %B %d-%d %Y into %B %d %Y
-        temp_choice = choice.split('-')
-        temp_year = temp_choice[1].split(' ')
-        # ref_list is called with the format %B %d
-        ref_list[temp_choice[0]] = choice
-        old_list.append(temp_choice[0] + "," + temp_year[1])
+    try:
+        for label, choice in value.fields['option1'].choices:
+            # strip out %B %d-%d %Y into %B %d %Y
+            temp_choice = choice.split('-')
+            temp_year = temp_choice[1].split(' ')
+            # ref_list is called with the format %B %d
+            ref_list[temp_choice[0]] = choice
+            old_list.append(temp_choice[0] + "," + temp_year[1])
+    except KeyError:
+        return value
     # new_list new format: %B %d,%Y
     # add comma so it can be fetched easily for the ref_list
     new_list = sorted(old_list, key=lambda x: datetime.datetime.strptime(x, '%B %d,%Y'))
