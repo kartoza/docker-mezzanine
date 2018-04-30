@@ -2,6 +2,7 @@ from __future__ import unicode_literals
 from future.builtins import str
 
 from decimal import Decimal
+from datetime import datetime
 import locale
 import platform
 
@@ -40,6 +41,7 @@ def _order_totals(context):
     fields = ["shipping_type", "shipping_total", "discount_total",
               "tax_type", "tax_total"]
     template_vars = {}
+    global tax_value
 
     if "order" in context:
         for field in fields + ["item_total", "total"]:
@@ -48,6 +50,12 @@ def _order_totals(context):
         if template_vars.get("discount_total", None) is not None:
             template_vars["order_total_before_discount"] = template_vars["order_total"] + Decimal(
                 str(template_vars["discount_total"]))
+        # checks whether a current VAT takes into effect after the transaction date
+        # if so, replace tax_value with old vat value
+        trans_date = context["order"].time.date()
+        new_vat_applied = datetime.strptime(getattr(settings,  "CURRENT_VAT_STARTED"), "%d/%m/%Y").date()
+        if trans_date < new_vat_applied:
+            tax_value = str(getattr(settings, "OLD_VAT")) + "%"
     else:
         template_vars["item_total"] = context["request"].cart.total_price()
         if template_vars["item_total"] == 0:

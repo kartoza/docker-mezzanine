@@ -1,3 +1,4 @@
+from __future__ import division
 from mezzanine.conf import settings
 from cartridge.shop.utils import set_tax
 
@@ -9,8 +10,7 @@ __copyright__ = 'kartoza.com'
 import decimal
 from django.utils.translation import ugettext_lazy as _
 
-tax_value = "14%"
-
+tax_value = str(getattr(settings, "CURRENT_VAT", 15)) + "%"
 
 def vat_tax_handler(request, order_form):
     """
@@ -23,5 +23,5 @@ def vat_tax_handler(request, order_form):
     accessible via ``request.cart``
     """
     settings.use_editable()
-    tax = request.cart.total_price() - (request.cart.total_price() / decimal.Decimal(1.14))
+    tax = request.cart.total_price() - (request.cart.total_price() / decimal.Decimal(1 + float(tax_value.strip('%'))/100))
     set_tax(request, _("Vat"), tax)

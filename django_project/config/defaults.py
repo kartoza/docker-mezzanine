@@ -19,3 +19,27 @@ register_setting(
     default=("FRONT_PAGE_RECENT_POST",),
     append=True,
 )
+
+register_setting(
+    name="CURRENT_VAT",
+    label="Current VAT",
+    description="The current VAT.",
+    editable=True,
+    default=15,
+)
+
+register_setting(
+    name="OLD_VAT",
+    label="Old VAT",
+    description="The old VAT.",
+    editable=True,
+    default=14,
+)
+
+register_setting(
+    name="CURRENT_VAT_STARTED",
+    label="Current VAT Starting Date",
+    description="The date when current VAT take into effect (DD/MM/YYYY).",
+    editable=True,
+    default='01/05/2018',
+)
