@@ -51,7 +51,9 @@
 
             <div class="pure-u-1 pure-u-md-1-3 team-member-info">
                 <div class="person-avatar">
-                    <a href="/people/person/{{ person.slug }}"><img width="300" height="300" src="{{ MEDIA_URL }}{% thumbnail person.mugshot 300 0 %}" class="attachment-thumbnail size-thumbnail" alt="Selection_006">
+                    <a href="/people/person/{{ person.slug }}">
+                        <img width="300" height="300" src="{{ MEDIA_URL }}{% thumbnail person.mugshot 300 0 %}" class="attachment-thumbnail size-thumbnail" alt="Selection_006">
+                        <img width="300" height="300" src="{{ MEDIA_URL }}{% thumbnail person.mugshot_hover 300 0 %}" class="attachment-thumbnail size-thumbnail" alt="Selection_006" style="display: none">
                     </a>
                     <div class="text-wrapper" onclick="location.href='/people/person/{{ person.slug }}'">
                         {% if person.bio %}
@@ -108,6 +110,13 @@
                     }
                 });
             }
+
+            $('.person-avatar').mouseover(function() {
+                $(this).find("img").toggle();
+            });
+            $('.person-avatar').mouseout(function() {
+                $(this).find("img").toggle();
+            });
 
         });
     </script>
