@@ -12,11 +12,21 @@ def sort_product_options(value):
     try:
         for label, choice in value.fields['option1'].choices:
             # strip out %B %d-%d %Y into %B %d %Y
-            temp_choice = choice.split('-')
-            temp_year = temp_choice[1].split(' ')
             # ref_list is called with the format %B %d
-            ref_list[temp_choice[0]] = choice
-            old_list.append(temp_choice[0] + "," + temp_year[1])
+            temp_choice = choice.split('-')
+            try:
+                temp_year = temp_choice[1].split(' ')
+                ref_list[temp_choice[0]] = choice
+                old_list.append(temp_choice[0] + "," + temp_year[1])
+            except IndexError:
+                # only one day: the date format %B %d %Y
+                list_temp_choice = temp_choice[0].split(' ')
+                temp_year = list_temp_choice[2]
+                ref_list[list_temp_choice[0] + " " + list_temp_choice[1]] = choice
+                old_list.append(list_temp_choice[0] + " " +
+                                list_temp_choice[1] + "," +
+                                temp_year)
+
     except KeyError:
         return value
     # new_list new format: %B %d,%Y
