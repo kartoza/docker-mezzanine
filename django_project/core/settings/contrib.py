@@ -171,6 +171,7 @@ SHOP_PAYMENT_STEP_ENABLED = False
 SHOP_OPTION_TYPE_CHOICES = (
     (1, "Course date"),
     (2, "Course venue"),
+    (3, "GIS Box option"),
 )
 # Sequence of value/name pairs for payment statuses.
 SHOP_PAYMENT_STATUS_CHOICES = (
