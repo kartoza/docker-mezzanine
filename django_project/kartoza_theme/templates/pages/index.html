@@ -195,6 +195,7 @@
                             var person = data[i]['fields'];
                             var slug = person['slug'];
                             var image_src = person['mugshot'];
+                            var image_hover_src = person['mugshot_hover'];
                             var name = person['first_name'] + ' ' + person['last_name'];
                             if (name == " ") {
                                 name = slug;
@@ -203,7 +204,8 @@
                             {# render it #}
                             var html = '<div class="member span3">' +
                                     '<div class="avatar">' +
-                                    '<div class="real"><a href="/people/person/' + slug + '"><img width="280" height="280" src="{{ MEDIA_URL }}' + image_src + '" class="attachment-thumbnail size-thumbnail" alt="Selection_006"></a>' +
+                                    '<div class="real"><a href="/people/person/' + slug + '"><img width="280" height="280" src="{{ MEDIA_URL }}' + image_src + '" class="attachment-thumbnail size-thumbnail" alt="'+name+'">' +
+                                    '<img width="280" height="280" src="{{ MEDIA_URL }}' + image_hover_src + '" class="attachment-thumbnail size-thumbnail" alt="'+name+'" style="display: none"></a>' +
                                     '</div>' +
                                     '</div>' +
                                     '<h4><a href="/people/person/' + slug + '">' + name + '</a></h4>' +
@@ -218,6 +220,15 @@
                 }
             })
         });
+
+        $(document).on("mouseover", ".real", function(event){
+            $(this).find("img").toggle();
+        });
+        $(document).on("mouseout", ".real", function(event){
+            $(this).find("img").toggle();
+        });
+
+
     </script>
     <script>
         window.fbAsyncInit = function () {

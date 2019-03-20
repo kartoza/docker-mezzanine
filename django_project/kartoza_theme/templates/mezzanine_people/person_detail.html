@@ -32,8 +32,7 @@
 
             {% editable person.first_name person.last_name person.job_title person.bio %}
                 <div>
-                    <!-- image -->
-                    <img src="{{ MEDIA_URL }}{% thumbnail person.mugshot 300 0 %}" style="padding-top: 20px;"/>
+                    <img src="{{ MEDIA_URL }}{% thumbnail person.mugshot_hover 300 0 %}" style="padding-top: 20px;"/>
                 </div>
             {% endeditable %}
             <h1>{{ person.full_name }}</h1>
