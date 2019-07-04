@@ -10,7 +10,9 @@ __copyright__ = 'kartoza.com'
 import decimal
 from django.utils.translation import ugettext_lazy as _
 
-tax_value = str(getattr(settings, "CURRENT_VAT", 15)) + "%"
+# TODO : fix this
+# tax_value = str(getattr(settings, "CURRENT_VAT", 15)) + "%"
+tax_value = ''
 
 def vat_tax_handler(request, order_form):
     """

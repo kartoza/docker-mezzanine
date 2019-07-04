@@ -1,5 +1,5 @@
 cartridge
-celery
+celery==3.1.26.post2
 Django>=1.8,<1.9
 django-compressor
 filebrowser-safe==0.4.5

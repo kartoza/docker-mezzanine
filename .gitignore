@@ -114,3 +114,4 @@ django_project/media
 *.dmp
 deployment/backups
 deployment/btsync.env
+deployment/logs

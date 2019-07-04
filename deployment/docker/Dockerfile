@@ -16,7 +16,7 @@ RUN apt-get update -y
 # Set the locale - change to your preferred locale ... We use South African english
 # We do this as cartridge (ecommerce platform for mezzanine) relies on
 # the locale to set the correct number of decimal places for the MoneyField
-RUN apt-get install locales && \
+RUN apt-get -y install locales && \
     echo "en_ZA.UTF-8 UTF-8" >> /etc/locale.gen && \
     locale-gen en_ZA.UTF-8
 ENV LANG en_ZA.UTF-8
@@ -24,8 +24,7 @@ ENV LANGUAGE en_ZA:en
 ENV LC_ALL en_ZA.UTF-8
 
 ADD REQUIREMENTS.txt /REQUIREMENTS.txt
-RUN pip install -r /REQUIREMENTS.txt
-RUN pip install uwsgi
+RUN pip install -r /REQUIREMENTS.txt && pip install uwsgi && pip uninstall -y django-contrib-comments && pip install django-contrib-comments==1.8.0
 
 
 # Open port 8080 as we will be running our uwsgi socket on that
