@@ -1,11 +1,13 @@
 from datetime import datetime
+
 from django.db import models
 from mezzanine.core.fields import RichTextField
-from mezzanine.utils.models import AdminThumbMixin
 from mezzanine.core.models import Slugged, Orderable
+from mezzanine.utils.models import AdminThumbMixin
 
 
 class Project(Orderable, Slugged, AdminThumbMixin):
+
 
     short_description = models.TextField(
         null=True,
@@ -51,6 +53,12 @@ class Project(Orderable, Slugged, AdminThumbMixin):
         related_name="clients"
     )
 
+    contact_person = models.ForeignKey(
+        'kartoza_project.Reference',
+        null=True,
+        on_delete=models.PROTECT,
+        related_name='contact_person')
+
     value = models.DecimalField(
         verbose_name='Project value',
         max_digits=10,
@@ -58,6 +66,15 @@ class Project(Orderable, Slugged, AdminThumbMixin):
         null=True,
         blank=True
     )
+
+    consultants = models.ManyToManyField(
+        Person,
+        through='Reference',
+        related_name='consultants')
+    staff_involved = models.ManyToManyField(
+        Person,
+        through='Reference',
+        related_name='staff_involved')
 
     admin_thumb_field = 'thumbnail'
 
