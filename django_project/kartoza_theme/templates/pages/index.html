@@ -85,7 +85,7 @@
     <div class="team block" id="team-block" style="display: none">
         <div class="container">
             <h3>Meet the team</h3>
-            <div class="row" id="team-block-row">
+            <div id="team-block-row">
 
             </div>
         </div>
@@ -191,18 +191,30 @@
                     data = JSON.parse(data);
                     if (data.length > 0) {
                         $("#team-block").show();
+                        var newRow = true;
+                        var rowIndex = 1;
+                        var teamBlockRow = $('#team-block-row');
                         for (var i = 0; i < data.length; i++) {
                             var person = data[i]['fields'];
                             var slug = person['slug'];
                             var image_src = person['mugshot'];
                             var image_hover_src = person['mugshot_hover'];
                             var name = person['first_name'] + ' ' + person['last_name'];
-                            if (name == " ") {
+                            if (name === " ") {
                                 name = slug;
+                            }
+                            console.log((i+1) % 4);
+                            if (i % 4 === 0) {
+                                newRow = true;
+                                rowIndex += 1;
+                            }
+                            if (newRow) {
+                                teamBlockRow.append('<div class="row row-'+ rowIndex +'"></div>');
+                                newRow = false;
                             }
                             var job_title = person['job_title'];
                             {# render it #}
-                            var html = '<div class="member span3">' +
+                            var html = '<div class="member col-lg-3 col-md-4 col-sm-4">' +
                                     '<div class="avatar">' +
                                     '<div class="real"><a href="/people/person/' + slug + '"><img width="280" height="280" src="{{ MEDIA_URL }}' + image_src + '" class="attachment-thumbnail size-thumbnail" alt="'+name+'">' +
                                     '<img width="280" height="280" src="{{ MEDIA_URL }}' + image_hover_src + '" class="attachment-thumbnail size-thumbnail" alt="'+name+'" style="display: none"></a>' +
@@ -211,7 +223,7 @@
                                     '<h4><a href="/people/person/' + slug + '">' + name + '</a></h4>' +
                                     '<a href="/people/person/' + slug + '">' + job_title + '</a>' +
                                     '</div>';
-                            $("#team-block-row").append(html);
+                            teamBlockRow.find('.row-' + rowIndex).append(html);
                         }
                     }
                 },

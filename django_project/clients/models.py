@@ -1,6 +1,6 @@
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
-from mezzanine.core.fields import RichTextField, FileField
+from mezzanine.core.fields import FileField
 from mezzanine.core.models import Displayable, RichText, Slugged
 from mezzanine.utils.models import AdminThumbMixin
 
@@ -31,6 +31,12 @@ class Client(Displayable, RichText, AdminThumbMixin):
         max_length=255,
         null=False
     )
+
+    def title_name(self):
+        splitted = self.title.split('.')
+        if len(splitted) > 1:
+            return splitted[1]
+        return splitted[0]
 
     class Meta:
         """Meta class for client."""

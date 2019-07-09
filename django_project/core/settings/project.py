@@ -15,6 +15,7 @@ from .contrib import *  # noqa
 INSTALLED_APPS += (
     # Add any additional project apps here
     'clients',
+    'kartoza_project',
 )
 
 # Due to profile page does not available,

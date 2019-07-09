@@ -12,7 +12,7 @@
 # )
 from __future__ import unicode_literals
 
-from django.conf.urls import patterns, include, url
+from django.conf.urls import include, url
 from django.conf.urls.i18n import i18n_patterns
 from django.contrib import admin
 from django.conf import settings
@@ -34,6 +34,7 @@ urlpatterns = i18n_patterns(
 
         # For mezzanine-people
         ("^people/", include('mezzanine_people.urls')),
+        ("^project/", include('kartoza_project.urls')),
         ("^api/people/", "core.views.get_all_people"),
         # Mezzanine Careers
         ("^careers/", include("careers.urls")),

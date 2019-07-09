@@ -233,6 +233,12 @@ a:focus {
     font-size: 60pt;
 }
 
+@media screen and (max-width: 480px) {
+    #headerwrap .title {
+        font-size: 30pt;
+    }
+}
+
 #headerwrap h3, h5 {
     color: black;
     font-weight: 400;
@@ -526,6 +532,9 @@ csmall2 {
 /* General Tweaks */
 .span3 {
     width: 270px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
 }
 
 [class*="span"] {

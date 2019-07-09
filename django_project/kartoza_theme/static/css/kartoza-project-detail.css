@@ -1,0 +1,80 @@
+
+.project-detail-container {
+    min-height: 400px;
+    margin-top: -30px;
+    line-height: 1.6;
+}
+
+.rslides_container {
+    margin-bottom: 50px;
+    position: relative;
+    float: left;
+    width: 100%;
+    margin-left: 10px;
+}
+
+.rslides1_nav {
+    position: absolute;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    top: 50%;
+    left: -10px;
+    z-index: 99;
+    opacity: 0.7;
+    text-indent: -9999px;
+    overflow: hidden;
+    text-decoration: none;
+    height: 61px;
+    width: 38px;
+    background: transparent url("/static/themes.gif") no-repeat left top;
+    margin-top: -45px;
+}
+
+.rslides1_nav:active {
+    opacity: 1.0;
+}
+
+.rslides1_nav.next {
+    left: auto;
+    background-position: right top;
+    right: 10px;
+}
+
+.badge {
+    border-radius: 0;
+}
+
+.project-categories {
+    margin-bottom: 10px;
+}
+
+.project-client-logo {
+    max-width: 200px;
+    padding: 20px;
+}
+
+.project-clients {
+    text-align: center;
+}
+
+.project-references h2 {
+    text-align: center;
+}
+
+.project-references-list {
+    line-height: 1.8;
+}
+
+.badge-success {
+    background-color: green;
+}
+
+
+.project-value h3{
+    background-color: rgba(249, 255, 65, 0.1);
+    padding-bottom: 20px;
+    padding-top: 20px;
+    font-size: 12pt;
+    padding-left: 10px;
+    border-bottom: 1px solid rgba(249, 255, 65, 0.6);
+    border-top: 1px solid rgba(249, 255, 65, 0.6);
+}

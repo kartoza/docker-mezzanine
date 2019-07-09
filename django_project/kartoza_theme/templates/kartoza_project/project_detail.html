@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+{% load mezzanine_tags keyword_tags i18n staticfiles humanize %}
+
+{% block meta_title %}{% if page %}{{ page.richtextpage.meta_title }}{% else %}{% trans "Project" %}{% endif %}{% endblock %}
+
+{% block meta_keywords %}{% metablock %}
+    {% keywords_for page as keywords %}
+    {% for keyword in keywords %}{% if not forloop.first %}, {% endif %}{{ keyword }}{% endfor %}
+{% endmetablock %}{% endblock %}
+
+{% block meta_description %}{% metablock %}
+    {{ page.description }}
+{% endmetablock %}{% endblock %}
+
+{% block title %}
+    {% if page %}
+        {% editable page.title %}{{ project.title }}{% endeditable %}
+    {% endif %}
+{% endblock %}
+
+{% block extra_head %}
+    <link rel="stylesheet" href="{% static "css/kartoza-project-detail.css" %}">
+{% endblock %}
+
+{% block breadcrumb_menu %}
+    {{ block.super }}
+    {% if category %}
+        <li>{% trans "Category:" %} {{ category }}<li>
+    {% endif %}
+{% endblock %}
+
+{% block main %}
+    {% if category %}
+        <p>
+            {% if category %}
+                {{ category }}
+            {% endif %}
+        </p>
+    {% endif %}
+
+    <div class="project-detail-container">
+        <div class="project-categories">
+        {% if project.ongoing %}
+            <a href="/project/ongoing/" class="badge badge-success">Ongoing</a>
+        {% endif %}
+        {% for category in project.categories.all %}
+            <a href="/project/category/{{ category.slug }}" class="badge badge-info">
+                {{ category.title }}
+            </a>
+        {% endfor %}
+        </div>
+        <div class="rslides_container">
+         <ul id="slides1" class="rslides">
+            {% for image in images %}
+                <li>
+                    <img src="{{ MEDIA_URL }}{% thumbnail image.image 1200 400 %}" alt="{{ image.caption }}"/>
+                    <p class="caption">{{ image.caption }}</p>
+                </li>
+            {% endfor %}
+         </ul>
+        </div>
+
+        <div class="project-details">
+            {{ project.project_details | safe }}
+        </div>
+        {% if project.value %}
+        <div class="project-value">
+            <h3> Project value : R{{ project.value | intcomma }} </h3>
+        </div>
+        {% endif %}
+        <hr/>
+        <div class="project-clients">
+            <h2>{% if project.clients.all|length > 1 %} Clients {% else %} Client {% endif %}</h2> <br/>
+            {% for client in project.sorted_clients_set.all %}
+                <a href="{{ client.link }}" target="_blank" >
+                    <img src="{{ MEDIA_URL }} {{ client.logo }}" alt="{{ client.name }}" class="project-client-logo" data-toggle="tooltip" data-placement="top" title="{{ client.title_name }}"/>
+                </a>
+            {% endfor %}
+        </div>
+        {% if references %}
+            <hr/>
+            <div class="project-references">
+                <h2>{% if references|length > 1 %} References {% else %} Reference {% endif %}</h2>
+                <div class="project-references-list">
+                    <uL>
+                        {% for reference in references %}
+                            <li><a href="{{ reference.url }}" target="_blank"> {{ reference.name }} </a></li>
+                        {% endfor %}
+                    </uL>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+    <script>
+        $(function() {
+            $('.rslides').responsiveSlides({
+                auto: false,
+                pagination: true,
+                nav: true,
+                fade: 500,
+            });
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
+{% endblock %}

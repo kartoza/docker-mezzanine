@@ -19,39 +19,40 @@ GRAPPELLI_INSTALLED = True
 
 # Extra installed apps - grapelli needs to be added before others
 INSTALLED_APPS += (
-     'raven.contrib.django.raven_compat',  # enable Raven plugin
-     PACKAGE_NAME_GRAPPELLI,
-     "celery",
-     "config",
-     "kartoza_theme",
-     "mezzanine",
-     "django_comments",
-     "compressor",
-     PACKAGE_NAME_FILEBROWSER,
-     "mezzanine.boot",
-     "mezzanine.conf",
-     "mezzanine.core",
-     "mezzanine.generic",
-     "mezzanine.blog",
-     "mezzanine.forms",
-     "mezzanine.pages",
-     "mezzanine.galleries",
-     "mezzanine.twitter",
-     #"mezzanine.accounts",
-     #"mezzanine.mobile",
-     # Extra apps picked out by Tim
-     "mezzanine_people",
-     "mezzanine_references",
-     "mezzanine_slides",
-     "mezzanine_file_collections",  # disabled for now as it is using south
-     "mdown",  # markdown support in admin
-     "mezzanine_agenda",  # we use a local copy as pip misses migrations
-     "careers",
-     "wms_client",
-     "cartridge.shop",  # mezzanine store
-     "modal_announcements",
-     'payment',
-     'plugins'
+    'raven.contrib.django.raven_compat',  # enable Raven plugin
+    PACKAGE_NAME_GRAPPELLI,
+    "celery",
+    "config",
+    "kartoza_theme",
+    "mezzanine",
+    "django_comments",
+    "compressor",
+    PACKAGE_NAME_FILEBROWSER,
+    "mezzanine.boot",
+    "mezzanine.conf",
+    "mezzanine.core",
+    "mezzanine.generic",
+    "mezzanine.blog",
+    "mezzanine.forms",
+    "mezzanine.pages",
+    "mezzanine.galleries",
+    "mezzanine.twitter",
+    #"mezzanine.accounts",
+    #"mezzanine.mobile",
+    # Extra apps picked out by Tim
+    "mezzanine_people",
+    "mezzanine_references",
+    "mezzanine_slides",
+    "mezzanine_file_collections",  # disabled for now as it is using south
+    "mdown",  # markdown support in admin
+    "mezzanine_agenda",  # we use a local copy as pip misses migrations
+    "careers",
+    "wms_client",
+    "cartridge.shop",  # mezzanine store
+    "modal_announcements",
+    'payment',
+    'plugins',
+    'django.contrib.humanize',
 )
 
 # mezzanine-mdown options
@@ -63,6 +64,7 @@ MIGRATION_MODULES = {'accounts': 'core.migration'}
 GRAPPELLI_ADMIN_TITLE = 'Site administration panel'
 
 PEOPLE_PER_PAGE = 20
+PROJECTS_PER_PAGE = 10
 
 EVENT_USE_FEATURED_IMAGE = True
 # This one must occur before django provided middleware

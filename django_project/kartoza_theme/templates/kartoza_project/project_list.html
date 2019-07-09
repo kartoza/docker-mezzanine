@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% load mezzanine_tags keyword_tags i18n staticfiles %}
+
+{% block meta_title %}{% if page %}{{ page.richtextpage.meta_title }}{% else %}{% trans "Project" %}{% endif %}{% endblock %}
+
+{% block meta_keywords %}{% metablock %}
+    {% keywords_for page as keywords %}
+    {% for keyword in keywords %}{% if not forloop.first %}, {% endif %}{{ keyword }}{% endfor %}
+{% endmetablock %}{% endblock %}
+
+{% block meta_description %}{% metablock %}
+    {{ page.description }}
+{% endmetablock %}{% endblock %}
+
+{% block title %}
+    {% if page %}
+        {% editable page.title %}{{ page.title }}{% endeditable %}
+    {% else %}
+        {% trans "Our team" %}
+    {% endif %}
+{% endblock %}
+
+{% block extra_head %}
+    <link rel="stylesheet" href="{% static "css/kartoza-project-list.css" %}">
+{% endblock %}
+
+{% block breadcrumb_menu %}
+    {{ block.super }}
+    {% if category %}
+        <li>{% trans "Category:" %} {{ category }}<li>
+    {% endif %}
+{% endblock %}
+
+{% block main %}
+
+    {% if category %}
+        <p>
+            {% if category %}
+                <span class="badge badge-info">{{ category }}</span>
+            {% endif %}
+        </p>
+    {% endif %}
+
+    {% for project in projects %}
+        <div class="project-content pure-g {% cycle 'odd' 'even' %}">
+            <div class="pure-u-1-3 pure-u-md-1-3 project-thumb"> <img src="/media/{{ project.thumbnail }}"/> </div>
+            <div class="pure-u-2-3 pure-u-md-2-3 project-desc">
+                <div class="project-title">
+                    <h3>{{ project.title }}</h3>
+                    {% if project.ongoing %}
+                    <span class="ongoing badge badge-success">Ongoing</span>
+                    {% endif %}
+                </div>
+                <div class="project-short-desc">
+                    {{ project.short_description | linebreaks }}
+                </div>
+                <div class="project-show-more">
+                    <a href="/project/detail/{{ project.slug }}" type="button" class="btn btn-primary">More</a>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
+    {% pagination_for projects %}
+
+{% endblock %}

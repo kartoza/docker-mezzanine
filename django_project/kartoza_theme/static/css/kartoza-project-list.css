@@ -1,0 +1,48 @@
+
+.mtb {
+    min-height: 500px;
+}
+
+.project-thumb {
+    padding: 5px;
+}
+
+.project-desc {
+    padding: 10px;
+    font-size: 16px;
+    position: relative;
+    justify-content: space-between;
+    flex-direction: column;
+    display: flex;
+}
+
+.project-show-more .btn {
+    justify-content: flex-start;
+    border-radius: 0;
+}
+
+.project-short-desc {
+    display: flex;
+    height: 100%;
+    margin-top: -10px;
+}
+
+.project-title {
+    margin-top: -15px;
+}
+
+.odd {
+    background-color: #f5f4f5;
+}
+
+.badge {
+    border-radius: 0;
+}
+
+.badge-success {
+    background-color: green;
+}
+
+.ongoing {
+    margin-bottom: 10px;
+}
