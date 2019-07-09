@@ -1,0 +1,249 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+
+{% block main %}
+	<div class="row">
+		<div class="h3">View Project</div>
+		<div class="col-md-6 pr-5">
+			<div class="row">
+				<div class="col-md-12"><label class="h4">Title</label></div>
+				<div class="col-md-12">
+					{{ project.title }}
+				</div>
+			</div>
+			<div class="row">
+
+				<div class="col-md-12"><label class="h4">Clients</label></div>
+				{% for client in clients  %}
+				<div class="row">
+					<div class="col-md-12">
+						<b>{{ client.name }}</b>
+					</div>
+				</div>
+
+				{% endfor %}
+				<div class="col-md-12">
+					Contact Person: {{ project.contact_person }}
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12"><label class="h4">Country</label></div>
+				<div class="col-md-12">
+					{{ project.country }}
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12"><label class="h4">Location</label></div>
+				<div class="col-md-12">
+					{{ project.location }}
+				</div>
+			</div>
+		</div>
+		{% if user.is_authenticated %}
+			<div class="col-md-6 my-box">
+				<div class="row">
+					<div class="col-md-12"><label
+							class="h4">Approximate value of the contract (US $)</label>
+					</div>
+					<div class="col-md-12">
+						{{ project.approximate_contract_value }}
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12"><label
+							class="h4">Duration of the assignment (months)</label>
+					</div>
+					<div class="col-md-12">
+						{{ project.duration_of_assignment }}
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12"><label
+							class="h4">Total number of staff-months</label>
+					</div>
+					<div class="col-md-12">
+						{{ project.total_staff_months }}
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12"><label
+							class="h4">Number of professional staff-months provided by Kartoza</label>
+					</div>
+					<div class="col-md-12">
+						{{ project.total_staff_months_by_kartoza }}
+					</div>
+				</div>
+			</div>
+		{% endif %}
+		<div class="col-md-12 pb-5">
+			<div class="row">
+				<div class="col-md-12"><label
+						class="h4">Brief</label>
+				</div>
+				<div class="col-md-12">
+					{{ project.short_description }}
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12"><label
+						class="h4">Technologies</label>
+				</div>
+				<div class="col-md-12" id="technologies">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12"><label
+						class="h4">Tags</label>
+				</div>
+				<div class="col-md-12" id="tags">
+
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12"><label
+						class="h4">Start Date</label>
+				</div>
+				<div class="col-md-12">
+					{{ project.date_start }}
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12"><label
+						class="h4">Date Completed</label>
+				</div>
+				<div class="col-md-12">
+					{{ project.date_end }}
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12"><label
+						class="h4">Associated Consultants</label>
+				</div>
+				<div class="col-md-12">
+					{% for each_consultant in consultants %}
+						<div class="row">{{ each_consultant.name }}
+							<div data-consultant-id="{{ each_consultant.id }}"
+									data-toggle="popover"
+							     class="reference_tooltip col-md-3"
+							     style="border:solid">Consultant Tooltip
+							</div>
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12"><label
+						class="h4">Staff Involved</label>
+				</div>
+				<div class="col-md-12">
+					{% for each_staff in staff_involved %}
+{#						<div class="row">#}
+							<div class="col-sm-12>">{{ each_staff.name }}<div data-consultant-id="{{ each_staff.id }}"
+								 data-toggle="popover"
+							     class="reference_tooltip"
+							     style="border:solid">
+							</div></div>
+
+{#						</div>#}
+					{% endfor %}
+				</div>
+			</div>
+			<div class="row">
+
+				<div class="col-md-12"><label
+						class="h4">Description</label>
+				</div>
+				<div class="col-md-12">
+					<div class="col-md-12 my-scroll">
+						{% autoescape off %}{{ project.description|safe }}{% endautoescape %}
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12"><label
+						class="h4">Actual Services Provided</label>
+				</div>
+				<div class="col-md-12">
+					<div class="col-md-12 my-scroll">{{ project.services_provided|safe}}</div>
+				</div>
+			</div>
+
+		</div>
+		<div class="col-md-12">
+			<div class="galleria">
+				{% for each_image in images  %}
+			        <img src="{{ each_image.image.url }}"
+			             data-title="{{ each_image.caption }}"
+			             data-description="{{ each_image.caption }}">
+				{% endfor %}
+
+			</div>
+		</div>
+	</div>
+
+	<input id='get-reference' type='hidden'
+       value='{% url "get_reference" %}'/>
+	<style>
+		.pr-5 {
+			padding-right: 2.5rem !important;
+		}
+
+		.pl-5 {
+			padding-left: 2.5rem !important;
+		}
+
+		.pb-5 {
+			padding-bottom: 2.5rem !important;
+		}
+
+		.my-scroll {
+			border-style: solid;
+			border-width: 1px;
+			border-color: #ddd;
+			border-radius: 4px 4px 0 0;
+			height: 40vh;
+			overflow: scroll;
+		}
+
+		.my-box {
+			border-style: solid;
+			border-width: 1px;
+			border-color: #ddd;
+			border-radius: 4px 4px 0 0;
+			padding-bottom: 1rem;
+		}
+
+		ul.taggle_list {
+			padding-left: 0px;
+		}
+		.taggle-blue {
+
+		}
+		.taggle-orange {
+
+		}
+		.galleria-info-text {
+			width: fit-content;
+		}
+		.galleria {
+			height: 50vh;
+		}
+
+		.reference_tooltip {
+			width: 5rem;
+			display: inline-flex;
+		}
+	</style>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/galleria/1.5.7/themes/classic/galleria.classic.min.css" integrity="sha256-x2CD51aoTjhaYQ3I4ebHfFyb/+GSyE6kjxUCYq81Dys=" crossorigin="anonymous" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/galleria/1.5.7/galleria.js" integrity="sha256-aG3fVuHsp+KBOZwzhtEP7K0rUBJEB7o2wxFwJfCiymg=" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/taggle/1.14.4/taggle.min.js" integrity="sha256-/sZeEyfDrdf4QNrGEKYVlvV1HoJab1MZRNp2aIWyEs0=" crossorigin="anonymous"></script>
+	<script type="text/javascript"
+	        src="{% static 'js/view_project.js' %}"></script>
+	<link href="{% static "css/taggle.css" %}" rel="stylesheet">
+	<script>
+		var technologies = '{{ project.technologies }}'
+		var tags = '{{ project.tags }}'
+	</script>
+	{% endblock %}
+

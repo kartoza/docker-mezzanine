@@ -1,0 +1,50 @@
+		.pr-5 {
+			padding-right: 2.5rem !important;
+		}
+
+		.pl-5 {
+			padding-left: 2.5rem !important;
+		}
+
+		.pb-5 {
+			padding-bottom: 2.5rem !important;
+		}
+
+		.my-scroll {
+			border-style: solid;
+			border-width: 1px;
+			border-color: #ddd;
+			border-radius: 4px 4px 0 0;
+			height: 40vh;
+			overflow: scroll;
+		}
+
+		ul.taggle_list {
+			padding-left: 0px;
+		}
+		.taggle-blue {
+
+		}
+		.taggle-orange {
+
+		}
+		.galleria-info-text {
+			width: fit-content;
+		}
+		.galleria {
+			height: 50vh;
+		}
+
+		.reference_tooltip {
+			/*border:solid;*/
+			width: 5rem;
+			height: 5rem;
+			display: inline-flex;
+			background-image: url("../img/contact.png");
+			background-size: cover;
+		}
+
+		.reference_name{
+			float: left;
+			line-height: 5rem;
+		}

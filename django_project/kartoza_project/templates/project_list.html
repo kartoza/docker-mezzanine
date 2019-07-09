@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block main %}
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="h1 text-center">Projects</div>
+		</div>
+		<div class="col-sm-12">
+			<p class="h4 text-center">As a leader in the field, Kartoza's focus is on Geographical Information Systems (GIS).
+				We have accumulated a wealth of experience integrating GIS systems across industries and borders, since 2008.</p>
+		</div>
+		<div class="col-sm-12 ">
+			{% for project in projects %}
+				<div class="row">
+					<div class="col-sm-12">
+
+							<div class="float-{% cycle 'left' 'right' %}">
+								<img src="/media/{{ project.thumbnail }}"
+								     class="mt-5"
+								     style="height:45vh; border: solid"/>
+							</div>
+						<div class="nothing">
+							<div class="text-{% cycle 'right' 'left' %}">
+								<div class="row mt-3">
+									<div class="col-sm-12">
+										<div class="h5 m-1"
+										     style="text-align: left;">{{ project.title }}</div>
+									</div>
+								</div>
+								<div class="row mt-3">
+									<div class="col-sm-12">
+										<div class="center-text h6">{{ project.short_description }}</div>
+									</div>
+								</div>
+								<a style="float: left;"
+								        class="btn btn-default read-more-button m-1" href="{% url 'view_project' project_id=project.id %}">Read More
+								</a>
+
+
+							</div>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+	<link rel="stylesheet" href="{% static 'css/project_list.css' %}"/>
+	{#	<link rel="stylesheet"#}
+	{#	      href="https://cdnjs.cloudflare.com/ajax/libs/galleria/1.5.7/themes/classic/galleria.classic.min.css"#}
+	{#	      integrity="sha256-x2CD51aoTjhaYQ3I4ebHfFyb/+GSyE6kjxUCYq81Dys="#}
+	{#	      crossorigin="anonymous"/>#}
+	{#	<script src="https://cdnjs.cloudflare.com/ajax/libs/galleria/1.5.7/galleria.js"#}
+	{#	        integrity="sha256-aG3fVuHsp+KBOZwzhtEP7K0rUBJEB7o2wxFwJfCiymg="#}
+	{#	        crossorigin="anonymous"></script>#}
+	<script src="{% static 'js/project_list.js' %}"></script>
+{% endblock %}
+
