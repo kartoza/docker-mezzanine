@@ -8,7 +8,6 @@ from mezzanine.utils.models import AdminThumbMixin
 
 class Project(Orderable, Slugged, AdminThumbMixin):
 
-
     short_description = models.TextField(
         null=True,
         blank=True,
@@ -68,13 +67,62 @@ class Project(Orderable, Slugged, AdminThumbMixin):
     )
 
     consultants = models.ManyToManyField(
-        Person,
-        through='Reference',
-        related_name='consultants')
+
+        'kartoza_project.Reference',
+        related_name='consultants',
+        null=True,
+        blank=True,
+    )
+
     staff_involved = models.ManyToManyField(
-        Person,
-        through='Reference',
-        related_name='staff_involved')
+        'kartoza_project.Reference',
+        related_name='staff_involved',
+        null=True,
+        blank=True,
+    )
+
+    description = RichTextField(
+        "description",
+        help_text=(
+            "This field can contain HTML and should contain a "
+            "few paragraphs describing the background of "
+            "the project."),
+        default="",
+        blank=True)
+
+    services_provided = RichTextField(
+        "services_provided",
+        help_text=(
+            "This field can contain HTML and should contain a "
+            "few paragraphs describing the background of "
+            "the project."),
+        default="",
+        blank=True)
+
+    approximate_contract_value = models.IntegerField(
+        blank=True,
+        null=True,
+        help_text="Approximate value of the contract (US $)")
+
+    duration_of_assignment = models.IntegerField(
+        blank=True,
+        null=True,
+        help_text="Duration of the assignment (months).")
+
+    total_staff_months = models.IntegerField(
+        blank=True,
+        null=True,
+        help_text="Total number of staff-months required to complete the "
+                  "project.")
+
+    total_staff_months_by_kartoza = models.IntegerField(
+        blank=True,
+        null=True,
+        help_text="Number of professional staff-months provided by Kartoza.")
+
+    published = models.BooleanField(
+        'Published to public gallery',
+        default=False)
 
     admin_thumb_field = 'thumbnail'
 

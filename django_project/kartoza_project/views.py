@@ -1,10 +1,12 @@
 from datetime import datetime
-from django.http import Http404
+
+from django.db.models import Q
 from django.shortcuts import get_object_or_404
-from django.db.models import F, Q, When, Case
-from .models import Project, ProjectCategory, ProjectImage, Reference
+from django.shortcuts import render as django_render
 from mezzanine.conf import settings
 from mezzanine.utils.views import render, paginate
+
+from .models import Project, ProjectCategory, ProjectImage, Reference
 
 
 def project_list(request, category=None, template='kartoza_project/project_list.html'):
@@ -43,6 +45,7 @@ def project_detail(request, slug,
     project = get_object_or_404(Project, slug=slug)
     images = ProjectImage.objects.filter(project=project).order_by('id')
     references = Reference.objects.filter(project=project).order_by('name')
+
     context = {
         'project': project,
         'images': images,
@@ -71,3 +74,16 @@ def project_list_ongoing(request, template='kartoza_project/project_list.html'):
     context = {'projects': projects}
     templates.append(template)
     return render(request, templates, context)
+
+
+def view_project(request, project_id):
+    if request.method == 'GET':
+        project = Project.objects.filter(pk=project_id).first()
+        # form = ProjectForm(project
+        return django_render(
+            request,
+            'view_project.html',
+            {'project': project,
+             'consultants': project.consultants.all(),
+             'staff_involved': project.staff_involved.all()}
+        )

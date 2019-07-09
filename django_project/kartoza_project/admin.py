@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django.conf import settings
+from mezzanine.core.admin import DisplayableAdmin
 from kartoza_project.models import (
     Project,
     ProjectImage,
@@ -48,5 +49,24 @@ class ProjectCategoryAdmin(admin.ModelAdmin):
         return False
 
 
+class ReferenceAdmin(admin.ModelAdmin):
+    """
+       Admin class for project reference. Hides itself from the admin menu
+       unless explicitly specified.
+       """
+
+    fieldsets = ((None, {"fields": ('name', 'role', 'telephone', 'email')}),)
+
+    # def in_menu(self):
+    #     """
+    #     Hide from the admin menu unless explicitly set in ``ADMIN_MENU_ORDER``.
+    #     """
+    #     for (name, items) in settings.ADMIN_MENU_ORDER:
+    #         if "kartoza_project.ProjectReference" in items:
+    #             return True
+    #     return False
+
+
 admin.site.register(Project, ProjectAdmin)
 admin.site.register(ProjectCategory, ProjectCategoryAdmin)
+admin.site.register(Reference, ReferenceAdmin)

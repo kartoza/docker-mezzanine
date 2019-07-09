@@ -1,4 +1,4 @@
-from django.conf.urls import patterns, include, url
+from django.conf.urls import patterns, url
 
 
 # People patterns.
@@ -7,4 +7,7 @@ urlpatterns = patterns('kartoza_project.views',
     url("^detail/(?P<slug>[-\w]+)/$", "project_detail", name="project_detail"),
     url("^ongoing/$", "project_list_ongoing", name="project_list_ongoing"),
     url("^$", "project_list", name="project_list"),
+    url("^view/(?P<project_id>.*)/$",
+        "view_project",
+        name="view_project"),
 )
