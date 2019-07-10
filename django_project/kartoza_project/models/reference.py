@@ -37,6 +37,7 @@ class Reference(models.Model):
 
     email = models.EmailField(
         null=True,
+        blank=True,
         help_text='A contact email address for the reference',
         verbose_name='Email')
 

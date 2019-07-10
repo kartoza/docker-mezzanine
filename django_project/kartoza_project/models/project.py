@@ -14,17 +14,33 @@ class Project(Orderable, Slugged, AdminThumbMixin):
         verbose_name='Project short description'
     )
 
-    project_details = RichTextField(
-        null=True,
-        blank=True,
-        verbose_name='Project details'
-    )
+    # project_details = RichTextField(
+    #     null=True,
+    #     blank=True,
+    #     verbose_name='Project details'
+    # )
 
     thumbnail = models.ImageField(
         null=True,
         blank=True,
         upload_to='project',
         verbose_name='Project thumbnail'
+    )
+
+    country = models.TextField(
+        null=True,
+        blank=True,
+        help_text=(
+            "In which country was the project located"),
+        max_length=255
+    )
+
+    location = models.TextField(
+        null=True,
+        blank=True,
+        help_text=(
+            "Where was the project located more specifically"),
+        max_length=255
     )
 
     categories = models.ManyToManyField(
@@ -123,6 +139,22 @@ class Project(Orderable, Slugged, AdminThumbMixin):
     published = models.BooleanField(
         'Published to public gallery',
         default=False)
+
+    technologies = models.TextField(
+        null=True,
+        blank=True,
+        help_text=(
+            "Comma seperated list of technologies associated with the project"),
+        max_length=1000
+    )
+
+    tags = models.TextField(
+        null=True,
+        blank=True,
+        help_text=(
+            "Comma seperated list of keywords associated with the project"),
+        max_length=1000
+    )
 
     admin_thumb_field = 'thumbnail'
 

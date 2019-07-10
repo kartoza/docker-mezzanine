@@ -10,4 +10,7 @@ urlpatterns = patterns('kartoza_project.views',
     url("^view/(?P<project_id>.*)/$",
         "view_project",
         name="view_project"),
+    url("^get_reference/$",
+        "get_reference",
+        name="get_reference"),
 )

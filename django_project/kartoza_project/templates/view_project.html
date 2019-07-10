@@ -12,9 +12,18 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-md-12"><label class="h4">Client</label></div>
+
+				<div class="col-md-12"><label class="h4">Clients</label></div>
+				{% for client in clients  %}
+				<div class="row">
+					<div class="col-md-12">
+						<b>{{ client.name }}</b>
+					</div>
+				</div>
+
+				{% endfor %}
 				<div class="col-md-12">
-					{{ project.client }}
+					Contact Person: {{ project.contact_person }}
 				</div>
 			</div>
 			<div class="row">
@@ -30,62 +39,64 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-md-6">
-			<div class="row">
-				<div class="col-md-12"><label
-						class="h4">Approximate value of the contract (US $)</label>
+		{% if user.is_authenticated %}
+			<div class="col-md-6">
+				<div class="row">
+					<div class="col-md-12"><label
+							class="h4">Approximate value of the contract (US $)</label>
+					</div>
+					<div class="col-md-12">
+						{{ project.approximate_contract_value }}
+					</div>
 				</div>
-				<div class="col-md-12">
-					{{ project.approximate_contract_value }}
+				<div class="row">
+					<div class="col-md-12"><label
+							class="h4">Duration of the assignment (months)</label>
+					</div>
+					<div class="col-md-12">
+						{{ project.duration_of_assignment }}
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12"><label
+							class="h4">Total number of staff-months</label>
+					</div>
+					<div class="col-md-12">
+						{{ project.total_staff_months }}
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12"><label
+							class="h4">Number of professional staff-months provided by Kartoza</label>
+					</div>
+					<div class="col-md-12">
+						{{ project.total_staff_months_by_kartoza }}
+					</div>
 				</div>
 			</div>
-			<div class="row">
-				<div class="col-md-12"><label
-						class="h4">Duration of the assignment (months)</label>
-				</div>
-				<div class="col-md-12">
-					{{ project.duration_of_assignment }}
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-12"><label
-						class="h4">Total number of staff-months</label></div>
-				<div class="col-md-12">
-					{{ project.total_staff_months }}
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-12"><label
-						class="h4">Number of professional staff-months provided by Kartoza</label>
-				</div>
-				<div class="col-md-12">
-					{{ project.total_staff_months_by_kartoza }}
-				</div>
-			</div>
-		</div>
+		{% endif %}
 		<div class="col-md-12">
 			<div class="row">
 				<div class="col-md-12"><label
 						class="h4">Brief</label>
 				</div>
 				<div class="col-md-12">
-					{{ project.brief }}
+					{{ project.short_description }}
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-md-12"><label
 						class="h4">Technologies</label>
 				</div>
-				<div class="col-md-12">
-					{{ project.technologies }}
+				<div class="col-md-12" id="technologies">
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-md-12"><label
 						class="h4">Tags</label>
 				</div>
-				<div class="col-md-12">
-					{{ project.tags }}
+				<div class="col-md-12" id="tags">
+
 				</div>
 			</div>
 			<div class="row">
@@ -93,7 +104,7 @@
 						class="h4">Start Date</label>
 				</div>
 				<div class="col-md-12">
-					{{ project.start_date }}
+					{{ project.date_start }}
 				</div>
 			</div>
 			<div class="row">
@@ -101,7 +112,7 @@
 						class="h4">Date Completed</label>
 				</div>
 				<div class="col-md-12">
-					{{ project.completion_date }}
+					{{ project.date_end }}
 				</div>
 			</div>
 			<div class="row">
@@ -110,11 +121,15 @@
 				</div>
 				<div class="col-md-12">
 					{% for each_consultant in consultants %}
-						<div  class="row">{{ each_consultant.full_name }}<div class="reference_tooltip col-md-3" style="border:solid">Consultant Tooltip</div></div>
-<button id="id_consultant" type="button" class="btn btn-lg btn-danger" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>
- 					{% endfor %}
-
- 				</div>
+						<div class="row">{{ each_consultant.name }}
+							<div data-consultant-id="{{ each_consultant.id }}"
+									data-toggle="popover"
+							     class="reference_tooltip col-md-3"
+							     style="border:solid">Consultant Tooltip
+							</div>
+						</div>
+					{% endfor %}
+				</div>
 			</div>
 			<div class="row">
 				<div class="col-md-12"><label
@@ -122,36 +137,73 @@
 				</div>
 				<div class="col-md-12">
 					{% for each_staff in staff_involved %}
-						<div class="row">{{ each_staff.full_name }}</div>
+{#						<div class="row">#}
+							<div class="col-sm-6>">{{ each_staff.name }}</div>
+							<div data-consultant-id="{{ each_staff.id }}"
+								 data-toggle="popover"
+							     class="reference_tooltip col-sm-6"
+							     style="border:solid">
+							</div>
+{#						</div>#}
 					{% endfor %}
 				</div>
 			</div>
 			<div class="row">
+
 				<div class="col-md-12"><label
 						class="h4">Description</label>
 				</div>
-				<div class="col-md-12" style="height: 10vh;">{{ project.description }}</div>
+				<div class="col-md-12">
+					<div class="col-md-12 my-scroll">
+						{% autoescape off %}{{ project.description|safe }}{% endautoescape %}
+					</div>
+				</div>
 			</div>
-					<div class="row">
+			<div class="row">
 				<div class="col-md-12"><label
 						class="h4">Actual Services Provided</label>
 				</div>
-				<div class="col-md-12" style="height: 10vh;">{{ project.services_provided }}</div>
+				<div class="col-md-12">
+					<div class="col-md-12 my-scroll">{{ project.services_provided|safe}}</div>
+				</div>
 			</div>
 
 
- 		</div>
+		</div>
 	</div>
 
-
- 	<style>
+	<input id='get-reference' type='hidden'
+       value='{% url "get_reference" %}'/>
+	<style>
 		.pr-5 {
 			padding-right: 2.5rem !important;
 		}
- 		.pl-5 {
+
+		.pl-5 {
 			padding-left: 2.5rem !important;
 		}
-	</style>
-	<script type="text/javascript" src="{% static 'js/reference.js' %}"></script>
 
+		.my-scroll {
+			border-style: solid;
+			border-width: 1px;
+			border-color: #ddd;
+			border-radius: 4px 4px 0 0;
+			height: 40vh;
+			overflow: scroll;
+		}
+
+		ul.taggle_list {
+			padding-left: 0px;
+		}
+	</style>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/taggle/1.14.4/taggle.min.js" integrity="sha256-/sZeEyfDrdf4QNrGEKYVlvV1HoJab1MZRNp2aIWyEs0=" crossorigin="anonymous"></script>
+	<script type="text/javascript"
+	        src="{% static 'js/reference.js' %}"></script>
+	<link href="{% static "css/taggle.css" %}" rel="stylesheet">
+
+	<script>
+		var technologies = '{{ project.technologies }}'
+		var tags = '{{ project.tags }}'
+	</script>
 {% endblock %}
+

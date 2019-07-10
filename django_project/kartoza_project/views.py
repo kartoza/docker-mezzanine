@@ -1,5 +1,6 @@
 from datetime import datetime
-
+from django.http import HttpResponse
+from django.core import serializers
 from django.db.models import Q
 from django.shortcuts import get_object_or_404
 from django.shortcuts import render as django_render
@@ -85,5 +86,16 @@ def view_project(request, project_id):
             'view_project.html',
             {'project': project,
              'consultants': project.consultants.all(),
-             'staff_involved': project.staff_involved.all()}
+             'staff_involved': project.staff_involved.all(),
+             'clients': project.clients.all()}
         )
+
+
+def get_reference(request):
+    if request.method == 'POST':
+        reference = ''
+        reference_id = request.POST['reference_id']
+        if len(reference_id) > 0:
+            reference = Reference.objects.filter(pk=int(reference_id))
+            reference_json = serializers.serialize('json', reference)
+        return HttpResponse(reference_json)
