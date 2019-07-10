@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 
+
 {% block main %}
 	<div class="row">
 		<div class="h3">View Project</div>
@@ -75,7 +76,7 @@
 				</div>
 			</div>
 		{% endif %}
-		<div class="col-md-12">
+		<div class="col-md-12 pb-5">
 			<div class="row">
 				<div class="col-md-12"><label
 						class="h4">Brief</label>
@@ -168,7 +169,14 @@
 				</div>
 			</div>
 
+		</div>
+		<div class="col-md-12">
+			<div class="galleria">
+				{% for each_image in images  %}
+			    <img src="{{ each_image.image.url }}" data-title="{{ each_image.caption }}" data-description="{{ each_image.caption }}">
+				{% endfor %}
 
+			</div>
 		</div>
 	</div>
 
@@ -183,6 +191,10 @@
 			padding-left: 2.5rem !important;
 		}
 
+		.pb-5 {
+			padding-bottom: 2.5rem !important;
+		}
+
 		.my-scroll {
 			border-style: solid;
 			border-width: 1px;
@@ -195,15 +207,28 @@
 		ul.taggle_list {
 			padding-left: 0px;
 		}
+		.taggle-blue {
+
+		}
+		.taggle-orange {
+
+		}
+		.galleria-info-text {
+			background: transparent !important;
+		}
+		.galleria {
+			height: 50vh;
+		}
 	</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/galleria/1.5.7/themes/classic/galleria.classic.min.css" integrity="sha256-x2CD51aoTjhaYQ3I4ebHfFyb/+GSyE6kjxUCYq81Dys=" crossorigin="anonymous" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/galleria/1.5.7/galleria.js" integrity="sha256-aG3fVuHsp+KBOZwzhtEP7K0rUBJEB7o2wxFwJfCiymg=" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/taggle/1.14.4/taggle.min.js" integrity="sha256-/sZeEyfDrdf4QNrGEKYVlvV1HoJab1MZRNp2aIWyEs0=" crossorigin="anonymous"></script>
 	<script type="text/javascript"
 	        src="{% static 'js/reference.js' %}"></script>
 	<link href="{% static "css/taggle.css" %}" rel="stylesheet">
-
 	<script>
 		var technologies = '{{ project.technologies }}'
 		var tags = '{{ project.tags }}'
 	</script>
-{% endblock %}
+	{% endblock %}
 

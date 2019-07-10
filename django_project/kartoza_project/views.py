@@ -80,6 +80,8 @@ def project_list_ongoing(request, template='kartoza_project/project_list.html'):
 def view_project(request, project_id):
     if request.method == 'GET':
         project = Project.objects.filter(pk=project_id).first()
+        images = ProjectImage.objects.filter(
+                 project__id=project.id).all()
         # form = ProjectForm(project
         return django_render(
             request,
@@ -87,7 +89,8 @@ def view_project(request, project_id):
             {'project': project,
              'consultants': project.consultants.all(),
              'staff_involved': project.staff_involved.all(),
-             'clients': project.clients.all()}
+             'clients': project.clients.all(),
+             'images': images}
         )
 
 

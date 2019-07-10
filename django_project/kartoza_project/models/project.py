@@ -156,6 +156,8 @@ class Project(Orderable, Slugged, AdminThumbMixin):
         max_length=1000
     )
 
+
+
     admin_thumb_field = 'thumbnail'
 
     def __unicode__(self):

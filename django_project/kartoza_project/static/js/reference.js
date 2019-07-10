@@ -1,6 +1,7 @@
 $(document).ready(function () {
     setupReferenceTooltips()
     setupTaggle()
+    setupGalleria()
 })
 
 const setupReferenceTooltips = () => {
@@ -9,6 +10,11 @@ const setupReferenceTooltips = () => {
         let id = this.getAttribute('data-consultant-id')
         ajaxFetchReferenceDetails(id, this)
     })
+}
+
+const setupGalleria = () => {
+    Galleria.loadTheme('https://cdnjs.cloudflare.com/ajax/libs/galleria/1.5.7/themes/classic/galleria.classic.min.js');
+    Galleria.run('.galleria', {showInfo: true, _toggleInfo: false});
 }
 
 const setupTaggle = () => {
