@@ -56,15 +56,6 @@ class ReferenceAdmin(admin.ModelAdmin):
 
     fieldsets = ((None, {"fields": ('name', 'role', 'telephone', 'email')}),)
 
-    # def in_menu(self):
-    #     """
-    #     Hide from the admin menu unless explicitly set in ``ADMIN_MENU_ORDER``.
-    #     """
-    #     for (name, items) in settings.ADMIN_MENU_ORDER:
-    #         if "kartoza_project.ProjectReference" in items:
-    #             return True
-    #     return False
-
 
 admin.site.register(Project, ProjectAdmin)
 admin.site.register(ProjectCategory, ProjectCategoryAdmin)

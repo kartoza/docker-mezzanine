@@ -24,12 +24,6 @@ class Reference(models.Model):
         related_name='project_references'
     )
 
-    # company = models.ForeignKey(
-    #     'clients.Client',
-    #     null=True,
-    #     on_delete=models.CASCADE,
-    #     related_name='reference_company')
-
     telephone = models.CharField(
         blank=True,
         help_text='Telephone number',
