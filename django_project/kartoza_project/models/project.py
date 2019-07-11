@@ -4,6 +4,7 @@ from django.db import models
 from mezzanine.core.fields import RichTextField
 from mezzanine.core.models import Slugged, Orderable
 from mezzanine.utils.models import AdminThumbMixin
+from kartoza_project.models.project_image import ProjectImage
 
 
 class Project(Orderable, Slugged, AdminThumbMixin):
@@ -14,11 +15,11 @@ class Project(Orderable, Slugged, AdminThumbMixin):
         verbose_name='Project short description'
     )
 
-    # project_details = RichTextField(
-    #     null=True,
-    #     blank=True,
-    #     verbose_name='Project details'
-    # )
+    project_details = RichTextField(
+        null=True,
+        blank=True,
+        verbose_name='Project details'
+    )
 
     thumbnail = models.ImageField(
         null=True,
@@ -156,7 +157,18 @@ class Project(Orderable, Slugged, AdminThumbMixin):
         max_length=1000
     )
 
-
+    public_page = models.URLField(
+        null=True,
+        blank=True,
+        help_text=(
+            "If available to the public, where can the project be found?"),
+        max_length=255)
+    github_page = models.URLField(
+        null=True,
+        blank=True,
+        help_text=(
+            "A link to the project's github page."),
+        max_length=255)
 
     admin_thumb_field = 'thumbnail'
 
@@ -177,3 +189,19 @@ class Project(Orderable, Slugged, AdminThumbMixin):
             return False
         if self.date_end >= datetime.now().date():
             return True
+
+    @property
+    def image_urls(self):
+        image_urls = []
+        images = ProjectImage.objects.filter(project__id=self.id).all()
+        for image in images:
+            image_urls.append(image.image.url)
+        return image_urls
+
+    @property
+    def tags_list(self):
+        return set(map(unicode.strip, self.tags.split(',')))
+
+    @property
+    def technologies_list(self):
+        return set(map(unicode.strip, self.technologies.split(',')))
