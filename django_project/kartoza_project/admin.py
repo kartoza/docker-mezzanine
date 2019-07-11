@@ -1,6 +1,5 @@
 from django.contrib import admin
 from django.conf import settings
-from mezzanine.core.admin import DisplayableAdmin
 from kartoza_project.models import (
     Project,
     ProjectImage,

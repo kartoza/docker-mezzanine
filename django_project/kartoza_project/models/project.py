@@ -1,5 +1,4 @@
 from datetime import datetime
-
 from django.db import models
 from mezzanine.core.fields import RichTextField
 from mezzanine.core.models import Slugged, Orderable
