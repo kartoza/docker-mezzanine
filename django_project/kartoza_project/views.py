@@ -82,6 +82,7 @@ def view_project(request, project_id):
         project = Project.objects.filter(pk=project_id).first()
         images = ProjectImage.objects.filter(
                  project__id=project.id).all()
+        clients = project.clients.values('name', 'title', 'logo').all()
         # form = ProjectForm(project
         return django_render(
             request,
@@ -89,7 +90,7 @@ def view_project(request, project_id):
             {'project': project,
              'consultants': project.consultants.all(),
              'staff_involved': project.staff_involved.all(),
-             'clients': project.clients.all(),
+             'clients': clients,
              'images': images}
         )
 
