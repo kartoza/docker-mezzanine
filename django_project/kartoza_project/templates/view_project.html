@@ -13,10 +13,10 @@
 			        data-toggle="dropdown">Export
 				<span class="caret"></span></button>
 			<ul class="dropdown-menu">
-				<li><a href="{% url 'export_project' project_id=project.id type='HTML' %}">HTML</a></li>
-				<li><a href="{% url 'export_project' project_id=project.id type='ODT' %}">Open Document</a></li>
-				<li><a href="{% url 'export_project' project_id=project.id type='DOCX' %}">MS Word</a></li>
-				<li><a href="{% url 'export_project' project_id=project.id type='MD' %}">Markdown</a></li>
+				<li><a target='_blank' href="{% url 'export_project' project_id=project.id type='HTML' %}">HTML</a></li>
+				<li><a target='_blank' href="{% url 'export_project' project_id=project.id type='ODT' %}">Open Document</a></li>
+				<li><a target='_blank' href="{% url 'export_project' project_id=project.id type='DOCX' %}">MS Word</a></li>
+				<li><a target='_blank' href="{% url 'export_project' project_id=project.id type='MD' %}">Markdown</a></li>
 			</ul>
 		</div>
 	</div>

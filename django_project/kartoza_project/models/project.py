@@ -212,7 +212,10 @@ class Project(Orderable, Slugged, AdminThumbMixin):
     def get_template(self, template, outputformat):
         if template == 'basic':
             starting_template = render_to_string(
-                'world_bank_format.md',  {'project': self})
+                'world_bank_format.md',  {'project': self,
+                                          'consultants': self.consultants.all(),
+                                          'staff': self.staff_involved.all(),
+                                          'clients': self.clients.all()})
             tmpFileOut = tempfile.NamedTemporaryFile()
             output = pypandoc.convert_text(
                 starting_template,
