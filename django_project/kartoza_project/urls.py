@@ -20,6 +20,6 @@ urlpatterns = patterns('kartoza_project.views',
         "project_gallery",
         name="project_list"),
     url("^export/(?P<project_id>.*)/(?P<type>.*)$",
-       "export_project",
-       name="export_project"),
+        "export_project",
+        name="export_project"),
 )
