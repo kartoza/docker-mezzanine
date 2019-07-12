@@ -107,54 +107,6 @@ def get_reference(request):
         return HttpResponse(reference_json)
 
 
-def project_gallery(request):
-    if request.method == 'GET':
-        project_images = Project.objects.filter(published=True).values(
-            'id', 'project_images__image').all()
-        projects = Project.objects.filter(
-            published=True).all()
-        tag_list = ''
-        technology_list = ''
-        for project in projects:
-            tag_list += project.tags
-            technology_list += project.technologies
-        tags = set(map(unicode.strip, tag_list.split(',')))
-        technologies = set(map(unicode.strip, technology_list.split(',')))
-
-        return django_render(
-            request,
-            'project_gallery.html',
-            {'projects': projects,
-             'tags': tags,
-             'technologies': technologies,
-             'project_images': project_images}
-        )
-
-
-def project_gallery(request):
-    if request.method == 'GET':
-        project_images = Project.objects.filter(published=True).values(
-            'id', 'project_images__image').all()
-        projects = Project.objects.filter(
-            published=True).all()
-        tag_list = ''
-        technology_list = ''
-        for project in projects:
-            tag_list += project.tags
-            technology_list += project.technologies
-        tags = set(map(unicode.strip, tag_list.split(',')))
-        technologies = set(map(unicode.strip, technology_list.split(',')))
-
-        return django_render(
-            request,
-            'project_list.html',
-            {'projects': projects,
-             'tags': tags,
-             'technologies': technologies,
-             'project_images': project_images}
-        )
-
-
 def export_project(request, project_id, type):
     if request.method == 'GET':
         project = Project.objects.get(id=project_id)
