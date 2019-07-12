@@ -210,13 +210,9 @@ class Project(Orderable, Slugged, AdminThumbMixin):
         return set(map(unicode.strip, self.technologies.split(',')))
 
     def get_template(self, template, outputformat):
-
         if template == 'basic':
-
             starting_template = render_to_string(
                 'world_bank_format.md',  {'project': self})
-            tmpFileIn = tempfile.NamedTemporaryFile()
-            tmpFileIn.write(starting_template)
             tmpFileOut = tempfile.NamedTemporaryFile()
             output = pypandoc.convert_text(
                 starting_template,
