@@ -1,7 +1,7 @@
 import subprocess
 from datetime import datetime
 import tempfile
-import pandoc
+import pypandoc
 from django.template.loader import render_to_string
 from django.db import models
 from mezzanine.core.fields import RichTextField
@@ -209,29 +209,19 @@ class Project(Orderable, Slugged, AdminThumbMixin):
     def technologies_list(self):
         return set(map(unicode.strip, self.technologies.split(',')))
 
-    def get_template(self, template, format):
+    def get_template(self, template, outputformat):
 
         if template == 'basic':
 
             starting_template = render_to_string(
-                'basic.html',  {'project': self})
+                'world_bank_format.md',  {'project': self})
             tmpFileIn = tempfile.NamedTemporaryFile()
             tmpFileIn.write(starting_template)
             tmpFileOut = tempfile.NamedTemporaryFile()
-            doc = pandoc.Document()
-            doc.html = starting_template
-            # tmpFileOut.write(
-            # output = pypandoc.convert(
-            #     starting_template, format=format, outputfile=tmpFile)
-            # subprocess.call('pandoc -f html {tmpFileOut} {tmpFileIn}'.format(
-            #     tmpFileOut=tmpFileOut.name,
-            #     tmpFileIn=tmpFileIn.name
-            # ))
+            output = pypandoc.convert_text(
+                starting_template,
+                to=outputformat,
+                format='md',
+                outputfile=tmpFileOut.name)
+            tmpFileOut.write(output)
             return open(tmpFileOut.name)
-
-            # final_template =
-            #     render(request,
-            # 'project_list.html',
-            # {'projects': projects,
-            # return starting_template_
-

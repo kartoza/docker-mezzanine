@@ -14,23 +14,11 @@
 		<td>Duration of assignment (months):
 			<br>{{ project.duration_of_assignment }}</td>
 	</tr>
+	<tr>
+{#		<td>Name of Client: <br>{{ project.clients[0] }}</td>#}
+		<br>
+		<td>Approx. value of the contract (in current US$):
+			<br>{{ project.approximate_contract_value }}</td>
+		<br>
+	</tr>
 </table>
-
-<style>
-	td {
-		border: solid;
-		border-width: 1px;
-		padding: 0.5rem;
-		margin: 0;
-	}
-
-	tr {
-		padding: 0;
-		margin: 0;
-	}
-
-	table {
-		border-collapse: collapse;
-	}
-
-</style>

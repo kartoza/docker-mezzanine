@@ -29,6 +29,7 @@ ADD REQUIREMENTS-dev.txt /REQUIREMENTS-dev.txt
 RUN pip install -r /REQUIREMENTS-dev.txt
 ADD bashrc /root/.bashrc
 
+RUN apt-get -y install pandoc
 # --------------------------------------------------------
 # Open ports as needed
 # --------------------------------------------------------

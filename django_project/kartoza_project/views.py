@@ -1,7 +1,4 @@
 from datetime import datetime
-from django.db.models import Prefetch
-import tempfile
-import pandoc
 from wsgiref.util import FileWrapper
 from django.http import HttpResponse
 from django.core import serializers
@@ -162,14 +159,8 @@ def export_project(request, project_id, type):
     if request.method == 'GET':
         project = Project.objects.get(id=project_id)
         response = HttpResponse(
-            FileWrapper(project.get_template('basic', type)),
+            FileWrapper(project.get_template('basic', str(type).lower())),
                 content_type='text/html')
-        response['Content-Disposition'] = 'attachment; filename=basic.html'
+        response['Content-Disposition'] = (
+            'attachment; filename=output.{extension}'.format(extension=type))
         return response
-
-        # import cStringIO as StringIO
-        #
-        # myfile = StringIO.StringIO()
-        # while not_finished:
-        #     # generate chunk
-        #     myfile.write(chunk)
