@@ -13,6 +13,7 @@ ADD 71-apt-cacher-ng /etc/apt/apt.conf.d/71-apt-cacher-ng
 # Pandoc needed to generate rst dumps, uic compressor needed for django-pipeline
 RUN apt-get update -y
 
+
 # Set the locale - change to your preferred locale ... We use South African english
 # We do this as cartridge (ecommerce platform for mezzanine) relies on
 # the locale to set the correct number of decimal places for the MoneyField
@@ -26,9 +27,10 @@ ENV LC_ALL en_ZA.UTF-8
 ADD REQUIREMENTS.txt /REQUIREMENTS.txt
 RUN pip install -r /REQUIREMENTS.txt && pip install uwsgi && pip uninstall -y django-contrib-comments && pip install django-contrib-comments==1.8.0
 
-
+RUN apt-get -y install pandoc
 # Open port 8080 as we will be running our uwsgi socket on that
 EXPOSE 8080
+
 
 #USER www-data
 

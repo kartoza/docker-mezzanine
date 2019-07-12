@@ -18,5 +18,8 @@ urlpatterns = patterns('kartoza_project.views',
         name="project_gallery"),
     url("^list/$",
         "project_gallery",
-        name="project_list")
+        name="project_list"),
+    url("^export/(?P<project_id>.*)/(?P<type>.*)$",
+       "export_project",
+       name="export_project"),
 )

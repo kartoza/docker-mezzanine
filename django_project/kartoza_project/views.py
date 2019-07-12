@@ -1,5 +1,8 @@
 from datetime import datetime
 from django.db.models import Prefetch
+import tempfile
+import pandoc
+from wsgiref.util import FileWrapper
 from django.http import HttpResponse
 from django.core import serializers
 from django.db.models import Q
@@ -7,6 +10,7 @@ from django.shortcuts import get_object_or_404
 from django.shortcuts import render as django_render
 from mezzanine.conf import settings
 from mezzanine.utils.views import render, paginate
+
 
 from .models import Project, ProjectCategory, ProjectImage, Reference
 
@@ -129,6 +133,7 @@ def project_gallery(request):
              'project_images': project_images}
         )
 
+
 def project_gallery(request):
     if request.method == 'GET':
         project_images = Project.objects.filter(published=True).values(
@@ -151,3 +156,20 @@ def project_gallery(request):
              'technologies': technologies,
              'project_images': project_images}
         )
+
+
+def export_project(request, project_id, type):
+    if request.method == 'GET':
+        project = Project.objects.get(id=project_id)
+        response = HttpResponse(
+            FileWrapper(project.get_template('basic', type)),
+                content_type='text/html')
+        response['Content-Disposition'] = 'attachment; filename=basic.html'
+        return response
+
+        # import cStringIO as StringIO
+        #
+        # myfile = StringIO.StringIO()
+        # while not_finished:
+        #     # generate chunk
+        #     myfile.write(chunk)

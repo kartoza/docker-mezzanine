@@ -1,0 +1,36 @@
+<table style="width:100%">
+	<tr>
+		<td>Assignment name: <br><b>{{ project.title }}</b></td>
+		<br>
+		<td>Approx. value of the contract (in current US$):
+			<br>{{ project.approximate_contract_value }}</td>
+		<br>
+	</tr>
+	<tr>
+		<td>Country:{{ project.country }}
+		<br>
+		Location within the country:{{ project.location }}
+		</td>
+		<td>Duration of assignment (months):
+			<br>{{ project.duration_of_assignment }}</td>
+	</tr>
+</table>
+
+<style>
+	td {
+		border: solid;
+		border-width: 1px;
+		padding: 0.5rem;
+		margin: 0;
+	}
+
+	tr {
+		padding: 0;
+		margin: 0;
+	}
+
+	table {
+		border-collapse: collapse;
+	}
+
+</style>
