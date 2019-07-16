@@ -1,0 +1,142 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}
+	{{ project.title }}
+{% endblock %}
+{% block main %}
+	<div class="row project-view-wrapper">
+		<img class="header-image"
+		     style="background-image: url({{ project.thumbnail.url }})"/>
+		<div class="row">
+			<div class="col-sm-12 h1 text-center">
+				Project summary
+			</div>
+			<div class="col-sm-12 h4 text-center" style="margin-bottom: 20px;">
+				{{ project.short_description }}
+			</div>
+		</div>
+		<div class="row parallax project-view-background">
+			<div class="row">
+				<div class="col-sm-6 background-white">
+					<div class="row">
+						<div class="col-sm-12 h3">Description</div>
+						<div class="col-sm-12">
+							{{ project.description|safe }}</div>
+					</div>
+				</div>
+				<div class="col-sm-6"></div>
+			</div>
+			<div class="row empty-container"></div>
+			<div class="row">
+				<div class="col-sm-6"></div>
+				<div class="col-sm-6 background-white">
+					<div class="row">
+						<div class="col-sm-12 h3">Services Provided</div>
+						<div class="col-sm-12">
+							{{ project.services_provided|safe }}</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<div class="col-sm-12 background-white">
+			<div class="row">
+				<div class="col-sm-4">
+					<div class="row">
+
+						<div class="col-sm-12 text-center h3">
+							Duration
+						</div>
+						<div class="glyphicon glyphicon-time col-sm-12 text-center h1">
+						</div>
+						<div class="col-sm-12 text-center h4">
+							{{ project.date_start|date:"M Y" }} -
+							{{ project.date_end|date:"M Y" }} ({{ project.duration }} months)
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<div class="row">
+						<div class="col-sm-12 text-center h3">
+							Client{% if clients|length > 1 %}s{% endif %}
+						</div>
+						<div class="glyphicon glyphicon-user col-sm-12 text-center h1">
+						</div>
+						<div class="col-sm-12 text-center h4">
+							{% for client in clients %}
+								{{ client.title }}
+								{% if not forloop.last %}, {% endif %}
+							{% endfor %}
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<div class="row">
+						<div class="col-sm-12 text-center h3">
+							Location
+						</div>
+						<div class="glyphicon glyphicon-globe col-sm-12 text-center h1">
+						</div>
+						<div class="col-sm-12 text-center h4">
+							{{ project.country }}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<style>
+		{% if images|length == 0 %}
+			@keyframes background_images {
+				0% {
+					background-image: url({{ project.thumbnail.url }});
+				}
+				100% {
+					background-image: url({{ project.thumbnail.url }});
+				}
+			}
+		{% endif %}
+
+		{% if images|length == 1 %}
+			@keyframes background_images {
+				0% {
+					background-image: url({{ images.0.image.url }});
+				}
+				100% {
+					background-image: url({{ images.0.image.url }});
+				}
+			}
+		{% endif %}
+
+		{% if images|length > 1 %}
+			@keyframes background_images {
+			0% {
+				background-image: url({{ images.0.image.url }});
+			}
+			28% {
+				background-image: url({{ images.0.image.url }});
+			}
+			30% {
+				background-image: url({{ images.1.image.url }});
+			}
+			80% {
+				background-image: url({{ images.1.image.url }});
+			}
+			82% {
+				background-image: url({{ images.0.image.url }});
+			}
+			100% {
+				background-image: url({{ images.0.image.url }});
+			}
+		{% endif %}
+
+		}
+	</style>
+
+{% endblock %}
+{% block extra_scripts %}
+	<link href="{% static "css/view_project_detail.css" %}" rel="stylesheet"/>
+{% endblock %}

@@ -1,4 +1,5 @@
 from datetime import datetime
+from dateutil import relativedelta
 from django.db import models
 from mezzanine.core.fields import RichTextField
 from mezzanine.core.models import Slugged, Orderable
@@ -204,3 +205,14 @@ class Project(Orderable, Slugged, AdminThumbMixin):
     @property
     def technologies_list(self):
         return set(map(unicode.strip, self.technologies.split(',')))
+
+
+    @property
+    def duration(self):
+        if not self.date_end:
+            return 'Ongoing'
+        return ((self.date_end.year - self.date_start.year) * 12 +
+                self.date_end.month - self.date_end.month)
+
+def diff_month(d1, d2):
+    return (d1.year - d2.year) * 12 + d1.month - d2.month
