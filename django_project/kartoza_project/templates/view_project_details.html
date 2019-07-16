@@ -6,8 +6,13 @@
 {% endblock %}
 {% block main %}
 	<div class="row project-view-wrapper">
-		<img class="header-image"
-		     style="background-image: url({{ project.thumbnail.url }})"/>
+		<div class="row">
+			<div id="stage" class="col-sm-12 header-image">
+				{% for image in images %}
+				<img src="{{ image.image.url }}">
+				{% endfor %}
+			</div>
+		</div>
 		<div class="row">
 			<div class="col-sm-12 h1 text-center">
 				Project summary
@@ -25,10 +30,7 @@
 							{{ project.description|safe }}</div>
 					</div>
 				</div>
-				<div class="col-sm-6"></div>
-			</div>
-			<div class="row empty-container"></div>
-			<div class="row">
+
 				<div class="col-sm-6"></div>
 				<div class="col-sm-6 background-white">
 					<div class="row">
@@ -38,7 +40,6 @@
 					</div>
 				</div>
 			</div>
-
 		</div>
 		<div class="col-sm-12 background-white">
 			<div class="row">
@@ -85,58 +86,11 @@
 				</div>
 			</div>
 		</div>
-
 	</div>
-
-	<style>
-		{% if images|length == 0 %}
-			@keyframes background_images {
-				0% {
-					background-image: url({{ project.thumbnail.url }});
-				}
-				100% {
-					background-image: url({{ project.thumbnail.url }});
-				}
-			}
-		{% endif %}
-
-		{% if images|length == 1 %}
-			@keyframes background_images {
-				0% {
-					background-image: url({{ images.0.image.url }});
-				}
-				100% {
-					background-image: url({{ images.0.image.url }});
-				}
-			}
-		{% endif %}
-
-		{% if images|length > 1 %}
-			@keyframes background_images {
-			0% {
-				background-image: url({{ images.0.image.url }});
-			}
-			28% {
-				background-image: url({{ images.0.image.url }});
-			}
-			30% {
-				background-image: url({{ images.1.image.url }});
-			}
-			80% {
-				background-image: url({{ images.1.image.url }});
-			}
-			82% {
-				background-image: url({{ images.0.image.url }});
-			}
-			100% {
-				background-image: url({{ images.0.image.url }});
-			}
-		{% endif %}
-
-		}
-	</style>
 
 {% endblock %}
 {% block extra_scripts %}
 	<link href="{% static "css/view_project_detail.css" %}" rel="stylesheet"/>
+	<script type="text/javascript"
+	        src="{% static 'js/view_project_detail.js' %}"></script>
 {% endblock %}
