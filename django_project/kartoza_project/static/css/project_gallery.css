@@ -42,11 +42,12 @@
 }
 
 .grid-item {
-  width: 33%;
-  max-width: 33%;
-  display: flex;
+  max-width: 25vw;
+
+  display: inline-flex;
   float: left;
   margin-right: 2rem;
+
 }
 
 .card-header .col-sm-9 {
@@ -81,4 +82,22 @@
   height: 22px;
   margin-right: 1rem;
   border-width: 1px;
+}
+
+.search-bar {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.table-image {
+  background-size: 100% auto;
+    background-repeat: no-repeat;
+    width: 20vw;
+  height: 15vh !important;
+  height: fit-content;
+  background-position: top;
+}
+
+tr {
+  min-height: 20vh;
 }

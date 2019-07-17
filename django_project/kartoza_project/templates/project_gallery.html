@@ -1,108 +1,73 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 
+{% block title %}
+	Projects Dashboard
+{% endblock %}
 
 {% block main %}
-
-	<div class="row">
+	<div class="container">
 		<div class="row">
-			<div class="col-sm-12 h3">
-				Projects Dashboard
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-sm-12">
-				Search
-			</div>
-			<div class="col-sm-4">
-				<input type="text" class="form-control"/>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-sm-6">
-				Filter By Tag
-			</div>
-			<div class="col-sm-6">
-				Sort
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-sm-6">
-				{% for tag in tags %}
-					<span data-action="tag" class="round-box orange {% if forloop.first %}first{% endif %}{% if forloop.last %}last{% endif %}">{{ tag }}</span>
-				{% endfor %}
+			<div class="row">
 
-					<span data-action="clear-filters" class="round-box clear-filters">Clear</span>
-					<span id="tag-filter" class="round-box"></span>
+				<div class="col-sm-12">
+					{% for tag in tags %}
+						<span data-action="tag"
+						      class="round-box orange">{{ tag }}</span>
+					{% endfor %}
+				</div>
 			</div>
-			<div class="col-sm-6">
-				<span data-action="sort" class="round-box">Name</span>
-				<span data-action="sort" class="round-box">Date Created</span>
+			<div clas="row">
+				<div class="col-sm-12 pl-0">
+					{% for tag in technologies %}
+						<span data-action="technology"
+						      class="round-box blue">{{ tag }}</span>
+					{% endfor %}
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12">
+					<table id="table_id" class="display">
+						<thead>
+						<tr>
+							<th>ID</th>
+							<th>Thumbnail</th>
+							<th>Title</th>
+							<th>Short Description</th>
+							<th>Tags</th>
+							<th>Technologies</th>
+						</tr>
+						</thead>
+						<tbody>
+						{% for project in projects %}
+							<tr>
+								<td class="text-center">{{ project.id }}</td>
+								<td class="table-image" style="background-image: url('{{ project.thumbnail.url }}')"></td>
+								<td>{{ project.title }}</td>
+								<td>{{ project.short_description }}</td>
+								<td>{{ project.tags }}</td>
+								<td>{{ project.technologies }}</td>
+							</tr>
+						{% endfor %}
 
-			</div>
-		</div>
-		<div clas="row">
-			<div class="col-sm-12 pl-0">
-				Filter By Technology
-			</div>
-		</div>
+						</tbody>
+						<tfoot>
+						<tr>
 
-		<div clas="row">
-			<div class="col-sm-12 pl-0">
-				{% for tag in technologies %}
-					<span data-action="technology" class="round-box blue {% if forloop.first %}first{% endif %}{% if forloop.last %}last{% endif %}">{{ tag }}</span>
-				{% endfor %}
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-sm-12 grid">
-				{% for project in projects %}
-					<div class="mt-5 grid-item {% for tag in project.tags_list %}{{ tag }} {% endfor %} {% for tag in project.technologies_list %}{{ tag }} {% endfor %}" data-id="{{ project.id }}">
-						<div class="card round-box">
-							<div class="card-header p-3">
-								<div class="col-sm-9 text-center">{{ project.title }}</div><div class="row"><div class="col-sm-3"><input id="checkbox_{{ project.id }}" type="checkbox" value="{{ project.id }}"><label for="checkbox_{{ project.id }}">Export</label></div></div>
-							</div>
-							<div class="card-body galleria">
-								{% for project_image in project_images %}
-									{% if project_image.id == project.id %}
-										<img src="/media/{{ project_image.project_images__image }}"
-										     class="card-img-top"
-										     style="height:20vh;"
-										     data-description="{{ project.short_description }}"/>
-									{% endif %}
-								{% endfor %}
-							</div>
-							<div class="card-footer p-3">
-								<div class="row">
-									<div class="col-sm-8">
-										{% for tag in project.tags_list %}
-											<span class="round-box orange">{{ tag }}</span>
-										{% endfor %}
-									</div>
-									<div class="col-sm-4 text-right">Start: {{ project.date_start|date:"M Y" }} </div>
-									<div class="col-sm-8">
-										{% for tag in project.technologies_list %}
-											<span class="round-box blue">{{ tag }}</span>
-										{% endfor %}
-									</div>
-									<div class="col-sm-4 text-right">End: {{ project.date_end|date:"M Y" }} </div>
-								</div>
-							</div>
-						</div>
-					</div>
-				{% endfor %}
 
+						</tr>
+						</tfoot>
+					</table>
+					<div class="col-sm-6 search-bar">Tags</div>
+					<div class="col-sm-6 search-bar">Technologies</div>
+				</div>
 			</div>
 		</div>
 	</div>
 	<link rel="stylesheet" href="{% static 'css/project_gallery.css' %}"/>
 	<link rel="stylesheet"
-	      href="https://cdnjs.cloudflare.com/ajax/libs/galleria/1.5.7/themes/classic/galleria.classic.min.css"
-	      integrity="sha256-x2CD51aoTjhaYQ3I4ebHfFyb/+GSyE6kjxUCYq81Dys="
-	      crossorigin="anonymous"/>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/galleria/1.5.7/galleria.js"
-	        integrity="sha256-aG3fVuHsp+KBOZwzhtEP7K0rUBJEB7o2wxFwJfCiymg="
-	        crossorigin="anonymous"></script>
+	      href="https://cdn.datatables.net/1.10.18/css/jquery.dataTables.min.css"/>
 	<script src="{% static 'js/project_gallery.js' %}"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.js"></script>
+	<script src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
+
 {% endblock %}
