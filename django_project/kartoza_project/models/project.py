@@ -204,3 +204,12 @@ class Project(Orderable, Slugged, AdminThumbMixin):
     @property
     def technologies_list(self):
         return set(map(unicode.strip, self.technologies.split(',')))
+
+    @property
+    def search_string(self):
+        return '{title} {description} {services_provided} {brief}'.format(
+            title=self.title,
+            description=self.description,
+            services_provided=self.services_provided,
+            brief=self.short_description
+        )

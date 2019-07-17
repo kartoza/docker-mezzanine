@@ -29,13 +29,16 @@
 		<div class="row">
 			<div class="col-sm-6">
 				{% for tag in tags %}
-					<span class="round-box {% if forloop.first %}first{% endif %}{% if forloop.last %}last{% endif %}">{{ tag }}</span>
+					<span data-action="tag" class="round-box orange {% if forloop.first %}first{% endif %}{% if forloop.last %}last{% endif %}">{{ tag }}</span>
 				{% endfor %}
+
+					<span data-action="clear-filters" class="round-box clear-filters">Clear</span>
+					<span id="tag-filter" class="round-box"></span>
 			</div>
 			<div class="col-sm-6">
-				<span class="round-box first">Name</span>
-				<span class="round-box">Date Created</span>
-				<span class="round-box last">Client</span>
+				<span data-action="sort" class="round-box">Name</span>
+				<span data-action="sort" class="round-box">Date Created</span>
+
 			</div>
 		</div>
 		<div clas="row">
@@ -47,20 +50,17 @@
 		<div clas="row">
 			<div class="col-sm-12 pl-0">
 				{% for tag in technologies %}
-					<span class="round-box">{{ tag }}</span>
+					<span data-action="technology" class="round-box blue {% if forloop.first %}first{% endif %}{% if forloop.last %}last{% endif %}">{{ tag }}</span>
 				{% endfor %}
 			</div>
 		</div>
-
-
 		<div class="row">
-
-			<div class="col-sm-12 ">
+			<div class="col-sm-12 grid">
 				{% for project in projects %}
-					<div class="col-sm-6 mt-5">
+					<div class="mt-5 grid-item {% for tag in project.tags_list %}{{ tag }} {% endfor %} {% for tag in project.technologies_list %}{{ tag }} {% endfor %}" data-id="{{ project.id }}">
 						<div class="card round-box">
 							<div class="card-header p-3">
-								{{ project.title }}
+								<div class="col-sm-9 text-center">{{ project.title }}</div><div class="row"><div class="col-sm-3"><input id="checkbox_{{ project.id }}" type="checkbox" value="{{ project.id }}"><label for="checkbox_{{ project.id }}">Export</label></div></div>
 							</div>
 							<div class="card-body galleria">
 								{% for project_image in project_images %}
@@ -74,27 +74,27 @@
 							</div>
 							<div class="card-footer p-3">
 								<div class="row">
-
-									<div class="col-sm-9">
+									<div class="col-sm-8">
 										{% for tag in project.tags_list %}
 											<span class="round-box orange">{{ tag }}</span>
 										{% endfor %}
 									</div>
-									<div class="col-sm-9">
+									<div class="col-sm-4 text-right">Start: {{ project.date_start|date:"M Y" }} </div>
+									<div class="col-sm-8">
 										{% for tag in project.technologies_list %}
 											<span class="round-box blue">{{ tag }}</span>
 										{% endfor %}
 									</div>
+									<div class="col-sm-4 text-right">End: {{ project.date_end|date:"M Y" }} </div>
 								</div>
 							</div>
 						</div>
 					</div>
 				{% endfor %}
+
 			</div>
 		</div>
 	</div>
-
-
 	<link rel="stylesheet" href="{% static 'css/project_gallery.css' %}"/>
 	<link rel="stylesheet"
 	      href="https://cdnjs.cloudflare.com/ajax/libs/galleria/1.5.7/themes/classic/galleria.classic.min.css"
@@ -104,4 +104,5 @@
 	        integrity="sha256-aG3fVuHsp+KBOZwzhtEP7K0rUBJEB7o2wxFwJfCiymg="
 	        crossorigin="anonymous"></script>
 	<script src="{% static 'js/project_gallery.js' %}"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.js"></script>
 {% endblock %}

@@ -115,8 +115,8 @@ def project_gallery(request):
         tag_list = ''
         technology_list = ''
         for project in projects:
-            tag_list += project.tags
-            technology_list += project.technologies
+            tag_list += project.tags + ','
+            technology_list += project.technologies + ','
         tags = set(map(unicode.strip, tag_list.split(',')))
         technologies = set(map(unicode.strip, technology_list.split(',')))
 
@@ -129,25 +129,13 @@ def project_gallery(request):
              'project_images': project_images}
         )
 
-def project_gallery(request):
-    if request.method == 'GET':
-        project_images = Project.objects.filter(published=True).values(
-            'id', 'project_images__image').all()
-        projects = Project.objects.filter(
-            published=True).all()
-        tag_list = ''
-        technology_list = ''
-        for project in projects:
-            tag_list += project.tags
-            technology_list += project.technologies
-        tags = set(map(unicode.strip, tag_list.split(',')))
-        technologies = set(map(unicode.strip, technology_list.split(',')))
 
-        return django_render(
-            request,
-            'project_list.html',
-            {'projects': projects,
-             'tags': tags,
-             'technologies': technologies,
-             'project_images': project_images}
-        )
+def project_search(request, value, type):
+    if request.method == 'GET':
+        if type == 'tag':
+            project_ids = Project.objects.filter(
+                tags__contains=value).values_list('id')
+        if type == 'technology':
+            project_ids = Project.objects.filter(
+                tags__contains=value).values_list('id')
+        return HttpResponse({'ids': project_ids})

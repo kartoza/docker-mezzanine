@@ -16,7 +16,7 @@ urlpatterns = patterns('kartoza_project.views',
     url("^gallery/$",
         "project_gallery",
         name="project_gallery"),
-    url("^list/$",
-        "project_gallery",
-        name="project_list")
+    # url("^list/$",
+    #     "project_gallery",
+    #     name="project_list")
 )
