@@ -59,7 +59,7 @@ const createPopoverWithReference = (reference, target) => {
     if (!description) {
         description = 'No description provided'
     }
-     if (!email) {
+    if (!email) {
         email = 'No email provided'
     }
     let content =  `<div class="row"><div class="col-sm-12"><div>Email</div> - ${email}</div><br>
@@ -73,7 +73,7 @@ const createPopoverWithReference = (reference, target) => {
     $(target).popover(options)
  }
 
- const getCSRFTokenFromCookies = () => {
+const getCSRFTokenFromCookies = () => {
     let csrfToken
     document.cookie.split(';').forEach((cookie) => {
         const csrfRegex = RegExp('csrftoken')
@@ -85,6 +85,5 @@ const createPopoverWithReference = (reference, target) => {
 }
 
 const getFetchReferenceURL = () => {
-    return document.getElementById(
-  'get-reference').value
+    return document.getElementById('get-reference').value
 }

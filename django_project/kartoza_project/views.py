@@ -1,5 +1,5 @@
 from datetime import datetime
-from django.db.models import Prefetch
+from wsgiref.util import FileWrapper
 from django.http import HttpResponse
 from django.core import serializers
 from django.db.models import Q
@@ -132,12 +132,19 @@ def project_gallery(request):
         )
 
 
-def project_search(request, value, type):
-    if request.method == 'GET':
-        if type == 'tag':
-            project_ids = Project.objects.filter(
-                tags__contains=value).values_list('id')
-        if type == 'technology':
-            project_ids = Project.objects.filter(
-                tags__contains=value).values_list('id')
-        return HttpResponse({'ids': project_ids})
+# def export_project(request, project_id, type):
+#     if request.method == 'GET':
+#         project = Project.objects.get(id=project_id)
+#         response = HttpResponse(
+#             FileWrapper(project.get_template('basic', str(type).lower())),
+#                 content_type='text/html')
+#         response['Content-Disposition'] = (
+#             'attachment; filename=output.{extension}'.format(extension=type))
+#         return response
+
+def export_projects(request):
+    if request.method == 'POST':
+        projects_to_export = request.POST['projects_to_export']
+        if len(projects_to_export) > 0:
+
+            return HttpResponse(reference_json)

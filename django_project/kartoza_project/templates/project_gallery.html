@@ -8,6 +8,9 @@
 {% block main %}
 	<div class="container">
 		<div class="row">
+			<button class="btn btn-default" data-toggle="modal"
+			        data-target="#export_modal" data-action="export">Export
+			</button>
 			<div class="row" style="line-height: 4rem;">
 				<div class="col-sm-12">
 					{% for tag in tags %}
@@ -42,12 +45,13 @@
 						</thead>
 						<tbody>
 						{% for project in projects %}
-							<tr>
+							<tr data-pk="{{ project.id }}">
 								<td class="text-center">{{ project.id }}</td>
 								<td><input type="text"
 								           id="{{ project.id }}_order"
 								           name="{{ project.id }}_order"
-								           value="{{ forloop.counter }}"></td>
+								           value="{{ forloop.counter }}"
+								           class="sort-order"></td>
 								<td class="table-image"
 								    style="background-image: url('{{ project.thumbnail.url }}')"></td>
 								<td>{{ project.title }}</td>
@@ -64,6 +68,7 @@
 			</div>
 		</div>
 	</div>
+	{% include 'export_project_modal.html' %}
 	<link rel="stylesheet" href="{% static 'css/project_gallery.css' %}"/>
 	<link rel="stylesheet"
 	      href="https://cdn.datatables.net/1.10.18/css/jquery.dataTables.min.css"/>
