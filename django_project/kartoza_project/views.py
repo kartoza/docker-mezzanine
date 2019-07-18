@@ -1,4 +1,5 @@
 from datetime import datetime
+import tempfile
 from wsgiref.util import FileWrapper
 from django.http import HttpResponse
 from django.core import serializers
@@ -132,19 +133,29 @@ def project_gallery(request):
         )
 
 
-# def export_project(request, project_id, type):
-#     if request.method == 'GET':
-#         project = Project.objects.get(id=project_id)
-#         response = HttpResponse(
-#             FileWrapper(project.get_template('basic', str(type).lower())),
-#                 content_type='text/html')
-#         response['Content-Disposition'] = (
-#             'attachment; filename=output.{extension}'.format(extension=type))
-#         return response
+def export_project(request, project_id, type):
+    if request.method == 'GET':
+        project = Project.objects.get(id=project_id)
+        response = HttpResponse(
+            FileWrapper(project.get_template('basic', str(type).lower())),
+                content_type='text/html')
+        response['Content-Disposition'] = (
+            'attachment; filename=output.{extension}'.format(extension=type))
+        return response
+
 
 def export_projects(request):
     if request.method == 'POST':
-        projects_to_export = request.POST['projects_to_export']
+        projects_to_export = (
+            str(request.POST['projects_to_export']).split(',')[1::2])
+        format = request.POST['format']
+        layout = request.POST['layout']
+        response_string = ''
         if len(projects_to_export) > 0:
-
-            return HttpResponse(reference_json)
+            for key in projects_to_export:
+                next_project = Project.objects.get(pk=key)
+                next_file_text = (
+                    next_project.get_template(layout, format).read())
+                response_string += next_file_text
+            response = HttpResponse(response_string)
+            return response

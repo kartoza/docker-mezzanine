@@ -14,10 +14,25 @@ $(document).ready(function () {
         clearTag()
     })
     $('button[data-action=export]').click(function () {
+        showExportModal()
+    })
+    $('button[data-action=export_projects]').click(function () {
         exportDocuments()
     })
 
 })
+
+const showExportModal = () => {
+    let selected_ids = {}
+    let selected_rows = $('#table_id tr.selected')
+    selected_rows.each(function () {
+        let sort_order = $(this).find('input').val()
+        selected_ids[($(this).data("pk"))] = sort_order
+    })
+    let project_ids_container = $('#project_ids')
+    let items = sortIds(selected_ids)
+    project_ids_container.html(items.toString())
+}
 
 const sortIds = (dict) => {
 // Create items array
@@ -41,10 +56,10 @@ const exportDocuments = () => {
     })
     let project_ids_container = $('#project_ids')
     let items = sortIds(selected_ids)
-    project_ids_container.html(items.toString())
-    ajaxRequestExportDocuments(items)
-}
 
+    project_ids_container.html(items.toString())
+    ajaxRequestExportDocuments(items, 'html', 'world_bank_format')
+}
 
 
 const clearTechnology = () => {
@@ -122,22 +137,49 @@ const setupTableSearchFields = (table) => {
 }
 
 
-const ajaxRequestExportDocuments = (projects_to_export) => {
-    const json = {projects_to_export}
+const ajaxRequestExportDocuments = (projects_to_export, format, layout) => {
+    const json = {
+        'projects_to_export': projects_to_export,
+        'format': format,
+        'layout': layout
+    }
     const data = JSONToPostData(json)
     const url = getExportProjectsURL()
     const request = new XMLHttpRequest()
     request.open('POST', url, true)
     request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
     request.setRequestHeader('X-CSRFToken', getCSRFTokenFromCookies())
-
+    request.responseType = 'blob';
     request.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            createPopoverWithReference(JSON.parse(request.responseText)[0], target)
+            let filename = 'output.' + format
+            let disposition = request.getResponseHeader('Content-Disposition');
+            // check if filename is given
+            if (disposition && disposition.indexOf('attachment') !== -1) {
+                let filenameRegex = /filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/;
+                let matches = filenameRegex.exec(disposition);
+                if (matches != null && matches[1]) filename = matches[1].replace(/['"]/g, '');
+            }
+            let blob = this.response;
+            if (window.navigator.msSaveOrOpenBlob) {
+                window.navigator.msSaveBlob(blob, filename);
+            } else {
+                let downloadLink = window.document.createElement('a');
+                let contentTypeHeader = request.getResponseHeader("Content-Type");
+                downloadLink.href = window.URL.createObjectURL(new Blob([blob], {type: contentTypeHeader}));
+                downloadLink.download = filename;
+                document.body.appendChild(downloadLink);
+                downloadLink.click();
+                document.body.removeChild(downloadLink);
+            }
+        } else {
+            alert('Download failed.')
         }
     }
+
     request.send(data)
 }
+
 
 const getCSRFTokenFromCookies = () => {
     let csrfToken
@@ -161,3 +203,27 @@ const JSONToPostData = (event) => {
     })
     return data.join('&')
 }
+
+//
+// var request = new XMLHttpRequest();
+// request.open('POST', url, true);
+// request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+// request.responseType = 'blob';
+//
+// request.onload = function (e) {
+//     if (this.status === 200) {
+//         var blob = this.response;
+//         if (window.navigator.msSaveOrOpenBlob) {
+//             window.navigator.msSaveBlob(blob, fileName);
+//         } else {
+//             var downloadLink = window.document.createElement('a');
+//             var contentTypeHeader = request.getResponseHeader("Content-Type");
+//             downloadLink.href = window.URL.createObjectURL(new Blob([blob], {type: contentTypeHeader}));
+//             downloadLink.download = fileName;
+//             document.body.appendChild(downloadLink);
+//             downloadLink.click();
+//             document.body.removeChild(downloadLink);
+//         }
+//     }
+// };
+// request.send();
