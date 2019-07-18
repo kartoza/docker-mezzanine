@@ -7,18 +7,45 @@ $(document).ready(function () {
     $('span[data-action=technology]').click(function () {
         search_technology(this)
     })
+    $('span[data-action=clear_technology]').click(function () {
+        clear_technology()
+    })
+         $('span[data-action=clear_tags]').click(function () {
+        clear_tag()
+    })
 
 })
 
 
+const clear_technology = () => {
+    $('#search_technologies').val('')
+    $('#search_technologies').trigger('change');
+}
+
+const clear_tag = () => {
+    $('#search_tags').val('')
+    $('#search_tags').trigger('change');
+}
+
 const setupTable = () => {
+/* Initialise the table with the required column ordering data types */
+$(document).ready(function() {
+    $('#example').DataTable( {
+        "columns": [
+            null,
+            { "orderDataType": "dom-text-numeric" },
+            { "orderDataType": "dom-text", type: 'string' },
+            { "orderDataType": "dom-select" }
+        ]
+    } );
+} );
 
     let table = $('#table_id').DataTable({
         select: {
             items: 'row',
             info: true,
             style: 'multi',
-        }
+        },
     });
     setup_table_footers(table);
 

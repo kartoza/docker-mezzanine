@@ -118,7 +118,9 @@ def project_gallery(request):
             tag_list += project.tags + ','
             technology_list += project.technologies + ','
         tags = set(map(unicode.strip, tag_list.split(',')))
+        tags.remove('')
         technologies = set(map(unicode.strip, technology_list.split(',')))
+        technologies.remove('')
 
         return django_render(
             request,

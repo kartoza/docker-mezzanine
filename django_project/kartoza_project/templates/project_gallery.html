@@ -2,27 +2,28 @@
 {% load staticfiles %}
 
 {% block title %}
-	Projects Dashboard
+	Project Search
 {% endblock %}
 
 {% block main %}
 	<div class="container">
 		<div class="row">
-			<div class="row">
-
+			<div class="row" style="line-height: 4rem;">
 				<div class="col-sm-12">
 					{% for tag in tags %}
 						<span data-action="tag"
 						      class="round-box orange">{{ tag }}</span>
 					{% endfor %}
+					<span data-action="clear_tags"
+					      class="btn round-box btn-danger">Clear</span>
 				</div>
-			</div>
-			<div clas="row">
-				<div class="col-sm-12 pl-0">
+				<div class="col-sm-12">
 					{% for tag in technologies %}
 						<span data-action="technology"
 						      class="round-box blue">{{ tag }}</span>
 					{% endfor %}
+					<span data-action="clear_technology"
+					      class="btn round-box btn-danger">Clear</span>
 				</div>
 			</div>
 			<div class="row">
@@ -31,6 +32,7 @@
 						<thead>
 						<tr>
 							<th>ID</th>
+							<th>Sort Order</th>
 							<th>Thumbnail</th>
 							<th>Title</th>
 							<th>Short Description</th>
@@ -42,7 +44,12 @@
 						{% for project in projects %}
 							<tr>
 								<td class="text-center">{{ project.id }}</td>
-								<td class="table-image" style="background-image: url('{{ project.thumbnail.url }}')"></td>
+								<td><input type="text"
+								           id="{{ project.id }}_order"
+								           name="{{ project.id }}_order"
+								           value="{{ forloop.counter }}"></td>
+								<td class="table-image"
+								    style="background-image: url('{{ project.thumbnail.url }}')"></td>
 								<td>{{ project.title }}</td>
 								<td>{{ project.short_description }}</td>
 								<td>{{ project.tags }}</td>
@@ -68,6 +75,7 @@
 	<link rel="stylesheet"
 	      href="https://cdn.datatables.net/1.10.18/css/jquery.dataTables.min.css"/>
 	<script src="{% static 'js/project_gallery.js' %}"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 	<script src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
 
 {% endblock %}

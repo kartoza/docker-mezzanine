@@ -3,8 +3,8 @@
   border-width: 0px;
   border-color: #ddd;
   border-radius: 4px 4px 4px 4px;
-  padding: 1px;
-
+  padding: 1rem;
+  cursor: pointer;
 }
 
 
@@ -100,4 +100,8 @@
 
 tr {
   min-height: 20vh;
+}
+
+.red {
+  background-color: rgb(255, 75, 50);
 }
