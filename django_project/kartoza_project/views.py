@@ -86,16 +86,6 @@ def project_list_ongoing(request, template='kartoza_project/project_list.html'):
     return render(request, templates, context)
 
 
-def get_reference(request):
-    if request.method == 'POST':
-        reference = ''
-        reference_id = request.POST['reference_id']
-        if len(reference_id) > 0:
-            reference = Reference.objects.filter(pk=int(reference_id))
-            reference_json = serializers.serialize('json', reference)
-        return HttpResponse(reference_json)
-
-
 def project_gallery(request):
     if request.method == 'GET':
         project_images = Project.objects.filter(published=True).values(
@@ -114,7 +104,7 @@ def project_gallery(request):
 
         return django_render(
             request,
-            'project_gallery.html',
+            'export_list.html',
             {'projects': projects,
              'tags': tags,
              'technologies': technologies,
