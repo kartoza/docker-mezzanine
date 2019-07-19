@@ -1,7 +1,7 @@
 import tempfile
 from datetime import datetime
 
-import pypandoc
+
 from django.db import models
 from django.template.loader import render_to_string
 from kartoza_project.models.project_image import ProjectImage
@@ -217,19 +217,12 @@ class Project(Orderable, Slugged, AdminThumbMixin):
             brief=self.short_description
         )
 
-    def get_template(self, template, outputformat):
+    def get_template(self, template):
         if template == 'world_bank_format':
             starting_template = render_to_string(
                 'world_bank_format.md', {'project': self,
                                          'consultants': self.consultants.all(),
                                          'staff': self.staff_involved.all(),
                                          'clients': self.clients.all()})
-            tmpFileOut = tempfile.NamedTemporaryFile()
-            output = pypandoc.convert_text(
-                starting_template,
-                to=outputformat,
-                format='md',
-                outputfile=tmpFileOut.name)
-            tmpFileOut.write(output)
-            return open(tmpFileOut.name)
 
+            return starting_template

@@ -26,4 +26,4 @@ pillow==4.2.1
 git+https://github.com/kartoza/plugin-host.git@apps
 
 requests==2.1.0
-
+weasyprint==0.42.3

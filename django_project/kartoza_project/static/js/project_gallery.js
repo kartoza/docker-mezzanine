@@ -31,6 +31,9 @@ const showExportModal = () => {
     })
     let project_ids_container = $('#project_ids')
     let items = sortIds(selected_ids)
+    if (!items.length) {
+        items = 'None'
+    }
     project_ids_container.html(items.toString())
 }
 
@@ -58,7 +61,9 @@ const exportDocuments = () => {
     let items = sortIds(selected_ids)
 
     project_ids_container.html(items.toString())
-    ajaxRequestExportDocuments(items, 'html', 'world_bank_format')
+    let format = $("input[name='export_format']:checked").val();
+    let template = $("input[name='export_template']:checked").val();
+    ajaxRequestExportDocuments(items, format, template)
 }
 
 
@@ -172,11 +177,10 @@ const ajaxRequestExportDocuments = (projects_to_export, format, layout) => {
                 downloadLink.click();
                 document.body.removeChild(downloadLink);
             }
-        } else {
-            alert('Download failed.')
         }
-    }
 
+
+    }
     request.send(data)
 }
 
@@ -203,27 +207,3 @@ const JSONToPostData = (event) => {
     })
     return data.join('&')
 }
-
-//
-// var request = new XMLHttpRequest();
-// request.open('POST', url, true);
-// request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
-// request.responseType = 'blob';
-//
-// request.onload = function (e) {
-//     if (this.status === 200) {
-//         var blob = this.response;
-//         if (window.navigator.msSaveOrOpenBlob) {
-//             window.navigator.msSaveBlob(blob, fileName);
-//         } else {
-//             var downloadLink = window.document.createElement('a');
-//             var contentTypeHeader = request.getResponseHeader("Content-Type");
-//             downloadLink.href = window.URL.createObjectURL(new Blob([blob], {type: contentTypeHeader}));
-//             downloadLink.download = fileName;
-//             document.body.appendChild(downloadLink);
-//             downloadLink.click();
-//             document.body.removeChild(downloadLink);
-//         }
-//     }
-// };
-// request.send();

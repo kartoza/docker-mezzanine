@@ -8,7 +8,7 @@
 {% block main %}
 	<div class="container">
 		<div class="row">
-			<button class="btn btn-default" data-toggle="modal"
+			<button class="btn btn-default my-3" data-toggle="modal"
 			        data-target="#export_modal" data-action="export">Export
 			</button>
 			<div class="row" style="line-height: 4rem;">
@@ -20,7 +20,7 @@
 					<span data-action="clear_tags"
 					      class="btn round-box btn-danger">Clear</span>
 				</div>
-				<div class="col-sm-12">
+				<div class="col-sm-12 my-3">
 					{% for tag in technologies %}
 						<span data-action="technology"
 						      class="round-box blue">{{ tag }}</span>
