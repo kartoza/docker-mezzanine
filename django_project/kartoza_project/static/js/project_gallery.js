@@ -1,5 +1,4 @@
 $(document).ready(function () {
-    // setupGalleria()
     setupTable()
     $('span[data-action=tag]').click(function () {
         searchTag(this)
