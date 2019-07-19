@@ -11,10 +11,11 @@ from mezzanine.utils.models import AdminThumbMixin
 
 
 class Project(Orderable, Slugged, AdminThumbMixin):
-    short_description = models.TextField(
+    short_description = models.CharField(
         null=True,
         blank=True,
-        verbose_name='Project short description'
+        verbose_name='Project short description',
+        max_length=1000,
     )
 
     project_details = RichTextField(
@@ -30,7 +31,7 @@ class Project(Orderable, Slugged, AdminThumbMixin):
         verbose_name='Project thumbnail'
     )
 
-    country = models.TextField(
+    country = models.CharField(
         null=True,
         blank=True,
         help_text=(
@@ -38,7 +39,7 @@ class Project(Orderable, Slugged, AdminThumbMixin):
         max_length=255
     )
 
-    location = models.TextField(
+    location = models.CharField(
         null=True,
         blank=True,
         help_text=(
@@ -143,7 +144,7 @@ class Project(Orderable, Slugged, AdminThumbMixin):
         'Published to public gallery',
         default=False)
 
-    technologies = models.TextField(
+    technologies = models.CharField(
         null=True,
         blank=True,
         help_text=(
@@ -151,7 +152,7 @@ class Project(Orderable, Slugged, AdminThumbMixin):
         max_length=1000
     )
 
-    tags = models.TextField(
+    tags = models.CharField(
         null=True,
         blank=True,
         help_text=(
