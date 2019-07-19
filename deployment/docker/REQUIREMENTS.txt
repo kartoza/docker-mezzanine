@@ -1,3 +1,4 @@
+pypandoc==1.4
 cartridge==0.12
 celery==3.1.26.post2
 Django>=1.8,<1.9
@@ -25,4 +26,4 @@ pillow==4.2.1
 git+https://github.com/kartoza/plugin-host.git@apps
 
 requests==2.1.0
-
+weasyprint==0.42.3

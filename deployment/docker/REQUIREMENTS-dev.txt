@@ -1,3 +1,5 @@
+pypandoc==1.4
+weasyprint==0.42.3
 django-nose
 coverage
 pep8>=1.5.7,<1.6
