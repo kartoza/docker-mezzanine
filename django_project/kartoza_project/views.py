@@ -15,7 +15,6 @@ from mezzanine.utils.views import render, paginate
 from .models import Project, ProjectCategory, ProjectImage, Reference
 
 
-
 def project_list(request, category=None,
                  template='kartoza_project/project_list.html'):
     """
