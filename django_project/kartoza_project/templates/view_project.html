@@ -1,0 +1,236 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+
+{% block main %}
+<div class="row">
+	<div class="h3">View Project</div>
+	<div class="col-sm-6 pr-5">
+		<div class="row">
+			<div class="col-sm-12"><label class="h4">Title</label></div>
+			<div class="col-sm-12">
+				{{ project.title }}
+			</div>
+		</div>
+		<div class="row">
+
+			<div class="col-sm-12"><label class="h4">Clients</label></div>
+
+			{% for client in clients %}
+
+				<div class="col-sm-12">
+					{{ client.title }}
+				</div>
+
+			{% endfor %}
+		</div>
+		<div class="row">
+
+			<div class="col-sm-12"><label class="h4">Clients</label></div>
+
+			<div class="col-sm-12">
+				Contact Person:
+				<div class="col-sm-12>">
+					<div class="reference_name">{{ project.contact_person.name }}</div>
+					<div data-consultant-id="{{ project.contact_person.id }}"
+					     data-toggle="popover"
+					     class="reference_tooltip col-sm-6">
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-12"><label class="h4">Country</label></div>
+			<div class="col-sm-12">
+				{{ project.country }}
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-12"><label class="h4">Location</label></div>
+			<div class="col-sm-12">
+				{{ project.location }}
+			</div>
+		</div>
+	</div>
+	{% if user.is_authenticated %}
+		<div class="col-sm-6">
+			<div class="row">
+				<div class="col-sm-12"><label
+						class="h4">Approximate value of the contract (US $)</label>
+				</div>
+				<div class="col-sm-12">
+					{{ project.approximate_contract_value }}
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12"><label
+						class="h4">Duration of the assignment (months)</label>
+				</div>
+				<div class="col-sm-12">
+					{{ project.duration_of_assignment }}
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12"><label
+						class="h4">Total number of staff-months</label>
+				</div>
+				<div class="col-sm-12">
+					{{ project.total_staff_months }}
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12"><label
+						class="h4">Number of professional staff-months provided by Kartoza</label>
+				</div>
+				<div class="col-sm-12">
+					{{ project.total_staff_months_by_kartoza }}
+				</div>
+			</div>
+		</div>
+	{% endif %}
+	<div class="col-sm-12 pb-5">
+		<div class="row">
+			<div class="col-sm-12"><label
+					class="h4">Brief</label>
+			</div>
+			<div class="col-sm-12">
+				{{ project.short_description }}
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-12"><label
+					class="h4">Technologies</label>
+			</div>
+			<div class="col-sm-12" id="technologies">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-12"><label
+					class="h4">Tags</label>
+			</div>
+			<div class="col-sm-12" id="tags">
+
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-12"><label
+					class="h4">Start Date</label>
+			</div>
+			<div class="col-sm-12">
+				{{ project.date_start }}
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-12"><label
+					class="h4">Date Completed</label>
+			</div>
+			<div class="col-sm-12">
+				{{ project.date_end }}
+			</div>
+		</div>
+		<div class="row">
+
+			<div class="col-sm-12"><label
+					class="h4">Associated Consultants</label>
+			</div>
+			<div class="col-sm-12">
+				<div class="col-sm-12">
+					{% for each_staff in consultants %}
+						<div class="row">
+							<div class="col-sm-12>">
+								<div class="reference_name">{{ each_staff.name }}</div>
+								<div data-consultant-id="{{ each_staff.id }}"
+								     data-toggle="popover"
+								     class="reference_tooltip col-sm-6">
+								</div>
+							</div>
+
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+		<div class="row">
+
+			<div class="col-sm-12"><label
+					class="h4">Staff Involved</label>
+			</div>
+			<div class="col-sm-12">
+				<div class="col-sm-12">
+					{% for each_staff in staff_involved %}
+						<div class="row">
+							<div class="col-sm-12>">
+								<div class="reference_name">{{ each_staff.name }}</div>
+								<div data-consultant-id="{{ each_staff.id }}"
+								     data-toggle="popover"
+								     class="reference_tooltip col-sm-6">
+								</div>
+							</div>
+
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="galleria">
+					{% for each_image in images %}
+						<img src="{{ each_image.image.url }}"
+						     data-title="{{ each_image.caption }}"
+						     data-description="{{ each_image.caption }}">
+					{% endfor %}
+
+				</div>
+			</div>
+		</div>
+		<div class="row">
+
+			<div class="col-sm-12"><label
+					class="h4">Description</label>
+			</div>
+			<div class="col-sm-12">
+				<div class="col-sm-12 my-scroll">
+					{% autoescape off %}{{ project.description|safe }}{% endautoescape %}
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-12"><label
+					class="h4">Actual Services Provided</label>
+			</div>
+			<div class="col-sm-12">
+				<div class="col-sm-12 my-scroll">{{ project.services_provided|safe }}</div>
+			</div>
+		</div>
+
+	</div>
+
+</div>
+
+<input id='get-reference' type='hidden'
+       value='{% url "get_reference" %}'/>
+
+{% endblock %}
+
+{% block extra_scripts %}
+
+	<link rel="stylesheet"
+	      href="https://cdnjs.cloudflare.com/ajax/libs/galleria/1.5.7/themes/classic/galleria.classic.min.css"
+	      integrity="sha256-x2CD51aoTjhaYQ3I4ebHfFyb/+GSyE6kjxUCYq81Dys="
+	      crossorigin="anonymous"/>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/galleria/1.5.7/galleria.js"
+	        integrity="sha256-aG3fVuHsp+KBOZwzhtEP7K0rUBJEB7o2wxFwJfCiymg="
+	        crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/taggle/1.14.4/taggle.min.js"
+	        integrity="sha256-/sZeEyfDrdf4QNrGEKYVlvV1HoJab1MZRNp2aIWyEs0="
+	        crossorigin="anonymous"></script>
+	<script type="text/javascript"
+	        src="{% static 'js/view_project.js' %}"></script>
+	<link href="{% static "css/taggle.css" %}" rel="stylesheet">
+	<script>
+        var technologies = '{{ project.technologies }}'
+        var tags = '{{ project.tags }}'
+	</script>
+	<link rel="stylesheet" href="{% static 'css/view_project.css' %}">
+{% endblock %}

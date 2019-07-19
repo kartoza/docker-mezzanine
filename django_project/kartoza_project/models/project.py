@@ -1,7 +1,5 @@
 import tempfile
 from datetime import datetime
-
-
 from django.db import models
 from django.template.loader import render_to_string
 from kartoza_project.models.project_image import ProjectImage
@@ -175,6 +173,12 @@ class Project(Orderable, Slugged, AdminThumbMixin):
 
     admin_thumb_field = 'thumbnail'
 
+    contact_person = models.ForeignKey(
+        'kartoza_project.Reference',
+        null=True,
+        on_delete=models.PROTECT,
+        related_name='contact_person')
+
     def __unicode__(self):
         return self.title
 
@@ -227,3 +231,13 @@ class Project(Orderable, Slugged, AdminThumbMixin):
                                          'clients': self.clients.all()})
 
             return starting_template
+
+    @property
+    def duration(self):
+        if not self.date_end:
+            return 'Ongoing'
+        return ((self.date_end.year - self.date_start.year) * 12 +
+                self.date_end.month - self.date_end.month)
+
+def diff_month(d1, d2):
+    return (d1.year - d2.year) * 12 + d1.month - d2.month

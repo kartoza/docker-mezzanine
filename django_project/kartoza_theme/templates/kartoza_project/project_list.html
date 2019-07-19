@@ -16,7 +16,7 @@
     {% if page %}
         {% editable page.title %}{{ page.title }}{% endeditable %}
     {% else %}
-        {% trans "Our team" %}
+        {% trans "Project Gallery" %}
     {% endif %}
 {% endblock %}
 
@@ -55,7 +55,7 @@
                     {{ project.short_description | linebreaks }}
                 </div>
                 <div class="project-show-more">
-                    <a href="/project/detail/{{ project.slug }}" type="button" class="btn btn-primary">More</a>
+                    <a href="/project/view/{{ project.id }}" type="button" class="btn btn-primary">More</a>
                 </div>
             </div>
         </div>
