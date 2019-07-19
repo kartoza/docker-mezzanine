@@ -154,7 +154,7 @@ def export_project(request, project_id, type):
 def export_projects(request):
     if request.method == 'POST':
         projects_to_export = (
-            str(request.POST['projects_to_export']).split(',')[1::2])
+            str(request.POST['projects_to_export']).split(',')[0::2])
         format = request.POST['format']
         layout = request.POST['layout']
         response_string = ''
