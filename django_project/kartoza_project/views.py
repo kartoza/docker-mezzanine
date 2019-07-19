@@ -86,34 +86,6 @@ def project_list_ongoing(request, template='kartoza_project/project_list.html'):
     return render(request, templates, context)
 
 
-def view_project(request, project_id):
-    if request.method == 'GET':
-        project = Project.objects.filter(pk=project_id).first()
-        images = ProjectImage.objects.filter(
-            project__id=project.id).all()
-        clients = project.clients.values('name', 'title', 'logo').all()
-        # form = ProjectForm(project
-        return django_render(
-            request,
-            'view_project.html',
-            {'project': project,
-             'consultants': project.consultants.all(),
-             'staff_involved': project.staff_involved.all(),
-             'clients': clients,
-             'images': images}
-        )
-
-
-def get_reference(request):
-    if request.method == 'POST':
-        reference = ''
-        reference_id = request.POST['reference_id']
-        if len(reference_id) > 0:
-            reference = Reference.objects.filter(pk=int(reference_id))
-            reference_json = serializers.serialize('json', reference)
-        return HttpResponse(reference_json)
-
-
 def project_gallery(request):
     if request.method == 'GET':
         project_images = Project.objects.filter(published=True).values(
