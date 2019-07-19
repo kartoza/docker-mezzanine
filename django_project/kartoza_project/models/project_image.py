@@ -3,7 +3,11 @@ from mezzanine.utils.models import AdminThumbMixin
 
 
 class ProjectImage(AdminThumbMixin, models.Model):
-    image = models.ImageField()
+    image = models.ImageField(
+        blank=True,
+        upload_to='project_image',
+        help_text="An image associated with a Kartoza project"
+    )
 
     caption = models.CharField(
         max_length=300,

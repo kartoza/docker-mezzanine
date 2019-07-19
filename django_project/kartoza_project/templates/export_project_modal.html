@@ -1,0 +1,39 @@
+<div class="modal fade" id="export_modal">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+				        aria-hidden="true">&times;
+				</button>
+				<h4 class="modal-title">Export Projects</h4>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-xs-6">
+						<div class="h3">Format</div>
+						<input type="radio" name="export_format" value="html"
+						       checked>HTML
+						<input type="radio" name="export_format" value="pdf">PDF
+						<input type="radio" name="export_format"
+						       value="odt">Open Document
+					</div>
+					<div class="col-xs-6">
+						<div class="h3">Layout</div>
+						<input type="radio" name="export_template" value="world_bank_format"
+						       checked>World Bank Format
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default"
+				        data-dismiss="modal">Close
+				</button>
+				<button type="button" data-action="export_projects"
+				        class="btn btn-primary">Export
+				</button>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+	<input type="hidden" id='export-projects'
+	       value="{% url 'export_projects' %}">
+</div><!-- /.modal -->

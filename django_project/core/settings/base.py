@@ -96,6 +96,7 @@ TEMPLATES = [
             # project level templates
             absolute_path('core', 'templates'),
             absolute_path('solid_theme', 'templates'),
+            absolute_path('kartoza_project', 'templates'),
         ],
         'APP_DIRS': False,
         'OPTIONS': {

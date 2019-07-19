@@ -1,0 +1,112 @@
+.round-box {
+  border-style: solid;
+  border-width: 0px;
+  border-color: #ddd;
+  border-radius: 4px 4px 4px 4px;
+  padding: 1rem;
+  cursor: pointer;
+}
+
+
+.galleria {
+  height: 30vh;
+
+}
+
+.mt-5 {
+  margin-top: 2.5rem;
+}
+
+.p-3 {
+  padding: 1.5rem;
+
+}
+
+.my-3 {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.pl-0 {
+  padding-left: 0;
+}
+
+.blue {
+  background-color: rgba(155, 200, 255, 1);
+  color: black;
+}
+
+/*.galleria-info-text {*/
+/*	background-color: 	rgba(40, 146, 214, 1) !important;*/
+/*}*/
+
+
+.orange {
+  background-color: rgba(237, 180, 74, 1);
+  color: black;
+}
+
+.grid-item {
+  max-width: 25vw;
+
+  display: inline-flex;
+  float: left;
+  margin-right: 2rem;
+
+}
+
+.card-header .col-sm-9 {
+  max-height: 6vh;
+  overflow: scroll;
+  text-overflow: ellipsis;
+}
+
+.card {
+  /*background-color: rgba(73, 176, 227, 1);*/
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+}
+
+
+.galleria-theme-classic {
+  background: transparent !important;
+}
+
+.round-box.first {
+  display: none;
+}
+
+.clear-filters {
+  background-color: rgba(255, 100, 80, 1);
+    float: right;
+}
+
+#tag-filter {
+  width: 10rem;
+  float: right;
+  height: 22px;
+  margin-right: 1rem;
+  border-width: 1px;
+}
+
+.search-bar {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.table-image {
+  background-size: 100% auto;
+    background-repeat: no-repeat;
+    width: 20vw;
+  height: 15vh !important;
+  height: fit-content;
+  background-position: top;
+}
+
+tr {
+  min-height: 20vh;
+}
+
+.red {
+  background-color: rgb(255, 75, 50);
+}

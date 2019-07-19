@@ -1,0 +1,88 @@
+.round-box {
+  border-style: solid;
+  border-width: 1px;
+  border-color: #ddd;
+  border-radius: 4px 4px 0 0;
+}
+
+
+.galleria {
+  height: 70vh;
+
+}
+
+.mt-5 {
+  margin-top: 2.5rem;
+}
+
+.p-3 {
+  padding: 1.5rem;
+
+}
+
+.pl-0 {
+  padding-left: 0;
+}
+
+.blue {
+  background-color: rgba(155, 200, 255, 0.8)
+}
+
+.orange {
+  background-color: rgba(237, 180, 74, 0.6)
+}
+
+.float-left {
+  float: left;
+}
+
+
+.float-right {
+  float: right;
+}
+
+.text-right {
+  height: 35vh;
+  width: 35vh;
+  overflow: scroll;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 0;
+
+  background-color: rgba(31, 31, 31, 0.95);
+  color: white;
+}
+
+.text-left {
+  height: 35vh;
+  width: 35vh;
+  overflow: scroll;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(31, 31, 31, 0.95);
+  color: white;
+}
+
+.center-text {
+  /*position: relative;*/
+    /*top: 50%;*/
+    /*transform: translateY(-50%);*/
+    text-align: center;
+    margin: 1rem;
+}
+
+.m-1 {
+  margin: 1rem;
+}
+
+.mt-3 {
+  margin-top: 1.5rem;
+}
+
+
+.read-more-button{
+  border-radius: 1px;
+  margin-top: 3rem;
+}

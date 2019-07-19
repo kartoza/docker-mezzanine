@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}
+	Project Search
+{% endblock %}
+
+{% block main %}
+	<div class="container">
+
+		<div class="row">
+			<button class="btn btn-default my-3" data-toggle="modal"
+			        data-target="#export_modal" data-action="export">Export
+			</button>
+			<div class="row" style="line-height: 4rem;">
+				<div class="col-sm-12">
+					{% for tag in tags %}
+						<span data-action="tag"
+						      class="round-box orange">{{ tag }}</span>
+					{% endfor %}
+					<span data-action="clear_tags"
+					      class="round-box red">Clear</span>
+				</div>
+				<div class="col-sm-12 my-3">
+					{% for tag in technologies %}
+						<span data-action="technology"
+						      class="round-box blue">{{ tag }}</span>
+					{% endfor %}
+					<span data-action="clear_technology"
+					      class="round-box red">Clear</span>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12">
+					<button class="btn btn-success my-3"
+					        data-action="select_all">Select All
+					</button>
+					<button class="btn btn-warning my-3"
+					        data-action="clear_all">Clear All
+					</button>
+				</div>
+				<div class="col-sm-12">
+					<table id="table_id" class="display">
+						<thead>
+						<tr>
+							<th>ID</th>
+							<th>Sort Order</th>
+							<th>Thumbnail</th>
+							<th>Title</th>
+							<th>Short Description</th>
+							<th>Tags</th>
+							<th>Technologies</th>
+						</tr>
+						</thead>
+						<tbody>
+						{% for project in projects %}
+							<tr data-pk="{{ project.id }}">
+								<td class="text-center">{{ project.id }}</td>
+								<td><input type="text"
+								           id="{{ project.id }}_order"
+								           name="{{ project.id }}_order"
+								           value="{{ forloop.counter }}"
+								           class="sort-order"></td>
+								<td class="table-image"
+								    style="background-image: url('{{ project.thumbnail.url }}')"></td>
+								<td>{{ project.title }}</td>
+								<td>{{ project.short_description }}</td>
+								<td>{{ project.tags }}</td>
+								<td>{{ project.technologies }}</td>
+							</tr>
+						{% endfor %}
+						</tbody>
+					</table>
+					<div class="col-sm-6 search-bar">Tags</div>
+					<div class="col-sm-6 search-bar">Technologies</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	{% include 'export_project_modal.html' %}
+	<link rel="stylesheet" href="{% static 'css/project_gallery.css' %}"/>
+	<link rel="stylesheet"
+	      href="https://cdn.datatables.net/1.10.18/css/jquery.dataTables.min.css"/>
+	<script src="{% static 'js/export_list.js' %}"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+	<script src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
+{% endblock %}

@@ -48,5 +48,15 @@ class ProjectCategoryAdmin(admin.ModelAdmin):
         return False
 
 
+class ReferenceAdmin(admin.ModelAdmin):
+    """
+       Admin class for project reference. Hides itself from the admin menu
+       unless explicitly specified.
+       """
+
+    fieldsets = ((None, {"fields": ('name', 'role', 'telephone', 'email')}),)
+
+
 admin.site.register(Project, ProjectAdmin)
 admin.site.register(ProjectCategory, ProjectCategoryAdmin)
+admin.site.register(Reference, ReferenceAdmin)
