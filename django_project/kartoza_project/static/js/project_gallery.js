@@ -19,8 +19,23 @@ $(document).ready(function () {
     $('button[data-action=export_projects]').click(function () {
         exportDocuments()
     })
-
+    $('button[data-action=select_all]').click(function () {
+        selectAllRows()
+    })
+    $('button[data-action=clear_all]').click(function () {
+        clearAllRows()
+    })
 })
+
+const selectAllRows = () => {
+    $('#table_id tr').addClass('selected');
+}
+
+const clearAllRows = () => {
+
+    $('#table_id tr').removeClass('selected');
+}
+
 
 const showExportModal = () => {
     let selected_ids = {}
