@@ -1,7 +1,7 @@
 pypandoc==1.4
 cartridge==0.12
 celery==3.1.26.post2
-Django==1.8
+Django>=1.8,<1.9
 django-compressor
 django-contrib-comments==1.7.3
 filebrowser-safe==0.4.6
