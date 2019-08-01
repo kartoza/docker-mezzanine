@@ -9,7 +9,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from mezzanine.conf import settings
 from mezzanine.utils.models import upload_to
-from cartridge.shop.models import Order, SelectedProduct, CartItem
+
 
 @python_2_unicode_compatible
 class Payment(models.Model):
