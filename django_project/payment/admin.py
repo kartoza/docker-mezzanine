@@ -6,7 +6,6 @@ __copyright__ = 'kartoza.com'
 from django.contrib import admin
 from django.contrib.admin.templatetags.admin_static import static
 from django.utils.translation import ugettext_lazy as _
-
 from payment.models import Payment
 
 payment_list_display = ("order_id", "first_name", "status",)

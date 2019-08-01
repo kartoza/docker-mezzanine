@@ -37,8 +37,8 @@ INSTALLED_APPS += (
     "mezzanine.pages",
     "mezzanine.galleries",
     "mezzanine.twitter",
-    #"mezzanine.accounts",
-    #"mezzanine.mobile",
+    # "mezzanine.accounts",
+    # "mezzanine.mobile",
     # Extra apps picked out by Tim
     "mezzanine_people",
     "mezzanine_references",
@@ -142,14 +142,14 @@ SHOP_CURRENCY_LOCALE = "en_ZA.UTF-8"
 # is called on submit of the billing/shipping checkout step. This
 # is where shipping calculation can be performed and set using the
 # function ``cartridge.shop.utils.set_shipping``.
-SHOP_HANDLER_BILLING_SHIPPING = \
-    "cartridge.shop.checkout.default_billship_handler"
+SHOP_HANDLER_BILLING_SHIPPING = "cartridge.shop.checkout.default_billship_handler"
 
 # Dotted package path and name of the function that
 # is called once an order is successful and all of the order
 # object's data has been created. This is where any custom order
 # processing should be implemented.
-SHOP_HANDLER_ORDER = "cartridge.shop.checkout.default_order_handler"
+SHOP_HANDLER_ORDER = "payment.views.custom_order_handler"
+    # "cartridge.shop.checkout.default_order_handler"
 
 # Dotted package path and name of the function that
 # is called on submit of the payment checkout step. This is where
@@ -158,6 +158,16 @@ SHOP_HANDLER_PAYMENT = "cartridge.shop.checkout.default_payment_handler"
 
 SHOP_HANDLER_TAX = "core.cartridge.shop.checkout.vat_tax_handler"
 SHOP_HANDLER_TAX_INCLUDE_IN_PRICE = True
+
+#
+# EXTRA_MODEL_FIELDS = (
+#         (
+#             "cartridge.shop.models.Order.vat_number",
+#             "CharField",
+#             (u"vat_number",),
+#             {"null": True, "blank": True, "max_length": 10}
+#          ),
+# )
 
 # Sequence of value/name pairs for order statuses.
 SHOP_ORDER_STATUS_CHOICES = (
@@ -186,6 +196,8 @@ SHOP_PAYMENT_STATUS_CHOICES = (
 # control how the options should be ordered in the admin,
 # eg for "Colour" then "Size" given the above:
 SHOP_OPTION_ADMIN_ORDER = (1,)
+
+SHOP_CHECKOUT_FORM_CLASS = "payment.forms.CustomOrderForm"
 
 ######################
 # MEZZANINE SETTINGS #
@@ -269,6 +281,7 @@ PAGE_MENU_TEMPLATES = (
 #         {"blank": True, "default": 1},
 #     ),
 # )
+
 
 # Setting to turn on featured images for blog posts. Defaults to False.
 #
