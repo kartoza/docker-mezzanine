@@ -25,17 +25,6 @@ class CustomOrderForm(OrderForm):
                    ]
                   +
                   ["additional_instructions", "discount_code"])
-
-    # TRUE_FALSE_CHOICES = (
-    #     (True, 'Yes'),
-    #     (False, 'No')
-    # )
-    # billing_detail_vat_registered = forms.ChoiceField(
-    #     choices=TRUE_FALSE_CHOICES,
-    #     label="Are you registered for VAT?",
-    #     initial='No',
-    #     widget=forms.Select(),
-    #     required=False)
     billing_detail_vat_number = forms.CharField(
         label="Your South African registered VAT Tax number (if registered)",
         required=False)
@@ -43,9 +32,5 @@ class CustomOrderForm(OrderForm):
     def __init__(
             self, request, step, data=None, initial=None, errors=None,
             **kwargs):
-        # self.fields["vat_registered"].name = "vat_registered"
-        res = super(CustomOrderForm, self).__init__(request, step, data, initial, errors, **kwargs)
-
-        #
-        # self.fields["billing_detail_vat_registered"].widget = forms.CheckboxInput()
+        super(CustomOrderForm, self).__init__(request, step, data, initial, errors, **kwargs)
 
