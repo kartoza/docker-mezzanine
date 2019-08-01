@@ -149,7 +149,7 @@ SHOP_HANDLER_BILLING_SHIPPING = "cartridge.shop.checkout.default_billship_handle
 # object's data has been created. This is where any custom order
 # processing should be implemented.
 SHOP_HANDLER_ORDER = "payment.views.custom_order_handler"
-    # "cartridge.shop.checkout.default_order_handler"
+# "cartridge.shop.checkout.default_order_handler"
 
 # Dotted package path and name of the function that
 # is called on submit of the payment checkout step. This is where
@@ -158,16 +158,6 @@ SHOP_HANDLER_PAYMENT = "cartridge.shop.checkout.default_payment_handler"
 
 SHOP_HANDLER_TAX = "core.cartridge.shop.checkout.vat_tax_handler"
 SHOP_HANDLER_TAX_INCLUDE_IN_PRICE = True
-
-#
-# EXTRA_MODEL_FIELDS = (
-#         (
-#             "cartridge.shop.models.Order.vat_number",
-#             "CharField",
-#             (u"vat_number",),
-#             {"null": True, "blank": True, "max_length": 10}
-#          ),
-# )
 
 # Sequence of value/name pairs for order statuses.
 SHOP_ORDER_STATUS_CHOICES = (
