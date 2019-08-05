@@ -17,6 +17,7 @@ except ImportError:
 
 ALLOWED_HOSTS = [
     'localhost:64200',
+    'localhost:8080',
     'mezzanine.kartoza.com']
 
 # Comment if you are not running behind proxy
