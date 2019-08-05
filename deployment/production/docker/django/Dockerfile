@@ -8,9 +8,9 @@ MAINTAINER Christiaan van der Merwe <christiaan@kartoza.com>
 # Pandoc needed to generate rst dumps, uic compressor needed for django-pipeline
 RUN apt-get update -y; apt-get -y --force-yes install yui-compressor
 
-ARG Project_tag=develop
+ARG Project_tag=live_push
 RUN mkdir -p /usr/src; mkdir -p /home/web  && \
-	git clone --branch ${Project_tag} --depth 1 https://github.com/kartoza/docker-mezzanine.git /usr/src/website/ && \
+	git clone --branch ${Project_tag} --depth 1 https://github.com/christiaanvdm/docker-mezzanine.git /usr/src/website/ && \
 	rm -rf /home/web/django_project && \
 	ln -s /usr/src/website/django_project /home/web/django_project
 
