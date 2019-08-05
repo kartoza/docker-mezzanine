@@ -7,6 +7,12 @@ MAINTAINER Christiaan van der Merwe <christiaan@kartoza.com>
 
 # Pandoc needed to generate rst dumps, uic compressor needed for django-pipeline
 RUN apt-get update -y; apt-get -y --force-yes install yui-compressor
+RUN apt-get -y install locales && \
+    echo "en_ZA.UTF-8 UTF-8" >> /etc/locale.gen && \
+    locale-gen en_ZA.UTF-8
+ENV LANG en_ZA.UTF-8
+ENV LANGUAGE en_ZA:en
+ENV LC_ALL en_ZA.UTF-8
 
 ARG Project_tag=live_push
 RUN mkdir -p /usr/src; mkdir -p /home/web  && \
@@ -20,6 +26,7 @@ RUN cd /usr/src/website/deployment/docker && \
 	rm -rf /uwsgi.conf && \
 	ln -s ${PWD}/uwsgi.conf /uwsgi.conf
 
+RUN apt-get -y install pandoc
 # Open port 8080 as we will be running our uwsgi socket on that
 EXPOSE 8080
 
