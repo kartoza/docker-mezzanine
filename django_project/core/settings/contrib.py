@@ -109,7 +109,7 @@ EVENT_SLUG = u"events"
 # locale well so we set it here. If you need to change to another locale
 # please also see Dockerfile in deployment/docker as it sets up the local
 # for en_ZA and you will need to adjust that before your chosen locale works
-locale.setlocale(locale.LC_ALL, 'en_ZA.UTF-8')
+locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')
 # The following settings are already defined in cartridge.shop.defaults
 # with default values, but are common enough to be put here, commented
 # out, for conveniently overriding. Please consult the settings
