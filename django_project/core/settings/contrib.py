@@ -59,6 +59,8 @@ INSTALLED_APPS += (
 # RICHTEXT_WIDGET_CLASS = "mdown.forms.WmdWidget"
 # RICHTEXT_FILTER = "mdown.filters.codehilite"
 
+ALLOWED_HOSTS = ['*']
+
 MIGRATION_MODULES = {'accounts': 'core.migration'}
 
 GRAPPELLI_ADMIN_TITLE = 'Site administration panel'

@@ -1,6 +1,6 @@
 #--------- Generic stuff all our Dockerfiles should start with so we get caching ------------
 # Note this base image is based on debian
-FROM kartoza/django-base:2.7
+FROM kartoza/django-base
 MAINTAINER Christiaan van der Merwe <christiaan@kartoza.com>
 
 #RUN  ln -s /bin/true /sbin/initctl
@@ -31,4 +31,4 @@ RUN apt-get -y install pandoc
 EXPOSE 8080
 
 WORKDIR /home/web/django_project
-CMD ["uwsgi", "--ini", "/uwsgi.conf"]
+CMD ["uwsgi", "--env", "LC_ALL=en_ZA.UTF-8", "--ini", "/uwsgi.conf"]
