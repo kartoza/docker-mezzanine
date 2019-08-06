@@ -27,6 +27,7 @@ RUN cd /usr/src/website/deployment/docker && \
 	ln -s ${PWD}/uwsgi.conf /uwsgi.conf
 
 RUN apt-get -y install pandoc
+RUN dpkg-reconfigure locales
 # Open port 8080 as we will be running our uwsgi socket on that
 EXPOSE 8080
 

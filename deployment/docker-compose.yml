@@ -154,9 +154,9 @@ devweb:
     - rabbitmq:rabbitmq
   ports:
     # for django test server
-    - "8080:8080"
+    - "64202:8080"
     # for ssh
-    - "22:22"
+    - "64203:22"
 
 worker:
    build: docker
