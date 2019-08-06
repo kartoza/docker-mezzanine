@@ -15,7 +15,7 @@ except ImportError:
 # Changes for live site
 # ['*'] for testing but not for production
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ['*']
 # Comment if you are not running behind proxy
 USE_X_FORWARDED_HOST = True
 

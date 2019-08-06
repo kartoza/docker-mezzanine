@@ -17,7 +17,7 @@ RUN apt-get update -y
 # We do this as cartridge (ecommerce platform for mezzanine) relies on
 # the locale to set the correct number of decimal places for the MoneyField
 RUN apt-get -y install locales && \
-    echo "en_ZA.UTF-8 UTF-8" >> /etc/locale.gen && \
+    echo "en_ZA.UTF-8" >> /etc/locale.gen && \
     locale-gen en_ZA.UTF-8
 ENV LANG en_ZA.UTF-8
 ENV LANGUAGE en_ZA:en
