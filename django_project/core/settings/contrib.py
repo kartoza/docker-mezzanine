@@ -21,6 +21,7 @@ GRAPPELLI_INSTALLED = True
 INSTALLED_APPS += (
     'raven.contrib.django.raven_compat',  # enable Raven plugin
     PACKAGE_NAME_GRAPPELLI,
+    "allauth.socialaccount",
     "celery",
     "config",
     "kartoza_theme",
