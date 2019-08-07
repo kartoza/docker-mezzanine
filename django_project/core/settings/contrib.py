@@ -21,7 +21,6 @@ GRAPPELLI_INSTALLED = True
 INSTALLED_APPS += (
     'raven.contrib.django.raven_compat',  # enable Raven plugin
     PACKAGE_NAME_GRAPPELLI,
-    "allauth.socialaccount",
     "celery",
     "config",
     "kartoza_theme",
@@ -59,8 +58,6 @@ INSTALLED_APPS += (
 # mezzanine-mdown options
 # RICHTEXT_WIDGET_CLASS = "mdown.forms.WmdWidget"
 # RICHTEXT_FILTER = "mdown.filters.codehilite"
-
-ALLOWED_HOSTS = ['*']
 
 MIGRATION_MODULES = {'accounts': 'core.migration'}
 
