@@ -7,7 +7,7 @@ if [ -z "$REPO_NAME" ]; then
 fi
 
 if [ -z "$IMAGE_NAME" ]; then
-	IMAGE_NAME=ford3_nginx_conf
+	IMAGE_NAME=kartoza_nginx_conf
 fi
 
 if [ -z "$TAG_NAME" ]; then

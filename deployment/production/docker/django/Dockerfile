@@ -24,7 +24,9 @@ RUN cd /usr/src/website/deployment/docker && \
 	pip install -r REQUIREMENTS.txt && \
 	pip install uwsgi && \
 	rm -rf /uwsgi.conf && \
-	ln -s ${PWD}/uwsgi.conf /uwsgi.conf
+	ln -s ${PWD}/uwsgi.conf /uwsgi.conf && \
+	pip uninstall -y django-contrib-comments && \
+	pip install django-contrib-comments==1.8.0
 
 RUN apt-get -y install pandoc
 RUN dpkg-reconfigure locales
