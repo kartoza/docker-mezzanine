@@ -16,7 +16,7 @@ from .base import *  # noqa
 PACKAGE_NAME_FILEBROWSER = "filebrowser_safe"
 PACKAGE_NAME_GRAPPELLI = "grappelli_safe"
 GRAPPELLI_INSTALLED = True
-
+SITE_ID = 1
 # Extra installed apps - grapelli needs to be added before others
 INSTALLED_APPS += (
     'raven.contrib.django.raven_compat',  # enable Raven plugin
@@ -53,7 +53,6 @@ INSTALLED_APPS += (
     'payment',
     'plugins',
     'django.contrib.humanize',
-    'django.contrib.sites',
 )
 
 # mezzanine-mdown options

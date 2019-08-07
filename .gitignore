@@ -112,6 +112,6 @@ django_project/media
 
 # Backups
 *.dmp
-deployment/backups
+deployment/backups/2019
 deployment/btsync.env
 deployment/logs
