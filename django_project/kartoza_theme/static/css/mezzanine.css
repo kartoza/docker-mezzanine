@@ -626,3 +626,7 @@ float the buttons inside it. This prevents collapsing. */
 .thumbnail-caption .price-info {
     color: #6d6d6d !important;
 }
+
+.blog-list-detail .list-inline {
+    margin-left: 0px;
+}
