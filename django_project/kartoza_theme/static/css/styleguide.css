@@ -1,0 +1,196 @@
+/* STYLE GUIDE */
+
+body {
+    --c-orange: #ecb44b;
+    --c-orange-l: #efc067;
+    --c-orange-d: #cc9c43;
+    --c-grey: #ffffff;
+    --c-grey-d: #464646;
+    --c-grey-l: #fafafa;
+    --c-blue: #57a0c7;
+
+
+}
+
+
+button, html input[type="button"], input[type="reset"], input[type="submit"] {
+    width: 166px;
+    height: 46px;
+    color: #ffffff;
+    font-family: Lato;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 0px;
+    background-color: #ecb44b;
+    width: 100%;
+    border-style: none;
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open .dropdown-toggle.btn-primary {
+    background-color: #efc067;
+    color: #ffffff;
+}
+
+.btn-primary:active, .btn-primary.active, .open .dropdown-toggle.btn-primary {
+    background-color: #cc9c43;
+    color: #ffffff;
+}
+
+.btn-primary:disabled, .btn-primary.disabled {
+    background-color: #e5e6e7;
+    color: #ffffff;
+}
+
+
+.btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open .dropdown-toggle.btn-default {
+    background-color: #efc067;
+    color: #ffffff;
+}
+
+/* ----------------------------- DROPDOWN ----------------------------- */
+
+
+.form-group > select {
+    width: 100%;
+    height: 48px;
+    box-shadow: 0 7px 64px rgba(0, 0, 0, 0.07);
+    border-radius: 6px;
+    border: 1px solid #ecebed;
+    background-color: #ffffff;
+    /*width: 100%;*/
+    /*text-align: left;*/
+    /*min-width: 200px;*/
+    /*border: 1px solid #ffffff;*/
+    /*color: var(--c-grey);*/
+    /*font-size: 1.25rem;*/
+    /*z-index: 2;*/
+    /*height: 2.5rem;*/
+
+}
+
+.form-group > select:hover {
+    border-color: var(--c-grey-d);
+    color: var(--c-grey-d);
+}
+
+.form-group > select:active {
+    border-color: var(--c-orange-l);
+    border-width: 1px;
+    color: var(--c-grey-d);
+}
+
+.form-group > select:focus-within {
+    border-color: var(--c-orange-d);
+    border-width: 1px;
+    color: var(--c-grey-d);
+    outline-color: var(--c-orange-d);
+}
+
+.form-group > select:visited {
+    border-color: var(--c-orange-d);
+    border-width: 1.5px;
+    color: var(--c-grey-d);
+}
+
+/* ----------------------------- END OF DROPDOWN ----------------------------- */
+/* ----------------------------- TABLE --------------------------------------- */
+td {
+    background-color: var(--c-grey-l);
+    padding: 0.5rem;
+}
+
+tbody td {
+    border: 1px solid #dbe3e8;
+}
+
+tbody tr:nth-child(1) td {
+    background-color: var(--c-blue) !important;
+    border: none;
+}
+
+td:nth-child(1) {
+    background-color: var(--c-blue) !important;
+    border: none;
+}
+
+
+/* ----------------------------- END OF TABLE ------------------------------- */
+
+#mc_embed_signup .mc-field-group input, input {
+    box-shadow: 0 7px 64px rgba(0, 0, 0, 0.07);
+    border-radius: 6px;
+    background-color: #ffffff;
+    color: #3f3356;
+    font-family: "Open Sans";
+}
+
+#mc_embed_signup .mc-field-group input:focus, input:focus {
+    box-shadow: 0 7px 64px rgba(0, 0, 0, 0.07);
+    border-radius: 6px;
+    border: 1px solid #ecebed;
+    background-color: #ffffff;
+}
+
+#mc_embed_signup .mc-field-group input:focus, input:focus {
+    box-shadow: 0 7px 64px rgba(0, 0, 0, 0.07);
+    border-radius: 6px;
+    border: 1px solid #ecebed;
+    background-color: #ffffff;
+}
+
+#mc_embed_signup .mc-field-group input:disabled, input:disabled {
+    box-shadow: 0 7px 64px rgba(0, 0, 0, 0.07);
+    border-radius: 6px;
+    background-color: #e5e6e7;
+}
+
+/* GENERAL MEZZANINE OVERRIDE */
+
+.form-group > input[type="text"],
+.form-group > input[type="password"],
+.form-group > input[type="datetime"],
+.form-group > input[type="datetime-local"],
+.form-group > input[type="date"],
+.form-group > input[type="month"],
+.form-group > input[type="time"],
+.form-group > input[type="week"],
+.form-group > input[type="number"],
+.form-group > input[type="email"],
+.form-group > input[type="url"],
+.form-group > input[type="search"],
+.form-group > input[type="tel"],
+.form-group > input[type="color"],
+.form-group > select,
+.form-group > textarea {
+    box-shadow: 0 7px 64px rgba(0, 0, 0, 0.07);
+    border-radius: 6px;
+    border: 1px solid #ecebed;
+    background-color: #ffffff;
+
+}
+
+
+.form-group > input[type="text"]:focus,
+.form-group > input[type="password"]:focus,
+.form-group > input[type="datetime"]:focus,
+.form-group > input[type="datetime-local"]:focus,
+.form-group > input[type="date"]:focus,
+.form-group > input[type="month"]:focus,
+.form-group > input[type="time"]:focus,
+.form-group > input[type="week"]:focus,
+.form-group > input[type="number"]:focus,
+.form-group > input[type="email"]:focus,
+.form-group > input[type="url"]:focus,
+.form-group > input[type="search"]:focus,
+.form-group > input[type="tel"]:focus,
+.form-group > input[type="color"]:focus,
+.form-group > select:focus,
+.form-group > textarea:focus {
+    box-shadow: 0 7px 64px rgba(0, 0, 0, 0.07);
+    border-radius: 6px;
+    border: 1px solid #ecebed;
+}
+
+
+
