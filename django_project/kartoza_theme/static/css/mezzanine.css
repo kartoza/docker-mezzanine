@@ -459,23 +459,23 @@ float the buttons inside it. This prevents collapsing. */
     margin: 20px 0;
 }
 
-.rating span, .rating form {
-    display: inline-block;
-}
+/*.rating span, .rating form {*/
+/*    display: inline-block;*/
+/*}*/
 
-.rating ul {
-    padding-left: 0;
-    list-style: none;
-}
+/*.rating ul {*/
+/*    padding-left: 0;*/
+/*    list-style: none;*/
+/*}*/
 
-.rating li {
-    display: inline-block;
-    margin: 0 5px;
-}
+/*.rating li {*/
+/*    display: inline-block;*/
+/*    margin: 0 5px;*/
+/*}*/
 
-.comment .rating {
-    margin-top: 5px;
-}
+/*.comment .rating {*/
+/*    margin-top: 5px;*/
+/*}*/
 
 .comment-author {
     border: 1px solid #DDD;
@@ -625,4 +625,57 @@ float the buttons inside it. This prevents collapsing. */
 
 .thumbnail-caption .price-info {
     color: #6d6d6d !important;
+}
+
+
+/*RATING*/
+
+
+.rating ul {
+  border: none;
+  float: left;
+    list-style-type: none;
+    display: flex;
+}
+
+.rating label > input { display: none; }
+.rating li > label:after {
+  margin: 5px;
+  font-size: 1.25em;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f005";
+}
+
+.rating label {
+  color: #ddd;
+ float: right;
+}
+
+
+
+/***** CSS Magic to Highlight Stars on Hover *****/
+.radio input[type="radio"]:checked {
+  margin: 5px;
+  font-size: 1.25em;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f005";
+    color: #FFD700;
+}
+
+
+
+.rating ul li > input:checked ~ label, /* show gold star when clicked */
+.rating:not(:checked) > label:hover, /* hover current star */
+.rating:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
+
+.rating label > input:checked + label:hover, /* hover current star when changing rating */
+.rating label > input:checked ~ label:hover,
+.rating label:hover ~ input:checked ~ label, /* lighten current selection */
+.rating label > input:checked ~ label:hover ~ label { color: #FFED85;  }
+
+
+.radio-selected {
+    color: #FFED85;
 }
