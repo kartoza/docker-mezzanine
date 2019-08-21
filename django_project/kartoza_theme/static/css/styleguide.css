@@ -8,7 +8,8 @@ body {
     --c-grey-d: #464646;
     --c-grey-l: #fafafa;
     --c-blue: #57a0c7;
-
+    --c-blue-l: #72afd0;
+    --c-blue-d: #4f8bac;
 
 }
 
@@ -22,30 +23,54 @@ button, html input[type="button"], input[type="reset"], input[type="submit"] {
     font-weight: 700;
     text-transform: uppercase;
     line-height: 0px;
-    background-color: #ecb44b;
+    /*background-color: var(--c-orange);*/
     width: 100%;
     border-style: none;
 }
 
-.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open .dropdown-toggle.btn-primary {
-    background-color: #efc067;
+.btn-primary {
+    background-color: var(--c-orange) !important;
     color: #ffffff;
+    border: none;
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open .dropdown-toggle.btn-primary {
+    background-color: var(--c-orange-l) !important;
+    color: #ffffff;
+    border: none;
 }
 
 .btn-primary:active, .btn-primary.active, .open .dropdown-toggle.btn-primary {
-    background-color: #cc9c43;
+    background-color: #cc9c43 !important;
     color: #ffffff;
+    border: none;
 }
 
 .btn-primary:disabled, .btn-primary.disabled {
-    background-color: #e5e6e7;
+    background-color: #e5e6e7 !important;
     color: #ffffff;
+    border: none;
 }
 
 
 .btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open .dropdown-toggle.btn-default {
-    background-color: #efc067;
+    background-color: var(--c-blue-l) !important;
     color: #ffffff;
+    border: none;
+
+}
+
+.btn-default, .open .dropdown-toggle.btn-default {
+    background-color: var(--c-blue) !important;
+    color: #ffffff;
+    border: none;
+}
+
+
+.btn-default:active, .btn-primary.active, .open .dropdown-toggle.btn-primary {
+    background-color: var(--c-blue-d) !important;
+    color: #ffffff;
+    border: none;
 }
 
 /* ----------------------------- DROPDOWN ----------------------------- */
@@ -58,15 +83,6 @@ button, html input[type="button"], input[type="reset"], input[type="submit"] {
     border-radius: 6px;
     border: 1px solid #ecebed;
     background-color: #ffffff;
-    /*width: 100%;*/
-    /*text-align: left;*/
-    /*min-width: 200px;*/
-    /*border: 1px solid #ffffff;*/
-    /*color: var(--c-grey);*/
-    /*font-size: 1.25rem;*/
-    /*z-index: 2;*/
-    /*height: 2.5rem;*/
-
 }
 
 .form-group > select:hover {
@@ -95,21 +111,21 @@ button, html input[type="button"], input[type="reset"], input[type="submit"] {
 
 /* ----------------------------- END OF DROPDOWN ----------------------------- */
 /* ----------------------------- TABLE --------------------------------------- */
-td {
+#cateogry td {
     background-color: var(--c-grey-l);
     padding: 0.5rem;
 }
 
-tbody td {
+#category  tbody td {
     border: 1px solid #dbe3e8;
 }
 
-tbody tr:nth-child(1) td {
+#category  tbody tr:nth-child(1) td {
     background-color: var(--c-blue) !important;
     border: none;
 }
 
-td:nth-child(1) {
+#category td:nth-child(1) {
     background-color: var(--c-blue) !important;
     border: none;
 }
@@ -167,7 +183,6 @@ td:nth-child(1) {
     border-radius: 6px;
     border: 1px solid #ecebed;
     background-color: #ffffff;
-
 }
 
 
@@ -193,4 +208,4 @@ td:nth-child(1) {
 }
 
 
-
+/* END MEZZANINE OVERRIDE */
