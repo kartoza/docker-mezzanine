@@ -626,3 +626,42 @@ float the buttons inside it. This prevents collapsing. */
 .thumbnail-caption .price-info {
     color: #6d6d6d !important;
 }
+
+
+.header1 {
+
+    color: #231f20;
+    font-family: Lato;
+    font-size: 55px;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+
+.header1 {
+
+    color: #231f20;
+    font-family: Lato;
+    font-size: 55px;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+.header2 {
+    color: #231f20;
+    font-family: Lato;
+    font-size: 36px;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+.big-paragraph {
+    color: #231f20 !important;
+    font-family: Lato !important;
+    font-size: 20px !important;
+    font-weight: 400 !important;
+
+}
+.navbar-spacer {
+    height: 50px;
+}

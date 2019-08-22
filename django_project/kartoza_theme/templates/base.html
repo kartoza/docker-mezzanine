@@ -109,13 +109,10 @@
         </div>
     </div>
 </div>
+<div class="navbar-spacer"></div>
 {% block title_wrapper %}
-    <div id="blue">
-        <div class="container">
-            <div class="row">
-                <h3>{% block title %}{% endblock %}</h3>
-            </div><!-- /row -->
-        </div> <!-- /container -->
+    <div class="container">
+        <div class="header1">{% block title %}{% endblock %}</div>
     </div>
 {% endblock %}
 <div class="container">
@@ -142,7 +139,7 @@
 
 </div>
 {% block all_content %}
-    <div class="container mtb">
+    <div class="container mtb big-paragraph">
         {% block main_wrapper %}
             <div>
                 {% block main %}{% endblock %}
