@@ -2,86 +2,87 @@
 <html lang="{{ LANGUAGE_CODE }}"{% if LANGUAGE_BIDI %} dir="rtl"{% endif %}>
 {% load pages_tags mezzanine_tags i18n future staticfiles %}
 
-<head>
-    <!-- Global Site Tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-1001220779"></script>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-64176861-1"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+    <head>
+        <!-- Global Site Tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=AW-1001220779"></script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-64176861-1"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
 
-      gtag('config', 'GA_TRACKING_ID');
-    </script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+          gtag('config', 'GA_TRACKING_ID');
+        </script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
 
-      gtag('config', 'UA-64176861-1');
-    </script>
-    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="keywords" content="{% block meta_keywords %}{% endblock %}">
-    <meta name="description"
-          content="{% block meta_description %}{% endblock %}">
-    <title>{% block meta_title %}{% endblock %}{% if settings.SITE_TITLE %} |
-        {{ settings.SITE_TITLE }}{% endif %}</title>
-    <link rel="shortcut icon" href="{% static "img/favicon.ico" %}">
+          gtag('config', 'UA-64176861-1');
+        </script>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="keywords" content="{% block meta_keywords %}{% endblock %}">
+        <meta name="description"
+              content="{% block meta_description %}{% endblock %}">
+        <title>{% block meta_title %}{% endblock %}{% if settings.SITE_TITLE %} |
+            {{ settings.SITE_TITLE }}{% endif %}</title>
+        <link rel="shortcut icon" href="{% static "img/favicon.ico" %}">
 
-    {% ifinstalled mezzanine.blog %}
-        <link rel="alternate" type="application/rss+xml" title="RSS"
-              href="{% url "blog_post_feed" "rss" %}">
-        <link rel="alternate" type="application/atom+xml" title="Atom"
-              href="{% url "blog_post_feed" "atom" %}">
-    {% endifinstalled %}
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,600,800'
-          rel='stylesheet' type='text/css'>
-    <!--[if lte IE 8]>
-        <link rel="stylesheet" href="http://yui.yahooapis.com/combo?pure/0.6.0/base-min.css&pure/0.6.0/grids-min.css&pure/0.6.0/grids-responsive-old-ie-min.css">
-        <![endif]-->
-    <!--[if gt IE 8]><!-->
-    <link rel="stylesheet" href="http://yui.yahooapis.com/combo?pure/0.6.0/base-min.css&pure/0.6.0/grids-min.css&pure/0.6.0/grids-responsive-min.css">
-    <!--<![endif]-->
-    {% block extra_css %}{% endblock %}
-    {% compress css %}
-        <link rel="stylesheet" href="{% static "css/hoverex-all.css" %}">
-        <link rel="stylesheet" href="{% static "css/fonts.css" %}">
-        <link rel="stylesheet" href="{% static "css/kartoza-form.css" %}">
-        <link rel="stylesheet" href="{% static "css/bootstrap.css" %}">
-        <link rel="stylesheet" href="{% static "css/mezzanine.css" %}">
-        <link href="{% static "css/font-awesome.min.css" %}" rel="stylesheet"
-              type="text/css"/>
-        <link href="{% static "css/style.css" %}" rel="stylesheet">
-        <link rel="stylesheet"
-              href="{% static "responsiveslides/responsiveslides.css" %}"/>
-        {% if LANGUAGE_BIDI %}
-            <link rel="stylesheet" href="{% static "css/rtl.css" %}">
-        {% endif %}
-        {% ifinstalled cartridge.shop %}
-            <link rel="stylesheet" href="{% static "css/cartridge.css" %}">
-            {% if LANGUAGE_BIDI %}
-                <link rel="stylesheet"
-                      href="{% static "css/cartridge.rtl.css" %}">
-            {% endif %}
+        {% ifinstalled mezzanine.blog %}
+            <link rel="alternate" type="application/rss+xml" title="RSS"
+                  href="{% url "blog_post_feed" "rss" %}">
+            <link rel="alternate" type="application/atom+xml" title="Atom"
+                  href="{% url "blog_post_feed" "atom" %}">
         {% endifinstalled %}
-    {% endcompress %}
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,600,800'
+              rel='stylesheet' type='text/css'>
+        <!--[if lte IE 8]>
+            <link rel="stylesheet" href="http://yui.yahooapis.com/combo?pure/0.6.0/base-min.css&pure/0.6.0/grids-min.css&pure/0.6.0/grids-responsive-old-ie-min.css">
+            <![endif]-->
+        <!--[if gt IE 8]><!-->
+        <link rel="stylesheet" href="http://yui.yahooapis.com/combo?pure/0.6.0/base-min.css&pure/0.6.0/grids-min.css&pure/0.6.0/grids-responsive-min.css">
+        <!--<![endif]-->
+        {% block extra_css %}{% endblock %}
+        {% compress css %}
+            <link rel="stylesheet" href="{% static "css/hoverex-all.css" %}">
+            <link rel="stylesheet" href="{% static "css/fonts.css" %}">
+            <link rel="stylesheet" href="{% static "css/kartoza-form.css" %}">
+            <link rel="stylesheet" href="{% static "css/bootstrap.css" %}">
+            <link rel="stylesheet" href="{% static "css/mezzanine.css" %}">
+            <link href="{% static "css/font-awesome.min.css" %}" rel="stylesheet"
+                  type="text/css"/>
+            <link href="{% static "css/style.css" %}" rel="stylesheet">
+            <link rel="stylesheet"
+                  href="{% static "responsiveslides/responsiveslides.css" %}"/>
+            {% if LANGUAGE_BIDI %}
+                <link rel="stylesheet" href="{% static "css/rtl.css" %}">
+            {% endif %}
+            {% ifinstalled cartridge.shop %}
+                <link rel="stylesheet" href="{% static "css/cartridge.css" %}">
+                {% if LANGUAGE_BIDI %}
+                    <link rel="stylesheet"
+                          href="{% static "css/cartridge.rtl.css" %}">
+                {% endif %}
+            {% endifinstalled %}
+            <link rel="stylesheet" href="{% static "css/styleguide.css" %}">
+        {% endcompress %}
 
-    {% compress js %}
-        <script src="{% static "mezzanine/js/"|add:settings.JQUERY_FILENAME %}"></script>
-        <script src="{% static "js/bootstrap.js" %}"></script>
-        <script src="{% static "js/bootstrap-extras.js" %}"></script>
-        <script src="{% static "js/responsiveslides/responsiveslides.min.js" %}"></script>
-        {% block extra_js %}{% endblock %}
-        {% include "includes/footer_scripts.html" %}
-    {% endcompress %}
+        {% compress js %}
+            <script src="{% static "mezzanine/js/"|add:settings.JQUERY_FILENAME %}"></script>
+            <script src="{% static "js/bootstrap.js" %}"></script>
+            <script src="{% static "js/bootstrap-extras.js" %}"></script>
+            <script src="{% static "js/responsiveslides/responsiveslides.min.js" %}"></script>
+            {% block extra_js %}{% endblock %}
+            {% include "includes/footer_scripts.html" %}
+        {% endcompress %}
 
-    <!--[if lt IE 9]>
-<script src="{% static "js/html5shiv.js" %}"></script>
-<script src="{% static "js/respond.min.js" %}"></script>
-<![endif]-->
+        <!--[if lt IE 9]>
+    <script src="{% static "js/html5shiv.js" %}"></script>
+    <script src="{% static "js/respond.min.js" %}"></script>
+    <![endif]-->
 
-    {% block extra_head %}{% endblock %}
+        {% block extra_head %}{% endblock %}
 </head>
 
 <body id="{% block body_id %}page-top{% endblock %}">
