@@ -31,7 +31,7 @@ RUN cd /usr/src/website/deployment/docker && \
 RUN apt-get -y install pandoc
 RUN dpkg-reconfigure locales
 # Open port 8080 as we will be running our uwsgi socket on that
-EXPOSE 8080
+EXPOSE 80
 
 WORKDIR /home/web/django_project
 CMD ["uwsgi", "--env", "LC_ALL=en_ZA.UTF-8", "--ini", "/uwsgi.conf"]
