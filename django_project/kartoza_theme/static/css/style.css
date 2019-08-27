@@ -1017,10 +1017,14 @@ csmall2 {
     background-image: url(../../static/img/home-page-back-left-2.png);
     position: absolute;
     height: 100%;
-    width: 100%;
+    width: 50%;
     left: -5%;
     background-repeat: no-repeat;
     background-size: contain;
-    top: 395%;
+    top: 375%;
     z-index: -10;
+}
+
+.training-large .col-md-12 {
+    text-align: center;
 }

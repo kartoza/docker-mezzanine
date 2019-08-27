@@ -360,6 +360,11 @@ button, html input[type="button"], input[type="reset"], input[type="submit"] {
     margin-bottom: 0.5rem;
 }
 
+.my-3 {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
 .btn-center {
     display: block;
     margin-left: auto;
