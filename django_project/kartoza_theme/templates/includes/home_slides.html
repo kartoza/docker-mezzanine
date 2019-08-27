@@ -1,17 +1,81 @@
 {% load mezzanine_tags %}
+{% load %}
 
 {% if page.slide_set.all %}
-    <ul class="rslides-custom">
-      {% for image in page.slide_set.all %}
-        <li>
-          <img src="{{ MEDIA_URL }}{% thumbnail image.file 1700 400 %}" alt="{{ image.description }}"/>
-        </li>
-      {% endfor %}
+    <ul class="rslides-home">
+        {% for clientgroup in clients %}
+
+            <li class="col-xs-12" style="width:85%">
+            {% for client in clientgroup %}
+                <div class="col-xs-4">
+                    <img src="{{ MEDIA_URL }}{% thumbnail client.logo 200 200 %}" alt="{{ client.name }}"/>
+                </div>
+                {#         <a href="{{ client.link }}" target="_blank">#}
+                {% endfor %}
+            </li>
+        {% endfor %}
     </ul>
 
-  <script>
-    $(function() {
-      $('.rslides-custom').responsiveSlides();
-    });
-  </script>
+    <style>
+        .rslides-home img {
+            max-width: 200px;
+            height: auto;
+            position: relative;
+            display: block;
+            left: 50%;
+            /* margin-right: 100%; */
+            transform: translateX(-15%);
+            margin-top: 5rem;
+
+        }
+
+        .rslides-home li {
+            width: 100vw;
+            pointer-events: none;
+        }
+
+        a.rslides_nav.rslides1_nav.prev {
+            position: absolute;
+            left: 7%;
+            top: 62%;
+
+            font-size: 90px;
+            color: transparent;
+            transform: translateY(-50%);
+
+            background-image: url(../../static/img/front-page-arrow-left.png);
+            background-repeat: no-repeat;
+
+        }
+
+        .rslides_nav:hover {
+            cursor: pointer;
+
+        }
+
+        a.rslides_nav.rslides1_nav.next {
+            position: absolute;
+            right: 13%;
+            top: 62%;
+
+            font-size: 90px;
+            color: transparent;
+            transform: translateY(-50%);
+            background-image: url(../../static/img/front-page-arrow-right.png);
+            background-repeat: no-repeat;
+
+        }
+    </style>
+    <script>
+        $(function () {
+            $('.rslides-home').responsiveSlides({
+                auto: true,
+                pager: false,
+                nav: true,
+                speed: 500,
+            });
+            $('.next').html(".");
+            $('.prev').html(".");
+        });
+    </script>
 {% endif %}

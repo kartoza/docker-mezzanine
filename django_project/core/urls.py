@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
 from mezzanine.core.views import direct_to_template
+from views import home
 
 admin.autodiscover()
 
@@ -80,7 +81,7 @@ urlpatterns = i18n_patterns(
         # "/.html" - so for this case, the template "pages/index.html"
         # should be used if you want to customize the homepage's template.
 
-        url("^$", "mezzanine.pages.views.page", {"slug": "/"}, name="home"),
+        url("^$", home, {"slug": "/"}, name="home"),
 
         # HOMEPAGE FOR A BLOG-ONLY SITE
         # -----------------------------
