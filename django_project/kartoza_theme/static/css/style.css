@@ -26,6 +26,7 @@ body {
     color: #384452;
     font-family: 'Lato', sans-serif;
     font-weight: 400;
+    overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -128,7 +129,7 @@ a:focus {
 }
 
 .navbar-default {
-    background-color: #384452;
+    background-color: #414042;
     border-color: transparent;
 }
 
@@ -383,9 +384,10 @@ a:focus {
 
 /* Footer */
 #footerwrap {
-    padding-top: 60px;
+    padding-top: 0px;
     padding-bottom: 60px;
-    background: #384452;
+    background-color: #414042;
+    width: 100vw;
 }
 
 #footerwrap p {
@@ -404,6 +406,17 @@ a:focus {
 
 #footerwrap i:hover {
     color: #00b3fe
+}
+
+.footer-row {
+    background-image: url(../../static/img/home-page-footer.png);
+    height: 100px;
+    left: -20%;
+    position: relative;
+    top: -40px;
+    background-repeat: no-repeat;
+    width: 115vw;
+    background-size: cover;
 }
 
 /*	################################################################
@@ -722,6 +735,7 @@ csmall2 {
     float: none;
     margin-left: 0px;
 }
+
 /*	################################################################
 	RIGHT SIDE
 ################################################################# */
@@ -804,7 +818,7 @@ csmall2 {
     padding-top: 10px !important;
 }
 
-.person-link i{
+.person-link i {
     font-size: 11pt;
     padding-left: 5px;
 }
@@ -827,7 +841,8 @@ csmall2 {
     vertical-align: middle;
     height: 120px;
     padding-top: 20px;
-    text-align: center; margin: 1em 0;
+    text-align: center;
+    margin: 1em 0;
 }
 
 .client img {
@@ -837,7 +852,7 @@ csmall2 {
 }
 
 .justify-center {
-  justify-content: center;
+    justify-content: center;
 }
 
 /*	################################################################
@@ -847,4 +862,169 @@ csmall2 {
 
 .product-thumb {
     padding-top: 5px;
+}
+
+/*	################################################################
+	HOMEPAGE
+################################################################# */
+
+.home-page-logo {
+
+    height: auto;
+    align-items: center;
+    text-align: center;
+    margin-left: auto;
+    display: block;
+    margin-right: auto;
+}
+
+.home-page-copy-main {
+    color: #231f20;
+    font-family: Lato;
+    font-size: 20px;
+    font-weight: 400;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.home-page-image {
+    margin-top: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.home-page-small-image {
+
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.home-page-small-image-center {
+    margin-top: auto;
+    margin-bottom: auto;
+    display: grid;
+    top: 50%;
+    position: relative;
+    transform: translateY(-50%)
+}
+
+.button-row .col-xs-4 {
+    padding-left: 5rem;
+    padding-right: 5rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.home-page-philosophy {
+    color: #ffffff !important;
+    margin-top: 5rem;
+    margin-bottom: 2rem;
+}
+
+.home-page-heading {
+    color: black;
+    font-family: Lato;
+    font-size: 36px;
+    font-weight: 400;
+    padding-right: 5rem;
+}
+
+.home-page-philosophy-content {
+    color: #ffffff;
+    font-family: Lato;
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.home-page-philosophy-row {
+    background-image: url(../../static/img/front-page-phil.png);
+    margin-top: 2rem;
+    height: 110%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 110vw;
+    left: -26%;
+    position: relative;
+}
+
+.home-page-philosophy-row-container {
+    position: relative;
+    height: 457px;
+}
+
+.home-page-philosophy-content-parent {
+    position: relative;
+    top: -110%;
+    text-align: center;
+}
+
+
+.home-page-clients-row {
+    background-image: url(../../static/img/front-page-clients-background.png);
+    margin-top: 2rem;
+    height: 110%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 110vw;
+    left: -27%;
+    position: relative;
+}
+
+.technical-articles-heading {
+    color: #231f20;
+    font-family: Lato;
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.technical-articles ul {
+    color: #57a0c7;
+    font-family: Lato;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 26px;
+    text-decoration: underline;
+}
+
+.home-page-back-left-1 {
+    position: absolute;
+    background-image: url(../../static/img/home-page-back-left-1.png);
+    height: 1982px;
+    width: 51%;
+    background-repeat: no-repeat;
+    background-size: contain;
+    left: -32%;
+    top: -0.7%;
+
+}
+
+.home-page-back-right-1 {
+    background-image: url(../../static/img/home-page-back-right-1.png);
+    position: absolute;
+    height: 1657px;
+    width: 46%;
+    background-repeat: no-repeat;
+    background-size: contain;
+    right: 0%;
+    top: 0%;
+}
+
+.home-page-back-left-2 {
+    background-image: url(../../static/img/home-page-back-left-2.png);
+    position: absolute;
+    height: 100%;
+    width: 50%;
+    left: -5%;
+    background-repeat: no-repeat;
+    background-size: contain;
+    top: 375%;
+    z-index: -10;
+}
+
+.training-large .col-md-12 {
+    text-align: center;
 }
