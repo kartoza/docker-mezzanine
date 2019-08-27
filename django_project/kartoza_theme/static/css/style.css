@@ -411,7 +411,7 @@ a:focus {
 .footer-row {
     background-image: url(../../static/img/home-page-footer.png);
     height: 100px;
-    left: -27%;
+    left: -20%;
     position: relative;
     top: -40px;
     background-repeat: no-repeat;
