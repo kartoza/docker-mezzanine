@@ -23,6 +23,10 @@ def home(request, slug):
     data_in_split = [data_in[i * n:(i + 1) * n] for i in range((len(data_in) + n - 1) // n)]
 
     data = {'clients': data_in_split}
-
-
     return page( request, slug, u"pages/page.html", data)
+
+
+def about(request):
+    templates = [u'kartoza_theme/project_detail_%s.html' % unicode(slug),
+                 template]
+    return render(request, )
