@@ -926,11 +926,17 @@ csmall2 {
 }
 
 .home-page-heading {
-    color: black;
+
     font-family: Lato;
     font-size: 36px;
     font-weight: 400;
-    padding-right: 5rem;
+}
+
+.home-page-heading-small {
+
+    font-family: Lato;
+    font-size: 30px;
+    font-weight: 400;
 }
 
 .home-page-philosophy-content {
@@ -941,16 +947,26 @@ csmall2 {
 }
 
 .home-page-philosophy-row {
-    background-image: url(../../static/img/front-page-phil.png);
-    margin-top: 2rem;
-    height: 110%;
-    background-repeat: no-repeat;
-    background-size: cover;
-    width: 110vw;
-    left: -26%;
-    position: relative;
+    color: white;
 }
 
+.home-page-row-content {
+    top: 0%;
+    position: absolute;
+    width: 100%
+}
+
+img.home-page-fbis {
+    width: 100vw;
+}
+
+.home-page-philosophy-image {
+    width: 100vw;
+}
+
+.home-page-philosophy-image image {
+    width 100vw !important;
+}
 .home-page-philosophy-row-container {
     position: relative;
     height: 457px;
@@ -1016,13 +1032,19 @@ csmall2 {
 .home-page-back-left-2 {
     background-image: url(../../static/img/home-page-back-left-2.png);
     position: absolute;
-    height: 100%;
-    width: 50%;
-    left: -5%;
-    background-repeat: no-repeat;
-    background-size: contain;
-    top: 375%;
+    height: 200px width: 50%;
+    height: 500px;
+    width: 500px;
     z-index: -10;
+
+    top: -25%;
+    overflow: hidden;
+    background-size: cover;
+    background-repeat: no-repeat;
+    /*background-repeat: no-repeat;*/
+    /*background-size: contain;*/
+    /*top: 375%;*/
+    /*z-index: -10;*/
 }
 
 .training-large .col-md-12 {

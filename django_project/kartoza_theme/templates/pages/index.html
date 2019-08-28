@@ -8,266 +8,313 @@
 {% endblock %}
 
 {% block all_content %}
-    <div>
+    {% block left_wrapper %}
+    {% endblock %}
+    {% block main_wrapper %}
+        <div>
         <div class="row">
-            <div class="home-page-back-left-1">
-
-            </div>
-            <div class="home-page-back-right-1">
-
-            </div>
-            <div class="home-page-back-left-2"></div>
-            <div class="col-xs-2">
-                {% block left_wrapper %}
-                {% endblock %}
-            </div>
-            <div class="col-xs-8">
-
-                {% block main_wrapper %}
-                    <div class="row" style="margin-top: 15rem; margin-bottom: 15rem;">
-                        <div class="col-xs-12 col-md-4">
-                            <div class="col-xs-12">
-                                <img class="home-page-logo" src="{% static "img/kartoza-logo-homepage.svg" %}">
-                            </div>
-                            <div class="col-xs-12 home-page-copy-main">
-                                We provide training, development and support services to individuals, companies and
-                                governments around the world who are looking to leverage the power of the Free Software
-                                movement to solve geospatial problems.
-                            </div>
-                            <div class="col-md-12 col-lg-5">
-                                <a class="btn btn-default" href="/contact/"
-                                   style="width: 100%; min-width: fit-content; margin-top:1rem;">Enquire
-                                </a>
-                            </div>
-                            <div class="col-md-12 col-lg-5">
-                                <a class="btn btn-default-hollow" href="/showcase"
-                                   style="width: 100%; min-width: fit-content; margin-top: 1rem;">
-                                    Portfolio
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-xs-12 col-md-8">
-                            <div class="col-xs-12">
-                                <img class="home-page-image" src="{% static "img/front-page-imac-cover.png" %}">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row home-page-break"></div>
-                    <div class="hidden-sm hidden-xs">
-                        <div class="row">
-                            <div class="col-xs-4">
-                                <img class="home-page-small-image" src="{% static "img/front-page-training.png" %}">
-                            </div>
-                            <div class="col-xs-4" style="height: 178px;">
-                                <img class="home-page-small-image home-page-small-image-center"
-                                     src="{% static "img/front-page-sd.png" %}">
-                            </div>
-                            <div class="col-xs-4">
-                                <img class="home-page-small-image"
-                                     src="{% static "img/front-page-deployment-support.png" %}">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-4">
-                                <div class="text-big-heavy text-center my-1">Training and Education</div>
-                            </div>
-                            <div class="col-xs-4">
-                                <div class="text-big-heavy text-center my-1">Software Development</div>
-                            </div>
-                            <div class="col-xs-4">
-                                <div class="text-big-heavy text-center my-1">Deployment and Support</div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <div class="col-xs-4">
-                                    <div class="text-medium my-1">We provide corporate training in the use of
-                                        FOSSGIS such as QGIS, PostgreSQL/PostGIS, Geoserver etc. We also develop
-                                        curriculum
-                                        materials and provide teacher training in order to foster the study of GIS and
-                                        geospatial technology at schools and universities
-                                    </div>
-                                </div>
-                                <div class="col-xs-4">
-                                    <div class="text-medium my-1">We provide bespoke services for the development of
-                                        custom
-                                        solutions to meet your business needs. These include desktop application
-                                        development
-                                        and
-                                        web development using FOSSGIS. Our web application development services focus on
-                                        applications that have a GeoSpatial component using technologies such as
-                                        GeoDjango,
-                                        OpenLayers, PostGIS and many other components.
-                                    </div>
-                                </div>
-                                <div class="col-xs-4">
-                                    <div class="text-medium my-1">We provide services to help you deploy and maintain
-                                        FOSSGIS
-                                        deployments within your organisation. This includes PostgreSQL/PostGIS, Linux
-                                        based
-                                        server deployments, QGIS, UMN Mapserver, GeoServer and many others.
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row button-row my-1" class="margin-bottom: 5rem;">
-                            <div class="col-xs-4">
-                                <a class="btn btn-primary-hollow" href="/training-courses">
-                                    TRAINING
-                                </a>
-                            </div>
-                            <div class="col-xs-4 ">
-                                <a class="btn btn-primary-hollow" href="/showcase">
-                                    PORTFOLIO
-                                </a>
-                            </div>
-                            <div class="col-xs-4">
-                                <a class="btn btn-primary-hollow" href="/support-2">
-                                    SUPPORT
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="hidden-lg hidden-xl hidden-md training-large">
-                     <div class="row">
-                            <div class="col-md-12 my-3">
-                                <img class="home-page-small-image" src="{% static "img/front-page-training.png" %}">
-                            </div>
-                            <div class="col-md-12">
-                                <div class="text-big-heavy text-center my-3">Training and Education</div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="text-medium my-1">We provide corporate training in the use of
-                                        FOSSGIS such as QGIS, PostgreSQL/PostGIS, Geoserver etc. We also develop
-                                        curriculum
-                                        materials and provide teacher training in order to foster the study of GIS and
-                                        geospatial technology at schools and universities
-                                    </div>
-                            </div>
-                            <div class="col-md-12 my-3">
-                                <a class="btn btn-primary-hollow" href="/training-courses">
-                                    TRAINING
-                                </a>
-                            </div>
-                     </div>
-                        <div class="row">
-                            <div class="col-md-12 my-3">
-
-                                <img class="home-page-small-image"
-                                     src="{% static "img/front-page-sd.png" %}" style="height:178px">
-                                <div class="text-big-heavy text-center my-3">Software Development</div>
-                                <div class="text-medium my-1">We provide bespoke services for the development of
-                                        custom
-                                        solutions to meet your business needs. These include desktop application
-                                        development
-                                        and
-                                        web development using FOSSGIS. Our web application development services focus on
-                                        applications that have a GeoSpatial component using technologies such as
-                                        GeoDjango,
-                                        OpenLayers, PostGIS and many other components.
-                                    </div>
-                                 <a class="btn btn-primary-hollow my-3" href="/showcase">
-                                    PORTFOLIO
-                                </a>
-                            </div>
-                            </div>
-                        <div class="row">
-                             <div class="col-md-12 my-3">
-                                  <img class="home-page-small-image"
-                                     src="{% static "img/front-page-deployment-support.png" %}">
-                                  <div class="text-big-heavy text-center my-3">Deployment and Support</div>
-                                 <div class="text-medium my-1">We provide services to help you deploy and maintain
-                                        FOSSGIS
-                                        deployments within your organisation. This includes PostgreSQL/PostGIS, Linux
-                                        based
-                                        server deployments, QGIS, UMN Mapserver, GeoServer and many others.
-                                    </div>
-                                 <a class="btn btn-primary-hollow my-3" href="/support-2">
-                                    SUPPORT
-                                </a>
-
-                             </div>
-                        </div>
-                    </div>
-                    <div class="home-page-philosophy-row-container">
-                        <div class="home-page-philosophy-row">
-
-                        </div>
-                        <div class="col-xs-12 home-page-philosophy-content-parent ">
-                            <div class="home-page-philosophy home-page-heading text-center">
-                                Our Philosophy
-                            </div>
-                            <div class="home-page-philosophy-content">
-                                Kartoza is a small company with a big dream: to see Free and Open Source GIS
-                                Software (FOSS GIS) make its way into every part of society: Government, Private
-                                Enterprise, Academia and private users.
-                            </div>
-                            <div class="col-xs-12">
-                                <a class="btn btn-primary btn-center" href="/about">MORE ABOUT US</a
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row move-up-200">
-                        <div class="col-xs-7">
-                            <img class="home-page-fbis" src="{% static "img/front-page-ipad-fbis.png" %}">
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-5">
-                                <div class="home-page-heading">
-                                    Our Projects
-                                </div>
-                                <div class="text-medium" style="margin-top: 5rem;">
-                                    We work with individuals, businesses or governments to collate Geospatial problembs
-                                    in to real-time data.
-                                </div>
-                            </div>
-                            <div class="col-xs-3" style="margin-top: 10rem;">
-                                <a class="btn btn-default-hollow" href="/showcase">PORTFOLIO</a>
-                            </div>
-                        </div>
-                        <div class="home-page-philosophy-row-container">
-                            <div class="home-page-clients-row">
-                                <div class="home-page-heading text-center" style="padding-top: 5rem; color: white;">
-                                    Our Clients
-                                </div>
-                                <div class="home-page-clients-carousel">
-                                    {% include "includes/home_slides.html" %}
-
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="col-md-6 col-md-offset-6 col-sm-12" style="position: relative; top: -100px;">
-                        <div class="technical-articles-heading">
-                            Some Technical Articles for you
-                        </div>
-                        <div class="technical-articles">
-                            {% blog_recent_posts settings.FRONT_PAGE_RECENT_POST as recent_posts %}
-                            {% if recent_posts %}
-                                <div id="recent-post-section">
-                                    <ul>
-                                        {% for recent_post in recent_posts %}
-                                            <li><a href="{{ recent_post.get_absolute_url }}">{{ recent_post.title }}</a>
-                                            </li>
-                                        {% endfor %}
-                                    </ul>
-                                </div>
-                            {% endif %}
-                        </div>
-                        <a class="col-xs-4 btn btn-default-hollow" href="/blog/">SEE BLOG</a>
-                    </div>
-                    <div class="col-xs-12">
-                        <div class=""></div>
-                    </div>
-                {% endblock %}
-            </div>
-            <div class="col-xs-2">
-                {% block right_wrapper %}
-                {% endblock %}
-            </div>
+        <div class="home-page-back-left-1">
 
         </div>
+        <div class="home-page-back-right-1">
+
+        </div>
+
+        <div class="col-xs-2">
+
+        </div>
+        <div class="col-xs-8">
+
+
+            <div class="row" style="margin-top: 15rem; margin-bottom: 5rem;">
+                <div class="col-xs-12 col-md-4">
+                    <div class="col-xs-12">
+                        <img class="home-page-logo" src="{% static "img/kartoza-logo-homepage.svg" %}">
+                    </div>
+                    <div class="col-xs-12 home-page-copy-main">
+                        We provide training, development and support services to individuals, companies and
+                        governments around the world who are looking to leverage the power of the Free Software
+                        movement to solve geospatial problems.
+                    </div>
+
+                </div>
+                <div class="col-xs-12 col-md-8">
+                    <div class="col-xs-12">
+                        <img class="home-page-image" src="{% static "img/front-page-imac-cover.png" %}">
+                    </div>
+                </div>
+                <div class="col-xs-12" style="margin-top: 2rem;">
+                    <div class="col-xs-12">
+                        <a style="margin-right: 2rem;" class="btn btn-default btn-small" href="/contact/">Enquire</a>
+                        <a class="btn btn-default-hollow btn-small" href="/showcase">Portfolio</a>
+                    </div>
+                </div>
+            </div>
+            <div class="row home-page-break"></div>
+            <div class="hidden-sm hidden-xs">
+                <div class="row">
+                    <div class="col-xs-4">
+                        <img class="home-page-small-image" src="{% static "img/front-page-training.png" %}">
+                    </div>
+                    <div class="col-xs-4" style="height: 178px;">
+                        <img class="home-page-small-image home-page-small-image-center"
+                             src="{% static "img/front-page-sd.png" %}">
+                    </div>
+                    <div class="col-xs-4">
+                        <img class="home-page-small-image"
+                             src="{% static "img/front-page-deployment-support.png" %}">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-4">
+                        <div class="text-big-heavy text-center my-1">Training and Education</div>
+                    </div>
+                    <div class="col-xs-4">
+                        <div class="text-big-heavy text-center my-1">Software Development</div>
+                    </div>
+                    <div class="col-xs-4">
+                        <div class="text-big-heavy text-center my-1">Deployment and Support</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="col-xs-4">
+                            <div class="text-medium my-1">We provide corporate training in the use of
+                                FOSSGIS such as QGIS, PostgreSQL/PostGIS, Geoserver etc. We also develop
+                                curriculum
+                                materials and provide teacher training in order to foster the study of GIS and
+                                geospatial technology at schools and universities
+                            </div>
+                        </div>
+                        <div class="col-xs-4">
+                            <div class="text-medium my-1">We provide bespoke services for the development of
+                                custom
+                                solutions to meet your business needs. These include desktop application
+                                development
+                                and
+                                web development using FOSSGIS. Our web application development services focus on
+                                applications that have a GeoSpatial component using technologies such as
+                                GeoDjango,
+                                OpenLayers, PostGIS and many other components.
+                            </div>
+                        </div>
+                        <div class="col-xs-4">
+                            <div class="text-medium my-1">We provide services to help you deploy and maintain
+                                FOSSGIS
+                                deployments within your organisation. This includes PostgreSQL/PostGIS, Linux
+                                based
+                                server deployments, QGIS, UMN Mapserver, GeoServer and many others.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row button-row my-1" class="margin-bottom: 5rem;">
+                    <div class="col-xs-4">
+                        <a class="btn btn-primary-hollow btn-medium" href="/training-courses">
+                            TRAINING
+                        </a>
+                    </div>
+                    <div class="col-xs-4 ">
+                        <a class="btn btn-primary-hollow btn-medium" href="/showcase">
+                            PORTFOLIO
+                        </a>
+                    </div>
+                    <div class="col-xs-4">
+                        <a class="btn btn-primary-hollow btn-medium" href="/support-2">
+                            SUPPORT
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hidden-lg hidden-xl hidden-md training-large">
+                <div class="row">
+                    <div class="col-md-12 my-3">
+                        <img class="home-page-small-image" src="{% static "img/front-page-training.png" %}">
+                    </div>
+                    <div class="col-md-12">
+                        <div class="text-big-heavy text-center my-3">Training and Education</div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="text-medium my-1">We provide corporate training in the use of
+                            FOSSGIS such as QGIS, PostgreSQL/PostGIS, Geoserver etc. We also develop
+                            curriculum
+                            materials and provide teacher training in order to foster the study of GIS and
+                            geospatial technology at schools and universities
+                        </div>
+                    </div>
+                    <div class="col-md-12 my-3">
+                        <a class="btn btn-primary-hollow" href="/training-courses">
+                            TRAINING
+                        </a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 my-3">
+
+                        <img class="home-page-small-image"
+                             src="{% static "img/front-page-sd.png" %}" style="height:178px">
+                        <div class="text-big-heavy text-center my-3">Software Development</div>
+                        <div class="text-medium my-1">We provide bespoke services for the development of
+                            custom
+                            solutions to meet your business needs. These include desktop application
+                            development
+                            and
+                            web development using FOSSGIS. Our web application development services focus on
+                            applications that have a GeoSpatial component using technologies such as
+                            GeoDjango,
+                            OpenLayers, PostGIS and many other components.
+                        </div>
+                        <a class="btn btn-primary-hollow my-3" href="/showcase">
+                            PORTFOLIO
+                        </a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 my-3">
+                        <img class="home-page-small-image"
+                             src="{% static "img/front-page-deployment-support.png" %}">
+                        <div class="text-big-heavy text-center my-3">Deployment and Support</div>
+                        <div class="text-medium my-1">We provide services to help you deploy and maintain
+                            FOSSGIS
+                            deployments within your organisation. This includes PostgreSQL/PostGIS, Linux
+                            based
+                            server deployments, QGIS, UMN Mapserver, GeoServer and many others.
+                        </div>
+                        <a class="btn btn-primary-hollow my-3" href="/support-2">
+                            SUPPORT
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-2"></div>
+        <div class="col-xs-12 home-page-philosophy-row">
+            <div class="home-page-philosophy-image">
+                <img class="home-page-fbis" src="{% static "img/front-page-phil.png" %}"></div>
+            <div class="home-page-row-content">
+                <div class="col-xs-12 hidden-xs hidden-sm hidden-md           " style="height: 7.5vw;"></div>
+                <div class="col-xs-12 hidden-xs hidden-sm           hidden-lg" style="height: 4vw;"></div>
+                <div class="col-xs-12 hidden-xs             hidden-md hidden-lg" style="height: 1vw;"></div>
+                <div class="col-xs-12 hidden-sm hidden-md hidden-lg" style="height: 2vw;"></div>
+                <div class="col-xs-12 hidden-xs hidden-sm">
+                    <div class="col-xs-8 col-xs-offset-2">
+                        <div class="home-page-heading text-center">
+                            Our Philosophy
+                        </div>
+                        <div class="text-big-home text-white my-3">
+                            Kartoza is a small company with a big dream: to see Free and Open Source GIS
+                            Software (FOSS GIS) make its way into every part of society: Government, Private
+                            Enterprise, Academia and private users.
+                        </div>
+                        <div class="col-xs-12 my-3">
+                            <a class="btn btn-white-blue btn-center btn-medium" href="/about">MORE ABOUT US</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 hidden-md hidden-lg">
+                    <div class="col-xs-8 col-xs-offset-2">
+                        <div class="home-page-heading-small text-center">
+                            Our Philosophy
+                        </div>
+                        <div class="text-small-home text-white my-3">
+                            Kartoza is a small company with a big dream: to see Free and Open Source GIS
+                            Software (FOSS GIS) make its way into every part of society: Government, Private
+                            Enterprise, Academia and private users.
+                        </div>
+                        <div class="col-xs-12">
+                            <a class="btn btn-primary btn-center btn-small" style="line-height:31px" href="/about">ABOUT
+                                US</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12" style="margin-top: 7rem;">
+                <div class="col-xs-8 col-xs-offset-2">
+                    <div class="col-md-7 col-xs-12">
+                        <img class="home-page-fbis" src="{% static "img/front-page-ipad-fbis.png" %}">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5 col-xs-12">
+                            <div class="home-page-heading hidden-sm hidden-xs">
+                                Our Projects
+                            </div>
+                            <div class="home-page-heading text-center hidden-md hidden-lg hidden-xl">
+                                Our Projects
+                            </div>
+                            <div class="text-medium my-3">
+                                We work with individuals, businesses or governments to collate Geospatial problembs
+                                in to real-time data.
+                            </div>
+                        </div>
+                        <div class="col-xs-3 my-3 hidden-sm hidden-xs">
+                            <a class="btn btn-default-hollow btn-small" href="/showcase">PORTFOLIO</a>
+                        </div>
+                        <div class="col-xs-12 my-3 hidden-md hidden-lg hidden-xl">
+                            <a class="btn btn-default-hollow btn-center btn-small" href="/showcase">PORTFOLIO</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 home-page-philosophy-row">
+            <div class="home-page-philosophy-image">
+                <img class="home-page-fbis" src="{% static "img/front-page-clients-background.png" %}"></div>
+            <div class="home-page-row-content">
+                <div class="col-xs-12 hidden-xs hidden-sm hidden-md           " style="height: 7.5vw;"></div>
+                <div class="col-xs-12 hidden-xs hidden-sm           hidden-lg" style="height: 4vw;"></div>
+                <div class="col-xs-12 hidden-xs             hidden-md hidden-lg" style="height: 5vw;"></div>
+                <div class="col-xs-12 hidden-sm hidden-md hidden-lg" style="height: 5vw;"></div>
+                <div class="col-xs-12">
+                    <div class="col-xs-8 col-xs-offset-2">
+                        <div class="home-page-heading text-center">
+                            Our Clients
+                        </div>
+                        <div class="home-page-clients-carousel">
+                            {% include "includes/home_slides.html" %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12" style="height: 400px;"><div class="home-page-back-left-2"></div>
+
+        <div class="col-md-6 col-md-offset-6 col-sm-12" style="margin-bottom: 5rem; margin-top: 2rem;">
+            <div class="technical-articles-heading">
+                Some Technical Articles for you
+            </div>
+            <div class="technical-articles">
+                {% blog_recent_posts settings.FRONT_PAGE_RECENT_POST as recent_posts %}
+                {% if recent_posts %}
+                    <div id="recent-post-section">
+                        <ul>
+                            {% for recent_post in recent_posts %}
+                                <li><a href="{{ recent_post.get_absolute_url }}">{{ recent_post.title }}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+            </div>
+
+            <a class="col-xs-4 btn btn-default-hollow" href="/blog/">SEE BLOG</a>
+        </div>
+        </div>
+        <div class="col-xs-12">
+            <div class=""></div>
+        </div>
+    {% endblock %}
+</div>
+<div class="col-xs-2">
+    {% block right_wrapper %}
+    {% endblock %}
+</div>
+
+</div>
     </div>
 {% endblock %}
 
