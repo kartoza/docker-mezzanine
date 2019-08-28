@@ -83,6 +83,19 @@ a:focus {
     text-align: center
 }
 
+
+@media (min-width: 1200px)
+{
+    .small-container {
+        width: 850px !important;
+    }
+}
+
+.small-container p {
+    font-size: 14pt;
+    line-height: 30px;
+    font-weight: 300;
+}
 /*	################################################################
 	BOOTSTRAP MODIFICATIONS & TWEAKS
 ################################################################# */
@@ -195,7 +208,6 @@ a:focus {
 }
 
 .mtb {
-    margin-top: 50px;
     margin-bottom: 80px;
 }
 
@@ -409,13 +421,11 @@ a:focus {
 }
 
 .footer-row {
-    background-image: url(../../static/img/home-page-footer.png);
     height: 100px;
     left: -20%;
     position: relative;
     top: -40px;
     background-repeat: no-repeat;
-    width: 115vw;
     background-size: cover;
 }
 
@@ -457,6 +467,7 @@ a:focus {
     color: #f4b340;
     font-weight: 700;
     margin-bottom: 15px;
+    font-size: 20pt;
 }
 
 csmall {
@@ -882,7 +893,7 @@ csmall2 {
     color: #231f20;
     font-family: Lato;
     font-size: 20px;
-    font-weight: 400;
+    font-weight: 300;
     padding-top: 2rem;
     padding-bottom: 2rem;
 }
@@ -919,6 +930,10 @@ csmall2 {
     padding-bottom: 2rem;
 }
 
+.centered-button-container {
+    text-align: center;
+}
+
 .home-page-philosophy {
     color: #ffffff !important;
     margin-top: 5rem;
@@ -953,19 +968,22 @@ csmall2 {
 .home-page-row-content {
     top: 0%;
     position: absolute;
-    width: 100%
+    width: 100%;
+    margin-left: -10px;
 }
 
 img.home-page-fbis {
     width: 100vw;
+    height: 100%;
 }
 
 .home-page-philosophy-image {
     width: 100vw;
+    height: 100%;
 }
 
 .home-page-philosophy-image image {
-    width 100vw !important;
+    width: 100vw !important;
 }
 .home-page-philosophy-row-container {
     position: relative;
@@ -1000,10 +1018,12 @@ img.home-page-fbis {
 .technical-articles ul {
     color: #57a0c7;
     font-family: Lato;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 26px;
+    font-size: 17px;
+    font-weight: 300;
+    line-height: 30px;
     text-decoration: underline;
+    list-style-type: none;
+    padding-left: 0 !important;
 }
 
 .home-page-back-left-1 {
@@ -1015,7 +1035,6 @@ img.home-page-fbis {
     background-size: contain;
     left: -32%;
     top: -0.7%;
-
 }
 
 .home-page-back-right-1 {
@@ -1032,11 +1051,7 @@ img.home-page-fbis {
 .home-page-back-left-2 {
     background-image: url(../../static/img/home-page-back-left-2.png);
     position: absolute;
-    height: 200px width: 50%;
-    height: 500px;
-    width: 500px;
     z-index: -10;
-
     top: -25%;
     overflow: hidden;
     background-size: cover;
@@ -1046,6 +1061,27 @@ img.home-page-fbis {
     /*top: 375%;*/
     /*z-index: -10;*/
 }
+
+
+@media (min-width: 800px)
+{
+    .home-page-back-left-2 {
+        height: 500px;
+        width: 500px;
+        display: block;
+    }
+}
+
+@media (max-width: 500px)
+{
+    .home-page-back-right-1 {
+        margin-right: 0;
+    }
+    .hidden-in-small-screen {
+        display: none;
+    }
+}
+
 
 .training-large .col-md-12 {
     text-align: center;

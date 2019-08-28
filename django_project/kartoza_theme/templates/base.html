@@ -151,7 +151,7 @@
 
 </div>
 {% block all_content %}
-    <div class="container mtb big-paragraph">
+    <div class="container mtb big-paragraph {% block container_class%}{% endblock %}">
         {% block main_wrapper %}
             <div>
                 {% block main %}{% endblock %}
@@ -180,16 +180,6 @@
                 </p>
             </div>
 
-        </div>
-
-        <div class="row">
-            <p class="site-info text-center">
-                {% trans "Template by" %}
-                <a href="http://www.blacktie.co">Blacktie</a>
-                {% trans "Mezzanine theme by" %}
-                <a href="http://thecodinghouse.in">CodingHouse</a>
-
-            </p>
         </div>
     </div>
 </div>

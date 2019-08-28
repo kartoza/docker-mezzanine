@@ -44,8 +44,8 @@
 {% block main %}
 <section id="blog" class="container">
 	<div class="row">
-		
-		
+
+
 		{% block right_panel %}
 		<aside class="col-sm-4 col-sm-push-8">
 		{% include "blog/includes/filter_panel.html" %}
@@ -82,7 +82,7 @@
 {% endif %}
 
 
-		
+
 	{% for blog_post in blog_posts.object_list %}
 	 <div class="blog-item">
 		 {% if settings.BLOG_USE_FEATURED_IMAGE and blog_post.featured_image %}
@@ -93,9 +93,9 @@
 			{% endblock %}
 			{% endif %}
 		<div class="blog-content">
-			
+
 	{% block blog_post_list_post_title %}
-		
+
 		{% editable blog_post.title %}
 		<a href="{{ blog_post.get_absolute_url }}"><h3>{{ blog_post.title }}</h3></a>
 
@@ -117,12 +117,12 @@
 								{% endfor %}
 								{% endif %}
 								{% endwith %}
-                                
+
                                 </span>
                                 <span><i class="icon-calendar"></i> {% blocktrans with sometime=blog_post.publish_date|timesince %}{{ sometime }} ago{% endblocktrans %}</span>
-                                <span><i class="icon-comment"></i> 
+                                <span><i class="icon-comment"></i>
                                 {% if blog_post.allow_comments %}
-									
+
 									{% if settings.COMMENTS_DISQUS_SHORTNAME %}
 									<a href="{{ blog_post.get_absolute_url }}#disqus_thread"
 										data-disqus-identifier="{% disqus_id_for blog_post %}">
@@ -134,7 +134,7 @@
 									</a>
 									{% endif %}
 									{% endif %}
-																
+
                                 </span>
                             </div>
 
@@ -156,7 +156,7 @@
 <div class="tags">
   <i class="icon-tags"></i> {% trans "Tags" %}:
     {% spaceless %}
-    {% for tag in tags %} 
+    {% for tag in tags %}
 
   <a href="{% url "blog_post_list_tag" tag.slug %}" class="btn btn-xs btn-primary">{{ tag }}</a> &nbsp;
   {% endfor %}
