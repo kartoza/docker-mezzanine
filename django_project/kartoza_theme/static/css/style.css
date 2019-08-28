@@ -1082,6 +1082,11 @@ img.home-page-fbis {
     }
 }
 
+@media (min-width: 1400px) {
+    .home-page-back-right-1 {
+        margin-right: -42px;
+    }
+}
 
 .training-large .col-md-12 {
     text-align: center;
