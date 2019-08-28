@@ -28,6 +28,59 @@ button, html input[type="button"], input[type="reset"], input[type="submit"] {
     border-style: none;
 }
 
+.btn {
+    text-transform: uppercase !important;
+    font-weight: bold !important;
+}
+
+.btn-small {
+    width: 120px !important;
+    height: 46px !important;
+}
+
+.btn-medium {
+    width: 167px !important;
+    height: 46px !important;
+}
+
+.btn-small.btn-primary-hollow {
+    height: 42px !important;
+    width: 116px !important;
+}
+
+.btn-small.btn-default-hollow {
+    height: 42px !important;
+    width: 116px !important;
+}
+
+.btn-medium.btn-primary-hollow {
+    height: 42px !important;
+    width: 163px !important;
+}
+
+.btn-medium.btn-default-hollow {
+    height: 42px !important;
+    width: 163px !important;
+}
+
+.btn-white-blue {
+    background-color: #ffffff;
+    color: var(--c-blue);
+    line-height: 30px;
+}
+
+
+.btn-white-blue:hover, .btn-white-blue:focus, .btn-white-blue:active, .btn-white-blue.active, .open .dropdown-toggle.btn-white-blue {
+
+    color: var(--c-blue-l);
+}
+
+
+.btn-primary:active, .btn-primary.active, .open .dropdown-toggle.btn-primary {
+    color: var(--c-blue-d);
+}
+
+
 .btn-primary {
     background-color: var(--c-orange) !important;
     color: #ffffff;
@@ -325,15 +378,30 @@ button, html input[type="button"], input[type="reset"], input[type="submit"] {
 }
 
 .text-big {
-    color: #231f20;
+
     font-family: Lato;
     font-size: 20px;
     font-weight: 400;
 
 }
 
+.text-big-home {
+       font-family: Lato;
+    font-size: 20px;
+    font-weight: 400;
+    text-align: center;
+
+}
+
+.text-small-home {
+    font-family: Lato;
+    font-size: 20px;
+    font-weight: 400;
+    text-align: center;
+}
+
 .text-big-heavy {
-    color: #231f20;
+
     font-family: Lato;
     font-size: 20px;
     font-weight: 600;
@@ -342,14 +410,14 @@ button, html input[type="button"], input[type="reset"], input[type="submit"] {
 
 
 .text-medium {
-    color: #231f20;
+
     font-family: Lato;
     font-size: 16px;
     font-weight: 400;
 }
 
 .text-small {
-    color: #231f20;
+
     font-family: Lato;
     font-size: 12px;
     font-weight: 400;
@@ -369,10 +437,6 @@ button, html input[type="button"], input[type="reset"], input[type="submit"] {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 166px;
-    top: 10rem;
-    position: relative;
-    z-index: 200;
 }
 
 .move-up-200 {
