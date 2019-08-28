@@ -1032,13 +1032,19 @@ img.home-page-fbis {
 .home-page-back-left-2 {
     background-image: url(../../static/img/home-page-back-left-2.png);
     position: absolute;
-    height: 100%;
-    width: 50%;
-    left: -5%;
-    background-repeat: no-repeat;
-    background-size: contain;
-    top: 375%;
+    height: 200px width: 50%;
+    height: 500px;
+    width: 500px;
     z-index: -10;
+
+    top: -25%;
+    overflow: hidden;
+    background-size: cover;
+    background-repeat: no-repeat;
+    /*background-repeat: no-repeat;*/
+    /*background-size: contain;*/
+    /*top: 375%;*/
+    /*z-index: -10;*/
 }
 
 .training-large .col-md-12 {
