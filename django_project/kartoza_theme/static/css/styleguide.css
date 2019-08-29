@@ -14,7 +14,7 @@ body {
 }
 
 
-button, html input[type="button"], input[type="reset"], input[type="submit"] {
+html input[type="button"], input[type="reset"], input[type="submit"] {
     width: 166px;
     height: 46px;
     color: #ffffff;
@@ -382,15 +382,13 @@ button, html input[type="button"], input[type="reset"], input[type="submit"] {
     font-family: Lato;
     font-size: 20px;
     font-weight: 400;
-
 }
 
 .text-big-home {
-       font-family: Lato;
-    font-size: 20px;
-    font-weight: 400;
+    font-family: Lato;
+    font-size: 22px;
+    font-weight: 300;
     text-align: center;
-
 }
 
 .text-small-home {
@@ -401,23 +399,19 @@ button, html input[type="button"], input[type="reset"], input[type="submit"] {
 }
 
 .text-big-heavy {
-
     font-family: Lato;
-    font-size: 20px;
+    font-size: 22px;
     font-weight: 600;
-
 }
 
 
 .text-medium {
-
     font-family: Lato;
-    font-size: 16px;
-    font-weight: 400;
+    font-size: 17px;
+    font-weight: 300;
 }
 
 .text-small {
-
     font-family: Lato;
     font-size: 12px;
     font-weight: 400;
