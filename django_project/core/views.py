@@ -34,12 +34,6 @@ def about(request):
     templates = ["kartoza_theme/pages/page.html"]
     people = Person.objects.published()
 
-    # # requires Django VERSION >= (1, 4):
-    # people = people.prefetch_related("categories")
-    #
-    # people = paginate(people, request.GET.get("page", 1),
-    #                   settings.PEOPLE_PER_PAGE,
-    #                   settings.MAX_PAGING_LINKS)
     context = {"people": people, "category": None}
     templates.append(template)
     return render(request, templates, context)
