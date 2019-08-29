@@ -84,8 +84,7 @@ a:focus {
 }
 
 
-@media (min-width: 1200px)
-{
+@media (min-width: 1200px) {
     .small-container {
         width: 850px !important;
     }
@@ -96,6 +95,7 @@ a:focus {
     line-height: 30px;
     font-weight: 300;
 }
+
 /*	################################################################
 	BOOTSTRAP MODIFICATIONS & TWEAKS
 ################################################################# */
@@ -985,6 +985,7 @@ img.home-page-fbis {
 .home-page-philosophy-image image {
     width: 100vw !important;
 }
+
 .home-page-philosophy-row-container {
     position: relative;
     height: 457px;
@@ -1063,8 +1064,7 @@ img.home-page-fbis {
 }
 
 
-@media (min-width: 800px)
-{
+@media (min-width: 800px) {
     .home-page-back-left-2 {
         height: 500px;
         width: 500px;
@@ -1072,11 +1072,11 @@ img.home-page-fbis {
     }
 }
 
-@media (max-width: 500px)
-{
+@media (max-width: 500px) {
     .home-page-back-right-1 {
         margin-right: 0;
     }
+
     .hidden-in-small-screen {
         display: none;
     }
@@ -1122,9 +1122,8 @@ img.home-page-fbis {
     position: relative;
     z-index: -10;
     position: absolute;
-    max-height: 70%;
+    max-height: 100%;
 }
-
 
 .background-back-right-2 {
     background-image: url(../../static/img/about_us_back_right_2.png);
@@ -1137,6 +1136,5 @@ img.home-page-fbis {
     position: absolute;
     bottom: -5rem;
     z-index: -10;
-    max-height: 30%;
+    max-height: 100%;
 }
-
