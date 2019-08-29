@@ -7,6 +7,7 @@ from mezzanine.pages.views import page
 from mezzanine_people.models import Person
 from mezzanine.core.models import CONTENT_STATUS_PUBLISHED
 from mezzanine.utils.views import render
+from mezzanine.conf import settings
 from clients.models import Client
 
 
@@ -27,6 +28,18 @@ def home(request, slug):
 
 
 def about(request):
-    templates = [u'kartoza_theme/project_detail_%s.html' % unicode(slug),
-                 template]
-    return render(request, )
+
+    template = "mezzanine_people/person_list.html"
+    settings.use_editable()
+    templates = ["kartoza_theme/pages/page.html"]
+    people = Person.objects.published()
+
+    # # requires Django VERSION >= (1, 4):
+    # people = people.prefetch_related("categories")
+    #
+    # people = paginate(people, request.GET.get("page", 1),
+    #                   settings.PEOPLE_PER_PAGE,
+    #                   settings.MAX_PAGING_LINKS)
+    context = {"people": people, "category": None}
+    templates.append(template)
+    return render(request, templates, context)
