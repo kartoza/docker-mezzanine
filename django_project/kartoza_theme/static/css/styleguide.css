@@ -18,7 +18,7 @@ html input[type="button"], input[type="reset"], input[type="submit"] {
     width: 166px;
     height: 46px;
     color: #ffffff;
-    font-family: Lato;
+    font-family: 'Lato', sans-serif;;
     font-size: 14px;
     font-weight: 700;
     text-transform: uppercase;
@@ -355,7 +355,7 @@ html input[type="button"], input[type="reset"], input[type="submit"] {
 /* END MEZZANINE OVERRIDE */
 .header1 {
     color: #231f20;
-    font-family: Lato;
+    font-family: 'Lato', sans-serif;;
     font-size: 55px;
     font-weight: 400;
     text-transform: uppercase;
@@ -363,7 +363,7 @@ html input[type="button"], input[type="reset"], input[type="submit"] {
 
 .header2 {
     color: #231f20;
-    font-family: Lato;
+    font-family: 'Lato', sans-serif;;
     font-size: 36px;
     font-weight: 400;
     text-transform: uppercase;
@@ -371,7 +371,7 @@ html input[type="button"], input[type="reset"], input[type="submit"] {
 
 .header3 {
     color: #231f20;
-    font-family: Lato;
+    font-family: 'Lato', sans-serif;;
     font-size: 22px;
     font-weight: 400;
     text-transform: uppercase;
@@ -379,40 +379,40 @@ html input[type="button"], input[type="reset"], input[type="submit"] {
 
 .text-big {
 
-    font-family: Lato;
+    font-family: 'Lato', sans-serif;;
     font-size: 20px;
     font-weight: 400;
 }
 
 .text-big-home {
-    font-family: Lato;
+    font-family: 'Lato', sans-serif;;
     font-size: 22px;
     font-weight: 300;
     text-align: center;
 }
 
 .text-small-home {
-    font-family: Lato;
+    font-family: 'Lato', sans-serif;;
     font-size: 20px;
     font-weight: 400;
     text-align: center;
 }
 
 .text-big-heavy {
-    font-family: Lato;
+    font-family: 'Lato', sans-serif;;
     font-size: 22px;
     font-weight: 600;
 }
 
 
 .text-medium {
-    font-family: Lato;
+    font-family: 'Lato', sans-serif;;
     font-size: 17px;
     font-weight: 300;
 }
 
 .text-small {
-    font-family: Lato;
+    font-family: 'Lato', sans-serif;;
     font-size: 12px;
     font-weight: 400;
 }
@@ -444,7 +444,7 @@ html input[type="button"], input[type="reset"], input[type="submit"] {
 
 .kartoza-heading {
     color: #231f20;
-    font-family: Lato;
+    font-family: 'Lato', sans-serif;;
     font-size: 36px;
     font-weight: 400;
     text-align: center;
