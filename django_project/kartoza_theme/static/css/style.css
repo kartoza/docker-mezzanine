@@ -891,7 +891,7 @@ csmall2 {
 
 .home-page-copy-main {
     color: #231f20;
-    font-family: Lato;
+    font-family: 'Lato', sans-serif;
     font-size: 20px;
     font-weight: 300;
     padding-top: 2rem;
@@ -942,21 +942,21 @@ csmall2 {
 
 .home-page-heading {
 
-    font-family: Lato;
+    font-family: 'Lato', sans-serif;;
     font-size: 36px;
     font-weight: 400;
 }
 
 .home-page-heading-small {
 
-    font-family: Lato;
+    font-family: 'Lato', sans-serif;;
     font-size: 30px;
     font-weight: 400;
 }
 
 .home-page-philosophy-content {
     color: #ffffff;
-    font-family: Lato;
+    font-family: 'Lato', sans-serif;;
     font-size: 24px;
     font-weight: 400;
 }
@@ -1010,14 +1010,14 @@ img.home-page-fbis {
 
 .technical-articles-heading {
     color: #231f20;
-    font-family: Lato;
+    font-family: 'Lato', sans-serif;;
     font-size: 24px;
     font-weight: 400;
 }
 
 .technical-articles ul {
     color: #57a0c7;
-    font-family: Lato;
+    font-family: 'Lato', sans-serif;;
     font-size: 17px;
     font-weight: 300;
     line-height: 30px;
