@@ -121,16 +121,11 @@
     </div>
 </div>
 <div class="navbar-spacer"></div>
-{% block title_wrapper %}
-    <div class="container">
-        <div class="kartoza-heading">{% block title %}{% endblock %}</div>
-    <div class="kartoza-heading-underline-container"><div class="kartoza-heading-underline"></div></div>
-    </div>
-{% endblock %}
+
 <div class="container">
 
     {% block slides %}
-        {% include "includes/standard_slides.html" %}
+        {#        {% include "includes/standard_slides.html" %}#}
     {% endblock %}
 
     {% nevercache %}
@@ -152,16 +147,34 @@
 
 </div>
 {% block all_content %}
-    <div class="container mtb big-paragraph {% block container_class%}{% endblock %}">
-        {% block main_wrapper %}
-            <div>
-                {% block main %}{% endblock %}
-            </div>
-        {% endblock %}
+    <div class="row" style="display: inline-flex; width: 100vw;">
+        <div class="col-xs-2 flex-column">
+            <div class="background-back-left-1"></div>
+        </div>
+        <div class="col-xs-8">
+            {% block title_wrapper %}
+
+                <div class="kartoza-heading">{% block title %}{% endblock %}</div>
+                <div class="kartoza-heading-underline-container">
+                    <div class="kartoza-heading-underline"></div>
+                </div>
+
+            {% endblock %}
+            {% block main_wrapper %}
+                <div>
+                    {% block main %}{% endblock %}
+                </div>
+            {% endblock %}
+        </div>
+
+        <div class="col-xs-2 flex-column" id="background-right">
+            <div class="background-back-right-1"></div>
+            <div class="background-back-right-2"></div>
+        </div>
     </div>
 {% endblock %}
 {% include "includes/announcements.html" %}
-<div id="footerwrap">
+<div id="footerwrap" style="margin-top: 5rem;">
     <div class="container">
         <div class="footer-row"></div>
         <div class="row">
@@ -277,8 +290,8 @@
             setPortfolio();
         });
     })(jQuery);
+
+
 </script>
-
-
 </body>
 </html>
