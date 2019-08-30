@@ -1145,3 +1145,15 @@ img.home-page-fbis {
     line-height: 150%;
     font-weight: 400;
 }
+
+.project-content {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.project-summary {
+    font-size: 14pt;
+    line-height: 30px;
+    font-weight: 300;
+    font-family: "Open Sans";
+}

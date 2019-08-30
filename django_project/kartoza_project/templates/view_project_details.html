@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
+{% block meta_title %}{{ project.title }}{% endblock %}
 
 {% block title %}
 	{{ project.title }}
@@ -14,33 +15,22 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-sm-12 h1 text-center">
-				Project summary
-			</div>
-			<div class="col-sm-12 h4 text-center" style="margin-bottom: 20px;">
+			<div class="col-sm-12 h4 text-center project-summary" style="margin-bottom: 20px; margin-top: 20px;">
 				{{ project.short_description }}
 			</div>
 		</div>
-		<div class="row parallax project-view-background">
-			<div class="row">
-				<div class="col-sm-6 background-white">
-					<div class="row">
-						<div class="col-sm-12 h3">Description</div>
-						<div class="col-sm-12">
-							{{ project.description|safe }}</div>
-					</div>
-				</div>
-
-				<div class="col-sm-6"></div>
-				<div class="col-sm-6 background-white">
-					<div class="row">
-						<div class="col-sm-12 h3">Services Provided</div>
-						<div class="col-sm-12">
-							{{ project.services_provided|safe }}</div>
-					</div>
-				</div>
-			</div>
-		</div>
+        <div class="row parallax project-view-background">
+            <div class="row">
+                <div class="col-sm-12 h3 ctitle">Description</div>
+                <div class="col-sm-12">
+                    {{ project.description|safe }}</div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 h3 ctitle">Services Provided</div>
+                <div class="col-sm-12">
+                    {{ project.services_provided|safe }}</div>
+            </div>
+        </div>
 		<div class="col-sm-12 background-white">
 			<div class="row">
 				<div class="col-sm-4">
