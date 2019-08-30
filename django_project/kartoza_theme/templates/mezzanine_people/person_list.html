@@ -59,7 +59,7 @@
                         {% if person.bio %}
                         <div class="person-bio">
                             {{ person.bio|safe|truncatechars:250 }}
-                            {% if person.bio|length > 180 %}
+                            {% if person.bio|length > 250 %}
                                 <a href="/people/person/{{ person.slug }}">[see more]</a>
                             {% endif %}
                         </div>
@@ -91,25 +91,6 @@
         $(document).ready(function(){
             var personLinkList = $('.list-person-link');
 
-            for(var i=0; i < personLinkList.length; i++) {
-                var $parent = $(personLinkList[i]).parent();
-
-                $(personLinkList[i]).find('li').each(function(){
-                    var current = $(this);
-                    var href = $(current[0].outerHTML).find('a')[0].href;
-                    // $parent.append(href);
-                    // if twitter
-                    if(href.indexOf('twitter')>0) {
-                        // get username
-
-                        $parent.append('<a href="'+href+'" target="_blank"><i class="fa fa-twitter">' +
-                                '<span class="text"> '+href.split('/').pop()+'</span></i></a>');
-                    } else if(href.indexOf('github')>0) {
-                        $parent.append('<a href="'+href+'" target="_blank"><i class="fa fa-github"> ' +
-                                '<span class="text">'+href.split('/').pop()+'</span></i></a>');
-                    }
-                });
-            }
 
             $('.person-avatar').mouseover(function() {
                 $(this).find("img").toggle();

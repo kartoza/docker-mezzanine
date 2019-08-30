@@ -27,29 +27,30 @@
 
 {% block main %}
 
-    <div class="pure-g">
-        <div class="pure-u-1-5">
-
+    <div class="row">
+        <div class="col-lg-4 col-md-6">
             {% editable person.first_name person.last_name person.job_title person.bio %}
                 <div>
                     <img src="{{ MEDIA_URL }}{% thumbnail person.mugshot_hover 300 0 %}" style="padding-top: 20px;"/>
                 </div>
             {% endeditable %}
+        </div>
+        <div class="col-lg-8 col-md-6">
             <h1>{{ person.full_name }}</h1>
             <h4 style="margin-top: -10px;font-weight: lighter">{{ person.job_title }}</h4>
             <div style="padding-top: 0px;">
                 <div class="person-link detail-person-link">
                     <ul class="list-person-link" style="display: none">
-                    {% for link in person.personlink_set.all %}
-                        <li><a href="{{ link.url }}">{{ link.name }}</a></li>
-                    {% endfor %}
+                        {% for link in person.personlink_set.all %}
+                            <li><a href="{{ link.url }}">{{ link.name }}</a></li>
+                        {% endfor %}
                     </ul>
                 </div>
             </div>
         </div>
-        <div class="pure-u-4-5" style="padding-left: 40px;">
-            <p>{{ person.bio|richtext_filters|safe }}</p>
-        </div>
+    </div>
+    <div class="pure-u-1">
+        <p>{{ person.bio|richtext_filters|safe }}</p>
     </div>
 
     <script>
