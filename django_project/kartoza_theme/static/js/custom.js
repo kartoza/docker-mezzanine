@@ -38,7 +38,8 @@
 
 $(document).ready(function () {
     let height = $("#background-right").height();
-    if (height < 700) {
+    let imageHeight = $("")
+    if (height < 1200) {
         $(".background-back-right-2").css("visibility","hidden");
     }
 })
