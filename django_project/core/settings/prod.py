@@ -26,9 +26,9 @@ USE_X_FORWARDED_HOST = True
 DEBUG = TEMPLATE_DEBUG = False
 TESTING = DEBUG
 
-SERVER_EMAIL = 'tim@kartoza.com'
+SERVER_EMAIL = 'Christiaan@kartoza.com'
 EMAIL_HOST = 'kartoza.com'
-DEFAULT_FROM_EMAIL = 'tim@kartoza.com'
+DEFAULT_FROM_EMAIL = 'noreply@kartoza.com'
 
 
 STATICFILES_FINDERS += (
