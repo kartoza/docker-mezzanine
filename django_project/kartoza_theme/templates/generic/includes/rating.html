@@ -7,7 +7,7 @@
                     {% csrf_token %}
                 {% endnevercache %}
                 <div class="row">
-                    <div class="col-xs-6" style="line-height: 40px;">
+                    <div class="col-xs-12" style="line-height: 40px;">
                         <div id="rating-{{ rating_object.id }}">
                             {% if rating_average %}
                                 {% trans "Current rating" %}: {{ rating_average|floatformat }}
@@ -17,10 +17,10 @@
                         </div>
                     </div>
                 {% if not rated or request.user.is_authenticated %}
-                    <div class="col-xs-3">
+                    <div class="col-xs-6">
                         <ul class="radio radio-inline">{{ rating_form.as_ul }}</ul>
                     </div>
-                    <div class="col-xs-3">
+                    <div class="col-xs-6">
                         <input type="submit" class="btn btn-default btn-sm rating-submit" value="{% trans "Rate" %}"
                                onclick="return $(this.form).find('input:checked').length == 1;">
                     </div>
