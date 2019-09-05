@@ -935,6 +935,8 @@ csmall2 {
     font-family: 'Lato', sans-serif;;
     font-size: 36px;
     font-weight: 400;
+        margin-bottom: 2rem;
+
 }
 
 .home-page-heading-small {
@@ -960,6 +962,7 @@ csmall2 {
     position: absolute;
     width: 100%;
     margin-left: -10px;
+    height: 100%;
 }
 
 img.home-page-fbis {
@@ -1156,4 +1159,9 @@ img.home-page-fbis {
     line-height: 30px;
     font-weight: 300;
     font-family: "Open Sans";
+}
+
+.centerY {
+    top: 50%;
+    transform: translateY(-50%);
 }
