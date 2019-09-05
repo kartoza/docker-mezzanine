@@ -24,7 +24,7 @@ html input[type="button"], input[type="reset"], input[type="submit"] {
     text-transform: uppercase;
     line-height: 0px;
     /*background-color: var(--c-orange);*/
-    width: 100%;
+    border: none !important;
     border-style: none;
 }
 
@@ -470,4 +470,8 @@ html input[type="button"], input[type="reset"], input[type="submit"] {
 
 h1, h2, h3, h4, h5 {
     font-family: "Lato", "Sans-Serif" !important;
+}
+
+input[type="submit"]:hover {
+    color: white;
 }
