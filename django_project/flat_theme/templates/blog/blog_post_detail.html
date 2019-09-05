@@ -35,10 +35,10 @@
 			{% endblock %}
 			{% endif %}
 		<div class="blog-content">
-			
+
 	{% block blog_post_list_post_title %}
-		
-	
+
+
 	{% endblock %}
 {% block blog_post_list_post_metainfo %}
 {% editable blog_post.publish_date %}
@@ -56,12 +56,12 @@
 								{% endfor %}
 								{% endif %}
 								{% endwith %}
-                                
+
                                 </span>
                                 <span><i class="icon-calendar"></i> {% blocktrans with sometime=blog_post.publish_date|timesince %}{{ sometime }} ago{% endblocktrans %}</span>
-                                <span><i class="icon-comment"></i> 
+                                <span><i class="icon-comment"></i>
                                 {% if blog_post.allow_comments %}
-									
+
 									{% if settings.COMMENTS_DISQUS_SHORTNAME %}
 									<a href="{{ blog_post.get_absolute_url }}#disqus_thread"
 										data-disqus-identifier="{% disqus_id_for blog_post %}">
@@ -73,7 +73,7 @@
 									</a>
 									{% endif %}
 									{% endif %}
-																
+
                                 </span>
                             </div>
 
@@ -95,7 +95,7 @@
 <div class="tags">
   <i class="icon-tags"></i> {% trans "Tags" %}:
     {% spaceless %}
-    {% for tag in tags %} 
+    {% for tag in tags %}
 
   <a href="{% url "blog_post_list_tag" tag.slug %}" class="btn btn-xs btn-primary">{{ tag }}</a>
   {% endfor %}
