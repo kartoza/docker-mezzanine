@@ -235,7 +235,7 @@ table {
 
 table th {
   padding: .2em 1em;
-  background-color: #eee;
+  background-color: transparent;
   border-top: 1px solid #ddd;
   border-left: 1px solid #ddd;
 }
@@ -329,4 +329,9 @@ table td {
   }
 }
 
+th {
+  width: 50%;
+  background: transparent;
+  text-align: left;
+}
 

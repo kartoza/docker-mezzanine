@@ -238,6 +238,21 @@ class Project(Orderable, Slugged, AdminThumbMixin):
             return 'Ongoing'
         return ((self.date_end.year - self.date_start.year) * 12 +
                 self.date_end.month - self.date_end.month)
+    #
+    @property
+    def export_description(self):
+        safe_description = self.description
+        safe_description = safe_description.replace('<p>', '').replace('</p>', '<br/>')
+        # safe_description.replace('</p>', '<br/>')
+        return safe_description
+    #
+    @property
+    def export_services_provided(self):
+        safe_services = self.services_provided
+        safe_services = safe_services.replace('<p>', '').replace('</p>', '<br/>')
+        return safe_services
+
+
 
 def diff_month(d1, d2):
     return (d1.year - d2.year) * 12 + d1.month - d2.month

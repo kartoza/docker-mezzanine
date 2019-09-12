@@ -143,24 +143,55 @@ def export_projects(request):
                 response_string += next_file_text
             tmpFileOut = tempfile.NamedTemporaryFile()
             conversion_format = format
-            try:
-                if conversion_format == 'pdf':
+            if conversion_format == 'pdf':
+                try:
                     conversion_format = 'html'
-                output = pypandoc.convert_text(
-                    response_string,
-                    to=conversion_format,
-                    format='md',
-                    outputfile=tmpFileOut.name)
-                output_text = tmpFileOut.read()
+                    output = pypandoc.convert_text(
+                        response_string,
+                        to=conversion_format,
+                        format='md',
+                        outputfile=tmpFileOut.name)
+                    output_text = tmpFileOut.read()
 
-                if conversion_format == 'html':
+                    if conversion_format == 'html':
+                        output_text = add_css(output_text)
+                    if format == 'pdf':
+                        output_text = convertHtmlToPdf(output_text)
+                    response = HttpResponse(output_text)
+                    return response
+                except Exception as e:
+                    return HttpResponse(e)
+            if conversion_format == u'odt':
+                try:
+                    conversion_format = 'html'
+                    output = pypandoc.convert_text(
+                        response_string,
+                        to=conversion_format,
+                        format='md',
+                        outputfile=tmpFileOut.name)
+                    output_text = tmpFileOut.read()
+                    tmpFileOut2 = tempfile.NamedTemporaryFile()
+                    # output_text = add_css(output_text)
+                    output = pypandoc.convert_text(output_text, 'docx', format='html', outputfile=tmpFileOut2.name)
+                    output_text = tmpFileOut2.read()
+                    response = HttpResponse(output_text)
+                    return response
+                except Exception as e:
+                    return HttpResponse(e)
+            if conversion_format == u'html':
+                try:
+                    conversion_format = 'html'
+                    output = pypandoc.convert_text(
+                        response_string,
+                        to=conversion_format,
+                        format='md',
+                        outputfile=tmpFileOut.name)
+                    output_text = tmpFileOut.read()
                     output_text = add_css(output_text)
-                if format == 'pdf':
-                    output_text = convertHtmlToPdf(output_text)
-                response = HttpResponse(output_text)
-                return response
-            except Exception as e:
-                return HttpResponse(e)
+                    response = HttpResponse(output_text)
+                    return response
+                except Exception as e:
+                    return HttpResponse(e)
         else:
             return HttpResponse()
 
