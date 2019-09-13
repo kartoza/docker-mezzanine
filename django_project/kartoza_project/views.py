@@ -1,7 +1,9 @@
 import tempfile
+import re
 from datetime import datetime
 from wsgiref.util import FileWrapper
 from weasyprint import HTML, CSS
+from docx import *
 import pypandoc
 from django.conf import settings
 from django.contrib.staticfiles.finders import find
@@ -13,6 +15,7 @@ from django.shortcuts import render as django_render
 from mezzanine.conf import settings
 from mezzanine.utils.views import render, paginate
 from .models import Project, ProjectCategory, ProjectImage, Reference
+
 
 
 def project_list(request, category=None,
@@ -86,10 +89,12 @@ def project_list_ongoing(request, template='kartoza_project/project_list.html'):
 
 def project_gallery(request):
     if request.method == 'GET':
-        project_images = Project.objects.filter(published=True).values(
+        project_images = Project.objects.values(
             'id', 'project_images__image').all()
-        projects = Project.objects.filter(
-            published=True).all()
+        projects = Project.objects.all()
+        for project in projects:
+            if not project.thumbnail:
+                project.thumbnail = {'url':''}
         tag_list = ''
         technology_list = ''
         for project in projects:
@@ -156,7 +161,7 @@ def export_projects(request):
                     if conversion_format == 'html':
                         output_text = add_css(output_text)
                     if format == 'pdf':
-                        output_text = convertHtmlToPdf(output_text)
+                        output_text = convert_html_to_pdf(output_text)
                     response = HttpResponse(output_text)
                     return response
                 except Exception as e:
@@ -172,7 +177,7 @@ def export_projects(request):
                     output_text = tmpFileOut.read()
                     tmpFileOut2 = tempfile.NamedTemporaryFile()
                     # output_text = add_css(output_text)
-                    output = pypandoc.convert_text(output_text, 'docx', format='html', outputfile=tmpFileOut2.name)
+                    output = pypandoc.convert_text(output_text, 'odt', format='html', outputfile=tmpFileOut2.name)
                     output_text = tmpFileOut2.read()
                     response = HttpResponse(output_text)
                     return response
@@ -192,6 +197,8 @@ def export_projects(request):
                     return response
                 except Exception as e:
                     return HttpResponse(e)
+            if conversion_format == u'docx':
+                generate_docx(1)
         else:
             return HttpResponse()
 
@@ -204,7 +211,7 @@ def add_css(output_text):
     return output_text
 
 
-def convertHtmlToPdf(sourceHtml):
+def convert_html_to_pdf(sourceHtml):
     temp_file_in = tempfile.NamedTemporaryFile()
     temp_file_out = tempfile.NamedTemporaryFile(suffix='pdf')
     temp_file_in.write(sourceHtml)
@@ -250,7 +257,7 @@ def view_project_details(request, project_id):
              'consultants': project.consultants.all(),
              'staff_involved': project.staff_involved.all(),
              'clients': clients,
-             'images': images }
+             'images': images}
         )
 
 
@@ -262,3 +269,30 @@ def get_reference(request):
             reference = Reference.objects.filter(pk=int(reference_id))
             reference_json = serializers.serialize('json', reference)
         return HttpResponse(reference_json)
+
+
+def generate_docx(project_id):
+    document_path = find('layouts/template.docx')
+    search_string = '{{ project.name }}'
+
+    regex = '/^{search_string}$/'.format(search_string=search_string)
+
+    # project = Project.objects.filter(pk=project_id).first()
+    document = Document(document_path)
+    docx_replace_regex(document, regex, 'I am a test')
+
+
+def docx_replace_regex(doc_obj, regex , replace):
+    for p in doc_obj.paragraphs:
+        if regex.search(p.text):
+            inline = p.runs
+            # Loop added to work with runs (strings with same style)
+            for i in range(len(inline)):
+                if regex.search(inline[i].text):
+                    text = regex.sub(replace, inline[i].text)
+                    inline[i].text = text
+
+    for table in doc_obj.tables:
+        for row in table.rows:
+            for cell in row.cells:
+                docx_replace_regex(cell, regex , replace)

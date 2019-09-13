@@ -168,7 +168,7 @@ class Project(Orderable, Slugged, AdminThumbMixin):
         null=True,
         blank=True,
         help_text=(
-            "A link to the project's github page."),
+            "A link to the project's g  ithub page."),
         max_length=255)
 
     admin_thumb_field = 'thumbnail'
@@ -224,8 +224,9 @@ class Project(Orderable, Slugged, AdminThumbMixin):
 
     def get_template(self, template):
         if template == 'world_bank_format':
+            template_name = 'world_bank_format.md'
             starting_template = render_to_string(
-                'world_bank_format.md', {'project': self,
+                template_name, {'project': self,
                                          'consultants': self.consultants.all(),
                                          'staff': self.staff_involved.all(),
                                          'clients': self.clients.all()})

@@ -15,3 +15,4 @@ Sphinx
 # pdb plus plus
 pdbpp
 
+python-docx==0.8.10

@@ -1,6 +1,6 @@
 <table>
 <tr>
-<th>Assignment name: <br/><b>{{ project.title }}</b></th>
+    <th>Assignment name: <br/><b>{{ project.title }}</b></th>
 <th>Approx. value of the contract (in current US$): <br>{{ project.approximate_contract_value }} </th>
 </tr>
 <tr>
