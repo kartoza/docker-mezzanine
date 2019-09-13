@@ -1,4 +1,5 @@
 import tempfile
+import zipfile
 import re
 from datetime import datetime
 from wsgiref.util import FileWrapper
@@ -12,6 +13,8 @@ from django.db.models import Q
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
 from django.shortcuts import render as django_render
+from django.template import Template, engines
+from django.forms.models import model_to_dict
 from mezzanine.conf import settings
 from mezzanine.utils.views import render, paginate
 from .models import Project, ProjectCategory, ProjectImage, Reference
@@ -198,7 +201,7 @@ def export_projects(request):
                 except Exception as e:
                     return HttpResponse(e)
             if conversion_format == u'docx':
-                generate_docx(1)
+                generate_docx(request, 1)
         else:
             return HttpResponse()
 
@@ -271,28 +274,26 @@ def get_reference(request):
         return HttpResponse(reference_json)
 
 
-def generate_docx(project_id):
+def generate_docx(request, project_id):
     document_path = find('layouts/template.docx')
     search_string = '{{ project.name }}'
 
     regex = '/^{search_string}$/'.format(search_string=search_string)
 
-    # project = Project.objects.filter(pk=project_id).first()
-    document = Document(document_path)
-    docx_replace_regex(document, regex, 'I am a test')
+    project = Project.objects.filter(pk=project_id).first()
+    temp_directory = tempfile.mkdtemp()
+    with zipfile.ZipFile(document_path, 'r') as zip_ref:
+        zip_ref.extractall(temp_directory)
+        content_path = '{temp_dir}/word/document.xml'.format(temp_dir=temp_directory)
+        with open(content_path, 'r') as content_file:
+            content_value = content_file.read()
+        context = model_to_dict(project)
+        django_engine = engines['django']
+        template = django_engine.from_string(content_value)
+        result = template.render(context)
+        with open(content_path, "w") as f:
+            f.write(result)
+    # with zipfile.ZipFile('output.docx', 'w') as zip_ref:
+    #     for file in zip:
+    #         zip_file.write(file)
 
-
-def docx_replace_regex(doc_obj, regex , replace):
-    for p in doc_obj.paragraphs:
-        if regex.search(p.text):
-            inline = p.runs
-            # Loop added to work with runs (strings with same style)
-            for i in range(len(inline)):
-                if regex.search(inline[i].text):
-                    text = regex.sub(replace, inline[i].text)
-                    inline[i].text = text
-
-    for table in doc_obj.tables:
-        for row in table.rows:
-            for cell in row.cells:
-                docx_replace_regex(cell, regex , replace)
