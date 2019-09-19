@@ -1,6 +1,6 @@
 <table>
 <tr>
-    <th>Assignment name: <br/><b>{{ project.title }}</b></th>
+<th>Assignment name: <br/><b>{{ project.title }}</b></th>
 <th>Approx. value of the contract (in current US$): <br>{{ project.approximate_contract_value }} </th>
 </tr>
 <tr>
@@ -24,7 +24,7 @@
 <td>Name of senior professional staff of your consulting firm/organization involved and designation and/or functions performed (e.g. Project Director/Coordinator, Team Leader): <br> {% for c in staff %} {{ c.name }} ({{ c.role }}) <br> {% endfor %}</th>
 </tr>
 <tr>
-<td colspan="2"><b>Description of Project</b><br/>{% autoescape off %}{{ project.export_description }}{% endautoescape %}</th>
+<td colspan="2"><b>Description of Project:</b><br/>{% autoescape off %}{{ project.export_description }}{% endautoescape %}</th>
 </tr>
 <tr>
 <td colspan="2"><b>Description of actual services provided by your staff within the assignment:</b><br/>{% autoescape off %}{{ project.export_services_provided }}{% endautoescape %}</th>

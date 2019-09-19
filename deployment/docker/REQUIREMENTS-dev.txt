@@ -16,3 +16,4 @@ Sphinx
 pdbpp
 
 python-docx==0.8.10
+docxtpl==0.6.3

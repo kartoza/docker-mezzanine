@@ -1,4 +1,5 @@
 import tempfile
+import re
 from datetime import datetime
 from django.db import models
 from django.template.loader import render_to_string
@@ -9,6 +10,8 @@ from mezzanine.utils.models import AdminThumbMixin
 
 
 class Project(Orderable, Slugged, AdminThumbMixin):
+
+    images_dict = {}
     short_description = models.CharField(
         null=True,
         blank=True,
@@ -230,7 +233,6 @@ class Project(Orderable, Slugged, AdminThumbMixin):
                                          'consultants': self.consultants.all(),
                                          'staff': self.staff_involved.all(),
                                          'clients': self.clients.all()})
-
             return starting_template
 
     @property
@@ -243,17 +245,81 @@ class Project(Orderable, Slugged, AdminThumbMixin):
     @property
     def export_description(self):
         safe_description = self.description
-        safe_description = safe_description.replace('<p>', '').replace('</p>', '<br/>')
-        # safe_description.replace('</p>', '<br/>')
-        return safe_description
-    #
+        safe_description = (
+            safe_description.
+                replace('<p>', '').
+                replace('<br/>', '').
+                replace('<br>', '').
+                replace('</p>', '').
+                replace('&nbsp;', ' '))
+        text, images = get_richtext_and_images(safe_description)
+        for image_key in images.keys():
+            self.images_dict[image_key] = images[image_key]
+        return text, images
+
     @property
     def export_services_provided(self):
         safe_services = self.services_provided
-        safe_services = safe_services.replace('<p>', '').replace('</p>', '<br/>')
-        return safe_services
+        safe_services = (
+            safe_services.
+            replace('<p>', '').
+            replace('<br/>', '').
+            replace('<br>', '').
+            replace('</p>', '').
+            replace('&nbsp;', ' '))
+        text, images = get_richtext_and_images(safe_services)
+        for image_key in images.keys():
+            self.images_dict[image_key] = images[image_key]
+        return text, images
 
+    def strip_rt_tags(self, text_in):
+        text_in = (
+            text_in.
+            replace('<p>', '').
+            replace('<br/>', '').
+            replace('<br>', '').
+            replace('</p>', '').
+            replace('&nbsp;', ' ').
+            replace('<span>', '').
+            replace('</span>', ''))
+        return text_in
+
+    def images(self):
+        return self.images_dict
 
 
 def diff_month(d1, d2):
     return (d1.year - d2.year) * 12 + d1.month - d2.month
+
+
+def get_richtext_and_images(text_source):
+    text_in = text_source
+    # image_locations = [m.start() for m in re.finditer(text_in, '<img')]
+    images = {}
+    image_count = 0
+    image_location = text_in.find('<img')
+    while image_location >= 0:
+        image_count += 1
+
+        text_in = text_in[image_location - 1:]
+        next_image_tag = text_in[0:text_in.find('>')] + '>'
+        try:
+            src = re.search(r'src=\"(.*?)\"', next_image_tag).group(1)
+            x_size = re.search(r'width=\"(.*?)\"', next_image_tag).group(1)
+            y_size = re.search(r'height=\"(.*?)\"', next_image_tag).group(1)
+        except AttributeError:
+            src  = ''  # apply your error handling
+            x_size = 0
+            y_size = 0
+        text_in = text_in[text_in.find('/>'):]
+        image_location = text_in.find('<img')
+        image_number = 'myimage{number}'.format(number=image_count)
+        text_source = text_source.replace(next_image_tag, ' {{ ' + image_number + ' }}')
+        images[image_number] = {}
+        images[image_number]['src']= src
+        images[image_number]['x_size']= float(x_size) * 100
+        images[image_number]['y_size'] = float(y_size) * 100
+
+    return text_source, images
+
+

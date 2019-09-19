@@ -1,11 +1,14 @@
 import tempfile
 import zipfile
+import os
+from django.utils.encoding import smart_str, smart_unicode
 import re
 from datetime import datetime
 from wsgiref.util import FileWrapper
 from weasyprint import HTML, CSS
 from docx import *
 import pypandoc
+from docxtpl import DocxTemplate, RichText, InlineImage
 from django.conf import settings
 from django.contrib.staticfiles.finders import find
 from django.core import serializers
@@ -13,11 +16,15 @@ from django.db.models import Q
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
 from django.shortcuts import render as django_render
+
 from django.template import Template, engines
 from django.forms.models import model_to_dict
 from mezzanine.conf import settings
 from mezzanine.utils.views import render, paginate
 from .models import Project, ProjectCategory, ProjectImage, Reference
+from updateable_zipfile import UpdateableZipFile
+import shutil
+
 
 
 
@@ -201,7 +208,28 @@ def export_projects(request):
                 except Exception as e:
                     return HttpResponse(e)
             if conversion_format == u'docx':
-                generate_docx(request, 1)
+
+                # generated_docx = find('layouts/test2.docx')
+                # try:
+                #     conversion_format = 'html'
+                #     # output = pypandoc.convert_file(
+                #     #     generated_docx,
+                #     #     to=conversion_format,
+                #     #     format='docx',
+                #     #     outputfile=tmpFileOut.name)
+                #     output_text = convert_to_html(generated_docx)
+                #
+                #     # # output_text = add_css(output_text)
+                #     response = HttpResponse(output_text)
+                #
+                #     return response
+                # except Exception as e:
+                #     return HttpResponse(e)
+                generated_docx = generate_docx(request, 2)
+                zip_file = open(generated_docx, 'r')
+                response = HttpResponse(zip_file, content_type='application/force-download')
+                response['Content-Disposition'] = 'attachment; filename="%s"' % 'result.docx'
+                return response
         else:
             return HttpResponse()
 
@@ -275,25 +303,125 @@ def get_reference(request):
 
 
 def generate_docx(request, project_id):
-    document_path = find('layouts/template.docx')
-    search_string = '{{ project.name }}'
+    try:
+        template_path = find('layouts/template.docx')
+        project = Project.objects.filter(pk=project_id).first()
+        temp_directory = tempfile.mkdtemp()
+        temp_directory_store = tempfile.mkdtemp()
 
-    regex = '/^{search_string}$/'.format(search_string=search_string)
 
-    project = Project.objects.filter(pk=project_id).first()
+        new_zipfile_path = temp_directory_store+'/zip_result.docx'
+
+        doc = DocxTemplate(template_path)
+        context = {}
+
+        context['project'] = model_to_dict(project)
+
+        drt = RichText()
+        drt_text, drt_images = project.export_description
+        drt.add(drt_text, style='Text Body')
+        context['project']['drt'] = drt
+        srt = RichText()
+        srt_text, srt_images = project.export_services_provided
+        srt.add(srt_text, style='Text Body')
+        context['project']['drt'] = srt
+
+
+        doc.render(context)
+        doc.save(new_zipfile_path)
+
+        # regex1 = re.compile(r"^(.*?(\bproject_title\b)[^$]*)$")
+        # replace1 = r"your replace string"
+        # filename = template_path
+        # doc = Document(filename)
+        # docx_replace_regex(doc, regex1, replace1)
+        # doc.save(temp_directory_store+'/zip_result.docx')
+
+
+            # parsed_content_value = re.findall('<w:body>(.*)</w:body>', content_value)[0]
+            # template = django_engine.from_string(parsed_content_value)
+            # result = template.render(context)
+            # with open(content_path, 'w+') as f:
+            #     try:
+            #
+            #         f.write(smart_str(result))
+            #     except Exception as exception:
+            #         i = exception
+            #     i =0
+
+        # with zipfile.ZipFile(new_zipfile_path, 'w') as zip_ref:
+        # zip_folder(temp_directory, new_zipfile_path)
+        # src = new_zipfile_path + '.zip'
+        # dst = new_zipfile_path + '.docx'
+        # os.rename(src, dst)
+        return new_zipfile_path
+
+    except Exception as exception:
+        i = exception
+
+
+def get_all_file_paths(directory):
+    # initializing empty file paths list
+    file_paths = []
+
+    # crawling through directory and subdirectories
+    for root, directories, files in os.walk(directory):
+        for filename in files:
+            # join the two strings in order to form the full filepath.
+            filepath = os.path.join(root, filename)
+            file_paths.append(filepath)
+
+            # returning all file paths
+    return file_paths
+
+
+def zip_folder(directory, zip_file_name):
+    shutil.make_archive(zip_file_name, 'zip', directory)
+
+
+def print_path(path):
+    print(os.listdir(path))
+    folders = []
+    for r, d, f in os.walk(path):
+        for folder in d:
+            folders.append(os.path.join(r, folder))
+
+    for f in folders:
+        print(f)
+
+
+def docx_replace_regex(doc_obj, regex , replace):
+    for p in doc_obj.paragraphs:
+        if regex.search(p.text):
+            inline = p.runs
+            # Loop added to work with runs (strings with same style)
+            for i in range(len(inline)):
+                if regex.search(inline[i].text):
+                    text = regex.sub(replace, inline[i].text)
+                    inline[i].text = text
+
+    for table in doc_obj.tables:
+        for row in table.rows:
+            for cell in row.cells:
+                docx_replace_regex(cell, regex , replace)
+
+
+def docx_replace_images(file_path, project):
     temp_directory = tempfile.mkdtemp()
-    with zipfile.ZipFile(document_path, 'r') as zip_ref:
+    inline_template = find('layouts/docx_inline_image.xml')
+
+    with zipfile.ZipFile(file_path, 'r') as zip_ref:
         zip_ref.extractall(temp_directory)
+        temp_directory = tempfile.mkdtemp()
         content_path = '{temp_dir}/word/document.xml'.format(temp_dir=temp_directory)
+        print_path(temp_directory)
         with open(content_path, 'r') as content_file:
             content_value = content_file.read()
-        context = model_to_dict(project)
-        django_engine = engines['django']
-        template = django_engine.from_string(content_value)
-        result = template.render(context)
-        with open(content_path, "w") as f:
-            f.write(result)
-    # with zipfile.ZipFile('output.docx', 'w') as zip_ref:
-    #     for file in zip:
-    #         zip_file.write(file)
 
+        context = model_to_dict(project.images)
+        django_engine = engines['django']
+
+
+def generate_inline_image_tag(template_path, image_dict):
+    with open(template_path, 'r') as content_file:
+        content_value = content_file.read()
