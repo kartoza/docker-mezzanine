@@ -797,13 +797,14 @@ csmall2 {
     left: 0;
     height: 0;
     background: rgba(0, 0, 0, 0.5);
-    transition: height 0.3s ease-out;
+    transition: height 2s ease-out;
     color: white;
     cursor: pointer;
 }
 
 .person-avatar:hover > .text-wrapper {
-    height: 200px;
+    height: 100%;
+
 }
 
 .person-link {
