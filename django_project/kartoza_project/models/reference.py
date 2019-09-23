@@ -2,20 +2,10 @@ from django.db import models
 
 
 class Reference(models.Model):
-    name = models.CharField(
-        max_length=300,
-        null=False,
-        blank=False
-    )
-
-    url = models.URLField(
+    person = models.ForeignKey(
+        'kartoza_project.Role',
         null=True,
-        blank=True
-    )
-
-    description = models.TextField(
-        null=True,
-        blank=True
+        related_name='project_references'
     )
 
     project = models.ForeignKey(
@@ -24,21 +14,19 @@ class Reference(models.Model):
         related_name='project_references'
     )
 
-    telephone = models.CharField(
-        blank=True,
-        help_text='Telephone number',
-        max_length=16)
-
-    email = models.EmailField(
+    role = models.ForeignKey(
+        'kartoza_project.Role',
         null=True,
-        blank=True,
-        help_text='A contact email address for the reference',
-        verbose_name='Email')
-
-    role = models.CharField(
-        blank=True,
-        help_text='Role in the project',
-        max_length=255)
+        related_name='project_references'
+    )
 
     def __unicode__(self):
         return self.name
+
+    @property
+    def name(self):
+        return self.person.name
+
+    @property
+    def role(self):
+        return self.role.name
