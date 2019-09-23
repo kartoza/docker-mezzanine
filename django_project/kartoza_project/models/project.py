@@ -258,6 +258,15 @@ class Project(Orderable, Slugged, AdminThumbMixin):
         return text, images
 
     @property
+    def export_html_description(self):
+        safe_description = self.description
+        safe_description = (
+            safe_description.
+                replace('<p>', '').
+                replace('</p>', '<br/>'))
+        return safe_description
+
+    @property
     def export_services_provided(self):
         safe_services = self.services_provided
         safe_services = (
@@ -271,6 +280,15 @@ class Project(Orderable, Slugged, AdminThumbMixin):
         for image_key in images.keys():
             self.images_dict[image_key] = images[image_key]
         return text, images
+
+    @property
+    def export_html_services_provided(self):
+        safe_services = self.services_provided
+        safe_services = (
+            safe_services.
+                replace('<p>', '').
+                replace('</p>', '<br/>'))
+        return safe_services
 
     def strip_rt_tags(self, text_in):
         text_in = (
