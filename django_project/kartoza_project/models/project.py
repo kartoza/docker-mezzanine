@@ -16,11 +16,7 @@ class Project(Orderable, Slugged, AdminThumbMixin):
         max_length=1000,
     )
 
-    project_details = RichTextField(
-        null=True,
-        blank=True,
-        verbose_name='Project details'
-    )
+
 
     thumbnail = models.ImageField(
         null=True,
@@ -76,20 +72,13 @@ class Project(Orderable, Slugged, AdminThumbMixin):
         on_delete=models.PROTECT,
         related_name='contact_person')
 
-    value = models.DecimalField(
-        verbose_name='Project value',
-        max_digits=10,
-        decimal_places=2,
-        null=True,
-        blank=True
-    )
-
     consultants = models.ManyToManyField(
 
         'kartoza_project.Reference',
         related_name='consultants',
         null=True,
         blank=True,
+        help_text='External company/individuals contracted to assist with the work done.'
     )
 
     staff_involved = models.ManyToManyField(
@@ -97,6 +86,7 @@ class Project(Orderable, Slugged, AdminThumbMixin):
         related_name='staff_involved',
         null=True,
         blank=True,
+        help_text='All kartoza staff who worked on this project.',
     )
 
     description = RichTextField(

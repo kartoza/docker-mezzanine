@@ -7,7 +7,11 @@ class Person(models.Model):
         null=False,
         blank=False
     )
-
+    title = models.CharField(
+        max_length=10,
+        null=True,
+        blank=True,
+    )
     url = models.URLField(
         null=True,
         blank=True

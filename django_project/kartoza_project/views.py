@@ -12,7 +12,7 @@ from django.shortcuts import get_object_or_404
 from django.shortcuts import render as django_render
 from mezzanine.conf import settings
 from mezzanine.utils.views import render, paginate
-from .models import Project, ProjectCategory, ProjectImage, Reference
+from .models import Project, ProjectImage, Reference
 
 
 def project_list(request, category=None,

@@ -3,9 +3,9 @@ from django.db import models
 
 class Reference(models.Model):
     person = models.ForeignKey(
-        'kartoza_project.Role',
+        'kartoza_project.Person',
         null=True,
-        related_name='project_references'
+        related_name='reference_person'
     )
 
     project = models.ForeignKey(
@@ -17,7 +17,7 @@ class Reference(models.Model):
     role = models.ForeignKey(
         'kartoza_project.Role',
         null=True,
-        related_name='project_references'
+        related_name='reference_role'
     )
 
     def __unicode__(self):
@@ -25,8 +25,7 @@ class Reference(models.Model):
 
     @property
     def name(self):
-        return self.person.name
-
-    @property
-    def role(self):
-        return self.role.name
+        try:
+            return self.person.name
+        except AttributeError:
+            return ""
