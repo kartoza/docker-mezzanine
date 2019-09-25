@@ -16,8 +16,6 @@ class Project(Orderable, Slugged, AdminThumbMixin):
         max_length=1000,
     )
 
-
-
     thumbnail = models.ImageField(
         null=True,
         blank=True,
@@ -94,7 +92,7 @@ class Project(Orderable, Slugged, AdminThumbMixin):
         help_text=(
             "This field can contain HTML and should contain a "
             "few paragraphs describing the background of "
-            "the project."),
+            "the project. As used in the world bank template."),
         default="",
         blank=True)
 
@@ -103,7 +101,7 @@ class Project(Orderable, Slugged, AdminThumbMixin):
         help_text=(
             "This field can contain HTML and should contain a "
             "few paragraphs describing the background of "
-            "the project."),
+            "the project. As used in the world bank template."),
         default="",
         blank=True)
 

@@ -33,7 +33,7 @@ class ProjectAdmin(admin.ModelAdmin):
 
     def get_readonly_fields(self, request, obj=None):
         if obj:
-            return ('slug',)
+            return ('slug', 'categories')
         return ()
 
     def get_prepopulated_fields(self, request, obj=None):
