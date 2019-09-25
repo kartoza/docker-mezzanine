@@ -174,6 +174,9 @@ SHOP_OPTION_TYPE_CHOICES = (
     (1, "Course date"),
     (2, "Course venue"),
     (3, "GIS Box option"),
+    (4, "Support SLA"),
+    (5, "Hosting"),
+    (6, "Maintenance")
 )
 # Sequence of value/name pairs for payment statuses.
 SHOP_PAYMENT_STATUS_CHOICES = (
