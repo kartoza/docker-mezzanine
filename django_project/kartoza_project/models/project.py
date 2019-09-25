@@ -1,7 +1,9 @@
 import tempfile
+import base64
 import re
 from datetime import datetime
 from django.db import models
+from django.conf import settings
 from django.template.loader import render_to_string
 from kartoza_project.models.project_image import ProjectImage
 from mezzanine.core.fields import RichTextField
@@ -17,12 +19,6 @@ class Project(Orderable, Slugged, AdminThumbMixin):
         blank=True,
         verbose_name='Project short description',
         max_length=1000,
-    )
-
-    project_details = RichTextField(
-        null=True,
-        blank=True,
-        verbose_name='Project details'
     )
 
     thumbnail = models.ImageField(
@@ -79,20 +75,13 @@ class Project(Orderable, Slugged, AdminThumbMixin):
         on_delete=models.PROTECT,
         related_name='contact_person')
 
-    value = models.DecimalField(
-        verbose_name='Project value',
-        max_digits=10,
-        decimal_places=2,
-        null=True,
-        blank=True
-    )
-
     consultants = models.ManyToManyField(
 
         'kartoza_project.Reference',
         related_name='consultants',
         null=True,
         blank=True,
+        help_text='External company/individuals contracted to assist with the work done.'
     )
 
     staff_involved = models.ManyToManyField(
@@ -100,6 +89,7 @@ class Project(Orderable, Slugged, AdminThumbMixin):
         related_name='staff_involved',
         null=True,
         blank=True,
+        help_text='All kartoza staff who worked on this project.',
     )
 
     description = RichTextField(
@@ -107,7 +97,7 @@ class Project(Orderable, Slugged, AdminThumbMixin):
         help_text=(
             "This field can contain HTML and should contain a "
             "few paragraphs describing the background of "
-            "the project."),
+            "the project. As used in the world bank template."),
         default="",
         blank=True)
 
@@ -116,7 +106,7 @@ class Project(Orderable, Slugged, AdminThumbMixin):
         help_text=(
             "This field can contain HTML and should contain a "
             "few paragraphs describing the background of "
-            "the project."),
+            "the project. As used in the world bank template."),
         default="",
         blank=True)
 
@@ -183,7 +173,7 @@ class Project(Orderable, Slugged, AdminThumbMixin):
         related_name='contact_person')
 
     def __unicode__(self):
-        return self.title
+        return unicode(self.title)
 
     @property
     def sorted_clients_set(self):
@@ -264,7 +254,8 @@ class Project(Orderable, Slugged, AdminThumbMixin):
             safe_description.
                 replace('<p>', '').
                 replace('</p>', '<br/>'))
-        return safe_description
+        safe_description = replace_html_images_with_base64(safe_description)
+        return safe_description or u'None'
 
     @property
     def export_services_provided(self):
@@ -288,7 +279,7 @@ class Project(Orderable, Slugged, AdminThumbMixin):
             safe_services.
                 replace('<p>', '').
                 replace('</p>', '<br/>'))
-        return safe_services
+        return safe_services or u'None'
 
     def strip_rt_tags(self, text_in):
         text_in = (
@@ -303,7 +294,7 @@ class Project(Orderable, Slugged, AdminThumbMixin):
         return text_in
 
     def images(self):
-        return self.images_dict
+        return self.images_dict or u'None'
 
 
 def diff_month(d1, d2):
@@ -326,18 +317,37 @@ def get_richtext_and_images(text_source):
             x_size = re.search(r'width=\"(.*?)\"', next_image_tag).group(1)
             y_size = re.search(r'height=\"(.*?)\"', next_image_tag).group(1)
         except AttributeError:
-            src  = ''  # apply your error handling
+            src  = ''
             x_size = 0
             y_size = 0
+
         text_in = text_in[text_in.find('/>'):]
         image_location = text_in.find('<img')
-        image_number = 'myimage{number}'.format(number=image_count)
-        text_source = text_source.replace(next_image_tag, ' {{ ' + image_number + ' }}')
-        images[image_number] = {}
-        images[image_number]['src']= src
-        images[image_number]['x_size']= float(x_size) * 100
-        images[image_number]['y_size'] = float(y_size) * 100
+        # image_number = 'myimage{number}'.format(number=image_count)
+        # text_source = text_source.replace(next_image_tag, ' {{ ' + image_number + ' }}')
+        # images[image_number] = {}
+        # images[image_number]['src']= src
+        # images[image_number]['x_size']= float(x_size) * 100
+        # images[image_number]['y_size'] = float(y_size) * 100
 
     return text_source, images
 
 
+def replace_html_images_with_base64(html_in):
+    try:
+        image_regex = r'<img(.*)>'
+        groups = [x.group() for x in re.finditer(image_regex, html_in)]
+        for group in groups:
+            image_tag = str(group)
+            image_exp = re.compile('src=\"(.*?)\"')
+            image_path = re.search(r'src=\"(.*?)\"', image_tag).group(1)
+            image_location = settings.MEDIA_ROOT.replace('/media', '') + image_path.replace('uploads', 'project_image')
+            width = re.search(r'width="(.*)"', image_tag).string
+            height = re.search(r'height="(.*)"', image_tag).string
+            with open(image_location, "rb") as img_file:
+                base64code = base64.b64encode(img_file.read())
+            image_result = ('<img src="data:image/png;base64, {base64code}"/>').format(base64code=base64code)
+            html_in = re.sub(group, image_result, html_in)
+        return html_in
+    except Exception as e:
+        return e
