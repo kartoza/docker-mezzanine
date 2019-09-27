@@ -76,7 +76,6 @@ class Project(Orderable, Slugged, AdminThumbMixin):
         related_name='contact_person')
 
     consultants = models.ManyToManyField(
-
         'kartoza_project.Reference',
         related_name='consultants',
         null=True,
@@ -218,12 +217,14 @@ class Project(Orderable, Slugged, AdminThumbMixin):
     def get_template(self, template):
         if template == 'world_bank_format':
             template_name = 'world_bank_format.md'
-            starting_template = render_to_string(
-                template_name, {'project': self,
-                                         'consultants': self.consultants.all(),
-                                         'staff': self.staff_involved.all(),
-                                         'clients': self.clients.all()})
-            return starting_template
+        elif template == 'public_portfolio':
+            template_name = 'public_portfolio.html'
+        starting_template = render_to_string(
+            template_name, {'project': self,
+                                     'consultants': self.consultants.all(),
+                                     'staff': self.staff_involved.all(),
+                                     'clients': self.clients.all()})
+        return starting_template
 
     @property
     def duration(self):
