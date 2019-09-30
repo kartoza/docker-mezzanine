@@ -1,6 +1,7 @@
 import tempfile
 import zipfile
 import os
+from xhtml2pdf import pisa
 from django.utils.encoding import smart_str, smart_unicode
 import re
 from datetime import datetime
@@ -154,24 +155,24 @@ def export_projects(request):
             for key in projects_to_export:
                 next_project = Project.objects.get(pk=key)
                 next_file_text = (
-                    next_project.get_template(layout))
+                    next_project.get_html_template_with_base64_images(layout))
                 response_string += next_file_text
             tmpFileOut = tempfile.NamedTemporaryFile()
             conversion_format = format
             if conversion_format == 'pdf':
                 try:
                     conversion_format = 'html'
-                    output = pypandoc.convert_text(
-                        response_string,
-                        to=conversion_format,
-                        format='md',
-                        outputfile=tmpFileOut.name)
-                    output_text = tmpFileOut.read()
+                    # output = pypandoc.convert_text(
+                    #     response_string,
+                    #     to=conversion_format,
+                    #     format='md',
+                    #     outputfile=tmpFileOut.name)
+                    # output_text = tmpFileOut.read()
 
-                    if conversion_format == 'html':
-                        output_text = add_css(output_text)
+                    # if conversion_format == 'html':
+                    #     output_text = add_css(output_text)
                     if format == 'pdf':
-                        output_text = convert_html_to_pdf(output_text)
+                        output_text = convert_html_to_pdf(response_string)
                     response = HttpResponse(output_text)
                     return response
                 except Exception as e:
@@ -196,14 +197,15 @@ def export_projects(request):
             if conversion_format == u'html':
                 try:
                     conversion_format = 'html'
-                    output = pypandoc.convert_text(
-                        response_string,
-                        to=conversion_format,
-                        format='md',
-                        outputfile=tmpFileOut.name)
-                    output_text = tmpFileOut.read()
-                    output_text = add_css(output_text)
-                    response = HttpResponse(output_text)
+                    # output = pypandoc.convert_text(
+                    #     response_string,
+                    #     to=conversion_format,
+                    #     format='html',
+                    #     outputfile=tmpFileOut.name)
+
+                    # output_text = tmpFileOut.read()
+                    # output_text = add_css(output_text)
+                    response = HttpResponse(response_string)
                     return response
                 except Exception as e:
                     return HttpResponse(e)
@@ -245,15 +247,19 @@ def add_css(output_text):
 def convert_html_to_pdf(sourceHtml):
     temp_file_in = tempfile.NamedTemporaryFile()
     temp_file_out = tempfile.NamedTemporaryFile(suffix='pdf')
-    temp_file_in.write(sourceHtml)
+    # temp_file_in.write(sourceHtml)
     try:
-        HTML(temp_file_in.name).write_pdf(
+
+        HTML(string=sourceHtml).write_pdf(
             temp_file_out.name,
-            stylesheets=[CSS(filename=find('css/pandoc.css'))])
+            stylesheets=[CSS(filename=find('css/public_portfolio.css'))]
+        )
         result = temp_file_out.read()
     except Exception as e:
         return e
     return result
+
+
 
 
 def view_project(request, project_id):
@@ -272,6 +278,7 @@ def view_project(request, project_id):
              'clients': clients,
              'images': images}
         )
+
 
 
 def view_project_details(request, project_id):

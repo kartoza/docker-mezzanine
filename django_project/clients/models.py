@@ -44,6 +44,7 @@ class Client(Displayable, RichText, AdminThumbMixin):
         verbose_name_plural = _("Client")
         ordering = ("name", "link", "logo", "description")
 
+
     @models.permalink
     def get_absolute_url(self):
         return "client_detail", (), {"slug": self.slug}

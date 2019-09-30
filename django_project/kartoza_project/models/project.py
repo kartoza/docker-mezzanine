@@ -1,6 +1,7 @@
 import tempfile
 import base64
 import re
+
 from datetime import datetime
 from django.db import models
 from django.conf import settings
@@ -215,16 +216,27 @@ class Project(Orderable, Slugged, AdminThumbMixin):
         )
 
     def get_template(self, template):
-        if template == 'world_bank_format':
-            template_name = 'world_bank_format.md'
-        elif template == 'public_portfolio':
-            template_name = 'public_portfolio.html'
-        starting_template = render_to_string(
-            template_name, {'project': self,
-                                     'consultants': self.consultants.all(),
-                                     'staff': self.staff_involved.all(),
-                                     'clients': self.clients.all()})
-        return starting_template
+        try:
+            if template == 'world_bank_format':
+                template_name = 'world_bank_format.md'
+            elif template == 'public_portfolio':
+                template_name = 'public_portfolio.html'
+            main_client = self.clients.first()
+            context = {'project': self,
+                                         'consultants': self.consultants.all(),
+                                         'staff': self.staff_involved.all(),
+                                         'clients': self.clients.values(),
+                                         'main_client_name': main_client.title,
+                                         'main_client_logo': main_client.logo.file.name,
+                                         'thumbnail_url': self.thumbnail.file.name,
+
+                                         'images': self.image_urls}
+            starting_template = render_to_string(
+                template_name, context)
+            return starting_template
+        except Exception as e:
+            i = 0
+
 
     @property
     def duration(self):
@@ -255,7 +267,7 @@ class Project(Orderable, Slugged, AdminThumbMixin):
             safe_description.
                 replace('<p>', '').
                 replace('</p>', '<br/>'))
-        safe_description = replace_html_images_with_base64(safe_description)
+        safe_description = replace_html_media_images_with_base64(safe_description)
         return safe_description or u'None'
 
     @property
@@ -297,6 +309,12 @@ class Project(Orderable, Slugged, AdminThumbMixin):
     def images(self):
         return self.images_dict or u'None'
 
+    def get_html_template_with_base64_images(self, template):
+        initial_template = self.get_template(template)
+        template_location = settings.DJANGO_ROOT + '/kartoza_project/templates/'
+        initial_template = replace_html_relative_images_with_base64(initial_template, template_location)
+        return initial_template
+
 
 def diff_month(d1, d2):
     return (d1.year - d2.year) * 12 + d1.month - d2.month
@@ -334,7 +352,7 @@ def get_richtext_and_images(text_source):
     return text_source, images
 
 
-def replace_html_images_with_base64(html_in):
+def replace_html_media_images_with_base64(html_in):
     try:
         image_regex = r'<img(.*)>'
         groups = [x.group() for x in re.finditer(image_regex, html_in)]
@@ -348,6 +366,47 @@ def replace_html_images_with_base64(html_in):
             with open(image_location, "rb") as img_file:
                 base64code = base64.b64encode(img_file.read())
             image_result = ('<img src="data:image/png;base64, {base64code}"/>').format(base64code=base64code)
+            html_in = re.sub(group, image_result, html_in)
+        return html_in
+    except Exception as e:
+        return e
+
+
+def replace_html_relative_images_with_base64(html_in, template_location):
+    try:
+        image_regex = r'<img(.*)>'
+        groups = [x.group() for x in re.finditer(image_regex, html_in)]
+        for group in groups:
+            image_tag = str(group)
+            image_exp = re.compile('src=\"(.*?)\"')
+            image_path = re.search(r'src=\"(.*?)\"', image_tag).group(1)
+            if image_path.find('home') > 0:
+                image_location = image_path
+            else:
+                image_location = template_location + image_path
+            try:
+                width = re.search(r'width=\"(.*)\"', image_tag).group(1)
+            except AttributeError:
+                width = 0
+            try:
+                height = re.search(r'height=\"(.*)\"', image_tag).group(1)
+            except AttributeError:
+                height = 0
+            try:
+                css_class = re.search(r'class=\"(.*?)\"', image_tag).group(1)
+            except AttributeError:
+                try:
+                    css_class = re.search(r"class=\'(.*)\'", image_tag).group(1)
+                except AttributeError:
+                    css_class = ''
+            if image_location.find('data:image/png;base64') > 0:  # Assumes this is already base64
+                base64code = image_location
+            else:
+                with open(image_location, "rb") as img_file:
+                    base64code = base64.b64encode(img_file.read())
+            image_result = ('<img class="{css_class}" src="data:image/png;base64, {base64code}"/>').format(
+                base64code=base64code,
+                css_class=css_class)
             html_in = re.sub(group, image_result, html_in)
         return html_in
     except Exception as e:
