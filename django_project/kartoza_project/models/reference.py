@@ -5,7 +5,8 @@ class Reference(models.Model):
     name = models.CharField(
         max_length=300,
         null=False,
-        blank=False
+        blank=False,
+        default='Unknown',
     )
 
     url = models.URLField(
@@ -38,6 +39,7 @@ class Reference(models.Model):
     role = models.CharField(
         blank=True,
         help_text='Role in the project',
+        null=True,
         max_length=255)
 
     @property

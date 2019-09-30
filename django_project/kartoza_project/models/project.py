@@ -101,12 +101,28 @@ class Project(Orderable, Slugged, AdminThumbMixin):
         default="",
         blank=True)
 
+    description_summary = RichTextField(
+        "description_summary",
+        help_text=(
+            "This field can contain HTML and should briefly describe work done during the project. "
+            "For exporting to public documents."),
+        default="",
+        blank=True)
+
     services_provided = RichTextField(
         "services_provided",
         help_text=(
             "This field can contain HTML and should contain a "
             "few paragraphs describing the background of "
-            "the project. As used in the world bank template."),
+            "the project. As used in the world bank template. Maximum of 250 words or 27 lines"),
+        default="",
+        blank=True)
+
+    services_provided_summary = RichTextField(
+        "services_provided_summary",
+        help_text=(
+            "This field can contain HTML and should briefly describe services provided during the project. "
+            "For exporting to public documents. Maximum of 160 words or 27 lines"),
         default="",
         blank=True)
 
