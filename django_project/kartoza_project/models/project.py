@@ -379,6 +379,7 @@ def replace_html_relative_images_with_base64(html_in, template_location):
         for group in groups:
             image_tag = str(group)
             image_exp = re.compile('src=\"(.*?)\"')
+            # image_extension_exp = r'\.([0-9a-z]+$)'
             image_path = re.search(r'src=\"(.*?)\"', image_tag).group(1)
             if image_path.find('home') > 0:
                 image_location = image_path
@@ -399,14 +400,21 @@ def replace_html_relative_images_with_base64(html_in, template_location):
                     css_class = re.search(r"class=\'(.*)\'", image_tag).group(1)
                 except AttributeError:
                     css_class = ''
-            if image_location.find('data:image/png;base64') > 0:  # Assumes this is already base64
+            image_extension = re.search("\.([0-9a-z]+)", image_tag).group(1)
+            if image_extension == 'svg':
+                image_extension = 'svg+xml'
+            image_test_substring = 'data:image/{image_extension};base64'.format(image_extension=image_extension)
+            if image_location.find(image_test_substring) > 0:  # Assumes this is already base64
                 base64code = image_location
             else:
                 with open(image_location, "rb") as img_file:
                     base64code = base64.b64encode(img_file.read())
-            image_result = ('<img class="{css_class}" src="data:image/png;base64, {base64code}"/>').format(
+            image_result = (
+                '<img class="{css_class}" src="data:image/{image_extension};base64, {base64code}"/>').format(
+                css_class=css_class,
+                image_extension=image_extension,
                 base64code=base64code,
-                css_class=css_class)
+                )
             html_in = re.sub(group, image_result, html_in)
         return html_in
     except Exception as e:

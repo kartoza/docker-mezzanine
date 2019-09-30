@@ -14,23 +14,21 @@
                 <div class="heading-underline">
                     <img src="../../kartoza_theme/static/img/heading-underline.png"/>
                 </div>
-
             </div>
-
         </div>
         <div style="clear:both;"></div>
         <table>
             <tr class="center-text">
                 <td>
-                    <img class="icon-image" src="../static/img/generic_client_icon.png">
+                    <img class="icon-image" src="../static/img/generic_client_icon.svg">
                     <div>Client: <b>{{ main_client_name }}</b></div>
                 </td>
                 <td>
-                    <img class="icon-image" src="../static/img/generic_location_icon.png">
+                    <img class="icon-image" src="../static/img/generic_location_icon.svg">
                     <div>Location: <b>{{ project.country }}</b></div>
                 </td>
                 <td class="small-padding-top">
-                    <img class="icon-image" src="../static/img/generic_duration_icon.png">
+                    <img class="icon-image" src="../static/img/generic_duration_icon.svg">
                     <div>Duration: <b>{{ project.date_start }} - {{ project.date_end }}
                         ({{ project.total_staff_months_by_kartoza }} months)</b>
                     </div>
@@ -38,8 +36,7 @@
             </tr>
             <tr>
                 <td style="background-color: lightgrey;">
-                    <div class="center-text"><img class="main_client_logo_class" src="{{ main_client_logo }}">
-                    </div>
+                    <div class="center-text"><img class="main_client_logo_class" src="{{ main_client_logo }}"></div>
                 </td>
                 <td colspan="2" class="center-text no-padding no-borders">
                     <img class="project_thumbnail" src="{{ project.thumbnail.file.name }}">
@@ -76,10 +73,8 @@
             </tr>
         </table>
         <div class="footer">
-            <img class="footer-image" src="../static/img/kartoza_logo_white.png">
-            <div class="address">Some long address here</div>
-            <div class="email"><b>E:</b> info@kartoza.com</div>
-            <div class="website"><b>www.kartoza.com</b></div>
+            <img class="footer-image" src="../static/img/kartoza_logo_white.svg">
+            <div class="website"><b>info@kartoza.com | www.kartoza.com</b></div>
         </div>
     </div>
 </div>
@@ -90,7 +85,7 @@
 
     @page {
         size: a4;
-        margin: 0;
+        margin: 2mm;
     }
 
     html {
@@ -107,16 +102,8 @@
         border-bottom: 0;
     }
 
-    .email {
-        top: 12.8mm;
-    }
-
-    .address {
-        top: 6.6mm;
-    }
-
     .website {
-        top: 19.4mm;
+        top: 12.8mm;
     }
 
     .footer-image {
@@ -139,7 +126,7 @@
         line-height: 14px;
         height: 356mm;
         width: 216mm;
-
+        margin: 2cm;
 
         color: #000000;
         background-color: white;
@@ -187,8 +174,8 @@
         width: 125mm;
         position: absolute;
         top: 70mm;
-        left: 74mm;
-
+        display: grid;
+        margin-left: 0.5mm;
     }
 
     .title_pretext {
@@ -248,7 +235,8 @@
         height: 100%;
         max-height: 231mm;
         width: 190mm;
-        margin-left: 10mm;
+        margin-left: auto;
+        margin-right: auto;
         border-right: unset;
     }
 

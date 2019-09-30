@@ -44,8 +44,10 @@ class Reference(models.Model):
     def contact_detail(self):
         if len(self.email) > 0:
             return str(self.email)
-        else:
+        elif len(self.telephone) > 0:
             return str(self.telephone)
+        else:
+            return "Unavailable"
 
     def __unicode__(self):
         return self.name
