@@ -163,7 +163,11 @@
             {% block main_wrapper %}
                 <div>
                     {% block main %}{% endblock %}
+
                 </div>
+            {% endblock %}
+            {% block contact_form %}
+                {% include 'contact_us.html' %}
             {% endblock %}
         </div>
 
@@ -171,8 +175,10 @@
             <div class="background-back-right-1"></div>
             <div class="background-back-right-2"></div>
         </div>
+
     </div>
 {% endblock %}
+
 {% include "includes/announcements.html" %}
 <div id="footerwrap" style="margin-top: 5rem;">
     <div class="container">

@@ -14,18 +14,12 @@
         <div>
         <div class="row">
         <div class="home-page-back-left-1">
-
         </div>
         <div class="home-page-back-right-1">
-
         </div>
-
         <div class="col-xs-2">
-
         </div>
         <div class="col-xs-8">
-
-
             <div class="row" style="margin-top: 10rem; margin-bottom: 10rem;">
                 <div class="col-xs-12 col-md-4">
                     <div class="col-xs-12">
@@ -126,7 +120,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="hidden-lg hidden-xl hidden-md training-large">
                 <div class="row">
                     <div class="col-md-12 my-3">
@@ -151,7 +144,6 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12 my-3">
-
                         <img class="home-page-small-image"
                              src="{% static "img/front-page-sd.png" %}" style="height:178px">
                         <div class="text-big-heavy text-center my-3">Software Development</div>
@@ -230,32 +222,32 @@
             </div>
         </div>
         <div class="col-xs-12" style="height: 400px;">
-                <div class="col-xs-8 col-xs-offset-2 centerY">
-                    <div class="col-md-7 col-xs-12">
-                        <img class="home-page-fbis" src="{% static "img/front-page-ipad-fbis.png" %}">
+            <div class="col-xs-8 col-xs-offset-2 centerY">
+                <div class="col-md-7 col-xs-12">
+                    <img class="home-page-fbis" src="{% static "img/front-page-ipad-fbis.png" %}">
+                </div>
+                <div class="row">
+                    <div class="col-md-5 col-xs-12">
+                        <div class="home-page-heading hidden-sm hidden-xs">
+                            Our Projects
+                        </div>
+                        <div class="home-page-heading text-center hidden-md hidden-lg hidden-xl">
+                            Our Projects
+                        </div>
+                        <div class="text-medium my-3">
+                            We work with individuals, businesses or governments to collate Geospatial problembs
+                            in to real-time data.
+                        </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-5 col-xs-12">
-                            <div class="home-page-heading hidden-sm hidden-xs">
-                                Our Projects
-                            </div>
-                            <div class="home-page-heading text-center hidden-md hidden-lg hidden-xl">
-                                Our Projects
-                            </div>
-                            <div class="text-medium my-3">
-                                We work with individuals, businesses or governments to collate Geospatial problembs
-                                in to real-time data.
-                            </div>
-                        </div>
-                        <div class="col-xs-3 my-3 hidden-sm hidden-xs">
-                            <a class="btn btn-default-hollow btn-small" href="/project">PORTFOLIO</a>
-                        </div>
-                        <div class="col-xs-12 my-3 hidden-md hidden-lg hidden-xl">
-                            <a class="btn btn-default-hollow btn-center btn-small" href="/project">PORTFOLIO</a>
-                        </div>
+                    <div class="col-xs-3 my-3 hidden-sm hidden-xs">
+                        <a class="btn btn-default-hollow btn-small" href="/project">PORTFOLIO</a>
+                    </div>
+                    <div class="col-xs-12 my-3 hidden-md hidden-lg hidden-xl">
+                        <a class="btn btn-default-hollow btn-center btn-small" href="/project">PORTFOLIO</a>
                     </div>
                 </div>
             </div>
+        </div>
         <div class="col-xs-12 home-page-philosophy-row">
             <div class="home-page-philosophy-image">
                 <img class="home-page-fbis" src="{% static "img/front-page-clients-background.png" %}"></div>
@@ -272,33 +264,42 @@
                 </div>
             </div>
         </div>
-        <div class="col-xs-12" style="height: 400px;"><div class="home-page-back-left-2 hidden-in-small-screen"></div>
-
-        <div class="col-md-6 col-md-offset-6 col-sm-12" style="margin-bottom: 5rem; margin-top: 2rem;">
-            <div class="technical-articles-heading">
-                Some Technical Articles for you
+        <div class="col-xs-12">
+            <div class="col-sm-4 col-sm-offset-6 col-xs-8 col-xs-offset-2"
+                 style="margin-bottom: 5rem; margin-top: 2rem;">
+                <div class="technical-articles-heading">
+                    Some Technical Articles for you
+                </div>
+                <div class="technical-articles">
+                    {% blog_recent_posts settings.FRONT_PAGE_RECENT_POST as recent_posts %}
+                    {% if recent_posts %}
+                        <div id="recent-post-section">
+                            <ul>
+                                {% for recent_post in recent_posts %}
+                                    <li><a href="{{ recent_post.get_absolute_url }}">{{ recent_post.title }}</a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endif %}
+                </div>
+                <a class="col-xs-4 btn btn-default-hollow hidden-in-small-screen" href="/blog/">SEE BLOG</a>
             </div>
-            <div class="technical-articles">
-                {% blog_recent_posts settings.FRONT_PAGE_RECENT_POST as recent_posts %}
-                {% if recent_posts %}
-                    <div id="recent-post-section">
-                        <ul>
-                            {% for recent_post in recent_posts %}
-                                <li><a href="{{ recent_post.get_absolute_url }}">{{ recent_post.title }}</a>
-                                </li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                {% endif %}
-            </div>
-
-            <a class="col-xs-4 btn btn-default-hollow hidden-in-small-screen" href="/blog/">SEE BLOG</a>
-        </div>
         </div>
         <div class="col-xs-12">
-            <div class=""></div>
+            <div class="col-xs-8  col-xs-offset-2">
+
+
+                <div class="">
+                    {% block contact_form %}
+                        {% include 'contact_us.html' %}
+                    {% endblock %}
+                </div>
+            </div>
+            <div class="home-page-back-left-2 hidden-in-small-screen"></div>
         </div>
     {% endblock %}
+
 </div>
 <div class="col-xs-2">
     {% block right_wrapper %}
