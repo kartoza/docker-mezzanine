@@ -272,9 +272,9 @@
                 </div>
             </div>
         </div>
-        <div class="col-xs-12" style="height: 400px;"><div class="home-page-back-left-2 hidden-in-small-screen"></div>
+        <div class="col-xs-12">
 
-        <div class="col-md-6 col-md-offset-6 col-sm-12" style="margin-bottom: 5rem; margin-top: 2rem;">
+        <div class="col-sm-4 col-sm-offset-6 col-xs-8 col-xs-offset-2" style="margin-bottom: 5rem; margin-top: 2rem;">
             <div class="technical-articles-heading">
                 Some Technical Articles for you
             </div>
@@ -295,10 +295,22 @@
             <a class="col-xs-4 btn btn-default-hollow hidden-in-small-screen" href="/blog/">SEE BLOG</a>
         </div>
         </div>
+
         <div class="col-xs-12">
-            <div class=""></div>
+        <div class="col-xs-8  col-xs-offset-2">
+
+
+
+            <div class="">
+                     {% block contact_form %}
+                {% include 'contact_us.html' %}
+            {% endblock %}
+            </div>
         </div>
+
+            <div class="home-page-back-left-2 hidden-in-small-screen"></div></div>
     {% endblock %}
+
 </div>
 <div class="col-xs-2">
     {% block right_wrapper %}
