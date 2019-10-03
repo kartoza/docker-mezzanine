@@ -12,7 +12,7 @@ from django.utils.translation import ugettext_lazy as _
 
 # TODO : fix this
 # tax_value = str(getattr(settings, "CURRENT_VAT", 15)) + "%"
-tax_value = ''
+tax_value = '15%'
 
 def vat_tax_handler(request, order_form):
     """
