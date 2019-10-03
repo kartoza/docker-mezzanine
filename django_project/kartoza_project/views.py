@@ -9,7 +9,7 @@ from django.shortcuts import render as django_render
 from mezzanine.conf import settings
 from mezzanine.utils.views import render, paginate
 from .models import Project, ProjectCategory, ProjectImage, Reference
-from .export_utils import generate_docx, convert_html_to_pdf
+from .export_utils import generate_docx, convert_html_to_pdf, add_css
 
 
 def project_list(request, category=None,
@@ -134,33 +134,39 @@ def export_projects(request):
         layout = request.POST['layout']
         response_string = ''
         if len(projects_to_export) > 0:
-            for key in projects_to_export:
-                next_project = Project.objects.get(pk=key)
-                next_file_text = (
-                    next_project.get_html_template_with_base64_images(layout))
-                response_string += next_file_text
-            conversion_format = format
-            if conversion_format == u'html':
-                try:
-                    response = HttpResponse(response_string)
+            try:
+                for key in projects_to_export:
+                    next_project = Project.objects.get(pk=key)
+                    next_file_text = (
+                        next_project.get_html_template_with_base64_images(layout))
+                    response_string += next_file_text
+                conversion_format = format
+                if conversion_format == u'html':
+                    try:
+                        if layout == 'world_bank_format':
+                            response_string = add_css(response_string, layout)
+                        response = HttpResponse(response_string)
+                        return response
+                    except Exception as e:
+                        return HttpResponse(e)
+                if conversion_format == u'pdf':
+                    try:
+                        output_text = convert_html_to_pdf(response_string, '{layout}.css'.format(layout=layout))
+                        response = HttpResponse(output_text)
+                        return response
+                    except Exception as e:
+                        return HttpResponse(e)
+                if conversion_format == u'docx':
+                    project =  Project.objects.get(pk=projects_to_export[0])
+                    generated_docx = generate_docx(request, project, layout)
+                    zip_file = open(generated_docx, 'r')
+                    response = HttpResponse(zip_file, content_type='application/force-download')
+                    response['Content-Disposition'] = 'attachment; filename="%s"' % 'result.docx'
                     return response
-                except Exception as e:
-                    return HttpResponse(e)
-            if conversion_format == 'pdf':
-                try:
-                    output_text = convert_html_to_pdf(response_string)
-                    response = HttpResponse(output_text)
-                    return response
-                except Exception as e:
-                    return HttpResponse(e)
-            if conversion_format == u'docx':
-                generated_docx = generate_docx(request, 2)
-                zip_file = open(generated_docx, 'r')
-                response = HttpResponse(zip_file, content_type='application/force-download')
-                response['Content-Disposition'] = 'attachment; filename="%s"' % 'result.docx'
-                return response
+            except Exception as e:
+                return HttpResponse(e)
         else:
-            return HttpResponse()
+            return HttpResponse("No project selected")
 
 
 def view_project(request, project_id):

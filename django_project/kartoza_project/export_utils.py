@@ -64,13 +64,13 @@ def add_css(output_text, css_file_name):
     return output_text
 
 
-def convert_html_to_pdf(sourceHtml):
+def convert_html_to_pdf(sourceHtml, style_sheet_name):
     temp_file_out = tempfile.NamedTemporaryFile(suffix='pdf')
     try:
 
         HTML(string=sourceHtml).write_pdf(
             temp_file_out.name,
-            stylesheets=[CSS(filename=find('css/public_portfolio.css'))]
+            stylesheets=[CSS(filename=find('css/{style_sheet_name}'.format(style_sheet_name=style_sheet_name)))]
         )
         result = temp_file_out.read()
     except Exception as e:
@@ -208,10 +208,9 @@ def docx_replace_images(file_path, project):
 
 # WIP
 # ToDo: Add and link docx images
-def generate_docx(request, project):
+def generate_docx(request, project, template):
     try:
-        template_path = find('layouts/template.docx')
-
+        template_path = find('layouts/{template}.docx'.format(template=template))
         temp_directory_store = tempfile.mkdtemp()
         new_zipfile_path = temp_directory_store+'/zip_result.docx'
         doc = DocxTemplate(template_path)
