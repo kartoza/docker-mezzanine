@@ -1,8 +1,10 @@
 import tempfile
 import base64
 import re
+from docxtpl import DocxTemplate, RichText
 from django.conf import settings
 from django.contrib.staticfiles.finders import find
+from django.forms.models import model_to_dict
 from weasyprint import HTML, CSS
 
 
@@ -135,3 +137,28 @@ def get_richtext_and_images(text_source):
         images[image_number]['x_size'] = float(x_size) * 100
         images[image_number]['y_size'] = float(y_size) * 100
     return text_source, images
+
+
+# ToDo: Add and link docx images
+def generate_docx(request, project, layout):
+    try:
+        template_path = find('layouts/{layout}.docx'.format(layout=layout))
+
+        temp_directory_store = tempfile.mkdtemp()
+        new_zipfile_path = temp_directory_store+'/zip_result.docx'
+        doc = DocxTemplate(template_path)
+        context = {}
+        context['project'] = model_to_dict(project)
+        drt = RichText()
+        drt_text, drt_images = project.export_description
+        drt.add(drt_text, style='Text Body')
+        context['project']['drt'] = drt
+        srt = RichText()
+        srt_text, srt_images = project.export_services_provided
+        srt.add(srt_text, style='Text Body')
+        context['project']['drt'] = srt
+        doc.render(context)
+        doc.save(new_zipfile_path)
+        return new_zipfile_path
+    except Exception as exception:
+        i = exception
