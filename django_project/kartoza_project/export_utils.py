@@ -1,59 +1,9 @@
-import zipfile
-import os
-import shutil
 import tempfile
 import base64
 import re
-from docxtpl import DocxTemplate, RichText
 from django.conf import settings
 from django.contrib.staticfiles.finders import find
-from django.template import engines
-from django.forms.models import model_to_dict
 from weasyprint import HTML, CSS
-
-def get_all_file_paths(directory):
-    file_paths = []
-    for root, directories, files in os.walk(directory):
-        for filename in files:
-            filepath = os.path.join(root, filename)
-            file_paths.append(filepath)
-    return file_paths
-
-
-def zip_folder(directory, zip_file_name):
-    shutil.make_archive(zip_file_name, 'zip', directory)
-
-
-def print_path(path):
-    print(os.listdir(path))
-    folders = []
-    for r, d, f in os.walk(path):
-        for folder in d:
-            folders.append(os.path.join(r, folder))
-
-    for f in folders:
-        print(f)
-
-
-def docx_replace_regex(doc_obj, regex , replace):
-    for p in doc_obj.paragraphs:
-        if regex.search(p.text):
-            inline = p.runs
-            # Loop added to work with runs (strings with same style)
-            for i in range(len(inline)):
-                if regex.search(inline[i].text):
-                    text = regex.sub(replace, inline[i].text)
-                    inline[i].text = text
-
-    for table in doc_obj.tables:
-        for row in table.rows:
-            for cell in row.cells:
-                docx_replace_regex(cell, regex , replace)
-
-
-def generate_inline_image_tag(template_path, image_dict):
-    with open(template_path, 'r') as content_file:
-        content_value = content_file.read()
 
 
 def add_css(output_text, css_file_name):
@@ -146,7 +96,7 @@ def replace_html_relative_images_with_base64(html_in, template_location):
         return e
 
 
-def strip_rt_tags(self, text_in):
+def strip_rt_tags(text_in):
     text_in = (
         text_in.
         replace('<p>', '').
@@ -159,12 +109,8 @@ def strip_rt_tags(self, text_in):
     return text_in
 
 
-def diff_month(d1, d2):
-    return (d1.year - d2.year) * 12 + d1.month - d2.month
-
 def get_richtext_and_images(text_source):
     text_in = text_source
-    # image_locations = [m.start() for m in re.finditer(text_in, '<img')]
     images = {}
     image_count = 0
     image_location = text_in.find('<img')
@@ -182,51 +128,10 @@ def get_richtext_and_images(text_source):
             y_size = 0
         text_in = text_in[text_in.find('/>'):]
         image_location = text_in.find('<img')
-        # image_number = 'myimage{number}'.format(number=image_count)
-        # text_source = text_source.replace(next_image_tag, ' {{ ' + image_number + ' }}')
-        # images[image_number] = {}
-        # images[image_number]['src']= src
-        # images[image_number]['x_size']= float(x_size) * 100
-        # images[image_number]['y_size'] = float(y_size) * 100
+        image_number = 'myimage{number}'.format(number=image_count)
+        text_source = text_source.replace(next_image_tag, ' {{ ' + image_number + ' }}')
+        images[image_number] = {}
+        images[image_number]['src'] = src
+        images[image_number]['x_size'] = float(x_size) * 100
+        images[image_number]['y_size'] = float(y_size) * 100
     return text_source, images
-
-
-# WIP
-def docx_replace_images(file_path, project):
-    temp_directory = tempfile.mkdtemp()
-    inline_template = find('layouts/docx_inline_image.xml')
-    with zipfile.ZipFile(file_path, 'r') as zip_ref:
-        zip_ref.extractall(temp_directory)
-        temp_directory = tempfile.mkdtemp()
-        content_path = '{temp_dir}/word/document.xml'.format(temp_dir=temp_directory)
-        print_path(temp_directory)
-        with open(content_path, 'r') as content_file:
-            content_value = content_file.read()
-        context = model_to_dict(project.images)
-        django_engine = engines['django']
-
-
-# WIP
-# ToDo: Add and link docx images
-def generate_docx(request, project, template):
-    try:
-        template_path = find('layouts/{template}.docx'.format(template=template))
-        temp_directory_store = tempfile.mkdtemp()
-        new_zipfile_path = temp_directory_store+'/zip_result.docx'
-        doc = DocxTemplate(template_path)
-        context = {}
-        context['project'] = model_to_dict(project)
-        drt = RichText()
-        drt_text, drt_images = project.export_description
-        drt.add(drt_text, style='Text Body')
-        context['project']['drt'] = drt
-        srt = RichText()
-        srt_text, srt_images = project.export_services_provided
-        srt.add(srt_text, style='Text Body')
-        context['project']['drt'] = srt
-        doc.render(context)
-        doc.save(new_zipfile_path)
-        return new_zipfile_path
-    except Exception as exception:
-        i = exception
-
