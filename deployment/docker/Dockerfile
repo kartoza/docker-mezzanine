@@ -27,6 +27,7 @@ ADD REQUIREMENTS.txt /REQUIREMENTS.txt
 RUN pip install -r /REQUIREMENTS.txt && pip install uwsgi && pip uninstall -y django-contrib-comments && pip install django-contrib-comments==1.8.0
 
 RUN apt-get -y install pandoc
+RUN dpkg-reconfigure locales
 # Open port 8080 as we will be running our uwsgi socket on that
 EXPOSE 8080
 
