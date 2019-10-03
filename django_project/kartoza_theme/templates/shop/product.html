@@ -68,6 +68,18 @@ $(document).ready(function() {
             $('#id_option1').val(value_option1)
         }
     });
+    {% if variations.0.option3|length > 0 %}
+    $('input[name=add_cart]').on("click", function(){
+        var quantity = $('input[name=quantity]').val()
+        var_option3 = $('#id_option3 :selected').text();
+        if (var_option3 == "Monthly" && quantity < 3) {
+            alert("A minimum order of 3 months is required");
+            quantity.value = 3;
+            return false;
+        }
+        return true;
+    });
+    {% endif %}
 });
 </script>
 {% endblock %}
@@ -147,15 +159,15 @@ $(document).ready(function() {
 <form method="post" id="add-cart" class="shop-form">
     {% fields_for add_product_form %}
     {#  Add possible combinations  #}
-    {% if variations|length > 1 %}
-    <div class="variations-options">
-        Available course dates - venues:
-        <ul>
-        {% for variation in variations %}
-            <li>{{ variation.option1 }} - {{ variation.option2 }}</li>
-        {% endfor %}
-        </ul>
-    </div>
+    {% if variations|length > 1 and variations.0.option1|length > 0%}
+        <div class="variations-options">
+            Available course dates - venues:
+            <ul>
+            {% for variation in variations %}
+                <li>{{ variation.option1 }} - {{ variation.option2 }}</li>
+            {% endfor %}
+            </ul>
+        </div>
     {% endif %}
 
     <div class="form-actions">
