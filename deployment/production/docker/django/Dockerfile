@@ -14,7 +14,7 @@ ENV LANG en_ZA.UTF-8
 ENV LANGUAGE en_ZA:en
 ENV LC_ALL en_ZA.UTF-8
 
-ARG Project_tag=live_push
+ARG Project_tag=ExportTest
 RUN mkdir -p /usr/src; mkdir -p /home/web  && \
 	git clone --branch ${Project_tag} --depth 1 https://github.com/christiaanvdm/docker-mezzanine.git /usr/src/website/ && \
 	rm -rf /home/web/django_project && \
