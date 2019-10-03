@@ -10,62 +10,6 @@ from django.contrib.staticfiles.finders import find
 from django.template import engines
 from django.forms.models import model_to_dict
 from weasyprint import HTML, CSS
-# from .models import Project
-
-
-def get_richtext_and_images(text_source):
-    text_in = text_source
-    # image_locations = [m.start() for m in re.finditer(text_in, '<img')]
-    images = {}
-    image_count = 0
-    image_location = text_in.find('<img')
-    while image_location >= 0:
-        image_count += 1
-        text_in = text_in[image_location - 1:]
-        next_image_tag = text_in[0:text_in.find('>')] + '>'
-        try:
-            src = re.search(r'src=\"(.*?)\"', next_image_tag).group(1)
-            x_size = re.search(r'width=\"(.*?)\"', next_image_tag).group(1)
-            y_size = re.search(r'height=\"(.*?)\"', next_image_tag).group(1)
-        except AttributeError:
-            src = ''
-            x_size = 0
-            y_size = 0
-        text_in = text_in[text_in.find('/>'):]
-        image_location = text_in.find('<img')
-        # image_number = 'myimage{number}'.format(number=image_count)
-        # text_source = text_source.replace(next_image_tag, ' {{ ' + image_number + ' }}')
-        # images[image_number] = {}
-        # images[image_number]['src']= src
-        # images[image_number]['x_size']= float(x_size) * 100
-        # images[image_number]['y_size'] = float(y_size) * 100
-    return text_source, images
-
-
-# ToDo: Add and link docx images
-def generate_docx(request, project):
-    try:
-        template_path = find('layouts/template.docx')
-
-        temp_directory_store = tempfile.mkdtemp()
-        new_zipfile_path = temp_directory_store+'/zip_result.docx'
-        doc = DocxTemplate(template_path)
-        context = {}
-        context['project'] = model_to_dict(project)
-        drt = RichText()
-        drt_text, drt_images = project.export_description
-        drt.add(drt_text, style='Text Body')
-        context['project']['drt'] = drt
-        srt = RichText()
-        srt_text, srt_images = project.export_services_provided
-        srt.add(srt_text, style='Text Body')
-        context['project']['drt'] = srt
-        doc.render(context)
-        doc.save(new_zipfile_path)
-        return new_zipfile_path
-    except Exception as exception:
-        i = exception
-
 
 def get_all_file_paths(directory):
     file_paths = []
@@ -105,21 +49,6 @@ def docx_replace_regex(doc_obj, regex , replace):
         for row in table.rows:
             for cell in row.cells:
                 docx_replace_regex(cell, regex , replace)
-
-
-def docx_replace_images(file_path, project):
-    temp_directory = tempfile.mkdtemp()
-    inline_template = find('layouts/docx_inline_image.xml')
-
-    with zipfile.ZipFile(file_path, 'r') as zip_ref:
-        zip_ref.extractall(temp_directory)
-        temp_directory = tempfile.mkdtemp()
-        content_path = '{temp_dir}/word/document.xml'.format(temp_dir=temp_directory)
-        print_path(temp_directory)
-        with open(content_path, 'r') as content_file:
-            content_value = content_file.read()
-        context = model_to_dict(project.images)
-        django_engine = engines['django']
 
 
 def generate_inline_image_tag(template_path, image_dict):
@@ -232,3 +161,73 @@ def strip_rt_tags(self, text_in):
 
 def diff_month(d1, d2):
     return (d1.year - d2.year) * 12 + d1.month - d2.month
+
+def get_richtext_and_images(text_source):
+    text_in = text_source
+    # image_locations = [m.start() for m in re.finditer(text_in, '<img')]
+    images = {}
+    image_count = 0
+    image_location = text_in.find('<img')
+    while image_location >= 0:
+        image_count += 1
+        text_in = text_in[image_location - 1:]
+        next_image_tag = text_in[0:text_in.find('>')] + '>'
+        try:
+            src = re.search(r'src=\"(.*?)\"', next_image_tag).group(1)
+            x_size = re.search(r'width=\"(.*?)\"', next_image_tag).group(1)
+            y_size = re.search(r'height=\"(.*?)\"', next_image_tag).group(1)
+        except AttributeError:
+            src = ''
+            x_size = 0
+            y_size = 0
+        text_in = text_in[text_in.find('/>'):]
+        image_location = text_in.find('<img')
+        # image_number = 'myimage{number}'.format(number=image_count)
+        # text_source = text_source.replace(next_image_tag, ' {{ ' + image_number + ' }}')
+        # images[image_number] = {}
+        # images[image_number]['src']= src
+        # images[image_number]['x_size']= float(x_size) * 100
+        # images[image_number]['y_size'] = float(y_size) * 100
+    return text_source, images
+
+
+# WIP
+def docx_replace_images(file_path, project):
+    temp_directory = tempfile.mkdtemp()
+    inline_template = find('layouts/docx_inline_image.xml')
+    with zipfile.ZipFile(file_path, 'r') as zip_ref:
+        zip_ref.extractall(temp_directory)
+        temp_directory = tempfile.mkdtemp()
+        content_path = '{temp_dir}/word/document.xml'.format(temp_dir=temp_directory)
+        print_path(temp_directory)
+        with open(content_path, 'r') as content_file:
+            content_value = content_file.read()
+        context = model_to_dict(project.images)
+        django_engine = engines['django']
+
+
+# WIP
+# ToDo: Add and link docx images
+def generate_docx(request, project):
+    try:
+        template_path = find('layouts/template.docx')
+
+        temp_directory_store = tempfile.mkdtemp()
+        new_zipfile_path = temp_directory_store+'/zip_result.docx'
+        doc = DocxTemplate(template_path)
+        context = {}
+        context['project'] = model_to_dict(project)
+        drt = RichText()
+        drt_text, drt_images = project.export_description
+        drt.add(drt_text, style='Text Body')
+        context['project']['drt'] = drt
+        srt = RichText()
+        srt_text, srt_images = project.export_services_provided
+        srt.add(srt_text, style='Text Body')
+        context['project']['drt'] = srt
+        doc.render(context)
+        doc.save(new_zipfile_path)
+        return new_zipfile_path
+    except Exception as exception:
+        i = exception
+
