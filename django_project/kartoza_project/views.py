@@ -1,10 +1,6 @@
-import tempfile
 from datetime import datetime
 from wsgiref.util import FileWrapper
-from weasyprint import HTML, CSS
-import pypandoc
 from django.conf import settings
-from django.contrib.staticfiles.finders import find
 from django.core import serializers
 from django.db.models import Q
 from django.http import HttpResponse
@@ -13,7 +9,7 @@ from django.shortcuts import render as django_render
 from mezzanine.conf import settings
 from mezzanine.utils.views import render, paginate
 from .models import Project, ProjectCategory, ProjectImage, Reference
-from kartoza_project.export_utils import generate_docx, convert_html_to_pdf
+from .export_utils import generate_docx, convert_html_to_pdf
 
 
 def project_list(request, category=None,
@@ -137,44 +133,23 @@ def export_projects(request):
         format = request.POST['format']
         layout = request.POST['layout']
         response_string = ''
-
         if len(projects_to_export) > 0:
             for key in projects_to_export:
                 next_project = Project.objects.get(pk=key)
                 next_file_text = (
                     next_project.get_html_template_with_base64_images(layout))
                 response_string += next_file_text
-            tmpFileOut = tempfile.NamedTemporaryFile()
             conversion_format = format
-            if conversion_format == 'pdf':
+            if conversion_format == u'html':
                 try:
-                    conversion_format = 'html'
-                    if format == 'pdf':
-                        output_text = convert_html_to_pdf(response_string)
-                    response = HttpResponse(output_text)
+                    response = HttpResponse(response_string)
                     return response
                 except Exception as e:
                     return HttpResponse(e)
-            # if conversion_format == u'odt':
-            #     try:
-            #         conversion_format = 'html'
-            #         output = pypandoc.convert_text(
-            #             response_string,
-            #             to=conversion_format,
-            #             format='md',
-            #             outputfile=tmpFileOut.name)
-            #         output_text = tmpFileOut.read()
-            #         tmpFileOut2 = tempfile.NamedTemporaryFile()
-            #         output = pypandoc.convert_text(output_text, 'odt', format='html', outputfile=tmpFileOut2.name)
-            #         output_text = tmpFileOut2.read()
-            #         response = HttpResponse(output_text)
-            #         return response
-            #     except Exception as e:
-            #         return HttpResponse(e)
-            if conversion_format == u'html':
+            if conversion_format == 'pdf':
                 try:
-                    conversion_format = 'html'
-                    response = HttpResponse(response_string)
+                    output_text = convert_html_to_pdf(response_string)
+                    response = HttpResponse(output_text)
                     return response
                 except Exception as e:
                     return HttpResponse(e)
@@ -203,7 +178,6 @@ def view_project(request, project_id):
              'clients': clients,
              'images': images}
         )
-
 
 
 def view_project_details(request, project_id):

@@ -2,23 +2,11 @@
     position: fixed !important;
 }
 
-  @page {
-        size: a4;
-        margin: 0 !important;
-
-    }
+@page {
+    size: a4;
+    margin: 0 !important;
+}
 
 .body {
     margin: 0 !important;
 }
-
-
-
-/*.heading-underline {*/
-/*        width: 100% !important;*/
-/*    margin-top: 20px !important;*/
-/*    height: 5mm !important;*/
-/*    background-repeat: no-repeat !important;*/
-/*    background-position: center !important;*/
-/*    background-image: url(../../kartoza_theme/static/img/heading-underline.png) !important;*/
-/*}*/
