@@ -935,7 +935,7 @@ csmall2 {
     font-family: 'Lato', sans-serif;;
     font-size: 36px;
     font-weight: 400;
-        margin-bottom: 2rem;
+    margin-bottom: 2rem;
 
 }
 
@@ -1049,10 +1049,6 @@ img.home-page-fbis {
     overflow: hidden;
     background-size: cover;
     background-repeat: no-repeat;
-    /*background-repeat: no-repeat;*/
-    /*background-size: contain;*/
-    /*top: 375%;*/
-    /*z-index: -10;*/
 }
 
 
@@ -1061,6 +1057,8 @@ img.home-page-fbis {
         height: 500px;
         width: 500px;
         display: block;
+        bottom: 0;
+        margin-bottom: -52px;
     }
 }
 
