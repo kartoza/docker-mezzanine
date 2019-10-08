@@ -12,7 +12,6 @@
 # )
 from __future__ import unicode_literals
 
-from django.views.static import serve
 from django.conf.urls import include, url
 from django.conf.urls.i18n import i18n_patterns
 from django.contrib import admin
@@ -126,8 +125,6 @@ urlpatterns = i18n_patterns(
 
         # For mezzanine-agenda
         ("^%s/" % settings.EVENT_SLUG, include("mezzanine_agenda.urls")),
-        url(r'^media/(?P<path>.*)$', serve,{'document_root': settings.MEDIA_ROOT}),
-        url(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}),
 )
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
