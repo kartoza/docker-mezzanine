@@ -55,11 +55,13 @@
     <!--<![endif]-->
     {% block extra_css %}{% endblock %}
     {% compress css %}
+
         <link rel="stylesheet" href="{% static "css/hoverex-all.css" %}">
         <link rel="stylesheet" href="{% static "css/fonts.css" %}">
         <link rel="stylesheet" href="{% static "css/kartoza-form.css" %}">
         <link rel="stylesheet" href="{% static "css/bootstrap.css" %}">
         <link rel="stylesheet" href="{% static "css/mezzanine.css" %}">
+
         <link href="{% static "css/font-awesome.min.css" %}" rel="stylesheet"
               type="text/css"/>
         <link href="{% static "css/style.css" %}" rel="stylesheet">
@@ -85,6 +87,7 @@
         <script src="{% static "js/responsiveslides/responsiveslides.min.js" %}"></script>
         {% block extra_js %}{% endblock %}
         {% include "includes/footer_scripts.html" %}
+         <script src="{% static "js/styleguide.js" %}"></script>
     {% endcompress %}
 
     <!--[if lt IE 9]>
@@ -93,6 +96,7 @@
     <![endif]-->
 
     {% block extra_head %}{% endblock %}
+
 </head>
 
 <body id="{% block body_id %}page-top{% endblock %}">

@@ -211,7 +211,7 @@ html input[type="button"], input[type="reset"], input[type="submit"] {
 }
 
 
-.btn-default:active, .btn-default.active, .open .dropdown-toggle.btn-default {
+.btn-default:active, .btn-primary.active, .open .dropdown-toggle.btn-primary {
     background-color: var(--c-blue-d) !important;
     color: #ffffff;
     border: none;
@@ -260,11 +260,11 @@ html input[type="button"], input[type="reset"], input[type="submit"] {
     padding: 0.5rem;
 }
 
-#category tbody td {
+#category  tbody td {
     border: 1px solid #dbe3e8;
 }
 
-#category tbody tr:nth-child(1) td {
+#category  tbody tr:nth-child(1) td {
     background-color: var(--c-blue) !important;
     border: none;
 }

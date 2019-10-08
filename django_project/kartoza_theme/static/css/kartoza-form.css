@@ -42,12 +42,6 @@ input[type="submit"] {
     transition: background-color 500ms ease-out;
 }
 
-input[type="submit"]:hover {
-    color: #2B2E31;
-    background-color: #eaeaea;
-    color: #2B2E31;
-}
-
 .input-section {
     padding: 15px;
 }
