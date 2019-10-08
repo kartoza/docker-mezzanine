@@ -166,7 +166,7 @@ SHOP_ORDER_STATUS_CHOICES = (
 )
 
 SHOP_PAYMENT_STEP_ENABLED = False
-
+SHOP_USE_WISHLIST = False
 # Sequence of value/name pairs for types of product options,
 # eg Size, Colour. NOTE: Increasing the number of these will
 # require database migrations!

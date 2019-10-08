@@ -1091,8 +1091,8 @@ img.home-page-fbis {
 
 .background-back-left-1 {
     background-image: url(../../static/img/about_us_back_left_1.png);
-    background-repeat: no-repeat;
-    background-size: contain;
+    background-repeat: repeat-y;
+    background-size: unset;
     width: 100%;
     height: 100%;
     top: 10rem;
@@ -1100,24 +1100,29 @@ img.home-page-fbis {
     z-index: -10;
 }
 
+#background-right {
+    overflow: hidden;
+    right: -1.5rem;
+}
+
 .background-back-right-1 {
     background-image: url(../../static/img/about_us_back_right_1.png);
-    background-repeat: no-repeat;
-    background-size: contain;
+    background-repeat: repeat-y;
+    background-size: unset;
     width: 100%;
-    height: 100%;
+    height: 110%;
     background-position-x: right;
     background-position-y: top;
     top: -2rem;
     position: relative;
     z-index: -10;
     position: absolute;
-    max-height: 100%;
 }
 
 .background-back-right-2 {
+    display: none;
     background-image: url(../../static/img/about_us_back_right_2.png);
-    background-repeat: no-repeat;
+    background-repeat: repeat-y;
     background-size: contain;
     width: 100%;
     height: 100%;
