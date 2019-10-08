@@ -166,7 +166,7 @@ SHOP_ORDER_STATUS_CHOICES = (
 )
 
 SHOP_PAYMENT_STEP_ENABLED = False
-
+SHOP_USE_WISHLIST = False
 # Sequence of value/name pairs for types of product options,
 # eg Size, Colour. NOTE: Increasing the number of these will
 # require database migrations!
@@ -174,6 +174,9 @@ SHOP_OPTION_TYPE_CHOICES = (
     (1, "Course date"),
     (2, "Course venue"),
     (3, "GIS Box option"),
+    (4, "Support SLA"),
+    (5, "Hosting"),
+    (6, "Maintenance")
 )
 # Sequence of value/name pairs for payment statuses.
 SHOP_PAYMENT_STATUS_CHOICES = (

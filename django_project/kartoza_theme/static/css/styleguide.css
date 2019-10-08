@@ -14,24 +14,80 @@ body {
 }
 
 
-button, html input[type="button"], input[type="reset"], input[type="submit"] {
+html input[type="button"], input[type="reset"], input[type="submit"] {
     width: 166px;
     height: 46px;
     color: #ffffff;
-    font-family: Lato;
+    font-family: 'Lato', sans-serif;;
     font-size: 14px;
     font-weight: 700;
     text-transform: uppercase;
     line-height: 0px;
     /*background-color: var(--c-orange);*/
-    width: 100%;
+    border: none !important;
     border-style: none;
 }
+
+.btn {
+    text-transform: uppercase !important;
+    font-weight: bold !important;
+}
+
+.btn-small {
+    width: 120px !important;
+    height: 46px !important;
+}
+
+.btn-medium {
+    width: 167px !important;
+    height: 46px !important;
+}
+
+.btn-small.btn-primary-hollow {
+    height: 42px !important;
+    width: 116px !important;
+}
+
+.btn-small.btn-default-hollow {
+    height: 42px !important;
+    width: 116px !important;
+}
+
+.btn-medium.btn-primary-hollow {
+    height: 42px !important;
+    width: 163px !important;
+}
+
+.btn-medium.btn-default-hollow {
+    height: 42px !important;
+    width: 163px !important;
+}
+
+.btn-white-blue {
+    background-color: #ffffff;
+    color: var(--c-blue);
+    line-height: 30px;
+}
+
+
+.btn-white-blue:hover, .btn-white-blue:focus, .btn-white-blue:active, .btn-white-blue.active, .open .dropdown-toggle.btn-white-blue {
+
+    color: var(--c-blue-l);
+}
+
+
+.btn-primary:active, .btn-primary.active, .open .dropdown-toggle.btn-primary {
+    color: var(--c-blue-d);
+}
+
 
 .btn-primary {
     background-color: var(--c-orange) !important;
     color: #ffffff;
     border: none;
+    min-width: fit-content;
+    height: 42px;
+    line-height: 28px;
 }
 
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open .dropdown-toggle.btn-primary {
@@ -52,6 +108,94 @@ button, html input[type="button"], input[type="reset"], input[type="submit"] {
     border: none;
 }
 
+
+.btn-primary-hollow {
+    background-color: white;
+    border-radius: 4px;
+    border: 5px solid var(--c-orange);
+    color: var(--c-orange) !important;
+    min-width: fit-content;
+}
+
+.btn-primary-hollow:hover, .btn-primary-hollow:focus, .btn-primary-hollow:active, .btn-primary-hollow.active, .open .dropdown-toggle.btn-primary-hollow {
+    background-color: white;
+    border-radius: 4px;
+    border: 5px solid var(--c-orange-l) !important;
+    color: var(--c-orange-l) !important;
+}
+
+.btn-primary-hollow, .open .dropdown-toggle.btn-primary-hollow {
+    background-color: white;
+    border-radius: 4px;
+    border: 5px solid var(--c-orange-l);
+    color: var(--c-orange-l) !important;
+}
+
+
+.btn-primary-hollow:active, .btn-primary-hollow.active, .open .dropdown-toggle.btn-primary-hollow {
+    background-color: white;
+    border-radius: 4px;
+    border: 5px solid var(--c-orange-d);
+    color: var(--c-orange-d) !important;
+}
+
+.btn-primary-hollow:disabled, .btn-primary.disabled, .disabled .dropdown-toggle.btn-primary-hollow {
+    background-color: white;
+    border-radius: 4px;
+    border: 5px solid grey;
+    color: grey !important;
+}
+
+
+.btn-default-hollow {
+    background-color: white;
+    border-radius: 4px;
+    border: 5px solid var(--c-blue);
+    color: var(--c-blue);
+    min-width: fit-content;
+    height: 42px;
+    line-height: 20px;
+}
+
+.btn-default-hollow:hover, .btn-default-hollow:focus, .btn-default-hollow:active, .btn-default-hollow.active, .open .dropdown-toggle.btn-default-hollow {
+    background-color: white;
+    border-radius: 4px;
+    border: 5px solid var(--c-blue-l);
+    color: var(--c-blue-l);
+}
+
+.btn-default-hollow, .open .dropdown-toggle.btn-default-hollow {
+    background-color: white;
+    border-radius: 4px;
+    border: 5px solid var(--c-blue-l);
+    color: var(--c-blue-l);
+}
+
+
+.btn-default-hollow:active, .btn-default-hollow.active, .open .dropdown-toggle.btn-default-hollow {
+    background-color: white;
+    border-radius: 4px;
+    border: 5px solid var(--c-blue-d);
+    color: var(--c-blue-d);
+}
+
+.btn-default-hollow:disabled, .btn-primary.disabled, .disabled .dropdown-toggle.btn-default-hollow {
+    background-color: white;
+    border-radius: 4px;
+    border: 5px solid grey;
+    color: grey;
+}
+
+
+.btn-default {
+    background-color: var(--c-blue) !important;
+    color: #ffffff;
+    border: none;
+    width: max-content;
+    min-width: fit-content;
+    height: 42px !important;
+    line-height: 28px;
+}
 
 .btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open .dropdown-toggle.btn-default {
     background-color: var(--c-blue-l) !important;
@@ -209,3 +353,125 @@ button, html input[type="button"], input[type="reset"], input[type="submit"] {
 
 
 /* END MEZZANINE OVERRIDE */
+.header1 {
+    color: #231f20;
+    font-family: 'Lato', sans-serif;;
+    font-size: 55px;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+.header2 {
+    color: #231f20;
+    font-family: 'Lato', sans-serif;;
+    font-size: 36px;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+.header3 {
+    color: #231f20;
+    font-family: 'Lato', sans-serif;;
+    font-size: 22px;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+.text-big {
+
+    font-family: 'Lato', sans-serif;;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.text-big-home {
+    font-family: 'Lato', sans-serif;;
+    font-size: 22px;
+    font-weight: 300;
+    text-align: center;
+}
+
+.text-small-home {
+    font-family: 'Lato', sans-serif;;
+    font-size: 20px;
+    font-weight: 400;
+    text-align: center;
+}
+
+.text-big-heavy {
+    font-family: 'Lato', sans-serif;;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+
+.text-medium {
+    font-family: 'Lato', sans-serif;;
+    font-size: 17px;
+    font-weight: 300;
+}
+
+.text-small {
+    font-family: 'Lato', sans-serif;;
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.my-1 {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.my-3 {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.btn-center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.move-up-200 {
+    position: relative;
+    top: -200px;
+}
+
+.button-row .btn {
+    width: 100%;
+}
+
+.kartoza-heading {
+    color: #231f20;
+    font-family: 'Lato', sans-serif;;
+    font-size: 36px;
+    font-weight: 400;
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.kartoza-heading-underline {
+    background-image: url(../../static/img/heading-underline.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: block;
+    width: 54px;
+    height: 11px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.kartoza-heading-underline-container {
+    width: 100%;
+    margin-top: 2rem;
+    margin-bottom: 4rem;
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: "Lato", "Sans-Serif" !important;
+}
+
+input[type="submit"]:hover {
+    color: white;
+}
