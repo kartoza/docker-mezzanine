@@ -95,10 +95,16 @@ def project_gallery(request):
         for project in projects:
             tag_list += project.tags + ','
             technology_list += project.technologies + ','
-        tags = set(map(unicode.strip, tag_list.split(',')))
-        tags.remove('')
-        technologies = set(map(unicode.strip, technology_list.split(',')))
-        technologies.remove('')
+        try:
+            tags = set(map(unicode.strip, tag_list.split(',')))
+            tags.remove('')
+        except TypeError:
+            tags = ()
+        try:
+            technologies = set(map(unicode.strip, technology_list.split(',')))
+            technologies.remove('')
+        except TypeError:
+            technologies = ()
 
         return django_render(
             request,
