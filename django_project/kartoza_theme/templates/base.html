@@ -152,10 +152,10 @@
 </div>
 {% block all_content %}
     <div class="row row-main-content" style="display: inline-flex; width: 100vw;">
-        <div class="col-xs-3 flex-column">
+        <div class="col-xs-3 hidden-xs flex-column">
             <div class="background-back-left-1"></div>
         </div>
-        <div class="col-xs-6">
+        <div class="col-xs-6" style="margin-left: auto;margin-right: auto;">
             {% block title_wrapper %}
 
                 <div class="kartoza-heading">{% block title %}{% endblock %}</div>
@@ -174,17 +174,15 @@
                 {% include 'contact_us.html' %}
             {% endblock %}
         </div>
-
-        <div class="col-xs-3 flex-column" id="background-right">
+        <div class="col-xs-3 hidden-xs flex-column" id="background-right">
             <div class="background-back-right-1"></div>
-            <div class="background-back-right-2"></div>
         </div>
 
     </div>
 {% endblock %}
 
 {% include "includes/announcements.html" %}
-<div id="footerwrap" style="margin-top: 5rem;">
+<div id="footerwrap">
     <div class="container">
         <div class="footer-row"></div>
         <div class="row">
