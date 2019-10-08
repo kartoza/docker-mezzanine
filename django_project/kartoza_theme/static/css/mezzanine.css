@@ -459,24 +459,6 @@ float the buttons inside it. This prevents collapsing. */
     margin: 20px 0;
 }
 
-.rating span, .rating form {
-    display: inline-block;
-}
-
-.rating ul {
-    padding-left: 0;
-    list-style: none;
-}
-
-.rating li {
-    display: inline-block;
-    margin: 0 5px;
-}
-
-.comment .rating {
-    margin-top: 5px;
-}
-
 .comment-author {
     border: 1px solid #DDD;
     border-radius: 4px;
@@ -629,6 +611,44 @@ float the buttons inside it. This prevents collapsing. */
 
 .blog-list-detail .list-inline {
     margin-left: 0px;
+}
+
+
+/*RATING*/
+
+
+.rating ul {
+  border: none;
+  float: left;
+    list-style-type: none;
+    display: flex;
+    padding-left: 0px;
+}
+
+.rating label > input { display: none; }
+.rating li > label:after {
+  margin: 5px;
+  font-size: 1.25em;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f005";
+}
+
+.rating label {
+  color: #ddd;
+ float: right;
+}
+
+
+
+/***** CSS Magic to Highlight Stars on Hover *****/
+.radio input[type="radio"]:checked {
+  margin: 5px;
+  font-size: 1.25em;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f005";
+    color: #FFD700;
 }
 
 

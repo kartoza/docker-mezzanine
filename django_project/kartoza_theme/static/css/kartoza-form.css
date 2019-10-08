@@ -42,6 +42,18 @@ input[type="submit"] {
     transition: background-color 500ms ease-out;
 }
 
+input[type="submit"]:hover {
+    color: #2B2E31;
+    background-color: #eaeaea;
+    color: #2B2E31;
+}
+
+
+input.btn.btn-default.btn-sm.rating-submit {
+    padding: 1rem !important;
+    margin: 0px;
+}
+
 .input-section {
     padding: 15px;
 }
