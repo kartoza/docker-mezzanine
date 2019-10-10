@@ -48,7 +48,6 @@
     {% endif %}
     <div class="row">
         <div class="pure-g list-person">
-
             {% for person in people %}
                 <div class="col-xs-12 col-sm-6 col-md-4">
                     <div class="staff-border">
@@ -75,7 +74,17 @@
                             <div class="text-wrapper" onclick="location.href='/people/person/{{ person.slug }}'">
                                 <div class="person-link">
                                     {% for link in person.personlink_set.all %}
+                                        {% if link.name|upper == "TWITTER" %}
+                                        <a href="{{ link.url }}"><i class="fa fa-twitter"></i>{{ link.name }}</a>
+                                        {% elif link.name|upper == "GITHUB" %}
+                                        <a href="{{ link.url }}"><i class="fa fa-github"></i>{{ link.name }}</a>
+                                        {% elif link.name|upper == "FACEBOOK" %}
+                                        <a href="{{ link.url }}"><i class="fa fa-facebook"></i>{{ link.name }}</a>
+                                         {% elif link.name|upper == "LINKEDIN" %}
+                                        <a href="{{ link.url }}"><i class="fa fa-linkedin"></i>{{ link.name }}</a>
+                                        {% else %}
                                         <a href="{{ link.url }}">{{ link.name }}</a>
+                                        {% endif %}
                                     {% endfor %}
                                 </div>
                                 {% if person.bio %}

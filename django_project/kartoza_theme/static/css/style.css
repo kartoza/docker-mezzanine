@@ -816,7 +816,7 @@ csmall2 {
 
 .person-link i {
     font-size: 11pt;
-    padding-left: 5px;
+    padding-left: 1px;
 }
 
 .person-link i .text {
@@ -1084,7 +1084,12 @@ img.home-page-fbis {
     display: inline-flex;
     width: 100%;
     flex-direction: column;
-    min-height: 400px;
+    min-height: 390px;
+    max-height: 390px;
+}
+
+.person-link i {
+    padding-right: 1px;
 }
 
 
