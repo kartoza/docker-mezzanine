@@ -66,7 +66,7 @@ class ReferenceAdmin(admin.ModelAdmin):
        unless explicitly specified.
        """
 
-    fieldsets = ((None, {"fields": ('person', 'role',)}),)
+    fieldsets = ((None, {"fields": ('person', 'role_relation',)}),)
 
 
 class PersonAdmin(admin.ModelAdmin):

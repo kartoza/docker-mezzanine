@@ -32,3 +32,6 @@ class Person(models.Model):
         blank=True,
         help_text='A contact email address for the reference',
         verbose_name='Email')
+
+    def __unicode__(self):
+        return self.name
