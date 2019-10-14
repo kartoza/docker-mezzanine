@@ -149,7 +149,7 @@ SHOP_HANDLER_BILLING_SHIPPING = \
 # is called once an order is successful and all of the order
 # object's data has been created. This is where any custom order
 # processing should be implemented.
-SHOP_HANDLER_ORDER = "cartridge.shop.checkout.default_order_handler"
+SHOP_HANDLER_ORDER = "core.cartridge.shop.checkout.order_handler"
 
 # Dotted package path and name of the function that
 # is called on submit of the payment checkout step. This is where
@@ -166,7 +166,7 @@ SHOP_ORDER_STATUS_CHOICES = (
 )
 
 SHOP_PAYMENT_STEP_ENABLED = False
-
+SHOP_USE_WISHLIST = False
 # Sequence of value/name pairs for types of product options,
 # eg Size, Colour. NOTE: Increasing the number of these will
 # require database migrations!

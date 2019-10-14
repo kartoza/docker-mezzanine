@@ -317,7 +317,6 @@ class Project(Orderable, Slugged, AdminThumbMixin):
         initial_template = replace_html_relative_images_with_base64(initial_template, template_location)
         return initial_template
 
-
-
-
+def diff_month(d1, d2):
+    return (d1.year - d2.year) * 12 + d1.month - d2.month
 

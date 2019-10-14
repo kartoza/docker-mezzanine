@@ -28,7 +28,7 @@ TESTING = DEBUG
 
 SERVER_EMAIL = 'Christiaan@kartoza.com'
 EMAIL_HOST = 'kartoza.com'
-DEFAULT_FROM_EMAIL = 'noreply@kartoza.com'
+DEFAULT_FROM_EMAIL = 'do_not_reply@kartoza.com'
 
 
 STATICFILES_FINDERS += (

@@ -37,7 +37,7 @@ EMAIL_HOST = 'smtp'
 EMAIL_PORT = 25
 # SMTP authentication information for EMAIL_HOST.
 # See fig.yml for where these are defined
-EMAIL_HOST_USER = 'noreply@kartoza.com'
+EMAIL_HOST_USER = 'do_not_reply@kartoza.com'
 EMAIL_HOST_PASSWORD = 'docker'
 EMAIL_USE_TLS = False
 EMAIL_SUBJECT_PREFIX = '[MEZZANINE]'

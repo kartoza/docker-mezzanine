@@ -10,11 +10,11 @@ from mezzanine.core.admin import DisplayableAdmin
 
 person_fieldsets = deepcopy(DisplayableAdmin.fieldsets)
 person_fieldsets[0][1]["fields"].insert(1, "categories")
-person_list_display = ["title", "status", "admin_link"]
+person_list_display = ["order","title", "status", "admin_link"]
 person_fieldsets[0][1]["fields"].extend(["first_name", "last_name", "job_title",
                                          "mugshot", "mugshot_hover", "mugshot_credit", "bio", "email",
                                          "order"])
-person_list_display.insert(0, "admin_thumb")
+person_list_display.insert(1, "admin_thumb")
 
 
 class PersonLinkInline(admin.TabularInline):
@@ -31,6 +31,7 @@ class PersonAdmin(DisplayableAdmin):
     inlines = [
         PersonLinkInline,
     ]
+    list_editable = ("order",)
 
 class PersonCategoryAdmin(admin.ModelAdmin):
     """
