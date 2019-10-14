@@ -11,8 +11,6 @@ from kartoza_project.export_utils import get_richtext_and_images, replace_html_m
 
 
 class Project(Orderable, Slugged, AdminThumbMixin):
-
-    images_dict = {}
     short_description = models.CharField(
         null=True,
         blank=True,
@@ -75,6 +73,7 @@ class Project(Orderable, Slugged, AdminThumbMixin):
         related_name='contact_person')
 
     consultants = models.ManyToManyField(
+
         'kartoza_project.Reference',
         related_name='consultants',
         null=True,
@@ -99,28 +98,12 @@ class Project(Orderable, Slugged, AdminThumbMixin):
         default="",
         blank=True)
 
-    description_summary = RichTextField(
-        "description_summary",
-        help_text=(
-            "This field can contain HTML and should briefly describe work done during the project. "
-            "For exporting to public documents."),
-        default="",
-        blank=True)
-
     services_provided = RichTextField(
         "services_provided",
         help_text=(
             "This field can contain HTML and should contain a "
             "few paragraphs describing the background of "
-            "the project. As used in the world bank template. Maximum of 250 words or 27 lines"),
-        default="",
-        blank=True)
-
-    services_provided_summary = RichTextField(
-        "services_provided_summary",
-        help_text=(
-            "This field can contain HTML and should briefly describe services provided during the project. "
-            "For exporting to public documents. Maximum of 160 words or 27 lines"),
+            "the project. As used in the world bank template."),
         default="",
         blank=True)
 
@@ -175,7 +158,7 @@ class Project(Orderable, Slugged, AdminThumbMixin):
         null=True,
         blank=True,
         help_text=(
-            "A link to the project's g  ithub page."),
+            "A link to the project's github page."),
         max_length=255)
 
     admin_thumb_field = 'thumbnail'
