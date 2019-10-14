@@ -1,5 +1,5 @@
 <script src='https://www.google.com/recaptcha/api.js'></script>
-<form action="https://googleapps.insight.ly/WebToContact/Create"
+<form id='insightly_web_to_contact' action="https://googleapps.insight.ly/WebToContact/Create"
       method="post" name="insightly_web_to_contact">
     <div class="row">
         <div class="col-xs-12">
@@ -53,9 +53,9 @@
     </div>
 </form>
 <script>
-    $("form").submit(function (event) {
-        var recaptcha = ("#g-recaptcha-response").val();
-        if (recaptcha === "") {
+    $("#insightly_web_to_contact").submit(function (event) {
+        let recaptcha = $("#g-recaptcha-response").val();
+        if ((recaptcha == undefined) || (recaptcha === "")) {
             event.preventDefault();
             alert("Please check the recaptcha");
         }
