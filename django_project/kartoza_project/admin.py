@@ -4,7 +4,9 @@ from kartoza_project.models import (
     Project,
     ProjectImage,
     Reference,
-    ProjectCategory
+    ProjectCategory,
+    Person,
+    Role,
 )
 
 
@@ -28,6 +30,16 @@ class ProjectAdmin(admin.ModelAdmin):
     list_display = ['admin_thumb', 'title', 'short_description', 'date_start', 'date_end']
     list_display_links = ['title', ]
     inlines = [ProjectImageInline, ReferenceStackedInline]
+
+    def get_readonly_fields(self, request, obj=None):
+        if obj:
+            return ('slug', 'categories')
+        return ()
+
+    def get_prepopulated_fields(self, request, obj=None):
+        if not obj:
+            return {'slug': ('title',)}
+        return {}
 
 
 class ProjectCategoryAdmin(admin.ModelAdmin):
@@ -54,9 +66,19 @@ class ReferenceAdmin(admin.ModelAdmin):
        unless explicitly specified.
        """
 
-    fieldsets = ((None, {"fields": ('name', 'role', 'telephone', 'email')}),)
+    fieldsets = ((None, {"fields": ('person', 'role_relation',)}),)
+
+
+class PersonAdmin(admin.ModelAdmin):
+    fieldsets = ((None, {"fields": ('name', 'url', 'description', 'email', 'telephone', 'title')}),)
+
+
+class RoleAdmin(admin.ModelAdmin):
+    fieldsets = ((None, {"fields": ('name', 'description')}),)
 
 
 admin.site.register(Project, ProjectAdmin)
 admin.site.register(ProjectCategory, ProjectCategoryAdmin)
 admin.site.register(Reference, ReferenceAdmin)
+admin.site.register(Person, PersonAdmin)
+admin.site.register(Role, RoleAdmin)
