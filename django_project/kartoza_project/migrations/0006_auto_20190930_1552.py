@@ -55,14 +55,4 @@ class Migration(migrations.Migration):
             name='staff_involved',
             field=models.ManyToManyField(help_text=b'All kartoza staff who worked on this project.', related_name='staff_involved', null=True, to='kartoza_project.Reference', blank=True),
         ),
-        migrations.AlterField(
-            model_name='reference',
-            name='name',
-            field=models.CharField(default=b'Unknown', max_length=300),
-        ),
-        migrations.AlterField(
-            model_name='reference',
-            name='role',
-            field=models.CharField(help_text=b'Role in the project', max_length=255, null=True, blank=True),
-        ),
     ]

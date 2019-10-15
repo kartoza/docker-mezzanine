@@ -46,13 +46,12 @@
             <form class="product-sorting" role="form">
                 <div class="form-group">
                     <label class="control-label" for="sorting-select">{% trans "Sort by" %}</label>
-                    <select onchange="location.href = this[this.selectedIndex].value;" class="form-control"
+                    <select onchange="location.href=this[this.selectedIndex].value;" class="form-control"
                             id="sorting-select">
                         {% for name, option in settings.SHOP_PRODUCT_SORT_OPTIONS %}
                             {% if "rating" not in option or settings.SHOP_USE_RATINGS %}
                                 <option{% if option == products.sort_by %} selected{% endif %}
-                                                                           value="{{ category.get_absolute_url }}?sort=
-                                                                                   {{ option }}{{ querystring }}">
+                                        value="{{ category.get_absolute_url }}?sort={{ option|striptags }}{{ querystring|striptags }}">
                                     {{ name }}
                                 </option>
                             {% endif %}

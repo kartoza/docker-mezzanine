@@ -4,7 +4,9 @@ from kartoza_project.models import (
     Project,
     ProjectImage,
     Reference,
-    ProjectCategory
+    ProjectCategory,
+    Person,
+    Role,
 )
 
 
@@ -64,9 +66,19 @@ class ReferenceAdmin(admin.ModelAdmin):
        unless explicitly specified.
        """
 
-    fieldsets = ((None, {"fields": ('name', 'role', 'telephone', 'email')}),)
+    fieldsets = ((None, {"fields": ('person', 'role_relation',)}),)
+
+
+class PersonAdmin(admin.ModelAdmin):
+    fieldsets = ((None, {"fields": ('name', 'url', 'description', 'email', 'telephone', 'title')}),)
+
+
+class RoleAdmin(admin.ModelAdmin):
+    fieldsets = ((None, {"fields": ('name', 'description')}),)
 
 
 admin.site.register(Project, ProjectAdmin)
 admin.site.register(ProjectCategory, ProjectCategoryAdmin)
 admin.site.register(Reference, ReferenceAdmin)
+admin.site.register(Person, PersonAdmin)
+admin.site.register(Role, RoleAdmin)

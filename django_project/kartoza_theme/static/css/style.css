@@ -792,23 +792,18 @@ csmall2 {
 }
 
 .text-wrapper {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    height: 0;
-    background: rgba(0, 0, 0, 0.5);
-    transition: height 0.3s ease-out;
-    color: white;
+    font-size: 0.9em;
+    color: black;
     cursor: pointer;
 }
 
 .person-avatar:hover > .text-wrapper {
-    height: 200px;
+    height: 100%;
+
 }
 
 .person-link {
-    padding-left: 20px;
-    padding-right: 20px;
+
 }
 
 .detail-person-link {
@@ -821,7 +816,7 @@ csmall2 {
 
 .person-link i {
     font-size: 11pt;
-    padding-left: 5px;
+    padding-left: 1px;
 }
 
 .person-link i .text {
@@ -1083,9 +1078,16 @@ img.home-page-fbis {
 }
 
 .team-member-info {
-    padding: 2em;
-    display: inline-block;
-    width: 33%;
+    padding: 1em;
+    display: inline-flex;
+    width: 100%;
+    flex-direction: column;
+    min-height: 390px;
+    max-height: 390px;
+}
+
+.person-link i {
+    padding-right: 1px;
 }
 
 
@@ -1145,8 +1147,8 @@ img.home-page-fbis {
 }
 
 .person-bio p {
-    padding: 5px 20px 0 20px;
-    color: #E9E9E9;
+    /*padding: 5px 20px 0 20px;*/
+    color: black;
     font-size: 9pt !important;
     line-height: 150%;
     font-weight: 400;
@@ -1167,4 +1169,17 @@ img.home-page-fbis {
 .centerY {
     top: 50%;
     transform: translateY(-50%);
+}
+
+.pure-g.list-person > .col-xs-12.col-sm-6.col-md-4 {
+    padding: 0px;
+}
+
+.staff-border {
+    margin: 0.5rem;
+    padding: 0.5rem;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+    border-color: lightgray;
 }
