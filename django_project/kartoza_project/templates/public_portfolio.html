@@ -1,0 +1,272 @@
+<link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+
+<div class="body">
+
+    <div class="page">
+        <div class="title">
+            <div class="title_pretext">
+                Kartoza Project Sheet
+            </div>
+            <div class="title_text">
+                {{ project.title }}
+            </div>
+            <div class="title_underline">
+                <div class="heading-underline">
+                    <img src="../../kartoza_theme/static/img/heading-underline.png"/>
+                </div>
+            </div>
+        </div>
+        <div style="clear:both;"></div>
+        <table>
+            <tr class="center-text">
+                <td>
+                    <img class="icon-image" src="../static/img/generic_client_icon.svg">
+                    <div>Client: <b>{{ main_client_name }}</b></div>
+                </td>
+                <td>
+                    <img class="icon-image" src="../static/img/generic_location_icon.svg">
+                    <div>Location: <b>{{ project.country }}</b></div>
+                </td>
+                <td class="small-padding-top">
+                    <img class="icon-image" src="../static/img/generic_duration_icon.svg">
+                    <div>Duration: <b>{{ project.date_start }} - {{ project.date_end }}
+                        ({{ project.total_staff_months_by_kartoza }} months)</b>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="background-color: lightgrey;">
+                    <div class="center-text"><img class="main_client_logo_class" src="{{ main_client_logo }}"></div>
+                </td>
+                <td colspan="2" class="center-text no-padding no-borders">
+                    <img class="project_thumbnail" src="{{ project.thumbnail.file.name }}">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div>Client reference:</div>
+                    <div>{{ project.contact_person.name }}</div>
+                </td>
+                <td colspan="2" class="no-borders">
+
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div>Client contact:</div>
+                    <div>{{ project.contact_person.contact_detail }}</div>
+
+                </td>
+                <td colspan="2" class="no-borders">
+
+                </td>
+            </tr>
+            <tr class="bottom_row">
+                <td colspan="2">
+                    <div>Project Description:</div>
+                    <div><p>{{ project.short_description }}</p></div>
+                </td>
+                <td>
+                    <div>Services provided:</div>
+                    <div>{% autoescape off %}{{ project.services_provided }}{% endautoescape %}</div>
+                </td>
+            </tr>
+        </table>
+        <div class="footer">
+            <img class="footer-image" src="../static/img/kartoza_logo_white.svg">
+            <div class="website"><b>info@kartoza.com | www.kartoza.com</b></div>
+        </div>
+    </div>
+</div>
+
+
+<style>
+
+
+    @page {
+        size: a4;
+        margin: 2mm;
+    }
+
+    html {
+        background-color: grey;
+    }
+
+    html body {
+        margin: 0;
+    }
+
+    .no-borders {
+        border-top: 0;
+        border-left: 0;
+        border-bottom: 0;
+    }
+
+    .website {
+        top: 12.8mm;
+    }
+
+    .footer-image {
+        width: 41mm;
+        left: 10mm;
+        height: 12mm;
+        top: 9mm;
+        position: relative;
+
+
+    }
+
+    .body {
+        overflow-x: hidden;
+
+        font-family: Lato;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 12px;
+        line-height: 14px;
+        height: 356mm;
+        width: 216mm;
+        margin: 2cm;
+
+        color: #000000;
+        background-color: white;
+        overflow-y: hidden;
+    }
+
+    .footer div {
+        font-family: Lato;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 10px;
+        line-height: 12px;
+        text-align: right;
+
+        color: #FFFFFF;
+        position: absolute;
+        right: 10mm;
+
+    }
+
+    .no-padding {
+        padding: 0;
+    }
+
+    .heading-underline {
+        width: 100%;
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    .small-padding-top {
+        padding-top: 22.4px;
+    }
+
+    .page {
+        margin-top: 0;
+        position: relative;
+        height: 356mm;
+        width: 216mm;
+    }
+
+    .project_thumbnail {
+        height: auto;
+        max-height: 80mm;
+        width: 125mm;
+        position: absolute;
+        top: 70mm;
+        display: grid;
+        margin-left: 0.5mm;
+    }
+
+    .title_pretext {
+        margin-top: 30px;
+        margin-bottom: 10px;
+        font-family: Lato;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 12px;
+        line-height: 14px;
+        text-align: center;
+
+        color: #ECB44B;
+    }
+
+    .title_text {
+        font-family: Lato;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 19px;
+        text-align: center;
+        text-transform: uppercase;
+        color: #231F20;
+    }
+
+    .center-text {
+        text-align: center;
+    }
+
+    .title {
+
+        border-style: none;
+        width: 100%;
+        margin-bottom: 30px;
+        padding-top: 5px;
+    }
+
+    td {
+        border: 0.5px solid #DEDEDE;
+        width: 33%;
+        padding: 4mm;
+        padding-top: 0mm;
+        padding-bottom: 0mm;
+        line-height: 140%;
+    }
+
+
+    tr {
+        height: 30mm;
+    }
+
+    table {
+        border: 0.5px solid #DEDEDE;
+        border-spacing: 0;
+        border-collapse: collapse;
+        height: 100%;
+        max-height: 231mm;
+        width: 190mm;
+        margin-left: auto;
+        margin-right: auto;
+        border-right: unset;
+    }
+
+    .footer {
+        width: 100%;
+        background: #ECB44B;
+        height: 30mm;
+        position: absolute;
+        bottom: 0;
+    }
+
+    .icon-image {
+        margin-bottom: 5px;
+        height: 10mm;
+    }
+
+    .bottom_row {
+        height: auto;
+        vertical-align: top;
+    }
+
+    .bottom_row td {
+        padding-top: 5mm;
+        max-width: 1;
+        overflow-wrap: break-word;
+    }
+
+    .main_client_logo_class {
+        max-height: 30mm;
+        margin-left: auto;
+        position: relative;
+    }
+</style>

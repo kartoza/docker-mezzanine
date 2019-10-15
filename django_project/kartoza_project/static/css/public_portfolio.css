@@ -1,0 +1,12 @@
+.footer {
+    position: fixed !important;
+}
+
+@page {
+    size: a4;
+    margin: 0 !important;
+}
+
+.body {
+    margin: 0 !important;
+}

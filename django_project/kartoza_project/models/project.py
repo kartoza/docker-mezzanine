@@ -1,11 +1,13 @@
-import tempfile
+import re
 from datetime import datetime
 from django.db import models
+from django.conf import settings
 from django.template.loader import render_to_string
-from kartoza_project.models.project_image import ProjectImage
 from mezzanine.core.fields import RichTextField
 from mezzanine.core.models import Slugged, Orderable
 from mezzanine.utils.models import AdminThumbMixin
+from kartoza_project.models.project_image import ProjectImage
+from kartoza_project.export_utils import get_richtext_and_images, replace_html_media_images_with_base64, replace_html_relative_images_with_base64  #noqa
 
 
 class Project(Orderable, Slugged, AdminThumbMixin):
@@ -168,7 +170,7 @@ class Project(Orderable, Slugged, AdminThumbMixin):
         related_name='contact_person')
 
     def __unicode__(self):
-        return self.title
+        return unicode(self.title)
 
     @property
     def sorted_clients_set(self):
@@ -211,14 +213,27 @@ class Project(Orderable, Slugged, AdminThumbMixin):
         )
 
     def get_template(self, template):
-        if template == 'world_bank_format':
-            starting_template = render_to_string(
-                'world_bank_format.md', {'project': self,
+        try:
+            if template == 'world_bank_format':
+                template_name = 'world_bank_format.md'
+            elif template == 'public_portfolio':
+                template_name = 'public_portfolio.html'
+            main_client = self.clients.first()
+            context = {'project': self,
                                          'consultants': self.consultants.all(),
                                          'staff': self.staff_involved.all(),
-                                         'clients': self.clients.all()})
+                                         'clients': self.clients.values(),
+                                         'main_client_name': main_client.title,
+                                         'main_client_logo': main_client.logo.file.name,
+                                         'thumbnail_url': self.thumbnail.file.name,
 
+                                         'images': self.image_urls}
+            starting_template = render_to_string(
+                template_name, context)
             return starting_template
+        except Exception as e:
+            i = 0
+
 
     @property
     def duration(self):
@@ -226,6 +241,65 @@ class Project(Orderable, Slugged, AdminThumbMixin):
             return 'Ongoing'
         return ((self.date_end.year - self.date_start.year) * 12 +
                 self.date_end.month - self.date_end.month)
+    #
+    @property
+    def export_description(self):
+        safe_description = self.description
+        safe_description = (
+            safe_description.
+                replace('<p>', '').
+                replace('<br/>', '').
+                replace('<br>', '').
+                replace('</p>', '').
+                replace('&nbsp;', ' '))
+        text, images = get_richtext_and_images(safe_description)
+        for image_key in images.keys():
+            self.images_dict[image_key] = images[image_key]
+        return text, images
+
+    @property
+    def export_html_description(self):
+        safe_description = self.description
+        safe_description = (
+            safe_description.
+                replace('<p>', '').
+                replace('</p>', '<br/>'))
+        safe_description = replace_html_media_images_with_base64(safe_description)
+        return safe_description or u'None'
+
+    @property
+    def export_services_provided(self):
+        safe_services = self.services_provided
+        safe_services = (
+            safe_services.
+            replace('<p>', '').
+            replace('<br/>', '').
+            replace('<br>', '').
+            replace('</p>', '').
+            replace('&nbsp;', ' '))
+        text, images = get_richtext_and_images(safe_services)
+        for image_key in images.keys():
+            self.images_dict[image_key] = images[image_key]
+        return text, images
+
+    @property
+    def export_html_services_provided(self):
+        safe_services = self.services_provided
+        safe_services = (
+            safe_services.
+                replace('<p>', '').
+                replace('</p>', '<br/>'))
+        return safe_services or u'None'
+
+    def images(self):
+        return self.images_dict or u'None'
+
+    def get_html_template_with_base64_images(self, template):
+        initial_template = self.get_template(template)
+        template_location = settings.DJANGO_ROOT + '/kartoza_project/templates/'
+        initial_template = replace_html_relative_images_with_base64(initial_template, template_location)
+        return initial_template
 
 def diff_month(d1, d2):
     return (d1.year - d2.year) * 12 + d1.month - d2.month
+

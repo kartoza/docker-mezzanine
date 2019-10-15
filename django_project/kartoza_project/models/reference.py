@@ -20,6 +20,15 @@ class Reference(models.Model):
         related_name='reference_role'
     )
 
+    @property
+    def contact_detail(self):
+        if len(self.email) > 0:
+            return str(self.email)
+        elif len(self.telephone) > 0:
+            return str(self.telephone)
+        else:
+            return "Unavailable"
+
     def __unicode__(self):
         try:
             return self.person.name

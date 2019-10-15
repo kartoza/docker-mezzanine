@@ -27,3 +27,6 @@ git+https://github.com/kartoza/plugin-host.git@apps
 
 requests==2.1.0
 weasyprint==0.42.3
+python-docx==0.8.10
+docxtpl==0.6.3
+pytidylib

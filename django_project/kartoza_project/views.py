@@ -1,10 +1,6 @@
-import tempfile
 from datetime import datetime
 from wsgiref.util import FileWrapper
-from weasyprint import HTML, CSS
-import pypandoc
 from django.conf import settings
-from django.contrib.staticfiles.finders import find
 from django.core import serializers
 from django.db.models import Q
 from django.http import HttpResponse
@@ -12,7 +8,8 @@ from django.shortcuts import get_object_or_404
 from django.shortcuts import render as django_render
 from mezzanine.conf import settings
 from mezzanine.utils.views import render, paginate
-from .models import Project, ProjectImage, Reference
+from .models import Project, ProjectCategory, ProjectImage, Reference
+from .export_utils import generate_docx, convert_html_to_pdf, add_css
 
 
 def project_list(request, category=None,
@@ -86,10 +83,12 @@ def project_list_ongoing(request, template='kartoza_project/project_list.html'):
 
 def project_gallery(request):
     if request.method == 'GET':
-        project_images = Project.objects.filter(published=True).values(
+        project_images = Project.objects.values(
             'id', 'project_images__image').all()
-        projects = Project.objects.filter(
-            published=True).all()
+        projects = Project.objects.all()
+        for project in projects:
+            if not project.thumbnail:
+                project.thumbnail = {'url':''}
         tag_list = ''
         technology_list = ''
         for project in projects:
@@ -134,57 +133,40 @@ def export_projects(request):
         format = request.POST['format']
         layout = request.POST['layout']
         response_string = ''
-
         if len(projects_to_export) > 0:
-            for key in projects_to_export:
-                next_project = Project.objects.get(pk=key)
-                next_file_text = (
-                    next_project.get_template(layout))
-                response_string += next_file_text
-            tmpFileOut = tempfile.NamedTemporaryFile()
-            conversion_format = format
             try:
-                if conversion_format == 'pdf':
-                    conversion_format = 'html'
-                output = pypandoc.convert_text(
-                    response_string,
-                    to=conversion_format,
-                    format='md',
-                    outputfile=tmpFileOut.name)
-                output_text = tmpFileOut.read()
-
-                if conversion_format == 'html':
-                    output_text = add_css(output_text)
-                if format == 'pdf':
-                    output_text = convertHtmlToPdf(output_text)
-                response = HttpResponse(output_text)
-                return response
+                for key in projects_to_export:
+                    next_project = Project.objects.get(pk=key)
+                    next_file_text = (
+                        next_project.get_html_template_with_base64_images(layout))
+                    response_string += next_file_text
+                conversion_format = format
+                if conversion_format == u'html':
+                    try:
+                        if layout == 'world_bank_format':
+                            response_string = add_css(response_string, layout)
+                        response = HttpResponse(response_string)
+                        return response
+                    except Exception as e:
+                        return HttpResponse(e)
+                if conversion_format == u'pdf':
+                    try:
+                        output_text = convert_html_to_pdf(response_string, '{layout}.css'.format(layout=layout))
+                        response = HttpResponse(output_text)
+                        return response
+                    except Exception as e:
+                        return HttpResponse(e)
+                if conversion_format == u'docx':
+                    project =  Project.objects.get(pk=projects_to_export[0])
+                    generated_docx = generate_docx(request, project, layout)
+                    zip_file = open(generated_docx, 'r')
+                    response = HttpResponse(zip_file, content_type='application/force-download')
+                    response['Content-Disposition'] = 'attachment; filename="%s"' % 'result.docx'
+                    return response
             except Exception as e:
                 return HttpResponse(e)
         else:
-            return HttpResponse()
-
-
-def add_css(output_text):
-    css_to_add_url = find('css/pandoc.css')
-    css_out = '<style>{css}</style>'.format(
-        css=open(css_to_add_url).read())
-    output_text += css_out
-    return output_text
-
-
-def convertHtmlToPdf(sourceHtml):
-    temp_file_in = tempfile.NamedTemporaryFile()
-    temp_file_out = tempfile.NamedTemporaryFile(suffix='pdf')
-    temp_file_in.write(sourceHtml)
-    try:
-        HTML(temp_file_in.name).write_pdf(
-            temp_file_out.name,
-            stylesheets=[CSS(filename=find('css/pandoc.css'))])
-        result = temp_file_out.read()
-    except Exception as e:
-        return e
-    return result
+            return HttpResponse("No project selected")
 
 
 def view_project(request, project_id):
@@ -193,7 +175,6 @@ def view_project(request, project_id):
         images = ProjectImage.objects.filter(
                  project__id=project.id).all()
         clients = project.clients.values('name', 'title', 'logo').all()
-        # form = ProjectForm(project
         return django_render(
             request,
             'view_project.html',
@@ -211,7 +192,6 @@ def view_project_details(request, project_id):
         images = ProjectImage.objects.filter(
                  project__id=project.id).all()
         clients = project.clients.values('name', 'title', 'logo').all()
-        # form = ProjectForm(project
         return django_render(
             request,
             'view_project_details.html',
@@ -219,7 +199,7 @@ def view_project_details(request, project_id):
              'consultants': project.consultants.all(),
              'staff_involved': project.staff_involved.all(),
              'clients': clients,
-             'images': images }
+             'images': images}
         )
 
 
@@ -231,3 +211,5 @@ def get_reference(request):
             reference = Reference.objects.filter(pk=int(reference_id))
             reference_json = serializers.serialize('json', reference)
         return HttpResponse(reference_json)
+
+

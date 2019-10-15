@@ -188,7 +188,7 @@ SHOP_PAYMENT_STATUS_CHOICES = (
 # Sequence of indexes from the SHOP_OPTION_TYPE_CHOICES setting that
 # control how the options should be ordered in the admin,
 # eg for "Colour" then "Size" given the above:
-SHOP_OPTION_ADMIN_ORDER = (1,)
+SHOP_OPTION_ADMIN_ORDER = (1, 2, 3, 4, 5, 6)
 
 ######################
 # MEZZANINE SETTINGS #
