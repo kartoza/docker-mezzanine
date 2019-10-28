@@ -176,7 +176,8 @@ SHOP_OPTION_TYPE_CHOICES = (
     (3, "GIS Box option"),
     (4, "Support SLA"),
     (5, "Hosting"),
-    (6, "Maintenance")
+    (6, "Maintenance"),
+    (7, "Certificate")
 )
 # Sequence of value/name pairs for payment statuses.
 SHOP_PAYMENT_STATUS_CHOICES = (
