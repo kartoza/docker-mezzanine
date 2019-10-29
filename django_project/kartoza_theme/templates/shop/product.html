@@ -147,7 +147,7 @@ $(document).ready(function() {
 <form method="post" id="add-cart" class="shop-form">
     {% fields_for add_product_form %}
     {#  Add possible combinations  #}
-    {% if variations|length > 1 %}
+    {% if variations|length > 1 and variations.first.option1 != None %}
     <div class="variations-options">
         Available course dates - venues:
         <ul>
