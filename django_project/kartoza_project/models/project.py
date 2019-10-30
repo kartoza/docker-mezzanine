@@ -1,8 +1,11 @@
 import re
 from datetime import datetime
 from django.db import models
+from django.contrib.gis.db import models as gis_models
 from django.conf import settings
 from django.template.loader import render_to_string
+from django_countries.fields import CountryField
+from django_countries import countries
 from mezzanine.core.fields import RichTextField
 from mezzanine.core.models import Slugged, Orderable
 from mezzanine.utils.models import AdminThumbMixin
@@ -25,12 +28,9 @@ class Project(Orderable, Slugged, AdminThumbMixin):
         verbose_name='Project thumbnail'
     )
 
-    country = models.CharField(
+    country = CountryField(
         null=True,
         blank=True,
-        help_text=(
-            "In which country was the project located"),
-        max_length=255
     )
 
     location = models.CharField(
@@ -39,6 +39,12 @@ class Project(Orderable, Slugged, AdminThumbMixin):
         help_text=(
             "Where was the project located more specifically"),
         max_length=255
+    )
+
+    location_point = gis_models.PointField(
+        null=True,
+        blank=True,
+        help_text="The location's point coordinate"
     )
 
     categories = models.ManyToManyField(

@@ -152,6 +152,7 @@ INSTALLED_APPS = (
     "django.contrib.sites",
     "django.contrib.sitemaps",
     "django.contrib.staticfiles",
+    "django.contrib.gis"
 )
 
 # A sample logging configuration. The only tangible logging

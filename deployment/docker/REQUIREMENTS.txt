@@ -24,7 +24,7 @@ xhtml2pdf==0.2b1
 pillow==4.2.1
 
 git+https://github.com/kartoza/plugin-host.git@apps
-
+django-countries==5.5
 requests==2.1.0
 weasyprint==0.42.3
 python-docx==0.8.10
