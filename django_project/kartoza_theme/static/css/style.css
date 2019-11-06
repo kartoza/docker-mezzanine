@@ -1183,3 +1183,31 @@ img.home-page-fbis {
     border-radius: 5px;
     border-color: lightgray;
 }
+
+.caption:hover {
+    background-color: rgba(0, 0, 0, 0.6) !important;
+    display: block !important;
+    color: white !important;
+
+}
+
+.caption:hover h6 {
+    color: white !important;
+
+}
+
+.caption {
+    background-color: transparent !important;
+    color: transparent !important;
+    top: 0 !important;
+    padding: 15px !important;
+    margin-bottom: -15px !important;
+    margin-top: -8px !important;
+    border-radius: 3px !important;
+}
+
+.caption h6 {
+    background-color: transparent !important;
+    color: transparent !important;
+     margin-top: 45px !important;
+}
