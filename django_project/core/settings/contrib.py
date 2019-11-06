@@ -177,7 +177,9 @@ SHOP_OPTION_TYPE_CHOICES = (
     (4, "Support SLA"),
     (5, "Hosting"),
     (6, "Maintenance"),
-    (7, "Certificate")
+    (7, "Certificate"),
+    (8, "Consulting"),
+    (9, "Product")
 )
 # Sequence of value/name pairs for payment statuses.
 SHOP_PAYMENT_STATUS_CHOICES = (
@@ -189,7 +191,7 @@ SHOP_PAYMENT_STATUS_CHOICES = (
 # Sequence of indexes from the SHOP_OPTION_TYPE_CHOICES setting that
 # control how the options should be ordered in the admin,
 # eg for "Colour" then "Size" given the above:
-SHOP_OPTION_ADMIN_ORDER = (1, 2, 3, 4, 5, 6, 7)
+SHOP_OPTION_ADMIN_ORDER = (1, 2, 3, 4, 5, 6, 7, 8, 9)
 
 ######################
 # MEZZANINE SETTINGS #
