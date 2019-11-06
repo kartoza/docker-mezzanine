@@ -475,3 +475,11 @@ h1, h2, h3, h4, h5 {
 input[type="submit"]:hover {
     color: white;
 }
+
+.form-actions a[href*="/shop/checkout/"] {
+    display: inline-block;
+    margin-top: 15px;
+    font-family: 'Lato', sans-serif;
+    font-size: 14px;
+    line-height: 21px;
+}
