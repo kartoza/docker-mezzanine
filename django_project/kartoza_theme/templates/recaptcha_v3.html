@@ -1,0 +1,25 @@
+{##}
+<script>
+     let hidden_g_captcha = '<input type="hidden" name="g-recaptcha-response" class="recaptcha">'
+     $("form").prepend(hidden_g_captcha)
+</script>
+<script src="https://www.google.com/recaptcha/api.js?render={{ site_key }}"></script>
+<script>
+
+    // 3
+    grecaptcha.ready(function () {
+
+        // 4
+        $("form").submit(function (e) {
+            var form = this;
+            // 5
+            e.preventDefault()
+            grecaptcha.execute("{{ site_key }}", {action: 'contactform'}).then(function (token) {
+                // 6
+                $(form).find('.recaptcha').val(token)
+                // 7
+                form.submit()
+            });
+        })
+    });
+</script>

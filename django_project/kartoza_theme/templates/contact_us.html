@@ -1,7 +1,9 @@
-<script src='https://www.google.com/recaptcha/api.js'></script>
-<form id='insightly_web_to_contact' action="https://googleapps.insight.ly/WebToContact/Create"
-      method="post" name="insightly_web_to_contact">
+{#<form id='insightly_web_to_contact' action="https://googleapps.insight.ly/WebToContact/Create"#}
+{#      method="post" name="insightly_web_to_contact">#}
+<form action="/WebToContact/Create" target="_blank">
     <div class="row">
+{#        <input type="hidden" name="g-recaptcha-response" class="recaptcha">#}
+        {% csrf_token %}
         <div class="col-xs-12">
             <h2 class="input-section">Have a question? Get in touch!</h2>
             <div class="input-section col-lg-6"><input name="formId"
@@ -42,20 +44,9 @@
                         <input type="submit" class="btn btn-primary btn-large col-xs-8"
                                style="width: 198px"
                                value="Submit"/>
-                        <div class="g-recaptcha col-xs-4"
-                             data-sitekey="6LfqZSwUAAAAADx8FsPm3JtkamTg_SlPJPYdJVEL"></div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </form>
-<script>
-    $("#insightly_web_to_contact").submit(function (event) {
-        let recaptcha = $("#g-recaptcha-response").val();
-        if ((recaptcha == undefined) || (recaptcha === "")) {
-            event.preventDefault();
-            alert("Please check the recaptcha");
-        }
-    });
-</script>

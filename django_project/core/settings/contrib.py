@@ -17,6 +17,11 @@ PACKAGE_NAME_FILEBROWSER = "filebrowser_safe"
 PACKAGE_NAME_GRAPPELLI = "grappelli_safe"
 GRAPPELLI_INSTALLED = True
 
+RECAPTCHA_SITE_KEY = "6LdwScEUAAAAAM9UpGy2CElaxeq9M7dGlEKNYzf3"
+RECAPTCHA_SECRET_KEY = "6LdwScEUAAAAAIhnbcYMq4mqRnMINKEG36HM5AGp"
+
+
+
 # Extra installed apps - grapelli needs to be added before others
 INSTALLED_APPS += (
     'raven.contrib.django.raven_compat',  # enable Raven plugin
@@ -206,6 +211,8 @@ SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 # Implemented in base.py as a dirty hack for now
 # TEMPLATE_CONTEXT_PROCESSORS = (
 # )
+
+
 
 # The following settings are already defined with default values in
 # the ``defaults.py`` module within each of Mezzanine's apps, but are
