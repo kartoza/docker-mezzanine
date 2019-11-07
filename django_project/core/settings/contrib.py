@@ -9,17 +9,15 @@ from .base import *  # noqa
 from .secret import (
     COMMENTS_DISQUS_API_PUBLIC_KEY,
     COMMENTS_DISQUS_API_SECRET_KEY,
-    COMMENTS_DISQUS_SHORTNAME)
+    COMMENTS_DISQUS_SHORTNAME,
+    RECAPTCHA_SITE_KEY,
+    RECAPTCHA_SECRET_KEY)
 
 # Store these package names here as they may change in the future since
 # at the moment we are using custom forks of them.
 PACKAGE_NAME_FILEBROWSER = "filebrowser_safe"
 PACKAGE_NAME_GRAPPELLI = "grappelli_safe"
 GRAPPELLI_INSTALLED = True
-
-RECAPTCHA_SITE_KEY = "6LdwScEUAAAAAM9UpGy2CElaxeq9M7dGlEKNYzf3"
-RECAPTCHA_SECRET_KEY = "6LdwScEUAAAAAIhnbcYMq4mqRnMINKEG36HM5AGp"
-
 
 
 # Extra installed apps - grapelli needs to be added before others
