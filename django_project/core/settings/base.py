@@ -118,6 +118,7 @@ TEMPLATES = [
                 # Dirty hack for now - should be specified in contrib.py
                 "mezzanine.conf.context_processors.settings",
                 "mezzanine.pages.context_processors.page",
+                "core.context_processors.recaptcha_v3_context"
             ],
         },
     },
