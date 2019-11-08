@@ -3,11 +3,14 @@ from cartridge.shop.utils import set_tax
 from mezzanine.utils.email import send_mail_template
 from django.contrib.messages import info
 from django.core.urlresolvers import reverse
+from django.core.exceptions import ValidationError
+from django.core.validators import validate_email
 from django.template.loader import get_template, TemplateDoesNotExist
 from django.shortcuts import  redirect
 from django.utils.translation import ugettext as _
 from mezzanine.conf import settings
 from mezzanine.utils.urls import next_url
+
 
 
 
@@ -77,10 +80,13 @@ def send_order_email_bcc(request, order):
              "templates/shop/email/ to templates/email/")
     order_email_bcc_list = str(settings.SHOP_ORDER_EMAIL_BCC).split(',')
     for email in order_email_bcc_list:
-        send_mail_template(settings.SHOP_ORDER_EMAIL_SUBJECT,
-                           receipt_template, settings.SHOP_ORDER_FROM_EMAIL,
-                           email,
-                           context=order_context,
-                           addr_bcc=None)
-
-
+        try:
+            validate_email(email)
+        except ValidationError as e:
+            pass
+        else:
+            send_mail_template(settings.SHOP_ORDER_EMAIL_SUBJECT,
+                               receipt_template, settings.SHOP_ORDER_FROM_EMAIL,
+                               email,
+                               context=order_context,
+                               addr_bcc=None)
