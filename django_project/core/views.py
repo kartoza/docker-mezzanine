@@ -23,7 +23,7 @@ def home(request, slug):
     data_in = list(Client.objects.filter(status=2).order_by('title').values())
     data_in_split = [data_in[i * n:(i + 1) * n] for i in range((len(data_in) + n - 1) // n)]
 
-    data = {'clients': data_in_split}
+    data = {'clients': data_in}
     return page( request, slug, u"pages/page.html", data)
 
 
