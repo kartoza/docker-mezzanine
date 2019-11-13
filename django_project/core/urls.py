@@ -1,15 +1,3 @@
-# from django.conf.urls import patterns, include, url
-#
-# from django.contrib import admin
-# admin.autodiscover()
-#
-# urlpatterns = patterns('',
-#    # Examples:
-#    # url(r'^$', 'django_project.views.home', name='home'),
-#    # url(r'^blog/', include('blog.urls')),
-#
-#    url(r'^admin/', include(admin.site.urls)),
-# )
 from __future__ import unicode_literals
 
 from django.conf.urls import include, url
@@ -18,7 +6,7 @@ from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
 from mezzanine.core.views import direct_to_template
-from views import home, about
+from views import home, about, create_web_to_contact
 
 admin.autodiscover()
 
@@ -55,6 +43,7 @@ urlpatterns = i18n_patterns(
 
         url("^contact/$", direct_to_template, {"template": "pages/contact.html"}, name="contact"),
         url("^about/$", about, name="about"),
+        url("^WebToContact/Create", create_web_to_contact, name="create_web_to_contact"),
         # We don't want to presume how your homepage works, so here are a
         # few patterns you can use to set it up.
 

@@ -9,13 +9,16 @@ from .base import *  # noqa
 from .secret import (
     COMMENTS_DISQUS_API_PUBLIC_KEY,
     COMMENTS_DISQUS_API_SECRET_KEY,
-    COMMENTS_DISQUS_SHORTNAME)
+    COMMENTS_DISQUS_SHORTNAME,
+    RECAPTCHA_SITE_KEY,
+    RECAPTCHA_SECRET_KEY)
 
 # Store these package names here as they may change in the future since
 # at the moment we are using custom forks of them.
 PACKAGE_NAME_FILEBROWSER = "filebrowser_safe"
 PACKAGE_NAME_GRAPPELLI = "grappelli_safe"
 GRAPPELLI_INSTALLED = True
+
 
 # Extra installed apps - grapelli needs to be added before others
 INSTALLED_APPS += (
@@ -177,7 +180,9 @@ SHOP_OPTION_TYPE_CHOICES = (
     (4, "Support SLA"),
     (5, "Hosting"),
     (6, "Maintenance"),
-    (7, "Certificate")
+    (7, "Certificate"),
+    (8, "Consulting"),
+    (9, "Product")
 )
 # Sequence of value/name pairs for payment statuses.
 SHOP_PAYMENT_STATUS_CHOICES = (
@@ -189,7 +194,7 @@ SHOP_PAYMENT_STATUS_CHOICES = (
 # Sequence of indexes from the SHOP_OPTION_TYPE_CHOICES setting that
 # control how the options should be ordered in the admin,
 # eg for "Colour" then "Size" given the above:
-SHOP_OPTION_ADMIN_ORDER = (1, 2, 3, 4, 5, 6, 7)
+SHOP_OPTION_ADMIN_ORDER = (1, 2, 3, 4, 5, 6, 7, 8, 9)
 
 ######################
 # MEZZANINE SETTINGS #
@@ -206,6 +211,8 @@ SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 # Implemented in base.py as a dirty hack for now
 # TEMPLATE_CONTEXT_PROCESSORS = (
 # )
+
+
 
 # The following settings are already defined with default values in
 # the ``defaults.py`` module within each of Mezzanine's apps, but are
