@@ -1,52 +1,148 @@
 {#<form id='insightly_web_to_contact' action="https://googleapps.insight.ly/WebToContact/Create"#}
 {#      method="post" name="insightly_web_to_contact">#}
-<form action="/WebToContact/Create" target="_blank">
-    <div class="row">
-{#        <input type="hidden" name="g-recaptcha-response" class="recaptcha">#}
-        {% csrf_token %}
-        <div class="col-xs-12">
-            <h2 class="input-section">Have a question? Get in touch!</h2>
-            <div class="input-section col-lg-6"><input name="formId"
-                                                       type="hidden"
-                                                       value="HhfP9pdb2KSSlLxCyQHmeg=="/>
-                <label for="insightly_firstName">First Name</label> <input
-                        id="insightly_firstName" name="FirstName" type="text"/>
-            </div>
-            <div class="input-section col-lg-6"><label
-                    for="insightly_lastName">Last Name&nbsp;</label> <input
-                    id="insightly_lastName" name="LastName" type="text"/></div>
-            <div class="clear"></div>
-            <div class="input-section"><label for="insightly_organization">Organization</label>
-                <input id="insightly_organization" name="Organization"
-                       type="text"/></div>
-            <div class="clear"></div>
-            <div class="input-section col-lg-6"><input name="emails[0].Label"
-                                                       type="hidden"
-                                                       value="Work"/> <label
-                    for="email[0]_Value">Work Email&nbsp;</label> <input
-                    id="emails[0]_Value" name="emails[0].Value" type="text"/>
-            </div>
-            <div class="input-section col-lg-6"><input name="phones[0].Label"
-                                                       type="hidden"
-                                                       value="Work"/> <label
-                    for="phones[0]_Value">Work Phone&nbsp;</label> <input
-                    id="phones[0]_Value" name="phones[0].Value" type="text"/>
-            </div>
-            <div class="clear"></div>
-            <div class="input-section"><label
-                    for="insightly_role">Title&nbsp;</label> <input
-                    id="insightly_role" name="Role" type="text"/></div>
-            <div class="input-section"><label for="insightly_background">Additional
-                background information</label> <textarea
-                    id="insightly_background" name="background"></textarea>
+<div class="col-xs-12 contact_us_main">
+    <div class="col-xs-8  col-xs-offset-2">
+        <div class="">
+            <form action="/WebToContact/Create" target="_blank">
                 <div class="row">
+                    {#        <input type="hidden" name="g-recaptcha-response" class="recaptcha">#}
+                    {% csrf_token %}
                     <div class="col-xs-12">
-                        <input type="submit" class="btn btn-primary btn-large col-xs-8"
-                               style="width: 198px"
-                               value="Submit"/>
+                        <div class="input-section contact_us_heading">
+                            {% if title %}{{ title }}{% else %}Have any
+                                questions? Contact
+                                us.{% endif %}</div>
+                        <div class="input-section contact_us_subheading">
+                            {% if subtitle %}{{ subtitle }}{% else %}We would
+                                love to hear from you!{% endif %}</div>
+                        <div class="input-section col-lg-6"><input name="formId"
+                                                                   type="hidden"
+                                                                   value="HhfP9pdb2KSSlLxCyQHmeg=="/>
+                            <label for="insightly_firstName">First Name</label>
+                            <input placeholder="John"
+                                   id="insightly_firstName" name="FirstName"
+                                   type="text"/>
+                        </div>
+                        <div class="input-section col-lg-6"><label
+                                for="insightly_lastName">Surname</label> <input
+                                placeholder="Doe"
+                                id="insightly_lastName" name="LastName"
+                                type="text"/></div>
+                        <div class="clear"></div>
+                        <div class="input-section col-lg-6"><input
+                                name="emails[0].Label"
+                                type="hidden"
+
+                                value="Work"/> <label
+                                for="email[0]_Value">Email*</label> <input
+                                placeholder="johndoe@email.com"
+                                id="emails[0]_Value" name="emails[0].Value"
+                                type="text"/>
+                        </div>
+                        <div class="input-section col-lg-6">
+                            <input name="phones[0].Label" type="hidden"
+                                   value="Work"/> <label
+                                for="phones[0]_Value">Phone Number</label>
+                            <input
+                                    placeholder="+27 65 709 7623"
+                                    id="phones[0]_Value" name="phones[0].Value"
+                                    type="text"/>
+                        </div>
+                        <div class="input-section"><label
+                                for="insightly_background">Message</label>
+                            <textarea
+                                    placeholder="Type Message here"
+                                    class="contact_us_message"
+                                    id="insightly_background"
+                                    name="background"></textarea>
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <input type="submit"
+                                           class="btn contact_us_button"
+
+                                           value="Submit"/>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
+
+            </form>
         </div>
     </div>
-</form>
+</div>
+
+<style>
+    .contact_us_heading {
+        font-family: Lato;
+        font-style: normal;
+        font-weight: 300;
+        font-size: 36px;
+        line-height: 43px;
+        margin-top: 5rem;
+        color: #FFFFFF;
+
+    }
+
+    .contact_us_subheading {
+        font-family: Lato;
+        font-style: normal;
+        font-weight: 300;
+        font-size: 16px;
+        line-height: 19px;
+        padding-top: 0;
+        color: #FFFFFF;
+
+    }
+
+    .contact_us_main {
+        background-color: #888B8C;
+        color: white;
+        font-family: Lato;
+        font-style: normal;
+        font-weight: 300;
+        font-size: 16px;
+        line-height: 19px;
+
+    }
+
+    .contact_us_main label {
+        font-weight: 300 !important;
+    }
+
+    .contact_us_main input {
+        font-weight: 600 !important;
+    }
+
+    .contact_us_button {
+        font-family: Lato;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 17px;
+        text-align: center;
+        text-transform: uppercase;
+        color: #231F20 !important;
+        background-color: #FFFFFF !important;
+    }
+
+    .contact_us_message {
+        color: #3f3356;
+        font-family: "Open Sans";
+        background: white !important;
+    }
+
+    .contact_us_main ::placeholder {
+        font-family: Open Sans;
+        font-style: normal;
+        font-weight: 300;
+        font-size: 15px;
+        line-height: 20px;
+        /* identical to box height, or 133% */
+
+
+        color: #D0C9D6;
+    }
+
+
+</style>
