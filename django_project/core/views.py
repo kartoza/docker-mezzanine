@@ -56,6 +56,7 @@ def create_web_to_contact(request):
     return render(request, "includes/contact_us_submit.html", new_data)
 
 
+
 def validate_g_recaptcha(request):
     if request.GET['g-recaptcha-response']:
         data = request.GET
@@ -73,3 +74,4 @@ def validate_g_recaptcha(request):
             return True
     else:
         return False
+

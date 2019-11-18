@@ -44,6 +44,7 @@ urlpatterns = i18n_patterns(
         url("^contact/$", direct_to_template, {"template": "pages/contact.html"}, name="contact"),
         url("^about/$", about, name="about"),
         url("^WebToContact/Create", create_web_to_contact, name="create_web_to_contact"),
+
         # We don't want to presume how your homepage works, so here are a
         # few patterns you can use to set it up.
 
