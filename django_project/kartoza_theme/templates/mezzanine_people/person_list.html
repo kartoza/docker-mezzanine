@@ -1,51 +1,15 @@
-{% extends "base.html" %}
+
 {% load mezzanine_tags keyword_tags i18n %}
+{##}
+{#{% block meta_title %}{% if page %}{{ page.richtextpage.meta_title }}{% else %}{% trans "People" %}#}
+{#{% endif %}{% endblock %}#}
+{% block person_list %}
 
-{% block meta_title %}{% if page %}{{ page.richtextpage.meta_title }}{% else %}{% trans "People" %}
-{% endif %}{% endblock %}
+    <div class="kartoza-heading">The Kartoza Geeks</div>
+    <div class="kartoza-heading-underline-container">
+        <div class="kartoza-heading-underline"></div>
+    </div>
 
-{% block meta_keywords %}{% metablock %}
-    {% keywords_for page as keywords %}
-    {% for keyword in keywords %}{% if not forloop.first %}, {% endif %}{{ keyword }}{% endfor %}
-{% endmetablock %}{% endblock %}
-
-{% block meta_description %}{% metablock %}
-    {{ page.description }}
-{% endmetablock %}{% endblock %}
-
-{% block title %}
-    {% if page %}
-        {% editable page.title %}{{ page.title }}{% endeditable %}
-    {% else %}
-        {% trans "Our team" %}
-    {% endif %}
-{% endblock %}
-
-{% block breadcrumb_menu %}
-    {{ block.super }}
-    {% if category %}
-        <li>{% trans "Category:" %}{{ category }}
-        <li>
-    {% endif %}
-{% endblock %}
-
-{% block main %}
-
-    {% if category %}
-        <p>
-            {% if category %}
-                {{ category }}
-            {% else %}
-                {% trans "People" %}
-            {% endif %}
-        </p>
-    {% else %}
-        {% if page %}
-            {% editable page.richtextpage.content %}
-                {{ page.richtextpage.content|safe }}
-            {% endeditable %}
-        {% endif %}
-    {% endif %}
     <div class="row">
         <div class="pure-g list-person">
             {% for person in people %}
@@ -55,35 +19,50 @@
                             <div class="person-avatar">
                                 <a href="/people/person/{{ person.slug }}">
                                     <img width="300" height="300"
-                                         src="{{ MEDIA_URL }}{% thumbnail person.mugshot 300 0 %}"
-                                         class="attachment-thumbnail size-thumbnail" alt="Selection_006">
+                                         src="
+                                                 {{ MEDIA_URL }}{% thumbnail person.mugshot 300 0 %}"
+                                         class="attachment-thumbnail size-thumbnail"
+                                         alt="Selection_006">
                                     <img width="300" height="300"
-                                         src="{{ MEDIA_URL }}{% thumbnail person.mugshot_hover 300 0 %}"
-                                         class="attachment-thumbnail size-thumbnail" alt="Selection_006"
+                                         src="
+                                                 {{ MEDIA_URL }}{% thumbnail person.mugshot_hover 300 0 %}"
+                                         class="attachment-thumbnail size-thumbnail"
+                                         alt="Selection_006"
                                          style="display: none">
                                 </a>
 
                             </div>
                             <div class="person-name">
-                                <h4><a href="/people/person/{{ person.slug }}">{{ person.full_name }}</a></h4>
+                                <h4>
+                                    <a href="/people/person/{{ person.slug }}">{{ person.full_name }}</a>
+                                </h4>
                             </div>
                             <div class="person-role">
                                 {{ person.job_title }}
                             </div>
 
-                            <div class="text-wrapper" onclick="location.href='/people/person/{{ person.slug }}'">
+                            <div class="text-wrapper"
+                                 onclick="location.href='/people/person/{{ person.slug }}'">
                                 <div class="person-link">
                                     {% for link in person.personlink_set.all %}
                                         {% if link.name|upper == "TWITTER" %}
-                                        <a href="{{ link.url }}"><i class="fa fa-twitter"></i>{{ link.name }}</a>
+                                            <a href="{{ link.url }}"><i
+                                                    class="fa fa-twitter"></i>{{ link.name }}
+                                            </a>
                                         {% elif link.name|upper == "GITHUB" %}
-                                        <a href="{{ link.url }}"><i class="fa fa-github"></i>{{ link.name }}</a>
+                                            <a href="{{ link.url }}"><i
+                                                    class="fa fa-github"></i>{{ link.name }}
+                                            </a>
                                         {% elif link.name|upper == "FACEBOOK" %}
-                                        <a href="{{ link.url }}"><i class="fa fa-facebook"></i>{{ link.name }}</a>
-                                         {% elif link.name|upper == "LINKEDIN" %}
-                                        <a href="{{ link.url }}"><i class="fa fa-linkedin"></i>{{ link.name }}</a>
+                                            <a href="{{ link.url }}"><i
+                                                    class="fa fa-facebook"></i>{{ link.name }}
+                                            </a>
+                                        {% elif link.name|upper == "LINKEDIN" %}
+                                            <a href="{{ link.url }}"><i
+                                                    class="fa fa-linkedin"></i>{{ link.name }}
+                                            </a>
                                         {% else %}
-                                        <a href="{{ link.url }}">{{ link.name }}</a>
+                                            <a href="{{ link.url }}">{{ link.name }}</a>
                                         {% endif %}
                                     {% endfor %}
                                 </div>
@@ -91,7 +70,8 @@
                                     <div class="person-bio">
                                         {{ person.bio|safe|truncatechars:90 }}
                                         {% if person.bio|length > 90 %}
-                                            <a href="/people/person/{{ person.slug }}"><br>[see more]</a>
+                                            <a href="/people/person/{{ person.slug }}"><br>[see
+                                                more]</a>
                                         {% endif %}
                                     </div>
                                 {% else %}
