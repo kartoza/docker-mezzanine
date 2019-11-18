@@ -74,14 +74,3 @@ def validate_g_recaptcha(request):
             return True
     else:
         return False
-
-
-def test(request):
-    template = "db_flat_pages/gis_software_support.html"
-    settings.use_editable()
-    templates = ["kartoza_theme/pages/page.html"]
-    people = Person.objects.published()
-
-    context = {"people": people, "category": None}
-    templates.append(template)
-    return mez_render(request, templates, context)
