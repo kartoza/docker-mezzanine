@@ -1,3 +1,9 @@
+{% extends "base.html" %}
+{% load i18n staticfiles mezzanine_tags twitter_tags blog_tags %}
+
+
+{% block main_wrapper %}
+
 <div class="about-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
     Quisque egestas tempus eros, sed mollis mauris porta pharetra. Suspendisse
     potenti.
@@ -37,7 +43,7 @@
         </div>
     </div>
 
-    <div class="col-lg-6">
+    <div class="col-lg-6 col-md-12">
 
         <div class="about-what-we-do">
             <div class="about-logo-background">
@@ -57,3 +63,4 @@
         </div>
     </div>
 </div>
+{% endblock %}

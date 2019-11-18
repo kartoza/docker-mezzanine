@@ -6,7 +6,7 @@ from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
 from mezzanine.core.views import direct_to_template
-from views import home, about, create_web_to_contact
+from views import home, about, create_web_to_contact, test
 
 admin.autodiscover()
 
@@ -44,7 +44,7 @@ urlpatterns = i18n_patterns(
         url("^contact/$", direct_to_template, {"template": "pages/contact.html"}, name="contact"),
         url("^about/$", about, name="about"),
         url("^WebToContact/Create", create_web_to_contact, name="create_web_to_contact"),
-
+        url("^test/$", test, name="test"),
         # We don't want to presume how your homepage works, so here are a
         # few patterns you can use to set it up.
 
