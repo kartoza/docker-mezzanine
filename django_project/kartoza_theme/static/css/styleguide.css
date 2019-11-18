@@ -576,3 +576,8 @@ input[type="submit"]:hover {
 .about-what-we-do-row .col-lg-4 {
     margin-top: 80px;
 }
+
+
+.about-what-we-do-row .col-lg-6 {
+    margin-top: 80px;
+}
