@@ -561,14 +561,18 @@ input[type="submit"]:hover {
 }
 
 .about-what-we-do-row {
-    margin-left: -100px;
-    margin-right: -100px;
+    margin-left: -70px;
+    margin-right: -70px;
     display: flex;
     display: -webkit-flex;
     flex-wrap: wrap;
-    margin-top: 80px;
+
 }
 
 .about-what-we-do-row .about-text {
     margin-bottom: 100px;
+}
+
+.about-what-we-do-row .col-lg-4 {
+    margin-top: 80px;
 }
