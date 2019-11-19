@@ -48,12 +48,15 @@
                     </ul>
                 </div>
             </div>
-            <h4>Latest Blog Articles:</h4>
-            <div>
-                <ul>
-                    {% for blog_post in  %}
-                    <li></li>
-                </ul>
+
+            <div style="line-height: 14px;">
+            <h4 style="margin-bottom: 0px;">Latest Blog Articles:</h4>
+                {% for blog_post in blogs %}
+                    <a class="blog-link"
+                       href="/blog/{{ blog_post.slug }}">{{ blog_post.title }}</a>
+                    <br>
+                {% endfor %}
+
             </div>
         </div>
 

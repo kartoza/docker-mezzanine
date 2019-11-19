@@ -47,7 +47,8 @@ def person_detail(request, slug,
 
     people = Person.objects.published()
     person = get_object_or_404(people, slug=slug)
-    blogs = BlogPost.objects.filter(user=person)
-    context = {"person": person, "editable_obj": person}
+
+    blogs = BlogPost.objects.filter(user=person.user).order_by("-publish_date")[:5]
+    context = {"person": person, "editable_obj": person, "blogs": blogs}
     templates = [u"mezzanine_people/person_detail_%s.html" % unicode(slug), template]
     return render(request, templates, context)
