@@ -30,7 +30,7 @@ html input[type="button"], input[type="reset"], input[type="submit"] {
 
 .btn {
     text-transform: uppercase !important;
-    font-weight: bold !important;
+    font-weight: 500 !important;
 }
 
 .btn-small {
@@ -476,6 +476,96 @@ input[type="submit"]:hover {
     color: white;
 }
 
+.btn-text {
+    font-family: Lato;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.btn-multiline {
+    line-height: 100%;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+.small-headings {
+    font-family: Lato;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 29px;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.home-page-why-kartoza {
+    background-image: url(../img/home/front-page-blue-horizontal.svg);
+    height: 850px;
+    width: auto;
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+}
+
+.home-page-our-projects {
+    background-image: url(../img/home/front-page-blue-horizontal.svg);
+    height: 850px;
+    width: auto;
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+}
+
+
+
+.btn-white-hollow {
+    background-color: transparent;
+    border-radius: 4px;
+    border: 5px solid white;
+    color: white !important;
+    min-width: fit-content;
+}
+
+.btn-white-hollow:hover, .btn-white-hollow:focus, .btn-white-hollow:active, .btn-white-hollow.active, .open .dropdown-toggle.btn-white-hollow {
+    background-color: transparent;
+    border-radius: 4px;
+    border: 5px solid white !important;
+    color: white !important;
+}
+
+.btn-white-hollow, .open .dropdown-toggle.btn-white-hollow {
+    background-color: transparent;
+    border-radius: 4px;
+    border: 5px solid white;
+    color: white !important;
+}
+
+
+.btn-white-hollow:active, .btn-white-hollow.active, .open .dropdown-toggle.btn-white-hollow {
+    background-color: transparent;
+    border-radius: 4px;
+    border: 5px solid var(--c-orange-d);
+    color: var(--c-orange-d) !important;
+}
+
+.btn-white-hollow:disabled, .btn-white.disabled, .disabled .dropdown-toggle.btn-white-hollow {
+    background-color: transparent;
+    border-radius: 4px;
+    border: 5px solid grey;
+    color: grey !important;
+}
+
+.project-table-image-1 {
+    background-image: url(../img/home/front-page-blue-horizontal.svg);
+    width: auto;
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+}
 .form-actions a[href*="/shop/checkout/"] {
     display: inline-block;
     margin-top: 15px;
@@ -501,6 +591,7 @@ input[type="submit"]:hover {
     font-weight: 300;
     font-size: 14px;
     margin-bottom: 5rem;
+    margin-top: 5rem;
     color: white !important;
 }
 
