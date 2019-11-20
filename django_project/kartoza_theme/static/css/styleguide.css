@@ -30,6 +30,8 @@ html input[type="button"], input[type="reset"], input[type="submit"] {
 
 .btn {
     text-transform: uppercase !important;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
     font-weight: 500 !important;
 }
 
@@ -572,6 +574,97 @@ input[type="submit"]:hover {
     font-family: 'Lato', sans-serif;
     font-size: 14px;
     line-height: 21px;
+}
+
+.about-image-text {
+
+    font-family: Lato;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    color: #6D6E71;
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.about-text {
+    font-family: Lato;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    margin-top: 3rem;
+    margin-bottom: 25px;
+
+    color: #231F20;
+}
+
+.about-find-solution {
+    margin-left: auto;
+    display: block;
+    width: 25%;
+    margin-right: auto;
+    margin-top: 2rem;
+}
+
+.about-what-we-do {
+    background: #F7F7F7;
+    border-radius: 12px;
+    text-align: center;
+    padding: 1rem;
+    height: 100%;
+}
+
+.about-heading {
+    font-family: Lato;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    text-align: center;
+    color: #231F20;
+}
+
+.about-logo-background {
+    position: relative;
+    margin-top: -45px;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: var(--c-orange);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.about-logo-background img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.about-what-we-do-row a {
+    position: absolute;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.about-what-we-do-row {
+    margin-left: -70px;
+    margin-right: -70px;
+    display: flex;
+    display: -webkit-flex;
+    flex-wrap: wrap;
+
+}
+
+.about-what-we-do-row .about-text {
+    margin-bottom: 100px;
+}
+
+.about-what-we-do-row .col-lg-4 {
+    margin-top: 80px;
 }
 
 .footer-heading {

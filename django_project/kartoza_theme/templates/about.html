@@ -1,22 +1,137 @@
 {% extends "base.html" %}
-{% load i18n staticfiles mezzanine_tags twitter_tags blog_tags %}
-
-{% block meta_title %}{% trans "Home" %}{% endblock %}
+{% load staticfiles %}
+{% load mezzanine_tags keyword_tags i18n %}
 {% block title_wrapper %}
 {% endblock %}
 
-{% block all_content %}
-    {% block left_wrapper %}
+
+{% block main_wrapper %}
+    {#    {% if page %}#}
+    {#            {% editable page.richtextpage.content %}#}
+    {#                {{ page.richtextpage.content|safe }}#}
+    {#            {% endeditable %}#}
+    {#        {% endif %}#}
+    <div class="kartoza-heading">About Kartoza</div>
+    <div class="kartoza-heading-underline-container">
+        <div class="kartoza-heading-underline"></div>
+    </div>
+    <div>
+        <img class="about-image"
+             src="{% static 'img/about/header-image.png' %}"/>
+        <div class="about-image-text">"Mappy life is a happy life"</div>
+    </div>
+    <div class="about-text">
+        Make geospatial data and technology work for you by partnering with us
+        for training, development and maintenance of GIS systems.
+        <br><br>
+        Kartoza is a South Africa-based Free and Open Source GIS (FOSSGIS)
+        service provider. We use GIS software to solve complex location-related
+        problems for individuals, businesses and governments around the world.
+        <br><br>
+        Our team develops software using FOSSGIS to give you the freedom to
+        share and modify your GIS as your needs grow and change.
+    </div>
+    <a class="btn btn-primary about-find-solution" href="/contact/">
+        <div class="btn-text">Find your solution</div>
+    </a>
+    <div class="kartoza-heading">What we do</div>
+    <div class="kartoza-heading-underline-container">
+        <div class="kartoza-heading-underline"></div>
+    </div>
+    <div class="row about-what-we-do-row">
+        <div class="col-lg-4">
+
+            <div class="about-what-we-do">
+                <div class="about-logo-background">
+                    <img src="{% static 'img/about/education-icon.svg' %}"/>
+                </div>
+                <div class="about-heading">Training & Education</div>
+                <div class="about-text">Our experts train corporates, NGOs and
+                    government departments to use GIS software optimally.
+                    <br><br>
+                    We also provide curriculum materials for schools and
+                    universities, and train teachers to foster the study of GIS
+                    and geospatial
+                </div>
+                <a href="/training-courses/" class="btn btn-primary-hollow">Start
+                    Training</a>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+
+            <div class="about-what-we-do">
+                <div class="about-logo-background">
+                    <img src="{% static 'img/about/consultancy-icon.svg' %}"/>
+                </div>
+                <div class="about-heading">Software Development
+                    & Consultancy
+                </div>
+                <div class="about-text">The Kartoza team develops custom
+                    geographic information systems that deliver geospatial
+                    intelligence to our clients around the world.
+                    <br><br>
+                    Our applications are built using FOSSGIS and are available
+                    on desktop or web.
+
+                </div>
+                <a href="/training-courses/" class="btn btn-primary-hollow">Request
+                    consultation</a>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="about-what-we-do">
+                <div class="about-logo-background">
+                    <img src="{% static 'img/about/support-icon.svg' %}"/>
+                </div>
+                <div class="about-heading">Software Support, Maintenance &
+                    Hosting
+                </div>
+                <div class="about-text">We provide maintenance and support for
+                    existing GIS software.
+                    <br><br>
+                    We can also host and deploy a range of FOSSGIS applications
+                    that use PostgreSQL/PostGIS, QGIS, UMN Mapserver and other
+                    technologies.
+                </div>
+                <a href="/training-courses/" class="btn btn-primary-hollow">
+                    Get GIS Support
+                </a>
+            </div>
+        </div>
+
+    </div>
+    <div class="kartoza-heading">What is GIS?</div>
+    <div class="kartoza-heading-underline-container">
+        <div class="kartoza-heading-underline"></div>
+    </div>
+    <div class="about-text">
+        A Geographic Information Systems (GIS) is a
+        computer-based tool that allows you to collect, analyse and connect
+        location-based information and visualise this data on a map. With this
+        system, you can analyse geospatial information to gain insights and
+        solve complex spatial problems.
+    </div>
+    <br><br>
+
+    <div class="kartoza-heading">Our philosophy</div>
+    <div class="about-text">
+        We are a small company with a big dream: <i>To see Free and Open Source
+        GIS software make its way into every part of society, from government
+        and private enterprise to academia and private users.</i>
+    </div>
+
+
+
+
+
+    <div class="kartoza-heading-underline-container">
+        <div class="kartoza-heading-underline"></div>
+    </div>
+    {% block person_list %}
+        {% include 'mezzanine_people/person_list.html' %}
     {% endblock %}
 
-    {% block main_wrapper %}
-
-    {% endblock %}
-
-    {% block right_wrapper %}
-    {% endblock %}
 {% endblock %}
 
-{% block extra_js %}
 
-{% endblock %}

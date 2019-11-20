@@ -27,7 +27,7 @@ def home(request, slug):
 
 def about(request):
 
-    template = "mezzanine_people/person_list.html"
+    template = "about.html"
     settings.use_editable()
     templates = ["kartoza_theme/pages/page.html"]
     people = Person.objects.published()
