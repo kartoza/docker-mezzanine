@@ -236,27 +236,83 @@
             </div>
             <div class="col-xs-2"></div>
             <div class="col-xs-12 home-page-philosophy-row home-page-philosophy-row-container">
-                <div class="home-page-philosophy-image">
-                    <img class="home-page-fbis"
-                         src="{% static "img/front-page-phil.png" %}"></div>
-                <div class="home-page-row-content">
+                <div class="home-page-why-kartoza">
+                    <div class="home-page-row-content">
 
-                    <div class="col-xs-12 hidden-xs hidden-sm"
-                         style="height: 100%">
-                        <div class="col-xs-8 col-xs-offset-2 centerY">
-                            <div class="home-page-heading text-center">
-                                Our Philosophy
-                            </div>
-                            <div class="text-big-home text-white my-3">
-                                Kartoza is a small company with a big dream: to
-                                see Free and Open Source GIS
-                                Software (FOSS GIS) make its way into every part
-                                of society: Government, Private
-                                Enterprise, Academia and private users.
-                            </div>
-                            <div class="col-xs-12 my-3 centered-button-container">
-                                <a class="btn btn-white-blue btn-center btn-medium"
-                                   href="/about">MORE ABOUT US</a>
+                        <div class="col-xs-12 hidden-xs hidden-sm"
+                             style="height: 100%">
+                            <div class="col-xs-8 col-xs-offset-2 centerY">
+                                <div class="home-page-heading text-center">
+                                    Why Kartoza?
+                                </div>
+                                <div class="row small-headings">
+                                    <div class="col-md-3">We support the Free
+                                        Software
+                                        movement
+                                    </div>
+                                    <div class="col-md-3">Our team is available
+                                        24/7
+                                    </div>
+                                    <div class="col-md-3">All-in-one
+                                        development,
+                                        training
+                                        and support
+                                    </div>
+                                    <div class="col-md-3">We’re trusted around
+                                        the
+                                        world
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        We are a Free and Open Source GIS
+                                        (FOSSGIS)
+                                        service provider. Choosing FOSSGIS gives
+                                        you
+                                        the
+                                        freedom to share and modify your system
+                                        as
+                                        your
+                                        needs grow and change.
+                                        Choosing FOSSGIS avoids vendor lock-in.
+                                    </div>
+                                    <div class="col-md-3">Our team works from
+                                        various time
+                                        zones, which means we can provide
+                                        professional
+                                        support at most times
+                                        of the day, no matter
+                                        how
+                                        complex your query is.
+                                    </div>
+                                    <div class="col-md-3">We not only develop
+                                        and
+                                        implement
+                                        software to your precise requirements,
+                                        but
+                                        we
+                                        also train your team on how to use the
+                                        software,
+                                        provide support for your system and
+                                        offer
+                                        maintenance and hosting packages.
+                                    </div>
+                                    <div class="col-md-3">Kartoza works with
+                                        individuals,
+                                        companies and organisations across the
+                                        globe,
+                                        including the World Bank and government
+                                        departments in Australia, Canada and
+                                        various
+                                        African countries.
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 my-3 centered-button-container">
+                                    <a class="btn btn-white-blue btn-center btn-medium"
+                                       href="/about"
+                                       style="color: black; margin-top: 7rem;">LEARN
+                                        MORE</a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -267,9 +323,11 @@
                             </div>
                             <div class="text-small-home text-white my-3">
                                 Kartoza is a small company with a big dream: to
-                                see Free and Open Source GIS
+                                see
+                                Free and Open Source GIS
                                 Software (FOSS GIS) make its way into every part
-                                of society: Government, Private
+                                of
+                                society: Government, Private
                                 Enterprise, Academia and private users.
                             </div>
                             <div class="col-xs-12">
@@ -282,87 +340,116 @@
 
                 </div>
             </div>
-            <div class="col-xs-12" style="height: 400px;">
-                <div class="col-xs-8 col-xs-offset-2 centerY">
-                    <div class="col-md-7 col-xs-12">
-                        <img class="home-page-fbis"
-                             src="{% static "img/front-page-ipad-fbis.png" %}">
-                    </div>
-                    <div class="row">
-                        <div class="col-md-5 col-xs-12">
-                            <div class="home-page-heading hidden-sm hidden-xs">
-                                Our Projects
-                            </div>
-                            <div class="home-page-heading text-center hidden-md hidden-lg hidden-xl">
-                                Our Projects
-                            </div>
-                            <div class="text-medium my-3">
-                                We work with individuals, businesses or
-                                governments to collate Geospatial problembs
-                                in to real-time data.
-                            </div>
-                        </div>
-                        <div class="col-xs-3 my-3 hidden-sm hidden-xs">
-                            <a class="btn btn-default-hollow btn-small"
-                               href="/project">PORTFOLIO</a>
-                        </div>
-                        <div class="col-xs-12 my-3 hidden-md hidden-lg hidden-xl">
-                            <a class="btn btn-default-hollow btn-center btn-small"
-                               href="/project">PORTFOLIO</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-12 home-page-philosophy-row">
-                <div class="home-page-philosophy-image">
-                    <img class="home-page-fbis"
-                         src="{% static "img/front-page-clients-background.png" %}">
-                </div>
-                <div class="home-page-row-content">
-                    <div class="row" style="width: 100%; height: 100%">
-                        <div class="col-xs-8 col-xs-offset-2"
-                             style="top: 50%; transform: translateY(-50%);">
-                            <div class="home-page-heading text-center">
-                                Our Clients
-                            </div>
-                            <div class="home-page-clients-carousel">
-                                {% include "includes/home_slides.html" %}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-12">
-                <div class="col-sm-4 col-sm-offset-6 col-xs-8 col-xs-offset-2"
-                     style="margin-bottom: 5rem; margin-top: 2rem;">
-                    <div class="technical-articles-heading">
-                        Some Technical Articles for you
-                    </div>
-                    <div class="technical-articles">
-                        {% blog_recent_posts settings.FRONT_PAGE_RECENT_POST as recent_posts %}
-                        {% if recent_posts %}
-                            <div id="recent-post-section">
-                                <ul>
-                                    {% for recent_post in recent_posts %}
-                                        <li>
-                                            <a href="{{ recent_post.get_absolute_url }}">{{ recent_post.title }}</a>
-                                        </li>
-                                    {% endfor %}
-                                </ul>
-                            </div>
-                        {% endif %}
-                    </div>
-                    <a class="col-xs-4 btn btn-default-hollow hidden-in-small-screen"
-                       href="/blog/">SEE BLOG</a>
-                </div>
-            </div>
 
+            <div class="col-xs-12 my-3">
+                <div class="home-page-heading text-center"
+                     style="color: black; margin-bottom: 1rem">Our Clients
+                </div>
+                {% include 'clients.html' %}
+            </div>
+            <div class="col-xs-12 home-page-philosophy-row home-page-philosophy-row-container"
+                 style="padding: 0; margin-bottom: -90px">
+                <div class="home-page-our-projects">
+                    <div class="home-page-row-content">
+                        <div class="col-xs-8 col-xs-offset-2 centerY">
+                            <div class="home-page-heading text-center col-xs-12"
+                                 style="margin-bottom: 0;">
+                                A Selection of our Projects
+                            </div>
+                            <div class="col-xs-12 my-3">
+                                <div class="col-xs-4">
+                                    <div class="project-tablet-image-1">
+                                        <img class="home-page-small-image"
+                                             src="{% static "img/home/IPad_FBIS.svg" %}">
+                                    </div>
+                                </div>
+                                <div class="col-xs-4">
+                                    <div class="project-tablet-image-1"><img
+                                            class="home-page-small-image"
+                                            src="{% static "img/home/IPad_InaSAFE.svg" %}">
+                                    </div>
+                                </div>
+                                <div class="col-xs-4">
+                                    <div class="project-tablet-image-1"><img
+                                            class="home-page-small-image"
+                                            src="{% static "img/home/IPad_MFW.svg" %}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 my-3 small-headings">
+                                <div class="col-xs-4">
+                                    <div class="project-home-title">InaSAFE
+                                        Disaster
+                                        Scenario Contingency Planning software
+                                    </div>
+                                </div>
+                                <div class="col-xs-4">
+                                    <div class="project-home-title">MyFarmWeb
+                                        precision agriculture platform
+                                    </div>
+                                </div>
+                                <div class="col-xs-4">
+                                    <div class="project-home-title">FBIS
+                                        Freshwater
+                                        Biodiversity Information System
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 my-3">
+                                <div class="col-xs-4">
+                                    <div class="project-home-caption">
+                                        DMInnovation
+                                        provide (amongst other things)
+                                        in-country
+                                        support to Indonesia in the area of
+                                        Disaster
+                                        Planning and risk management. They
+                                        contracted Kartoza to co-develop the
+                                        InaSAFE
+                                        tool, which is a plugin for QGIS.
+                                    </div>
+                                </div>
+                                <div class="col-xs-4">
+                                    <div class="project-home-caption">An
+                                        interactive, cloud-based platform for
+                                        storing, visualising and comparing all
+                                        types
+                                        of geographic and IoT agricultural data
+                                    </div>
+                                </div>
+                                <div class="col-xs-4">
+                                    <div class="project-home-caption">FBIS is a
+                                        platform for hosting, visualising and
+                                        sharing freshwater biodiversity
+                                        information
+                                        for South African rivers.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 my-3">
+                                <div class="col-xs-4"><a href="/project"
+                                                         class="btn btn-white-hollow">READ
+                                    MORE</a></div>
+                                <div class="col-xs-4"><a href="/project"
+                                                         class="btn btn-white-hollow">READ
+                                    MORE</a></div>
+                                <div class="col-xs-4"><a href="/project"
+                                                         class="btn btn-white-hollow">READ
+                                    MORE</a></div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="home-page-back-left-2 hidden-in-small-screen"></div>
+            </div>
             {% block contact_form %}
-                {% include 'contact_us.html' %}
+                {% include 'contact_us.html' with title="Unlock the power of location data now" %}
             {% endblock %}
 
-            <div class="home-page-back-left-2 hidden-in-small-screen"></div>
+
         </div>
+
     {% endblock %}
 
 </div>
@@ -371,8 +458,6 @@
         {% endblock %}
     </div>
 
-    </div>
-    </div>
 {% endblock %}
 
 

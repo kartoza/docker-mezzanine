@@ -176,16 +176,20 @@
                 </div>
             {% endblock %}
 
-            {% block contact_form %}
-                {% include 'contact_us.html' %}
-            {% endblock %}
+
         </div>
         <div class="col-xs-3 hidden-xs flex-column" id="background-right">
             <div class="background-back-right-1"></div>
         </div>
-
+    </div>
+    <div class="row">
+    {% block contact_form %}
+        {% include 'contact_us.html' %}
+    {% endblock %}
     </div>
 {% endblock %}
+
+
 
 {% block recaptcha %}
     {% include 'recaptcha_v3.html' %}
@@ -194,9 +198,7 @@
 {% include "includes/announcements.html" %}
 <div id="footerwrap">
     <div class="container">
-        <div class="footer-row"></div>
         <div class="row footer-main">
-
             <div class="col-md-4">
                 <div class="footer-heading">About Kartoza</div>
                 We are a South Africa-based Free and Open Source GIS
@@ -215,36 +217,36 @@
             </div>
             <div class="col-md-4 footer-icons">
                 <div class="footer-heading">Follow Kartoza</div>
-                    <a target="_blank"
-                       href="https://twitter.com/KartozaGeo">
-                        <div class="fa fa-circle"><i
-                                class="fa fa-twitter"></i></div>
-                    </a>
-                    <a target="_blank"
-                       href="https://www.instagram.com/kartozageo/">
-                        <div class="fa fa-circle"><i
-                                class="fa fa-instagram"></i></div>
-                    </a>
-                     <a target="_blank"
-                       href="https://www.facebook.com/kartozaGIS">
-                        <div class="fa fa-circle"><i
-                                class="fa fa-facebook"></i></div>
-                    </a>
-                    <a target="_blank"
-                       href="https://www.linkedin.com/company/kartoza-pty-ltd">
-                        <div class="fa fa-circle"><i
-                                class="fa fa-linkedin"></i></div>
-                    </a>
-                    <a target="_blank"
-                       href="https://www.github.com/orgs/kartoza">
-                        <div class="fa fa-circle"><i
-                                class="fa fa-github"></i></div>
-                    </a>
-                    <a target="_blank"
-                       href="https://www.youtube.com/user/kartozachannel/feed">
-                        <div class="fa fa-circle"><i
-                                class="fa fa-youtube"></i></div>
-                    </a>
+                <a target="_blank"
+                   href="https://twitter.com/KartozaGeo">
+                    <div class="fa fa-circle"><i
+                            class="fa fa-twitter"></i></div>
+                </a>
+                <a target="_blank"
+                   href="https://www.instagram.com/kartozageo/">
+                    <div class="fa fa-circle"><i
+                            class="fa fa-instagram"></i></div>
+                </a>
+                <a target="_blank"
+                   href="https://www.facebook.com/kartozaGIS">
+                    <div class="fa fa-circle"><i
+                            class="fa fa-facebook"></i></div>
+                </a>
+                <a target="_blank"
+                   href="https://www.linkedin.com/company/kartoza-pty-ltd">
+                    <div class="fa fa-circle"><i
+                            class="fa fa-linkedin"></i></div>
+                </a>
+                <a target="_blank"
+                   href="https://www.github.com/orgs/kartoza">
+                    <div class="fa fa-circle"><i
+                            class="fa fa-github"></i></div>
+                </a>
+                <a target="_blank"
+                   href="https://www.youtube.com/user/kartozachannel/feed">
+                    <div class="fa fa-circle"><i
+                            class="fa fa-youtube"></i></div>
+                </a>
             </div>
 
 

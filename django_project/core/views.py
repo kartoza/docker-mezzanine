@@ -19,11 +19,9 @@ def get_all_people(request):
 
 
 def home(request, slug):
-    n = 3
     data_in = list(Client.objects.filter(status=2).order_by('title').values())
-    data_in_split = [data_in[i * n:(i + 1) * n] for i in range((len(data_in) + n - 1) // n)]
 
-    data = {'clients': data_in_split}
+    data = {'clients': data_in[:24]}
     return page( request, slug, u"pages/page.html", data)
 
 

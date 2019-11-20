@@ -929,7 +929,7 @@ csmall2 {
     font-family: 'Lato', sans-serif;;
     font-size: 36px;
     font-weight: 400;
-    margin-bottom: 2rem;
+    margin-bottom: 10rem;
 
 }
 
@@ -953,9 +953,9 @@ csmall2 {
 
 .home-page-row-content {
     top: 0%;
-    position: absolute;
+
     width: 100%;
-    margin-left: -10px;
+
     height: 100%;
 }
 
@@ -975,7 +975,7 @@ img.home-page-fbis {
 
 .home-page-philosophy-row-container {
     position: relative;
-    height: 457px;
+    height: 850px;
 }
 
 .home-page-philosophy-content-parent {
@@ -1181,6 +1181,10 @@ img.home-page-fbis {
     border-width: 1px;
     border-radius: 5px;
     border-color: lightgray;
+}
+
+.why-kartoza {
+    top: 15%;
 }
 
 .caption:hover {

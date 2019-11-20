@@ -1,0 +1,25 @@
+{% load mezzanine_tags %}
+{% load %}
+
+<div class="row">
+    <div class="col-xs-8 col-xs-offset-2">
+        <div class="home-page-clients-carousel">
+            {% for client in clients %}
+                <div class="col-xs-3">
+                    <img src="{{ MEDIA_URL }}{% thumbnail client.logo 200 200 %}"
+                         alt="{{ client.name }}"/></div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<style>
+    .home-page-clients-carousel {
+        filter: invert(1);
+
+    }
+
+    .home-page-clients-carousel div {
+        padding: 5rem;
+    }
+</style>
