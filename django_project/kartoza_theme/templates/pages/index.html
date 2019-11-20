@@ -11,241 +11,232 @@
     {% block left_wrapper %}
     {% endblock %}
     {% block main_wrapper %}
-        <div>z1
+        <div>
         <div class="row">
-        <div class="home-page-back-left-1">
-        </div>
-        <div class="home-page-back-right-1">
-        </div>
-        <div class="col-xs-2">
-        </div>
-        <div class="col-xs-8">
-            <div class="row" style="margin-top: 10rem; margin-bottom: 10rem;">
-                <div class="col-xs-12 col-md-4">
-                    <div class="col-xs-12">
-                        <h1>Unlock insights from your data with the power of
-                            GIS</h1>
+            <div class="home-page-back-left-1">
+            </div>
+            <div class="home-page-back-right-1">
+            </div>
+            <div class="col-xs-2">
+            </div>
+            <div class="col-xs-8">
+                <div class="row"
+                     style="margin-top: 10rem; margin-bottom: 10rem;">
+                    <div class="col-xs-12 col-md-4">
+                        <div class="col-xs-12">
+                            <img class="home-page-logo"
+                                 src="{% static "img/kartoza-logo-homepage.svg" %}">
+                        </div>
+                        <div class="col-xs-12 home-page-copy-main">
+                            We provide training, development and support
+                            services to individuals, companies and
+                            governments around the world who are looking to
+                            leverage the power of the Free Software
+                            movement to solve geospatial problems.
+                        </div>
+
                     </div>
-                    <div class="col-xs-12">
-                        We do spatial IT.
-                        <br><br>
-                        We develop, implement and support systems with a spatial
-                        or location component.
-                        <br><br>
-                        We train people to use geospatial technology to its full
-                        potential.
+                    <div class="col-xs-12 col-md-8">
+                        <div class="col-xs-12">
+                            <img class="home-page-image"
+                                 src="{% static "img/front-page-imac-cover.png" %}">
+                        </div>
                     </div>
                     <div class="col-xs-12" style="margin-top: 2rem;">
-                        <a class="btn btn-primary" href="/contact/">
-                            <div class="btn-text">Find your solution</div>
-                        </a>
+                        <div class="col-xs-12">
+                            <a style="margin-right: 2rem;"
+                               class="btn btn-default btn-small"
+                               href="/contact/">Enquire</a>
+                            <a class="btn btn-default-hollow btn-small"
+                               href="/project/">Portfolio</a>
+                        </div>
                     </div>
                 </div>
-                <div class="col-xs-12 col-md-8">
-                    <div class="col-xs-12">
-                        <img class="home-page-image"
-                             src="{% static "img/front-page-imac-cover.png" %}">
+                <div class="row home-page-break"></div>
+                <div class="hidden-sm hidden-xs">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <img class="home-page-small-image"
+                                 src="{% static "img/front-page-training.png" %}">
+                        </div>
+                        <div class="col-xs-4" style="height: 178px;">
+                            <img class="home-page-small-image home-page-small-image-center"
+                                 src="{% static "img/front-page-sd.png" %}">
+                        </div>
+                        <div class="col-xs-4">
+                            <img class="home-page-small-image"
+                                 src="{% static "img/front-page-deployment-support.png" %}">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <div class="text-big-heavy text-center my-1">
+                                Training and Education
+                            </div>
+                        </div>
+                        <div class="col-xs-4">
+                            <div class="text-big-heavy text-center my-1">
+                                Software Development
+                            </div>
+                        </div>
+                        <div class="col-xs-4">
+                            <div class="text-big-heavy text-center my-1">
+                                Deployment and Support
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="col-xs-4">
+                                <div class="text-medium my-1">We provide
+                                    corporate training in the use of
+                                    FOSSGIS such as QGIS, PostgreSQL/PostGIS,
+                                    Geoserver etc. We also develop
+                                    curriculum
+                                    materials and provide teacher training in
+                                    order to foster the study of GIS and
+                                    geospatial technology at schools and
+                                    universities
+                                </div>
+                            </div>
+                            <div class="col-xs-4">
+                                <div class="text-medium my-1">We provide bespoke
+                                    services for the development of
+                                    custom
+                                    solutions to meet your business needs. These
+                                    include desktop application
+                                    development
+                                    and
+                                    web development using FOSSGIS. Our web
+                                    application development services focus on
+                                    applications that have a GeoSpatial
+                                    component using technologies such as
+                                    GeoDjango,
+                                    OpenLayers, PostGIS and many other
+                                    components.
+                                </div>
+                            </div>
+                            <div class="col-xs-4">
+                                <div class="text-medium my-1">We provide
+                                    services to help you deploy and maintain
+                                    FOSSGIS
+                                    deployments within your organisation. This
+                                    includes PostgreSQL/PostGIS, Linux
+                                    based
+                                    server deployments, QGIS, UMN Mapserver,
+                                    GeoServer and many others.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row button-row my-1"
+                         class="margin-bottom: 5rem;">
+                        <div class="col-xs-4 centered-button-container">
+                            <a class="btn btn-primary-hollow btn-medium"
+                               href="/training-courses">
+                                TRAINING
+                            </a>
+                        </div>
+                        <div class="col-xs-4 centered-button-container">
+                            <a class="btn btn-primary-hollow btn-medium"
+                               href="/project">
+                                PORTFOLIO
+                            </a>
+                        </div>
+                        <div class="col-xs-4 centered-button-container">
+                            <a class="btn btn-primary-hollow btn-medium"
+                               href="/support-2">
+                                SUPPORT
+                            </a>
+                        </div>
                     </div>
                 </div>
+                <div class="hidden-lg hidden-xl hidden-md training-large">
+                    <div class="row">
+                        <div class="col-md-12 my-3">
+                            <img class="home-page-small-image"
+                                 src="{% static "img/front-page-training.png" %}">
+                        </div>
+                        <div class="col-md-12">
+                            <div class="text-big-heavy text-center my-3">
+                                Training and Education
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="text-medium my-1">We provide corporate
+                                training in the use of
+                                FOSSGIS such as QGIS, PostgreSQL/PostGIS,
+                                Geoserver etc. We also develop
+                                curriculum
+                                materials and provide teacher training in order
+                                to foster the study of GIS and
+                                geospatial technology at schools and
+                                universities
+                            </div>
+                        </div>
+                        <div class="col-md-12 my-3">
+                            <a class="btn btn-primary-hollow"
+                               href="/training-courses">
+                                TRAINING
+                            </a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 my-3">
+                            <img class="home-page-small-image"
+                                 src="{% static "img/front-page-sd.png" %}"
+                                 style="height:178px">
+                            <div class="text-big-heavy text-center my-3">
+                                Software Development
+                            </div>
+                            <div class="text-medium my-1">We provide bespoke
+                                services for the development of
+                                custom
+                                solutions to meet your business needs. These
+                                include desktop application
+                                development
+                                and
+                                web development using FOSSGIS. Our web
+                                application development services focus on
+                                applications that have a GeoSpatial component
+                                using technologies such as
+                                GeoDjango,
+                                OpenLayers, PostGIS and many other components.
+                            </div>
+                            <a class="btn btn-primary-hollow my-3"
+                               href="/project">
+                                PORTFOLIO
+                            </a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 my-3">
+                            <img class="home-page-small-image"
+                                 src="{% static "img/front-page-deployment-support.png" %}">
+                            <div class="text-big-heavy text-center my-3">
+                                Deployment and Support
+                            </div>
+                            <div class="text-medium my-1">We provide services to
+                                help you deploy and maintain
+                                FOSSGIS
+                                deployments within your organisation. This
+                                includes PostgreSQL/PostGIS, Linux
+                                based
+                                server deployments, QGIS, UMN Mapserver,
+                                GeoServer and many others.
+                            </div>
+                            <a class="btn btn-primary-hollow my-3"
+                               href="/support-2">
+                                SUPPORT
+                            </a>
 
-            </div>
-            <div class="row home-page-break"></div>
-            <div class="hidden-sm hidden-xs" style="text-align: center">
-                <div class="row">
-                    <div class="col-xs-4">
-                        <img class="home-page-small-image"
-                             src="{% static "img/front-page-training.png" %}">
-                    </div>
-                    <div class="col-xs-4" style="height: 178px;">
-                        <img class="home-page-small-image home-page-small-image-center"
-                             src="{% static "img/front-page-sd.png" %}">
-                    </div>
-                    <div class="col-xs-4">
-                        <img class="home-page-small-image"
-                             src="{% static "img/front-page-deployment-support.png" %}">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-4">
-                        <div class="text-big-heavy text-center my-1">Training
-                            and Education
                         </div>
-                    </div>
-                    <div class="col-xs-4">
-                        <div class="text-big-heavy text-center my-1">Build a
-                            solution
-                        </div>
-                    </div>
-                    <div class="col-xs-4">
-                        <div class="text-big-heavy text-center my-1">Host,
-                            deploy, maintain and support your tech
-                        </div>
-                    </div>
-                </div>
-                <div class="row" class="">
-                    <div class="col-xs-12">
-                        <div class="col-xs-4">
-                            <div class="text-medium my-1">Train yourself, your
-                                team or students to use geospatial software and
-                                discover the potential of GIS technology.
-                                <br><br>
-                                We offer product or business process training in
-                                scheduled courses or as on-premise training
-                                tailored to your requirements.
-                                <br><br>
-                                We also do education interventions and develop
-                                curriculum materials.
-                                <br><br>
-                                Learn to use or develop Free and Open Source GIS
-                                Software (FOSSGIS):<br>
-                                • QGIS &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;•
-                                GeoNode<br>
-                                • PostGIS &nbsp;&nbsp;&nbsp;&nbsp;•
-                                GeoServer<br>
-                                &nbsp;&nbsp;and more
-                            </div>
-                        </div>
-                        <div class="col-xs-4">
-                            <div class="text-medium my-1">Get a system or
-                                application designed for your specific needs.
-                                <br><br>
-                                We build, modify and integrate desktop, web and
-                                mobile applications with Free and Open Source
-                                GIS Software (FOSSGIS).
-                                We use Django, OpenLayers, QGIS and PostGIS,
-                                among others.
-                                <br><br>
-                                Our solutions provide:<br>
-                                • geospatial intelligence<br>
-                                • data visualisation<br>
-                                • spatial analysis<br>
-                                • location-based services<br>
-                                • efficient workflows<br>
-                                • business process solutions<br>
-                                • integration with anything<br>
-                            </div>
-                        </div>
-                        <div class="col-xs-4">
-                            <div class="text-medium my-1">Implement your
-                                solution on-premise or in the cloud, keep it
-                                running optimally and get help any time.
-                                <br><br>
-                                We offer deployment, hosting, maintenance,
-                                support and devops services for our solutions
-                                and most FOSS GIS applications.
-                                <br><br>
-                                You’re not on your own! No question or problem
-                                too simple or too complex for our skilled team
-                                to assist you.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row button-row my-1" class="margin-bottom: 5rem;">
-                    <div class="col-xs-4 centered-button-container">
-                        <a class="btn btn-primary-hollow btn-medium"
-                           href="/training-courses">
-                            START TRAINING<br>
-                        </a>
-                    </div>
-                    <div class="col-xs-4 centered-button-container">
-                        <a class="btn btn-primary-hollow btn-medium btn-multiline"
-                           href="/support-1">
-                            GET CUSTOM DEVELOPED<br>SOFTWARE
-                        </a>
-                    </div>
-                    <div class="col-xs-4 centered-button-container">
-                        <a class="btn btn-primary-hollow btn-medium btn-multiline"
-                           href="/support-2">
-                            GET SUPPORT, HOSTING,<br>MAINTENANCE
-                        </a>
                     </div>
                 </div>
             </div>
-            <div class="hidden-lg hidden-xl hidden-md training-large">
-                <div class="row">
-                    <div class="col-md-12 my-3">
-                        <img class="home-page-small-image"
-                             src="{% static "img/front-page-training.png" %}">
-                    </div>
-                    <div class="col-md-12">
-                        <div class="text-big-heavy text-center my-3">Training
-                            and Education
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="text-medium my-1">We provide corporate
-                            training in the use of
-                            FOSSGIS such as QGIS, PostgreSQL/PostGIS, Geoserver
-                            etc. We also develop
-                            curriculum
-                            materials and provide teacher training in order to
-                            foster the study of GIS and
-                            geospatial technology at schools and universities
-                        </div>
-                    </div>
-                    <div class="col-md-12 my-3">
-                        <a class="btn btn-primary-hollow"
-                           href="/training-courses">
-                            TRAINING
-                        </a>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12 my-3">
-                        <img class="home-page-small-image"
-                             src="{% static "img/front-page-sd.png" %}"
-                             style="height:178px">
-                        <div class="text-big-heavy text-center my-3">Software
-                            Development
-                        </div>
-                        <div class="text-medium my-1">We provide bespoke
-                            services for the development of
-                            custom
-                            solutions to meet your business needs. These include
-                            desktop application
-                            development
-                            and
-                            web development using FOSSGIS. Our web application
-                            development services focus on
-                            applications that have a GeoSpatial component using
-                            technologies such as
-                            GeoDjango,
-                            OpenLayers, PostGIS and many other components.
-                        </div>
-                        <a class="btn btn-primary-hollow my-3" href="/project">
-                            PORTFOLIO
-                        </a>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12 my-3">
-                        <img class="home-page-small-image"
-                             src="{% static "img/front-page-deployment-support.png" %}">
-                        <div class="text-big-heavy text-center my-3">Deployment
-                            and Support
-                        </div>
-                        <div class="text-medium my-1">We provide services to
-                            help you deploy and maintain
-                            FOSSGIS
-                            deployments within your organisation. This includes
-                            PostgreSQL/PostGIS, Linux
-                            based
-                            server deployments, QGIS, UMN Mapserver, GeoServer
-                            and many others.
-                        </div>
-                        <a class="btn btn-primary-hollow my-3"
-                           href="/support-2">
-                            SUPPORT
-                        </a>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xs-2"></div>
-        <div class="col-xs-12 home-page-philosophy-row home-page-philosophy-row-container">
-            <div class="home-page-why-kartoza">
+            <div class="col-xs-2"></div>
+            <div class="col-xs-12 home-page-philosophy-row home-page-philosophy-row-container">
+                <div class="home-page-why-kartoza">
                 <div class="home-page-row-content">
 
                     <div class="col-xs-12 hidden-xs hidden-sm"
@@ -284,7 +275,8 @@
                                     various time
                                     zones, which means we can provide
                                     professional
-                                    support at most times of the day, no matter
+                                    support at most times
+                                of the day, no matter
                                     how
                                     complex your query is.
                                 </div>
@@ -444,12 +436,12 @@
     {% endblock %}
 
 </div>
-<div class="col-xs-2">
-    {% block right_wrapper %}
-    {% endblock %}
-</div>
+    <div class="col-xs-2">
+        {% block right_wrapper %}
+        {% endblock %}
+    </div>
 
-</div>
+    </div>
     </div>
 {% endblock %}
 
@@ -482,5 +474,3 @@
         }(document, 'script', 'facebook-jssdk'));
     </script>
 {% endblock %}
-
-
