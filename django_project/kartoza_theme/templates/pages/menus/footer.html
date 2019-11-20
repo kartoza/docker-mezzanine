@@ -7,15 +7,14 @@
     {% if page.is_primary %}
         {% if forloop.first %}
             <div class="nav-footer">
+            <div class="footer-heading">Navigate</div>
         {% endif %}
         {% if page.in_menu %}
-            <ul class="list-unstyled">
         {% endif %}
     {% endif %}
 
     {% if page.in_menu %}
         {% if forloop.first and not page.parent.in_menu and not page.is_primary %}
-            <ul class="list-unstyled">
         {% endif %}
         <li {% if page.is_current_or_ascendant %}class="active"{% endif %}
             id="footer-menu-{{ page.html_id }}">
@@ -26,13 +25,11 @@
 
     {% if page.in_menu %}
         {% if forloop.first and not page.parent.in_menu and not page.is_primary %}
-            </li></ul>
         {% endif %}
     {% endif %}
 
     {% if page.is_primary %}
         {% if page.in_menu %}
-            </ul>
         {% endif %}
         {% if forloop.last %}
             </div>

@@ -112,7 +112,7 @@ html input[type="button"], input[type="reset"], input[type="submit"] {
 
 
 .btn-primary-hollow {
-    background-color: transparent;
+    background-color: white;
     border-radius: 4px;
     border: 5px solid var(--c-orange);
     color: var(--c-orange) !important;
@@ -120,14 +120,14 @@ html input[type="button"], input[type="reset"], input[type="submit"] {
 }
 
 .btn-primary-hollow:hover, .btn-primary-hollow:focus, .btn-primary-hollow:active, .btn-primary-hollow.active, .open .dropdown-toggle.btn-primary-hollow {
-    background-color: transparent;
+    background-color: white;
     border-radius: 4px;
     border: 5px solid var(--c-orange-l) !important;
     color: var(--c-orange-l) !important;
 }
 
 .btn-primary-hollow, .open .dropdown-toggle.btn-primary-hollow {
-    background-color: transparent;
+    background-color: white;
     border-radius: 4px;
     border: 5px solid var(--c-orange-l);
     color: var(--c-orange-l) !important;
@@ -135,14 +135,14 @@ html input[type="button"], input[type="reset"], input[type="submit"] {
 
 
 .btn-primary-hollow:active, .btn-primary-hollow.active, .open .dropdown-toggle.btn-primary-hollow {
-    background-color: transparent;
+    background-color: white;
     border-radius: 4px;
     border: 5px solid var(--c-orange-d);
     color: var(--c-orange-d) !important;
 }
 
 .btn-primary-hollow:disabled, .btn-primary.disabled, .disabled .dropdown-toggle.btn-primary-hollow {
-    background-color: transparent;
+    background-color: white;
     border-radius: 4px;
     border: 5px solid grey;
     color: grey !important;
@@ -150,7 +150,7 @@ html input[type="button"], input[type="reset"], input[type="submit"] {
 
 
 .btn-default-hollow {
-    background-color: transparent;
+    background-color: white;
     border-radius: 4px;
     border: 5px solid var(--c-blue);
     color: var(--c-blue);
@@ -160,14 +160,14 @@ html input[type="button"], input[type="reset"], input[type="submit"] {
 }
 
 .btn-default-hollow:hover, .btn-default-hollow:focus, .btn-default-hollow:active, .btn-default-hollow.active, .open .dropdown-toggle.btn-default-hollow {
-    background-color: transparent;
+    background-color: white;
     border-radius: 4px;
     border: 5px solid var(--c-blue-l);
     color: var(--c-blue-l);
 }
 
 .btn-default-hollow, .open .dropdown-toggle.btn-default-hollow {
-    background-color: transparent;
+    background-color: white;
     border-radius: 4px;
     border: 5px solid var(--c-blue-l);
     color: var(--c-blue-l);
@@ -175,14 +175,14 @@ html input[type="button"], input[type="reset"], input[type="submit"] {
 
 
 .btn-default-hollow:active, .btn-default-hollow.active, .open .dropdown-toggle.btn-default-hollow {
-    background-color: transparent;
+    background-color: white;
     border-radius: 4px;
     border: 5px solid var(--c-blue-d);
     color: var(--c-blue-d);
 }
 
 .btn-default-hollow:disabled, .btn-primary.disabled, .disabled .dropdown-toggle.btn-default-hollow {
-    background-color: transparent;
+    background-color: white;
     border-radius: 4px;
     border: 5px solid grey;
     color: grey;
@@ -575,4 +575,46 @@ input[type="submit"]:hover {
 
 .about-what-we-do-row .col-lg-4 {
     margin-top: 80px;
+}
+
+.footer-heading {
+    font-family: Lato;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    color: white;
+    margin-bottom: 3rem;
+    text-decoration: none !important;
+}
+
+.footer-main {
+
+    font-family: Lato;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 14px;
+    margin-bottom: 5rem;
+    color: white !important;
+}
+
+.footer-main .nav-footer {
+    list-style-type: none;
+}
+
+.footer-main .nav-footer a {
+    color: white;
+
+}
+
+.footer-main .nav-footer li {
+    margin-bottom: 0.25rem;
+    text-decoration: underline;
+}
+
+.footer-main div {
+    margin-bottom: 3rem;
+}
+
+.footer-main .footer-heading {
+    margin-bottom: 1rem;
 }

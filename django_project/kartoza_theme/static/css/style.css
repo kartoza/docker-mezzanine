@@ -397,7 +397,7 @@ a:focus {
 /* Footer */
 #footerwrap {
     padding-top: 0px;
-    padding-bottom: 60px;
+    padding-bottom: 0px;
     background-color: #414042;
     width: 100vw;
 }
@@ -412,8 +412,7 @@ a:focus {
 
 #footerwrap i {
     font-size: 30px;
-    color: #bfc9d3;
-    padding-right: 25px;
+    color: #414042;
 }
 
 #footerwrap i:hover {
@@ -1210,4 +1209,32 @@ img.home-page-fbis {
     background-color: transparent !important;
     color: transparent !important;
      margin-top: 45px !important;
+}
+
+.footer-center {
+    padding-left: 12.5%;
+}
+
+
+.footer-icons .fa-circle {
+    font-size: 45px !important;
+    color: white !important;
+    position: relative;
+    margin-right: 5px;
+}
+
+.footer-icons i {
+
+}
+
+.fa-circle i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
+
+.left-centered-navigate .nav-footer {
+    margin: 0;
 }
