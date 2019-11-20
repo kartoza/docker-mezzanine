@@ -4,8 +4,10 @@
 
 <head>
     <!-- Global Site Tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-1001220779"></script>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-64176861-1"></script>
+    <script async
+            src="https://www.googletagmanager.com/gtag/js?id=AW-1001220779"></script>
+    <script async
+            src="https://www.googletagmanager.com/gtag/js?id=UA-64176861-1"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
 
@@ -45,7 +47,8 @@
     {% endifinstalled %}
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700'
           rel='stylesheet' type='text/css'>
-    <link href="https://fonts.googleapis.com/css?family=Lato:300,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400&display=swap"
+          rel="stylesheet">
     <!--[if lte IE 8]>
              <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/grids-responsive-old-ie-min.css">
             <![endif]-->
@@ -87,7 +90,7 @@
         <script src="{% static "js/responsiveslides/responsiveslides.min.js" %}"></script>
         {% block extra_js %}{% endblock %}
         {% include "includes/footer_scripts.html" %}
-         <script src="{% static "js/styleguide.js" %}"></script>
+        <script src="{% static "js/styleguide.js" %}"></script>
     {% endcompress %}
 
     <!--[if lt IE 9]>
@@ -151,14 +154,16 @@
 
 </div>
 {% block all_content %}
-    <div class="row row-main-content" style="display: inline-flex; width: 100vw;">
+    <div class="row row-main-content"
+         style="display: inline-flex; width: 100vw;">
         <div class="col-xs-3 hidden-xs flex-column">
             <div class="background-back-left-1"></div>
         </div>
         <div class="col-xs-6" style="margin-left: auto;margin-right: auto;">
             {% block title_wrapper %}
 
-                <div class="kartoza-heading">{% block title %}{% endblock %}</div>
+                <div class="kartoza-heading">
+                    {% block title %}{% endblock %}</div>
                 <div class="kartoza-heading-underline-container">
                     <div class="kartoza-heading-underline"></div>
                 </div>
@@ -183,29 +188,69 @@
 {% endblock %}
 
 {% block recaptcha %}
-        {% include 'recaptcha_v3.html' %}
+    {% include 'recaptcha_v3.html' %}
 {% endblock %}
 
 {% include "includes/announcements.html" %}
 <div id="footerwrap">
     <div class="container">
         <div class="footer-row"></div>
-        <div class="row">
-            <div class="col-lg-6">
+        <div class="row footer-main">
+
+            <div class="col-md-4">
+                <div class="footer-heading">About Kartoza</div>
+                We are a South Africa-based Free and Open Source GIS
+                service provider.
+                We develop and maintain geographic information systems, and
+                train teams to use geospatial software to its full potential.
+            </div>
+            <div class="col-md-4 hidden-xs hidden-sm">
+
                 {% page_menu "pages/menus/footer.html" %}
             </div>
-            <div class="col-lg-4">
-                <h4>Social Links</h4>
-                <div class="hline-w"></div>
-                <p>
-                    <a target="_blank" href="https://www.facebook.com/kartozaGIS"><i class="fa fa-facebook"></i></a>
-                    <a target="_blank" href="https://twitter.com/KartozaGeo"><i class="fa fa-twitter"></i></a>
-                    <a target="_blank" href="https://www.instagram.com/kartozageo/"><i class="fa fa-instagram"></i></a>
-                    <a target="_blank" href="https://www.linkedin.com/company/kartoza-pty-ltd"><i
-                            class="fa fa-linkedin"></i></a>
-                </p>
+
+            <div class="col-xs-12 hidden-md hidden-lg  left-centered-navigate">
+
+                {% page_menu "pages/menus/footer.html" %}
+            </div>
+            <div class="col-md-4 footer-icons">
+                <div class="footer-heading">Follow Kartoza</div>
+                    <a target="_blank"
+                       href="https://twitter.com/KartozaGeo">
+                        <div class="fa fa-circle"><i
+                                class="fa fa-twitter"></i></div>
+                    </a>
+                    <a target="_blank"
+                       href="https://www.instagram.com/kartozageo/">
+                        <div class="fa fa-circle"><i
+                                class="fa fa-instagram"></i></div>
+                    </a>
+                     <a target="_blank"
+                       href="https://www.facebook.com/kartozaGIS">
+                        <div class="fa fa-circle"><i
+                                class="fa fa-facebook"></i></div>
+                    </a>
+                    <a target="_blank"
+                       href="https://www.linkedin.com/company/kartoza-pty-ltd">
+                        <div class="fa fa-circle"><i
+                                class="fa fa-linkedin"></i></div>
+                    </a>
+                    <a target="_blank"
+                       href="https://www.github.com/orgs/kartoza">
+                        <div class="fa fa-circle"><i
+                                class="fa fa-github"></i></div>
+                    </a>
+                    <a target="_blank"
+                       href="https://www.youtube.com/user/kartozachannel/feed">
+                        <div class="fa fa-circle"><i
+                                class="fa fa-youtube"></i></div>
+                    </a>
             </div>
 
+
+        </div>
+        <div class="row footer-main" style="text-align: center;">
+            Template and Theme by Kartoza
         </div>
     </div>
 </div>
