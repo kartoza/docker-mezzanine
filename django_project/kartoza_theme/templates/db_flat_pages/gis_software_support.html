@@ -1,0 +1,383 @@
+{% extends "base.html" %}
+{% load i18n staticfiles mezzanine_tags twitter_tags blog_tags %}
+{% block main_wrapper %}
+    <div class="about-heading" style="font-weight: bold; text-align: left;">
+        QGIS, PostGIS, GeoServer, GeoNode and more!
+    </div>
+    <div class="about-text">Kartoza is the first organisation to our knowledge
+        to provide QGIS and other FOSS GIS commercial support for businesses and
+        individuals across South Africa and the rest of Africa. Our support team
+        has a mix of friendly first- and second-line support staff to ensure an
+        efficient response to support queries.
+        <br><br>
+        Kartoza has teamed up with
+        <a href="https://www.lutraconsulting.co.uk/">Lutra Consulting</a> in the
+        UK,
+        <a href="https://www.naturalgis.pt/">NaturalGIS</a> in
+        Portugal and <a href="https://north-road.com/">North Road Consulting</a>
+        in Australia to form a shared support
+        service called Limosa, which brings the following benefits:
+        <ul style="margin-left: 3rem;">
+            <li>
+                a large and diverse support team, from expert users to core
+                developers
+                and GIS professionals
+            </li>
+            <li>
+                there is no support query too simple or too complex
+            </li>
+            <li>
+                one point of contact for managing your query
+            </li>
+        </ul>
+    </div>
+    <div class="about-heading" style="text-align: left">
+        Not a Customer Yet?
+    </div>
+    <div class="about-text">
+        We provide a number of commercial support options suitable for
+        individuals, small & medium offices and larger organisations. Take a
+        look through our packages and see which best matches your
+        requirements.
+        <br><br>
+        Signing up is easy - simply order one of our packages via this page
+        OR
+        fill in the form below OR contact us at support@kartoza.com. You can
+        be
+        ready-to-go in as little as 15 minutes.
+    </div>
+    <div class="about-heading" style="text-align: left">
+        Getting Support / How it works
+    </div>
+    <div class="about-text">
+        If you’re an existing support customer, simply use one of the
+        methods
+        below to create a support request and we’ll help you as quickly as
+        we
+        can.
+    </div>
+    <div class="about-heading" style="text-align: left">
+        General or software support
+    </div>
+    <div class="about-text">
+        For questions like 'How do I do xyz in QGIS?' or 'GeoServer is
+        giving me
+        this error message, please help' or 'Please help me to figure out a
+        processing workflow':
+        <br><br>
+        Through our ticketing system (preferred).<br>
+        Or, by email at support@limosa.zendesk.com
+    </div>
+    <div class="about-heading" style="text-align: left">
+        Software development or coding support
+    </div>
+    <div class="about-text">
+        For questions that involve code in a GitHub (or GitLab or similar)
+        reposiitory, like 'Please fix this bug in the web application
+        Kartoza
+        developed for us' or 'please add this feature to our app':
+        <br><br>
+        By creating a GitHub Issue in the 'Support' GitHub Project that we
+        will manage in the repository in question.
+        <br><br>
+        <ul>
+            <li>
+                We will then size the issue and discuss it via GitHub
+            </li>
+            <li>
+                When you agree to go ahead you move the issue to the 'Ready'
+                column in
+                the GitHub project view
+            </li>
+            <li>
+                We start the work
+            </li>
+        </ul>
+    </div>
+    <div class="about-heading" style="text-align: left">
+        Support Packages
+    </div>
+    <div class="about-text">
+        The main features of our support options are highlighted below. For
+        detailed Service Level Agreements (SLAs), please place an order or
+        contact us on <a
+            href="mailto:support@kartoza.com">support@kartoza.com</a>
+        or via the form below.
+        <br><br>
+        If none of these packages meets your requirements we'll be happy to
+        customise one to your requirements - just ask us on
+        support@kartoza.com
+        or via the form below.
+    </div>
+    <div class="row">
+        <div class="col-sm-12 hidden-xs">
+
+            <div class="table-responsive">
+                <table id="category" border="0" cellpadding="5px" height="537"
+                       style="border: 0px;"
+                       width="644">
+                    <tbody>
+                    <tr>
+                        <td style="text-align: left;"></td>
+                        <td style="text-align: left;">Personal</td>
+                        <td style="text-align: left;">Small Office</td>
+                        <td style="text-align: left;">Large Office</td>
+                        <td style="text-align: left;">The Works</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <span>&nbsp;Suitable for</span>
+                        </td>
+                        <td style="text-align: left;">A Single User</td>
+                        <td style="text-align: left;">Up to 10 Users</td>
+                        <td style="text-align: left;">Up to 40 Users</td>
+                        <td style="text-align: left;">More than 40 Users</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">&nbsp;Maximum General
+                            Support
+                            Hours
+                        </td>
+                        <td style="text-align: left;">4</td>
+                        <td style="text-align: left;">10</td>
+                        <td style="text-align: left;">40</td>
+                        <td style="text-align: left;">180</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">&nbsp;Response Time
+                            (Working
+                            Hours)
+                        </td>
+                        <td style="text-align: left;">8</td>
+                        <td style="text-align: left;">4</td>
+                        <td style="text-align: left;">4</td>
+                        <td style="text-align: left;">2</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">&nbsp;Customer
+                            Representatives
+                        </td>
+                        <td style="text-align: left;">1</td>
+                        <td style="text-align: left;">1</td>
+                        <td style="text-align: left;">2</td>
+                        <td style="text-align: left;">4</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;"><span>Dedicated support desk (web or email)</span>
+                        </td>
+                        <td style="text-align: left;">Yes</td>
+                        <td style="text-align: left;">Yes</td>
+                        <td style="text-align: left;">Yes</td>
+                        <td style="text-align: left;">Yes</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">&nbsp;Guidance on
+                            Installation
+                            &amp; Upgrades
+                        </td>
+                        <td style="text-align: left;">-</td>
+                        <td style="text-align: left;">Yes</td>
+                        <td style="text-align: left;">yes</td>
+                        <td style="text-align: left;">Yes</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">&nbsp;Guidance on Data
+                            Management
+                        </td>
+                        <td style="text-align: left;">-</td>
+                        <td style="text-align: left;">-</td>
+                        <td style="text-align: left;">Yes</td>
+                        <td style="text-align: left;">Yes</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">&nbsp;Consultancy Days
+                            Included
+                        </td>
+                        <td style="text-align: left;">-</td>
+                        <td style="text-align: left;">-</td>
+                        <td style="text-align: left;">1</td>
+                        <td style="text-align: left;">3</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">&nbsp;Training Days
+                            included
+                        </td>
+                        <td style="text-align: left;">-</td>
+                        <td style="text-align: left;">-</td>
+                        <td style="text-align: left;">-</td>
+                        <td style="text-align: left;">3</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">&nbsp;On-site Support</td>
+                        <td style="text-align: left;">-</td>
+                        <td style="text-align: left;">-</td>
+                        <td style="text-align: left;">-</td>
+                        <td style="text-align: left;">Yes</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">&nbsp;Additional General
+                            Support
+                            Hours
+                        </td>
+                        <td colspan="4" style="text-align: left;">R595/h (excl
+                            VAT)
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-xs-12 hidden-sm hidden-lg hidden-md"
+             style="margin-left: -50px; margin-right: -50px; min-width: 380px;">
+
+            <div class="table-responsive">
+                <table id="category" border="0" cellpadding="5px" height="537"
+                       style="margin-left: auto; margin-right: auto; border: 0px;"
+                       width="644">
+                    <tbody>
+                    <tr>
+                        <td style="text-align: left;"></td>
+                        <td style="text-align: left;">Personal</td>
+                        <td style="text-align: left;">Small Office</td>
+                        <td style="text-align: left;">Large Office</td>
+                        <td style="text-align: left;">The Works</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <span>&nbsp;Suitable for</span>
+                        </td>
+                        <td style="text-align: left;">A Single User</td>
+                        <td style="text-align: left;">Up to 10 Users</td>
+                        <td style="text-align: left;">Up to 40 Users</td>
+                        <td style="text-align: left;">More than 40 Users</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">&nbsp;Maximum General
+                            Support
+                            Hours
+                        </td>
+                        <td style="text-align: left;">4</td>
+                        <td style="text-align: left;">10</td>
+                        <td style="text-align: left;">40</td>
+                        <td style="text-align: left;">180</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">&nbsp;Response Time
+                            (Working
+                            Hours)
+                        </td>
+                        <td style="text-align: left;">8</td>
+                        <td style="text-align: left;">4</td>
+                        <td style="text-align: left;">4</td>
+                        <td style="text-align: left;">2</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">&nbsp;Customer
+                            Representatives
+                        </td>
+                        <td style="text-align: left;">1</td>
+                        <td style="text-align: left;">1</td>
+                        <td style="text-align: left;">2</td>
+                        <td style="text-align: left;">4</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;"><span>Dedicated support desk (web or email)</span>
+                        </td>
+                        <td style="text-align: left;">Yes</td>
+                        <td style="text-align: left;">Yes</td>
+                        <td style="text-align: left;">Yes</td>
+                        <td style="text-align: left;">Yes</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">&nbsp;Guidance on
+                            Installation
+                            &amp; Upgrades
+                        </td>
+                        <td style="text-align: left;">-</td>
+                        <td style="text-align: left;">Yes</td>
+                        <td style="text-align: left;">yes</td>
+                        <td style="text-align: left;">Yes</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">&nbsp;Guidance on Data
+                            Management
+                        </td>
+                        <td style="text-align: left;">-</td>
+                        <td style="text-align: left;">-</td>
+                        <td style="text-align: left;">Yes</td>
+                        <td style="text-align: left;">Yes</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">&nbsp;Consultancy Days
+                            Included
+                        </td>
+                        <td style="text-align: left;">-</td>
+                        <td style="text-align: left;">-</td>
+                        <td style="text-align: left;">1</td>
+                        <td style="text-align: left;">3</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">&nbsp;Training Days
+                            included
+                        </td>
+                        <td style="text-align: left;">-</td>
+                        <td style="text-align: left;">-</td>
+                        <td style="text-align: left;">-</td>
+                        <td style="text-align: left;">3</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">&nbsp;On-site Support</td>
+                        <td style="text-align: left;">-</td>
+                        <td style="text-align: left;">-</td>
+                        <td style="text-align: left;">-</td>
+                        <td style="text-align: left;">Yes</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">&nbsp;Additional General
+                            Support
+                            Hours
+                        </td>
+                        <td colspan="4" style="text-align: left;">R595/h (excl
+                            VAT)
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="about-text" style="margin-top: 5px;">
+        * Subject to fair-use policy
+        <br>
+        Note: prices exclude VAT
+    </div>
+    <div class="about-heading" style="text-align: left">
+        Guidance on Data Management
+    </div>
+    <div class="about-text">
+        We’ll look carefully at your day-to-day GIS operations and make
+        recommendations of how to best manage your spatial data.
+    </div>
+    <div class="about-heading" style="text-align: left">
+        Consultancy
+    </div>
+    <div class="about-text">
+        Some support options feature a number of inclusive GIS consultancy
+        days.
+        Consultancy days can be used for anything from setting up an
+        efficient
+        infrastructure to house your spatial data to developing QGIS
+        plugins.
+    </div>
+    <div class="about-heading" style="text-align: left">
+        On-site Support
+    </div>
+    <div class="about-text">
+        On-site support ensures that if an issue cannot be resolved
+        efficiently
+        by email or phone, a member of our support team will make an on-site
+        call to address the issue in person.
+    </div>
+    <a href="" class="btn btn-primary" style="margin-right: 1rem;">ORDER SUPPORT PACKAGE</a>
+    <a href="" class="btn btn-primary-hollow">REQUEST A QUOTE FOR A CUSTOM SOLUTION</a>
+{% endblock %}

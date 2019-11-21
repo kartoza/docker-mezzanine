@@ -269,11 +269,13 @@ html input[type="button"], input[type="reset"], input[type="submit"] {
 #category tbody tr:nth-child(1) td {
     background-color: var(--c-blue) !important;
     border: none;
+    font-weight: 400;
 }
 
 #category td:nth-child(1) {
     background-color: var(--c-blue) !important;
     border: none;
+    font-weight: 400;
 }
 
 
