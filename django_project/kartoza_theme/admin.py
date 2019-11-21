@@ -9,7 +9,7 @@ class ProductViewDataAdmin(admin.ModelAdmin):
     unless explicitly specified.
     """
 
-    fieldsets = ((None, {"fields": ("category_summary",)}),)
+    fieldsets = ((None, {"fields": ("category_summary", "category_html", "product")}),)
 
 
 admin.site.register(ProductViewData, ProductViewDataAdmin)

@@ -10,3 +10,6 @@ class ProductViewData(models.Model):
         Product,
         related_name='project_images',
     )
+
+    class Meta:
+        verbose_name_plural = 'Product View Data'
