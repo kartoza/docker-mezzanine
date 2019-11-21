@@ -4,7 +4,8 @@
 {% block body_id %}category{% endblock %}
 
 {% block main %}{{ block.super }}
-
+    where am I?
+    {{ test_index }}
     {% editable page.category.content %}
         {{ page.category.content|safe }}
     {% endeditable %}
