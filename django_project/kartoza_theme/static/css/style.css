@@ -174,12 +174,15 @@ a:focus {
 
 .dropdown-menu.large-screen > li > a:hover {
     color: black;
+    background-color: rgba(236, 180, 75, 0.3) ;
 }
 
-.dropdown-menu > .active > a, .dropdown-menu > .active > a:hover, .dropdown-menu > .active > a:focus {
-    background-color: rgba(236, 180, 75, 0.3);
+.dropdown-menu > .active > a, .dropdown-menu > .active > a:hover, .dropdown-menu.large-screen > .active > a:focus {
+    background-color: transparent;
+    color: rgb(236, 180, 75) !important;
 
 }
+
 
 .dropdown-menu {
     background: #384452;
@@ -1291,4 +1294,10 @@ img.home-page-fbis {
 
 .dropdown-toggle {
     cursor: pointer;
+}
+
+.navbar-default .navbar-nav .open .dropdown-menu.small-screen > .active > a,
+.navbar-default .navbar-nav .open .dropdown-menu.small-screen > .active > a:focus  {
+    background-color: transparent;
+    color: rgb(236, 180, 75) !important;
 }
