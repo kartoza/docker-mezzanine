@@ -153,7 +153,8 @@ a:focus {
 }
 
 .dropdown-menu.large-screen > li > a {
-
+    padding-bottom: 1.5rem;
+    padding-top: 1.5rem;
     color: #231F20;
     font-family: Lato;
     font-style: normal;

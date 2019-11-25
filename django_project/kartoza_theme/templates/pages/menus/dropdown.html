@@ -40,8 +40,8 @@
 </ul>
 
 {% else %}
-    <ul class="dropdown-menu large-screen hidden-xs">
-        <div class="kartoza-menu-heading-underline"></div>
+    <ul class="dropdown-menu large-screen hidden-xs" style="padding-bottom: 1.5rem;">
+        <div class="kartoza-menu-heading-underline" style="margin-bottom: 1.5rem;"></div>
         {% for page in page_branch %}
             {% if page.in_menu %}
                 <li class="{% if page.has_children_in_menu %}dropdown-submenu{% endif %}
