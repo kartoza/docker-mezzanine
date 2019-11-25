@@ -5,6 +5,12 @@ from django.db import migrations, models
 from django.core.management import call_command
 from django.core.management.commands import loaddata
 
+
+def load_data(apps, schema_editor):
+    call_command('loaddata',
+                 'kartoza_theme_initial.json',
+                 verbosity=0)
+
 class Migration(migrations.Migration):
 
     dependencies = [
@@ -12,7 +18,6 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        call_command(loaddata.Command(),
-                     'kartoza_theme_initial.json',
-                     verbosity=0)
+        migrations.RunPython(load_data),
+
     ]
