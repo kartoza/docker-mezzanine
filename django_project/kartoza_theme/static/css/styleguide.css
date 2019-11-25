@@ -453,6 +453,8 @@ html input[type="button"], input[type="reset"], input[type="submit"] {
     font-weight: 400;
     text-align: center;
     margin-top: 3rem;
+    margin-left: -10rem;
+    margin-right: -10rem;
 }
 
 .kartoza-heading-underline {
@@ -634,9 +636,12 @@ input[type="submit"]:hover {
     background-color: var(--c-orange);
     margin-left: auto;
     margin-right: auto;
+    border: 1px solid #D1D3D4;
 }
 
 .about-logo-background img {
+    height: 50%;
+    width: auto;
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -710,4 +715,9 @@ input[type="submit"]:hover {
 
 .footer-main .footer-heading {
     margin-bottom: 1rem;
+}
+
+.category_product {
+    margin-bottom: 5rem;
+    margin-top: 5rem;
 }
