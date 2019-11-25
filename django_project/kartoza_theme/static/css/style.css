@@ -1288,3 +1288,7 @@ img.home-page-fbis {
 .left-centered-navigate .nav-footer {
     margin: 0;
 }
+
+.dropdown-toggle {
+    cursor: pointer;
+}
