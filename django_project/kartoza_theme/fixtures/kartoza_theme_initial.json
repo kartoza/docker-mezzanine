@@ -1,12 +1,12 @@
 [
   {
     "fields": {
-      "category_summary": "Something",
+      "category_summary": "GIS Box",
       "product": 12,
       "category_order": 0,
       "icon_background_color_hash": "NORMAL",
-      "category_html": "Something else",
-      "category_button_text": "BUY NOW"
+      "category_html": "<div class=\"about-text\" style=\"text-align: center\">We offer support packages for a range of FOSS GIS software as well as for any solution or implementation that we have delivered. <br>\nKartoza is the first organisation to our knowledge to provide QGIS and other FOSS GIS commercial support for businesses and individuals across South Africa and the rest of Africa.</div>",
+      "category_button_text": "READ MORE"
     },
     "model": "kartoza_theme.productviewdata",
     "pk": 1

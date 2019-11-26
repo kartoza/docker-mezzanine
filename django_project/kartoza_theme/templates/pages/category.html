@@ -46,7 +46,7 @@
 
     {% if products.paginator.count != 0 %}
         <div class="row about-what-we-do-row">
-            {% for key, value in view_data.iteritems %}
+            {% for value in view_data %}
                 <div class="col-lg-6 col-md-12 category_product">
                     <div class="about-what-we-do">
                         <div class="about-logo-background" style="background-color: #{{ value.icon_background_color_hash }};">

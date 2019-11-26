@@ -12,15 +12,6 @@ from .models import ProductViewData
 @processor_for(Category)
 def product_view_data(request, page, *args, **kwargs):
     category = Category.objects.get(pk=page.id)
-    view_data = {}
-    for product in category.product_set.all():
-        try:
-            product_view_data = ProductViewData.objects.filter(product=product).first()
-            if product_view_data:
-                view_data[product.id] = product_view_data
-        except ObjectDoesNotExist:
-            pass
-    sorted_view_data = OrderedDict(
-        sorted(view_data.iteritems(), key=lambda x: x[1]['category_order'], reverse=False))
-
+    sorted_view_data = ProductViewData.objects.filter(
+        product__in=category.product_set.all()).order_by('category_order')
     return {"view_data": sorted_view_data}
