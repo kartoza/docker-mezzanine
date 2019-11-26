@@ -1,0 +1,122 @@
+[
+  {
+    "fields": {
+      "category_summary": "GIS Box",
+      "product": 12,
+      "category_order": 0,
+      "icon_background_color_hash": "NORMAL",
+      "category_html": "<div class=\"about-text\" style=\"text-align: center\">We offer support packages for a range of FOSS GIS software as well as for any solution or implementation that we have delivered. <br>\nKartoza is the first organisation to our knowledge to provide QGIS and other FOSS GIS commercial support for businesses and individuals across South Africa and the rest of Africa.</div>",
+      "category_button_text": "READ MORE"
+    },
+    "model": "kartoza_theme.productviewdata",
+    "pk": 1
+  },
+  {
+    "fields": {
+      "category_summary": "Software Development",
+      "product": 19,
+      "category_order": 0,
+      "icon_background_color_hash": "NORMAL",
+      "category_html": "<div class=\"about-text\">\r\n                We build desktop and web GIS\r\n                applications using Free and Open Source GIS Software\r\n                (FOSSGIS). We use GeoDjango, OpenLayers and PostGIS,\r\n                among\r\n                others.\r\n\r\n                <br><br>\r\n                <div style=\"text-align: left\">\r\n                    <ul>\r\n                    <li> Professional software development by experienced and\r\n                    qualified developers including computer scientists and\r\n                    engineers.</li>\r\n                    <li> Strict coding standards, version control (CVS) with git,\r\n                    thorough testing</li>\r\n                    <li> Properly managed software development lifecycle</li>\r\n                    <li> Agile project management</li>\r\n                    <li> You get all the code or it is released as open source, so\r\n                    no black box or vendor lock-in</li>\r\n                        </ul>\r\n                </div>\r\n            </div>",
+      "category_button_text": "Find your solution"
+    },
+    "model": "kartoza_theme.productviewdata",
+    "pk": 2
+  },
+  {
+    "fields": {
+      "category_summary": "Consultancy Services",
+      "product": 18,
+      "category_order": 0,
+      "icon_background_color_hash": "NORMAL",
+      "category_html": "<div class=\"about-text\" style=\"text-align: left\">\r\n                <li> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>\r\n                <li> Aliquam semper mi a neque maximus, sed consequat lectus\r\n                elementum.</li>\r\n                <li> Ut scelerisque nisi at porttitor tincidunt.</li>\r\n                <li> Nulla efficitur tortor egestas eros hendrerit consequat.</li>\r\n            </div>\r\n            <a href=\"/training-courses/\" class=\"btn btn-primary-hollow\">Request\r\n                consultation</a>",
+      "category_button_text": "Request Consultation"
+    },
+    "model": "kartoza_theme.productviewdata",
+    "pk": 3
+  },
+  {
+    "fields": {
+      "category_summary": "GIS software support",
+      "product": 15,
+      "category_order": 1,
+      "icon_background_color_hash": "NORMAL",
+      "category_html": "<div class=\"about-text\">\r\n                    We offer support packages for a range of FOSS GIS software\r\n                    as well as for any solution or implementation that we have\r\n                    delivered.<br>\r\n                    Kartoza is the first organisation to our knowledge to\r\n                    provide QGIS and other FOSS GIS commercial support for\r\n                    businesses and individuals across South Africa and the rest\r\n                    of Africa.\r\n                </div>",
+      "category_button_text": "READ MORE"
+    },
+    "model": "kartoza_theme.productviewdata",
+    "pk": 4
+  },
+  {
+    "fields": {
+      "category_summary": "System Maintenance",
+      "product": 16,
+      "category_order": 2,
+      "icon_background_color_hash": "NORMAL",
+      "category_html": "<div class=\"about-text\">\r\n                    Our aintenance plan will help ensure your system is running,\r\n                    up-to-date, backed up and secure at all times\r\n                    We will spend that time on a regular basis monitoring and\r\n                    tending to your system, undertaking scheduled activities\r\n                    like upgrading, backups or database replication and\r\n                    responding to unscheduled incidents such as high loads or\r\n                    system outages.\r\n                </div>",
+      "category_button_text": "READ MORE"
+    },
+    "model": "kartoza_theme.productviewdata",
+    "pk": 5
+  },
+  {
+    "fields": {
+      "category_summary": "GIS Hosting",
+      "product": 17,
+      "category_order": 3,
+      "icon_background_color_hash": "NORMAL",
+      "category_html": " <div class=\"about-text\">\r\n                    We offer hosting packages on the Hetzner.de cloud, where the\r\n                    cost of the package depends on the size and number of hosts,\r\n                    the amount of storage required, etc. Choose one of our\r\n                    predefined packages if you know what you need or get in\r\n                    touch via the contact form with your requirements and we\u2019ll\r\n                    tailor a package to you.\r\n                </div>",
+      "category_button_text": "READ MORE"
+    },
+    "model": "kartoza_theme.productviewdata",
+    "pk": 6
+  },
+  {
+    "fields": {
+      "category_summary": "Introduction to QGIS",
+      "product": 10,
+      "category_order": 0,
+      "icon_background_color_hash": "FFFFFF",
+      "category_html": "<div class=\"about-text\">\r\n                The training agenda is based mainly on the QGIS Training Manual with custom examples and has the following aims:\r\n\r\n                <br><br>\r\n                <div style=\"text-align: left\">\r\n                    <ul>\r\n                    <li> assisting with migration from another GIS package</li>\r\n                    <li> an introduction to and a better understanding of GIS concepts</li>\r\n                    <li>an overview and practical experience of the core components of QGIS</li>\r\n               \r\n                        </ul>\r\n                </div>\r\n            </div>",
+      "category_button_text": "READ MORE"
+    },
+    "model": "kartoza_theme.productviewdata",
+    "pk": 8
+  },
+  {
+    "fields": {
+      "category_summary": "Geospatial Data in PostGIS",
+      "product": 3,
+      "category_order": 0,
+      "icon_background_color_hash": "FFFFFF",
+      "category_html": "<div class=\"about-text\">PostGIS is a spatial database that is more than just a spatial data store. With PostGIS, users, web map servers and other applications can all run off the same database. And beware! Doing spatial analysis in PostGIS can become addictive.\r\n<br><br>\r\nPostGIS and PostgreSQL provide a powerful, enterprise ready geospatial relational database management system.  </div>",
+      "category_button_text": "READ MORE"
+    },
+    "model": "kartoza_theme.productviewdata",
+    "pk": 9
+  },
+  {
+    "fields": {
+      "category_summary": "Introduction to Docker",
+      "product": 11,
+      "category_order": 0,
+      "icon_background_color_hash": "FFFFFF",
+      "category_html": "<div class=\"about-text\">\r\nDocker is a new way of deploying applications on the web. With docker you create re-usable application containers that can be combined together to create application stacks. <br>Each container typically serves a single purpose (e.g. database, mail server etc.). Containers are versioned so that your application can be deployed in a \u2018known good state\u2019. </div>",
+      "category_button_text": "READ MORE"
+    },
+    "model": "kartoza_theme.productviewdata",
+    "pk": 10
+  },
+  {
+    "fields": {
+      "category_summary": "Introduction to Enterprise GIS with FOSS",
+      "product": 4,
+      "category_order": 0,
+      "icon_background_color_hash": "FFFFFF",
+      "category_html": "<div class=\"about-text\">\r\n               Enterprise GIS is all about doing GIS on a larger scale than just your PC with local files. Is this course for you? Here are some aspects of Enterprise GIS to help you decide:\r\n\r\n                <br><br>\r\n                <div style=\"text-align: left\">\r\n                    <ul>\r\n                    <li>you need to supply GIS to a whole department or organisation or enterprise</li>\r\n                    <li>multiple users, with different roles</li>\r\n                    <li>integration with other systems, technologies and data</li>\r\n               \r\n                        </ul>\r\n                </div>\r\n            </div>",
+      "category_button_text": "READ MORE"
+    },
+    "model": "kartoza_theme.productviewdata",
+    "pk": 11
+  }
+]
