@@ -1,9 +1,11 @@
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
+from mezzanine.utils.models import get_user_model_name
 from mezzanine.core.models import Displayable, RichText, Slugged
 from mezzanine.utils.models import AdminThumbMixin
 from mezzanine.core.fields import RichTextField, FileField
 
+user_model_name = get_user_model_name()
 
 
 class Person(Displayable, RichText, AdminThumbMixin):
@@ -29,6 +31,8 @@ class Person(Displayable, RichText, AdminThumbMixin):
                           default="", blank=True)
     job_title = models.CharField(_("job title"), max_length=60, blank=True, help_text=_("Example: First Grade Teacher"))
     order = models.PositiveSmallIntegerField(default=0)
+    user = models.ForeignKey(user_model_name, verbose_name=_("UserLink"),
+                             related_name="user_link")
     admin_thumb_field = "mugshot"
     search_fields = {"first_name", "last_name", "bio", "job_title",}
 
