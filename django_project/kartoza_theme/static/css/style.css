@@ -128,8 +128,8 @@ a:focus {
 
 .navbar-default .navbar-nav > li > a {
     color: white;
-    font-weight: 700;
-    font-size: 12px;
+    font-weight: 500;
+    font-size: 16px;
 }
 
 .navbar-default .navbar-nav > li > a:hover {
@@ -146,15 +146,65 @@ a:focus {
     border-color: transparent;
 }
 
+.dropdown-menu.large-screen {
+    background: white;
+    width: 177px;
+
+}
+
+.dropdown-menu.large-screen > li > a {
+    padding-bottom: 1.5rem;
+    padding-top: 1.5rem;
+    color: #231F20;
+    font-family: Lato;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    white-space: pre-wrap; /* CSS3 */
+    white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
+    white-space: -pre-wrap; /* Opera 4-6 */
+    white-space: -o-pre-wrap; /* Opera 7 */
+    word-wrap: break-word; /* Internet Explorer 5.5+ */
+
+}
+
+.dropdown-menu.large-screen > li > a:active {
+    color: black;
+}
+
+.dropdown-menu.large-screen > li > a:hover {
+    color: black;
+    background-color: rgba(236, 180, 75, 0.3) ;
+}
+
+.dropdown-menu > .active > a, .dropdown-menu > .active > a:hover, .dropdown-menu.large-screen > .active > a:focus {
+    background-color: transparent;
+    color: rgb(236, 180, 75) !important;
+
+}
+
+
 .dropdown-menu {
     background: #384452;
 }
 
-.dropdown-menu > li > a {
-    color: white;
-    font-weight: 700;
-    font-size: 12px;
+ul .dropdown-menu.small-screen > li > a {
+    color: white !important;
+    font-weight: 500;
+    font-size: 13px;
 }
+
+ul .dropdown-menu.small-screen > li > a:hover {
+    color: rgb(236, 180, 75) !important;
+}
+
+
+/*.open .dropdown-menu > li > a:hover {*/
+/*    color: #f4b340 !important;*/
+
+/*}*/
+
 
 .btn-theme {
     color: #fff;
@@ -1252,4 +1302,14 @@ img.home-page-fbis {
 
 .left-centered-navigate .nav-footer {
     margin: 0;
+}
+
+.dropdown-toggle {
+    cursor: pointer;
+}
+
+.navbar-default .navbar-nav .open .dropdown-menu.small-screen > .active > a,
+.navbar-default .navbar-nav .open .dropdown-menu.small-screen > .active > a:focus  {
+    background-color: transparent;
+    color: rgb(236, 180, 75) !important;
 }

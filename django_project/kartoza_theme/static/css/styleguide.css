@@ -464,6 +464,20 @@ html input[type="button"], input[type="reset"], input[type="submit"] {
     margin-right: auto;
 }
 
+.kartoza-menu-heading-underline {
+    background-image: url(../../static/img/heading-underline.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: block;
+
+    height: 17.8px;
+}
+
+ul .dropdown-menu {
+    padding-top: 0;
+
+}
+
 .kartoza-heading-underline-container {
     width: 100%;
     margin-top: 2rem;
