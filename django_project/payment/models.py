@@ -7,7 +7,6 @@ from django.utils.encoding import python_2_unicode_compatible
 from django.db.models import CharField, TextField, FileField
 from django.utils.translation import ugettext_lazy as _
 
-from cartridge.shop.models import Product
 from mezzanine.conf import settings
 from mezzanine.utils.models import upload_to
 
