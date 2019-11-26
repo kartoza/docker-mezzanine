@@ -5,6 +5,7 @@ from django.shortcuts import get_object_or_404
 #from django import VERSION
 
 from .models import Person, PersonCategory
+from mezzanine.blog.models import BlogPost
 from mezzanine.conf import settings
 from mezzanine.generic.models import AssignedKeyword, Keyword
 from mezzanine.utils.views import render, paginate
@@ -27,11 +28,11 @@ def person_list(request, category=None, template="mezzanine_people/person_list.h
 
     # requires Django VERSION >= (1, 4):
     people = people.prefetch_related("categories")
-
     people = paginate(people, request.GET.get("page", 1),
                       settings.PEOPLE_PER_PAGE,
                       settings.MAX_PAGING_LINKS)
     context = {"people": people, "category": category}
+
     templates.append(template)
     return render(request, templates, context)
 
@@ -43,8 +44,11 @@ def person_detail(request, slug,
     ``mezzanine_people/person_detail_XXX.html`` where ``XXX`` is the
     person's slug.
     """
+
     people = Person.objects.published()
     person = get_object_or_404(people, slug=slug)
-    context = {"person": person, "editable_obj": person}
+
+    blogs = BlogPost.objects.filter(user=person.user).order_by("-publish_date")[:5]
+    context = {"person": person, "editable_obj": person, "blogs": blogs}
     templates = [u"mezzanine_people/person_detail_%s.html" % unicode(slug), template]
     return render(request, templates, context)

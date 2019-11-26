@@ -1265,6 +1265,17 @@ img.home-page-fbis {
     margin-top: 45px !important;
 }
 
+.blog-link {
+    font-family: Lato;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 14px;
+    text-decoration-line: underline;
+
+    color: #57A0C7;
+}
+
 .footer-center {
     padding-left: 12.5%;
 }
