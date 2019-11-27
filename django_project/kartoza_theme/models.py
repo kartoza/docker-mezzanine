@@ -37,12 +37,3 @@ class ProductViewData(models.Model):
 
     def __getitem__(self, item):
         return getattr(self, item)
-
-    # @property
-    # def logo_image(self):
-    #     if self.product.images.order_by('id')[1]:
-    #         return self.product.images.order_by('id')[1]
-    #     elif self.product.images.order_by('id')[0]:
-    #         return self.product.images.order_by('id')[0]
-    #     else:
-    #         return None
