@@ -22,6 +22,13 @@ class ProductViewData(models.Model):
     category_order = IntegerField(
         "Order the item should displayed on the category page", default=0)
 
+    logo_image = models.ImageField(
+        blank=True,
+        upload_to='product_image',
+        help_text="An image used as this product's logo",
+        null=True
+    )
+
     def __unicode__(self):
         return unicode(self.product.title)
 
@@ -30,4 +37,3 @@ class ProductViewData(models.Model):
 
     def __getitem__(self, item):
         return getattr(self, item)
-
