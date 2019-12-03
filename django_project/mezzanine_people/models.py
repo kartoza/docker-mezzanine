@@ -31,7 +31,9 @@ class Person(Displayable, RichText, AdminThumbMixin):
                           default="", blank=True)
     job_title = models.CharField(_("job title"), max_length=60, blank=True, help_text=_("Example: First Grade Teacher"))
     order = models.PositiveSmallIntegerField(default=0)
-    user = models.ForeignKey(user_model_name, verbose_name=_("UserLink"),
+    user = models.ForeignKey(user_model_name,
+                             null=True,
+                             verbose_name=_("UserLink"),
                              related_name="user_link")
     admin_thumb_field = "mugshot"
     search_fields = {"first_name", "last_name", "bio", "job_title",}
