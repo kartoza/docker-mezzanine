@@ -229,6 +229,27 @@ dbrestore:
 	@docker-compose -p $(PROJECT_ID) start uwsgi
 	@echo "starting uwsgi container"
 
+dbrestore-12.0:
+	@echo
+	@echo "------------------------------------------------------------------"
+	@echo "Restore dump from backups/latest.dmp in production mode"
+	@echo "------------------------------------------------------------------"
+	@# - prefix causes command to continue even if it fails
+	@echo "stopping uwsgi container"
+	@docker-compose -p $(PROJECT_ID) stop uwsgi
+	@echo "dropping gis"
+	@docker exec -t $(PROJECT_ID)-db su - postgres -c "dropdb gis"
+	@echo "creating gis"
+	@docker exec -t $(PROJECT_ID)-db su - postgres -c "createdb  -O docker gis"
+	@docker exec -t $(PROJECT_ID)-db su - postgres -c "psql -c 'CREATE EXTENSION IF NOT EXISTS postgis cascade;' gis"
+	@echo "restoring gis"
+	@# Because we pipe from one docker command to another and we are going
+	@# to execute this Make command from a remote server at times, we need to using use interactive mode (-i)
+	@# in the first command and not use terminal (-t) in the second. Please do not change these!
+	@docker exec -t $(PROJECT_ID)-db su - postgres -c pg_restore /backups/latest.dmp -d gis | docker exec -i $(PROJECT_ID)-db su - postgres -c "psql gis"
+	@docker-compose -p $(PROJECT_ID) start uwsgi
+	@echo "starting uwsgi container"
+
 dbbackup:
 	@echo
 	@echo "------------------------------------------------------------------"

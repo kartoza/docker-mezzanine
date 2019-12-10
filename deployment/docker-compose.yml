@@ -30,7 +30,7 @@ smtp:
 db:
   # Note you cannot scale if you use conteiner_name
   container_name: mezzanine-db
-  image: kartoza/postgis:9.4-2.1
+  image: kartoza/postgis:12.0
   volumes:
     - ./pg/postgres_data:/var/lib/postgresql
     - ./backups:/backups
@@ -151,7 +151,6 @@ devweb:
   links:
     - smtp:smtp
     - db:db
-    - rabbitmq:rabbitmq
   ports:
     # for django test server
     - "64202:8080"

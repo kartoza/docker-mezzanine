@@ -13,4 +13,4 @@ django-devserver
 Sphinx
 
 # pdb plus plus
-pdbppgit co
+pdbpp
