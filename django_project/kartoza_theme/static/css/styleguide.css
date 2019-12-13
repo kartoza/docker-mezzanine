@@ -42,7 +42,7 @@ html input[type="button"], input[type="reset"], input[type="submit"] {
 
 .btn-medium {
     width: 167px !important;
-    height: 46px !important;
+    min-height: 46px !important;
 }
 
 .btn-small.btn-primary-hollow {
@@ -56,7 +56,7 @@ html input[type="button"], input[type="reset"], input[type="submit"] {
 }
 
 .btn-medium.btn-primary-hollow {
-    height: 42px !important;
+    min-height: 42px !important;
     width: 163px !important;
 }
 
@@ -90,6 +90,8 @@ html input[type="button"], input[type="reset"], input[type="submit"] {
     min-width: fit-content;
     height: 42px;
     line-height: 28px;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open .dropdown-toggle.btn-primary {
@@ -503,7 +505,6 @@ input[type="submit"]:hover {
     font-size: 14px;
     text-transform: uppercase;
     color: #FFFFFF;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .btn-multiline {
