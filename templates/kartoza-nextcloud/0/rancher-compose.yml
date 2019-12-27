@@ -1,0 +1,45 @@
+version: '2'
+
+catalog:
+
+  name: nextcloud
+  version: 0.0.2
+  description: Nextcloud - Enterprise File Sync and Share
+  questions:
+    - variable: NEXTCLOUD_PORT
+      label: Port
+      default: 80
+      required: true
+      type: int
+    - variable: POSTGRES_DATABASE
+      default: nextcloud
+      label: POSTGRES Database
+      required: true
+      type: string
+    - variable: POSTGRES_USER
+      default: nextcloud
+      label: POSTGRES User
+      required: true
+      type: string
+    - variable: POSTGRES_PASS
+      label: POSTGRES Pass
+      required: true
+      type: password
+
+services:
+
+  nextcloud:
+    scale: 1
+    start_on_create: true
+
+  nextcloud-data:
+    scale: 1
+    start_on_create: true
+
+  db:
+    scale: 1
+    start_on_create: true
+
+  smtp:
+    scale: 1
+    start_on_create: true
