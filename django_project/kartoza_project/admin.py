@@ -1,5 +1,7 @@
 from django.contrib import admin
 from django.conf import settings
+from django import forms
+from django.forms import ModelForm
 from kartoza_project.models import (
     Project,
     ProjectImage,
@@ -23,13 +25,22 @@ class ReferenceStackedInline(admin.StackedInline):
     extra = 1
 
 
+class ProjectAdminForm(ModelForm):
+    _order = forms.IntegerField(required=False)
+
+    class Meta:
+        model = Project
+        exclude = []
+
+
 class ProjectAdmin(admin.ModelAdmin):
     """
     Admin class for project
     """
-    list_display = ['admin_thumb', 'title', 'short_description', 'date_start', 'date_end']
+    list_display = ['admin_thumb', 'title', 'short_description', 'date_start', 'date_end', '_order']
     list_display_links = ['title', ]
     inlines = [ProjectImageInline, ReferenceStackedInline]
+    form = ProjectAdminForm
 
     def get_readonly_fields(self, request, obj=None):
         if obj:

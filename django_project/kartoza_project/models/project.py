@@ -172,6 +172,9 @@ class Project(Orderable, Slugged, AdminThumbMixin):
     def __unicode__(self):
         return unicode(self.title)
 
+    class Meta:
+        ordering = ['-_order', '-date_end', '-date_start']
+
     @property
     def sorted_clients_set(self):
         return self.clients.order_by('title')
