@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.gis.db import models
 from django.utils.translation import ugettext_lazy as _
 from mezzanine.utils.models import get_user_model_name
 from mezzanine.core.models import Displayable, RichText, Slugged
@@ -27,8 +28,8 @@ class Person(Displayable, RichText, AdminThumbMixin):
     mugshot_credit = models.CharField(_("Profile photo credit"), blank=True, max_length=200)
     email = models.EmailField(_("e-mail address"), blank=True)
     bio = RichTextField(_("biography"),
-                          help_text=_("This field can contain HTML and should contain a few paragraphs describing the background of the person."),
-                          default="", blank=True)
+                        help_text=_("This field can contain HTML and should contain a few paragraphs describing the background of the person."),
+                        default="", blank=True)
     job_title = models.CharField(_("job title"), max_length=60, blank=True, help_text=_("Example: First Grade Teacher"))
     order = models.PositiveSmallIntegerField(default=0)
     user = models.ForeignKey(user_model_name,
@@ -36,7 +37,9 @@ class Person(Displayable, RichText, AdminThumbMixin):
                              verbose_name=_("UserLink"),
                              related_name="user_link")
     admin_thumb_field = "mugshot"
-    search_fields = {"first_name", "last_name", "bio", "job_title",}
+    search_fields = {"first_name", "last_name", "bio", "job_title", }
+
+    location = models.PointField(null=True, blank=True)
 
     class Meta:
         verbose_name = _("Person")
@@ -76,3 +79,23 @@ class PersonCategory(Slugged):
     @models.permalink
     def get_absolute_url(self):
         return ("person_list_category", (), {"slug": self.slug})
+
+
+class Office(Displayable, RichText, AdminThumbMixin):
+    """ Model of office
+    """
+    order = models.PositiveSmallIntegerField(default=0)
+    email = models.EmailField(_("e-mail address"), blank=True)
+    telephone = models.CharField(
+        blank=True,
+        help_text='Telephone number',
+        max_length=16)
+    address = models.CharField(_("address"), blank=True, max_length=256)
+    users = models.ManyToManyField(
+        Person, null=True, blank=True, help_text='person in the office')
+    location = models.PointField(null=True, blank=True)
+
+    class Meta:
+        verbose_name = _("Office")
+        verbose_name_plural = _("Offices")
+        ordering = ("order", "title",)

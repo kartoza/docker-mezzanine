@@ -3,7 +3,7 @@ import requests
 from django.core import serializers
 from django.http import HttpResponse
 from mezzanine.pages.views import page
-from mezzanine_people.models import Person
+from mezzanine_people.models import Person, Office
 from mezzanine.core.models import CONTENT_STATUS_PUBLISHED
 from mezzanine.utils.views import render as mez_render
 from django.shortcuts import render
@@ -33,6 +33,21 @@ def about(request):
     people = Person.objects.published()
 
     context = {"people": people, "category": None}
+    templates.append(template)
+    return mez_render(request, templates, context)
+
+
+def contact(request):
+    """ Show contact page with person in the page
+    """
+    template = "pages/contact.html"
+    settings.use_editable()
+    templates = []
+    people = Person.objects.published()
+    office = Office.objects.published()
+
+    context = {
+        "people": people, "office": office}
     templates.append(template)
     return mez_render(request, templates, context)
 

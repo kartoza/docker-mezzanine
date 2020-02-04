@@ -5,8 +5,7 @@ from django.conf.urls.i18n import i18n_patterns
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
-from mezzanine.core.views import direct_to_template
-from views import home, about, create_web_to_contact
+from views import home, about, create_web_to_contact, contact
 
 admin.autodiscover()
 
@@ -41,7 +40,7 @@ urlpatterns = i18n_patterns(
         # For mezzanine-agenda
         ("^%s/" % settings.EVENT_SLUG, include("mezzanine_agenda.urls")),
 
-        url("^contact/$", direct_to_template, {"template": "pages/contact.html"}, name="contact"),
+        url("^contact/$", contact, name="contact"),
         url("^about/$", about, name="about"),
         url("^WebToContact/Create", create_web_to_contact, name="create_web_to_contact"),
         # We don't want to presume how your homepage works, so here are a

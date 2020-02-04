@@ -1,75 +1,145 @@
-{#<form id='insightly_web_to_contact' action="https://googleapps.insight.ly/WebToContact/Create"#}
-{#      method="post" name="insightly_web_to_contact">#}
 <div class="col-xs-12 contact_us_main">
     <div class="col-xs-10  col-xs-offset-1 col-lg-8 col-lg-offset-2">
-            <form action="/WebToContact/Create" target="_blank">
-                <div class="row">
-                    {#        <input type="hidden" name="g-recaptcha-response" class="recaptcha">#}
-                    {% csrf_token %}
+        <form action="/WebToContact/Create" id="contact-form">
+            <div class="row">
+                {% csrf_token %}
+                <div class="col-xs-12">
+                    <div class="input-section contact_us_heading">
+                        {% if title %}{{ title }}{% else %}Have any
+                            questions? Contact
+                            us.{% endif %}</div>
+                    <div class="input-section contact_us_subheading">
+                        {% if subtitle %}{{ subtitle }}{% else %}We would
+                            love to hear from you!{% endif %}</div>
+                    <div class="input-section col-lg-6">
+                        <input name="formId"
+                               type="hidden"
+                               value="HhfP9pdb2KSSlLxCyQHmeg=="/>
+                        <label for="insightly_firstName">First Name*</label>
+                        <input placeholder="John"
+                               id="insightly_firstName" name="FirstName"
+                               type="text" required/>
+                    </div>
+                    <div class="input-section col-lg-6">
+                        <label for="insightly_lastName">Surname*</label>
+                        <input placeholder="Doe"
+                               id="insightly_lastName" name="LastName"
+                               type="text" required/>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="input-section col-lg-6">
+                        <input name="emails[0].Label"
+                               type="hidden"
+                               value="Work"/>
+                        <label for="email[0]_Value">Email*</label>
+                        <input placeholder="johndoe@email.com"
+                               id="insightly_email" name="emails[0].Value"
+                               type="text" required/>
+                    </div>
+                    <div class="input-section col-lg-6">
+                        <input name="phones[0].Label" type="hidden"
+                               value="Work"/>
+                        <label for="phones[0]_Value">Phone Number</label>
+                        <input placeholder="+27 65 709 7623"
+                               id="phones[0]_Value" name="phones[0].Value"
+                               type="text"/>
+                    </div>
+                    <div class="input-section">
+                        <label for="insightly_organisation">Organisation</label>
+                        <input placeholder="Name of Organisation"
+                               id="insightly_organisation" name="Organization"
+                               type="text"/>
+                    </div>
+                    <div class="input-section">
+                        <label for="insightly_hear_us">Where did you hear from us?</label>
+                        <input placeholder="Google search, referral, conference, etc"
+                               id="insightly_hear_us" name="HearUs"
+                               type="text"/>
+                    </div>
+                    <div class="input-section">
+                        <label for="insightly_background">Message</label>
+                        <textarea
+                                placeholder="Type Message here"
+                                class="contact_us_message"
+                                id="insightly_background"
+                                name="background"></textarea>
+                    </div>
+                    <div class="input-section">
+                        <input id="insightly-subscribe"
+                               name="subscribeMailingList"
+                               type="checkbox"/>
+                        <span id="insightly-subscribe-label">
+                            Subscribe to our Mailing list (spam-free, industry-relevant occasional emails)
+                        </span>
+                    </div>
                     <div class="col-xs-12">
-                        <div class="input-section contact_us_heading">
-                            {% if title %}{{ title }}{% else %}Have any
-                                questions? Contact
-                                us.{% endif %}</div>
-                        <div class="input-section contact_us_subheading">
-                            {% if subtitle %}{{ subtitle }}{% else %}We would
-                                love to hear from you!{% endif %}</div>
-                        <div class="input-section col-lg-6"><input name="formId"
-                                                                   type="hidden"
-                                                                   value="HhfP9pdb2KSSlLxCyQHmeg=="/>
-                            <label for="insightly_firstName">First Name</label>
-                            <input placeholder="John"
-                                   id="insightly_firstName" name="FirstName"
-                                   type="text"/>
-                        </div>
-                        <div class="input-section col-lg-6"><label
-                                for="insightly_lastName">Surname</label> <input
-                                placeholder="Doe"
-                                id="insightly_lastName" name="LastName"
-                                type="text"/></div>
-                        <div class="clear"></div>
-                        <div class="input-section col-lg-6"><input
-                                name="emails[0].Label"
-                                type="hidden"
+                        <input type="submit" class="btn contact_us_button" value="Submit"/>
+                    </div>
+                </div>
+            </div>
 
-                                value="Work"/> <label
-                                for="email[0]_Value">Email*</label> <input
-                                placeholder="johndoe@email.com"
-                                id="emails[0]_Value" name="emails[0].Value"
-                                type="text"/>
+        </form>
+
+
+        {# subscribe mailing list #}
+        <div id="mc_embed_signup" class="row">
+            <div class="col-xs-12">
+                <form action="https://kartoza.us4.list-manage.com/subscribe/post?u=d07318ebc34b9facdb4a6a77a&amp;id=251601ff5f"
+                      method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate"
+                      target="_blank" novalidate>
+                    <div id="mc_embed_signup_scroll">
+                        <h2>Subscribe to our mailing list</h2>
+                        <div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
+                        <div class="mc-field-group">
+                            <label for="mce-EMAIL">Email Address <span class="asterisk">*</span>
+                            </label>
+                            <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
                         </div>
-                        <div class="input-section col-lg-6">
-                            <input name="phones[0].Label" type="hidden"
-                                   value="Work"/> <label
-                                for="phones[0]_Value">Phone Number</label>
-                            <input
-                                    placeholder="+27 65 709 7623"
-                                    id="phones[0]_Value" name="phones[0].Value"
-                                    type="text"/>
+                        <div class="mc-field-group">
+                            <label for="mce-FNAME">First Name </label>
+                            <input type="text" value="" name="FNAME" class="" id="mce-FNAME">
                         </div>
-                        <div class="input-section"><label
-                                for="insightly_background">Message</label>
-                            <textarea
-                                    placeholder="Type Message here"
-                                    class="contact_us_message"
-                                    id="insightly_background"
-                                    name="background"></textarea>
+                        <div class="mc-field-group">
+                            <label for="mce-LNAME">Last Name </label>
+                            <input type="text" value="" name="LNAME" class="" id="mce-LNAME">
+                        </div>
+                        <div id="mce-responses" class="clear">
+                            <div class="response" id="mce-error-response" style="display:none"></div>
+                            <div class="response" id="mce-success-response" style="display:none"></div>
+                        </div>
+                        <div class="">
                             <div class="row">
                                 <div class="col-xs-12">
-                                    <input type="submit"
-                                           class="btn contact_us_button"
-
-                                           value="Submit"/>
+                                    <input type="submit" value="Subscribe" name="subscribe"
+                                           id="mc-embedded-subscribe" class="btn btn-primary btn-large col-xs-8">
                                 </div>
                             </div>
                         </div>
+                        <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                        <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                            <input type="text" name="b_d07318ebc34b9facdb4a6a77a_251601ff5f" tabindex="-1" value=""></div>
                     </div>
-                </div>
-
-            </form>
+                </form>
+            </div>
         </div>
+    </div>
 </div>
-
+<script>
+    $("#insightly_firstName").change(function () {
+        $('#mce-FNAME').val($(this).val());
+    })
+    $("#insightly_lastName").change(function () {
+        $('#mce-LNAME').val($(this).val());
+    })
+    $("#insightly_email").change(function () {
+        $('#mce-EMAIL').val($(this).val());
+    })
+    $("#contact-form").submit(function (e) {
+        if ($('#insightly-subscribe').attr('checked')) {
+            $('#mc-embedded-subscribe-form').submit();
+        }
+    })
+</script>
 <style>
     .contact_us_heading {
         font-family: Lato;
@@ -136,11 +206,25 @@
         font-weight: 300;
         font-size: 15px;
         line-height: 20px;
-        /* identical to box height, or 133% */
-
-
         color: #D0C9D6;
     }
 
+    #insightly-subscribe {
+        width: 17px;
+        height: 17px;
+        float: left;
+        cursor: pointer;
+        margin: 4px 1px 0 0;
+        position: relative;
+    }
 
+    #insightly-subscribe-label {
+        margin-left: 5px;
+        margin-top: 2px;
+        display: inline-block;
+    }
+
+    #mc_embed_signup {
+        display: none !important;
+    }
 </style>
