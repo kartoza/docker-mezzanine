@@ -1,7 +1,7 @@
 from copy import deepcopy
 
 from django.contrib import admin
-from django.contrib.gis import admin as gis_admin
+from core.admin import OSMGeoAdminSecure
 
 from .models import Person, PersonLink, PersonCategory, Office
 from mezzanine.conf import settings
@@ -20,7 +20,7 @@ class PersonLinkInline(admin.TabularInline):
     model = PersonLink
 
 
-class PersonAdmin(gis_admin.OSMGeoAdmin, DisplayableAdmin):
+class PersonAdmin(OSMGeoAdminSecure, DisplayableAdmin):
     """
     Admin class for people.
     """
@@ -62,7 +62,7 @@ office_fieldsets[0][1]["fields"].extend(
     ["address", "telephone", "email", "location", "users", "order"])
 
 
-class OfficeAdmin(gis_admin.OSMGeoAdmin, DisplayableAdmin):
+class OfficeAdmin(OSMGeoAdminSecure, DisplayableAdmin):
     """
     Admin class for office.
     """
