@@ -1,4 +1,5 @@
 import re
+import os
 from datetime import datetime
 from django.db import models
 from django.conf import settings
@@ -222,15 +223,14 @@ class Project(Orderable, Slugged, AdminThumbMixin):
             elif template == 'public_portfolio':
                 template_name = 'public_portfolio.html'
             main_client = self.clients.first()
-            context = {'project': self,
-                                         'consultants': self.consultants.all(),
-                                         'staff': self.staff_involved.all(),
-                                         'clients': self.clients.values(),
-                                         'main_client_name': main_client.title,
-                                         'main_client_logo': main_client.logo.file.name,
-                                         'thumbnail_url': self.thumbnail.file.name,
-
-                                         'images': self.image_urls}
+            context = {
+                'project': self,
+                 'consultants': self.consultants.all(),
+                 'staff': self.staff_involved.all(),
+                 'clients': self.clients.values(),
+                 'main_client': main_client,
+                 'thumbnail_url': self.thumbnail.path
+            }
             starting_template = render_to_string(
                 template_name, context)
             return starting_template

@@ -5,6 +5,7 @@ core.settings.base
 # Django settings for mezzanine project.
 
 from __future__ import absolute_import, unicode_literals
+import os
 from .utils import absolute_path
 
 ADMINS = (
@@ -44,7 +45,7 @@ FILE_UPLOAD_PERMISSIONS = 0o644
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/var/www/example.com/media/"
-MEDIA_ROOT = '/home/web/media'
+MEDIA_ROOT = '/home/web/media/'
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.

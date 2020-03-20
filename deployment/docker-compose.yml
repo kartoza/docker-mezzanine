@@ -144,8 +144,8 @@ devweb:
     - VIRTUAL_PORT=8080
   volumes:
     - ../django_project:/home/web/django_project
-    - ./static:/home/web/static
-    - ./media:/home/web/media
+    - ./static:/home/web/static-
+    - ./media:/home/web/media:ro
     - ./reports:/home/web/reports
     - ./logs:/var/log/
   links:

@@ -21,7 +21,7 @@
             <tr class="center-text">
                 <td>
                     <img class="icon-image" src="../static/img/generic_client_icon.svg">
-                    <div>Client: <b>{{ main_client_name }}</b></div>
+                    <div>Client: <b>{% if main_client %}{{ main_client.title }}{% else %}No Client{% endif %}</b></div>
                 </td>
                 <td>
                     <img class="icon-image" src="../static/img/generic_location_icon.svg">
@@ -36,10 +36,12 @@
             </tr>
             <tr>
                 <td style="background-color: lightgrey;">
-                    <div class="center-text"><img class="main_client_logo_class" src="{{ main_client_logo }}"></div>
+                    {% if main_client %}
+                        <div class="center-text"><img class="main_client_logo_class" src="{{ main_client.logo.path }}"></div>
+                    {% endif %}
                 </td>
                 <td colspan="2" class="center-text no-padding no-borders">
-                    <img class="project_thumbnail" src="{{ project.thumbnail.file.name }}">
+                    <img class="project_thumbnail" src="{{ project.thumbnail.path }}">
                 </td>
             </tr>
             <tr>

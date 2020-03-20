@@ -114,7 +114,11 @@ urlpatterns = i18n_patterns(
         ("^%s/" % settings.EVENT_SLUG, include("mezzanine_agenda.urls")),
 )
 
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+if settings.DEBUG:
+    urlpatterns += static(
+        settings.MEDIA_URL, document_root=settings.MEDIA_ROOT
+    )
+
 
 # Adds ``STATIC_URL`` to the context of error pages, so that error
 # pages can use JS, CSS and images.

@@ -1,3 +1,4 @@
+import os
 import tempfile
 import base64
 import re
@@ -52,7 +53,14 @@ def replace_html_media_images_with_base64(html_in):
 def replace_html_relative_images_with_base64(html_in, template_location):
     try:
         image_regex = r'<img(.*)>'
-        groups = [x.group() for x in re.finditer(image_regex, html_in)]
+        groups = []
+        for x in re.finditer(image_regex, html_in):
+            if not x:
+                continue
+            try:
+                groups.append(x.group())
+            except AttributeError:
+                continue
         for group in groups:
             image_tag = str(group)
             image_exp = re.compile('src=\"(.*?)\"')
@@ -62,6 +70,13 @@ def replace_html_relative_images_with_base64(html_in, template_location):
                 image_location = image_path
             else:
                 image_location = template_location + image_path
+                if not os.path.exists(image_location):
+                    image_location = os.path.join(
+                        settings.MEDIA_ROOT,
+                        image_path
+                    )
+                if not os.path.exists(image_location):
+                    continue
             try:
                 width = re.search(r'width=\"(.*)\"', image_tag).group(1)
             except AttributeError:
@@ -95,7 +110,7 @@ def replace_html_relative_images_with_base64(html_in, template_location):
             html_in = re.sub(group, image_result, html_in)
         return html_in
     except Exception as e:
-        return e
+        return html_in
 
 
 def strip_rt_tags(text_in):
