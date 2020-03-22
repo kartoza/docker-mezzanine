@@ -223,13 +223,18 @@ class Project(Orderable, Slugged, AdminThumbMixin):
             elif template == 'public_portfolio':
                 template_name = 'public_portfolio.html'
             main_client = self.clients.first()
+            thumbnail_path = ''
+            try:
+                thumbnail_path = self.thumbnail.path
+            except ValueError:
+                pass
             context = {
                 'project': self,
                  'consultants': self.consultants.all(),
                  'staff': self.staff_involved.all(),
                  'clients': self.clients.values(),
                  'main_client': main_client,
-                 'thumbnail_url': self.thumbnail.path
+                 'thumbnail_path': thumbnail_path
             }
             starting_template = render_to_string(
                 template_name, context)

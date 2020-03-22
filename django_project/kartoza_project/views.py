@@ -136,6 +136,8 @@ def export_projects(request):
         if len(projects_to_export) > 0:
             try:
                 for key in projects_to_export:
+                    if key == 'undefined':
+                        continue
                     next_project = Project.objects.get(pk=key)
                     next_file_text = (
                         next_project.get_html_template_with_base64_images(layout))

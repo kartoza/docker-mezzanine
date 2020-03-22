@@ -65,20 +65,20 @@ const sortIds = (dict) => {
 }
 
 const exportDocuments = () => {
-    let selected_ids = {}
-    let selected_rows = $('#table_id tr.selected')
+    let selected_ids = {};
+    let selected_rows = $('#table_id tr.selected');
     selected_rows.each(function () {
-        let sort_order = $(this).find('input').val()
-        selected_ids[($(this).data("pk"))] = sort_order
-    })
-    let project_ids_container = $('#project_ids')
-    let items = sortIds(selected_ids)
+        let sort_order = $(this).find('input').val();
+        selected_ids[($(this).data("pk"))] = sort_order;
+    });
+    let project_ids_container = $('#project_ids');
+    let items = sortIds(selected_ids);
 
-    project_ids_container.html(items.toString())
+    project_ids_container.html(items.toString());
     let format = $("input[name='export_format']:checked").val();
     let template = $("input[name='export_template']:checked").val();
-    ajaxRequestExportDocuments(items, format, template)
-}
+    ajaxRequestExportDocuments(items, format, template);
+};
 
 
 const clearTechnology = () => {
@@ -192,8 +192,6 @@ const ajaxRequestExportDocuments = (projects_to_export, format, layout) => {
                 document.body.removeChild(downloadLink);
             }
         }
-
-
     }
     request.send(data)
 }
