@@ -56,6 +56,7 @@ INSTALLED_APPS += (
     'payment',
     'plugins',
     'django.contrib.humanize',
+    'django_countries',
 )
 
 # mezzanine-mdown options
