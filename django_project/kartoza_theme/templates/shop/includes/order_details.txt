@@ -127,10 +127,6 @@
                 <p class="left-title-desc">
                     <b>Company registration no</b>: 2014/109067/07
                     <br>
-                    <b>Address</b>: Block C Top floor Unit 9C, Carpe Diem, 26 Quantum
-                    Street, Technopark,
-                    Stellenbosch, 7600, South Africa
-                    <br>
                     <b>VAT Number</b>: 4450266806
                     <br>
                     <b>Tel</b>: +27 (0)73 768 8108 / +27 (0)87 809 2702 Fax: +27 (0)86 564 4056
