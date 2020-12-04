@@ -125,6 +125,16 @@
                     Kartoza</span>
 
                 <p class="left-title-desc">
+                    15 Roos Street
+                    <br>
+                    Beverley Gardens
+                    <br>
+                    Randburg
+                    <br>
+                    Gauteng
+                    <br>
+                    2194
+                    <br>
                     <b>Company registration no</b>: 2014/109067/07
                     <br>
                     <b>VAT Number</b>: 4450266806
